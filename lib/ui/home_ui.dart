@@ -3,14 +3,10 @@ import 'package:get/get.dart';
 import 'package:xetia_shop/constants/dimens.dart';
 import 'package:xetia_shop/controllers/controllers.dart';
 import 'package:xetia_shop/ui/components/components.dart';
-import 'package:xetia_shop/utils/theme.dart';
 
 class HomeUI extends StatelessWidget {
-  final themeController = Get.put(ThemeController());
-
   @override
   Widget build(BuildContext context) {
-    print(Get.theme.textTheme.headline1);
     return Scaffold(
       body: Column(
         children: [
@@ -56,16 +52,18 @@ class HomeUI extends StatelessWidget {
       bottomNavigationBar: XetiaBottomBar(),
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: FloatingActionButton(
-          onPressed: () {
-            themeController.changeTheme();
-            Get.changeTheme(
-                themeController.isDarkTheme.value ? Themes.dark : Themes.light);
-          },
-          child: Center(
-            child: Icon(themeController.isDarkTheme.value
-                ? Icons.brightness_2
-                : Icons.brightness_1),
+        child: GetBuilder(
+          init: ThemeController(),
+          builder: (ThemeController controller) => FloatingActionButton(
+            onPressed: () {
+              controller.changeTheme(!controller.isDark.value);
+              Get.changeTheme(controller.theme);
+            },
+            child: Center(
+              child: Icon(controller.isDark.value
+                  ? Icons.brightness_1
+                  : Icons.brightness_2),
+            ),
           ),
         ),
       ),

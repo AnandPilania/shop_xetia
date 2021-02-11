@@ -45,6 +45,7 @@ dependencies:
   bubble: ^1.1.9+1
   draggable_widget: ^1.0.1
   fluid_bottom_nav_bar: ^1.2.0
+  get_storage: ^1.4.0
 
 dev_dependencies:
   flutter_test:
