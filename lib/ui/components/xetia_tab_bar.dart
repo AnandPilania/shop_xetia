@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/dimens.dart';
+import 'package:xetia_shop/controllers/controllers.dart';
 
 class XetiaTabBar extends StatelessWidget {
   static List<List<dynamic>> headingObject = [
@@ -8,7 +9,7 @@ class XetiaTabBar extends StatelessWidget {
     ["Account", Icons.person],
     ["Message", Icons.message]
   ];
-  final controllerPage = Get.find();
+  final controllerPage = Get.put(HeaderHomeController());
 
   @override
   Widget build(BuildContext context) {
