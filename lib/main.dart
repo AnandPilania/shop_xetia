@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/ui/_ui.dart';
-import 'package:xetia_shop/utils/_utils.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/ui/_ui.dart';
 
 void main() async {
   await GetStorage.init();
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shop_Xetia',
-      darkTheme: Themes.dark,
+      darkTheme: themeController.theme,
       home: HomeUI(),
     );
   }
