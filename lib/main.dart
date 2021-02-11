@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'ui/home.dart';
+import 'package:xetia_shop/ui/ui.dart';
+import 'package:xetia_shop/utils/utils.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Home(),
+      debugShowCheckedModeBanner: false,
+      title: 'Shop_Xetia',
+      theme: Themes.light,
+      darkTheme: Themes.dark,
+      home: HomeUI(),
     );
   }
 }

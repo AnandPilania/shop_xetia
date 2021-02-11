@@ -44,8 +44,7 @@ dependencies:
   convex_bottom_bar: ^2.6.0
   bubble: ^1.1.9+1
   draggable_widget: ^1.0.1
-  
-
+  fluid_bottom_nav_bar:
 
 dev_dependencies:
   flutter_test:
