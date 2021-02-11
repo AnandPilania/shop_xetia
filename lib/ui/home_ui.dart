@@ -11,16 +11,13 @@ class HomeUI extends StatelessWidget {
     CartUI(),
     SettingUI(),
   ];
+
   final bottomBarController = Get.put(BottomNavBarController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Obx(() => bodyObject[bottomBarController.currentBottomBar.value]),
-        ],
-      ),
+      body: Obx(() => bodyObject[bottomBarController.currentBottomBar.value]),
       bottomNavigationBar: XetiaBottomBar(),
       floatingActionButton: FABTheme(),
     );
