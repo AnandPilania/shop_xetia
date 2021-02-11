@@ -6,12 +6,19 @@ import 'package:xetia_shop/utils/utils.dart';
 class ThemeController extends GetxController {
   final box = GetStorage();
 
+  @override
+  void onInit() {
+    super.onInit();
+    if (box.read('darkmode') == null) {
+      box.write('darkmode', false);
+    }
+  }
+
   RxBool get isDark {
     bool isDarkTheme = box.read('darkmode');
-    return isDarkTheme.obs ?? false.obs;
+    return isDarkTheme.obs;
   }
 
   ThemeData get theme => isDark.value ? Themes.dark : Themes.light;
-
   void changeTheme(bool val) => box.write('darkmode', val);
 }
