@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
-import 'components/components.dart';
+import 'components/_components.dart';
 
 class SignIn extends StatelessWidget {
   LoginController _loginController = Get.put(LoginController());
