@@ -25,6 +25,11 @@ class HomeUI extends StatelessWidget {
               height: paddingTop,
               width: widthApp,
               color: context.theme.primaryColorDark),
+          XetiaTabBar(
+              heightApp: heightApp,
+              headingObject: headingObject,
+              controllerPage: controllerPage,
+              widthApp: widthApp),
           Container(
             height: heightApp * 0.425,
             width: widthApp,
@@ -37,56 +42,6 @@ class HomeUI extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Container(
-                  height: heightApp * 0.075,
-                  child: Column(
-                    children: [
-                      Obx(() =>
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              for (var object in headingObject)
-                                GestureDetector(
-                                  onTap: () =>
-                                      controllerPage.changeHeader(
-                                          object[0],
-                                          headingObject.indexOf(object)),
-                                  child: Container(
-                                      width: widthApp * 0.3,
-                                      height: heightApp * 0.06,
-                                      child: AnimatedSwitcher(
-                                          duration: Duration(milliseconds: 450),
-                                          child: controllerPage
-                                              .currentHeader.value !=
-                                              object[0]
-                                              ? Icon(object[1], size: 24)
-                                              : Text(object[0],
-                                              style: context
-                                                  .textTheme.headline1))),
-                                ),
-                            ],
-                          )),
-                      Expanded(
-                        child: Stack(
-                          children: [
-                            Obx(() =>
-                                AnimatedPositioned(
-                                  left: (widthApp * 0.05) +
-                                      ((widthApp * 0.325) *
-                                          controllerPage
-                                              .currentBarHeader.value),
-                                  duration: Duration(milliseconds: 450),
-                                  child: Container(
-                                      height: 3,
-                                      width: widthApp * 0.25,
-                                      color: context.theme.primaryColor),
-                                )),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
                 Center(
                   child: Text(
                     "Halal Food in Japan",
@@ -135,6 +90,69 @@ class HomeUI extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class XetiaTabBar extends StatelessWidget {
+  const XetiaTabBar({
+    Key key,
+    @required this.heightApp,
+    @required this.headingObject,
+    @required this.controllerPage,
+    @required this.widthApp,
+  }) : super(key: key);
+
+  final double heightApp;
+  final List<List> headingObject;
+  final HeaderHomeController controllerPage;
+  final double widthApp;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: heightApp * 0.075,
+      color: context.theme.primaryColorDark,
+      child: Column(
+        children: [
+          Obx(() => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  for (var object in headingObject)
+                    GestureDetector(
+                      onTap: () => controllerPage.changeHeader(
+                          object[0], headingObject.indexOf(object)),
+                      child: Container(
+                          width: widthApp * 0.3,
+                          height: heightApp * 0.06,
+                          child: AnimatedSwitcher(
+                              duration: Duration(milliseconds: 450),
+                              child: controllerPage.currentHeader.value !=
+                                      object[0]
+                                  ? Icon(object[1], size: 24)
+                                  : Text(object[0],
+                                      style: context.textTheme.headline1))),
+                    ),
+                ],
+              )),
+          Expanded(
+            child: Stack(
+              children: [
+                Obx(() => AnimatedPositioned(
+                      left: (widthApp * 0.05) +
+                          ((widthApp * 0.325) *
+                              controllerPage.currentBarHeader.value),
+                      duration: Duration(milliseconds: 450),
+                      child: Container(
+                          height: 3,
+                          width: widthApp * 0.25,
+                          color: context.theme.primaryColor),
+                    )),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
