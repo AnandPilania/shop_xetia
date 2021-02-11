@@ -1,8 +1,11 @@
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/controllers/controllers.dart';
 
 class XetiaBottomBar extends StatelessWidget {
+  final BottomNavBarController bottomBarController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return FluidNavBar(
@@ -17,7 +20,7 @@ class XetiaBottomBar extends StatelessWidget {
         FluidNavBarIcon(icon: Icons.shopping_cart_outlined),
         FluidNavBarIcon(icon: Icons.list_sharp)
       ],
-      onChange: (_) {},
+      onChange: bottomBarController.changeBottomBarPosition,
     );
   }
 }
