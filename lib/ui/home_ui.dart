@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/controllers.dart';
+import 'package:xetia_shop/ui/components/components.dart';
 import 'package:xetia_shop/ui/ui.dart';
-
-import 'components/components.dart';
 
 class HomeUI extends StatelessWidget {
   static List<Widget> bodyObject = [
@@ -23,23 +22,7 @@ class HomeUI extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: XetiaBottomBar(),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GetBuilder(
-          init: ThemeController(),
-          builder: (ThemeController controller) => FloatingActionButton(
-            onPressed: () {
-              controller.changeTheme(!controller.isDark.value);
-              Get.changeTheme(controller.theme);
-            },
-            child: Center(
-              child: Icon(controller.isDark.value
-                  ? Icons.brightness_1
-                  : Icons.brightness_2),
-            ),
-          ),
-        ),
-      ),
+      floatingActionButton: FABTheme(),
     );
   }
 }

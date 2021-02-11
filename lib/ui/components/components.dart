@@ -2,3 +2,4 @@
 
 export 'xetia_bottom_bar.dart';
 export 'xetia_tab_bar.dart';
+export 'fab_theme.dart';
