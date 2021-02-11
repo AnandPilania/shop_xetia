@@ -1,0 +1,1 @@
+folder ini khusus untuk file yg bersifat controller dari GetX
