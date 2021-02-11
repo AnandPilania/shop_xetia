@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/dimens.dart';
-import 'package:xetia_shop/controllers/controllers.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 
 class XetiaTabBar extends StatelessWidget {
   static List<List<dynamic>> headingObject = [
@@ -23,18 +23,15 @@ class XetiaTabBar extends StatelessWidget {
                 children: [
                   for (var object in headingObject)
                     GestureDetector(
-                      onTap: () => controllerPage.changeHeader(
-                          object[0], headingObject.indexOf(object)),
+                      onTap: () => controllerPage.changeHeader(object[0], headingObject.indexOf(object)),
                       child: Container(
                           width: widthApp * 0.3,
                           height: heightApp * 0.06,
                           child: AnimatedSwitcher(
                               duration: Duration(milliseconds: 450),
-                              child: controllerPage.currentHeader.value !=
-                                      object[0]
+                              child: controllerPage.currentHeader.value != object[0]
                                   ? Icon(object[1], size: 24)
-                                  : Text(object[0],
-                                      style: context.textTheme.headline1))),
+                                  : Text(object[0], style: context.textTheme.headline2))),
                     ),
                 ],
               )),
@@ -42,14 +39,9 @@ class XetiaTabBar extends StatelessWidget {
             child: Stack(
               children: [
                 Obx(() => AnimatedPositioned(
-                      left: (widthApp * 0.05) +
-                          ((widthApp * 0.325) *
-                              controllerPage.currentBarHeader.value),
+                      left: (widthApp * 0.05) + ((widthApp * 0.325) * controllerPage.currentBarHeader.value),
                       duration: Duration(milliseconds: 450),
-                      child: Container(
-                          height: 3,
-                          width: widthApp * 0.25,
-                          color: context.theme.primaryColor),
+                      child: Container(height: 3, width: widthApp * 0.25, color: context.theme.primaryColor),
                     )),
               ],
             ),

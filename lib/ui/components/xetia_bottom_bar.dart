@@ -1,7 +1,7 @@
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/controllers/controllers.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 
 class XetiaBottomBar extends StatelessWidget {
   final BottomNavBarController bottomBarController = Get.find();
