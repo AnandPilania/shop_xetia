@@ -5,3 +5,4 @@ export 'bottom_nav_bar_controller.dart';
 export 'login_controller.dart';
 export 'theme_controller.dart';
 export 'best_seller_controller.dart';
+export 'product_controller.dart';

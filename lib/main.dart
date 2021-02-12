@@ -6,7 +6,12 @@ import 'package:xetia_shop/ui/_ui.dart';
 
 void main() async {
   await GetStorage.init();
+  initController();
   runApp(MyApp());
+}
+
+void initController() {
+  Get.lazyPut(() => BestSellerController());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shop_Xetia',
-      darkTheme: themeController.theme,
+      theme: themeController.theme,
       home: HomeUI(),
     );
   }
