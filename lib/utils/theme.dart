@@ -4,6 +4,8 @@ class Themes {
   static final light = ThemeData.light().copyWith(
     primaryColor: const Color(0xfffbb216),
     primaryColorDark: const Color(0xffF0F2F3),
+    primaryColorLight: Colors.black,
+    accentColor: Colors.white,
     scaffoldBackgroundColor: const Color(0xffF0F2F3),
     iconTheme: IconThemeData(color: Colors.black, opacity: 1, size: 24),
     floatingActionButtonTheme:
@@ -81,6 +83,7 @@ class Themes {
   static final dark = ThemeData.dark().copyWith(
     primaryColor: const Color(0xfffbb216),
     primaryColorDark: Colors.black,
+    primaryColorLight: Colors.white,
     accentColor: Colors.black,
     scaffoldBackgroundColor: const Color(0xff616569),
     floatingActionButtonTheme:

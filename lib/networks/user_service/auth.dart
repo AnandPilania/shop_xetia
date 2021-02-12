@@ -10,12 +10,14 @@ class Auth {
   Future<LoginResponse> loginRequest(String email, String password) async {
     try {
       Response res = await post("$base_url/api/v1/login",
-              headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-              },
-              body: jsonEncode({"email": email, "password": password}))
-          .timeout(const Duration(seconds: 10), onTimeout: () {
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: jsonEncode({
+            "email": email,
+            "password": password
+          })).timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });
 
