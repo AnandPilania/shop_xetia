@@ -61,18 +61,19 @@ class TextFieldName extends StatelessWidget {
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                    color: context.theme.accentColor.withOpacity(0.5)),
+                    color: context.theme.primaryColor.withOpacity(0.5)),
                 borderRadius: BorderRadius.circular(5),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: context.theme.accentColor),
+                borderSide: BorderSide(color: context.theme.primaryColor),
                 borderRadius: BorderRadius.circular(5),
               ),
               border: UnderlineInputBorder(
                 borderSide: BorderSide(
-                    color: context.theme.accentColor.withOpacity(0.5)),
+                    color: context.theme.primaryColor.withOpacity(0.5)),
                 borderRadius: BorderRadius.circular(5),
               ),
+              fillColor: context.theme.primaryColorDark,
               hintText: hintText,
               hintStyle: context.theme.inputDecorationTheme.hintStyle,
               focusColor: context.theme.accentColor,
@@ -88,9 +89,9 @@ class TextFieldName extends StatelessWidget {
                   : null,
             ),
             cursorColor: context.theme.accentColor,
-            style: TextStyle(color: context.theme.accentColor),
+            style: TextStyle(color: context.theme.primaryColor),
             keyboardType: null,
-            obscureText: isObscure,
+            obscureText: false,
           ),
         )
       ],
