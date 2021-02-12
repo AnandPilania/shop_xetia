@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/controllers/best_seller_controller.dart';
+import '../../controllers/best_seller_controller.dart';
 
 class BestSellerBar extends StatelessWidget {
-  final BestSellerController controllerGrid = Get.put(BestSellerController());
+  final BestSellerController controllerGrid = Get.find<BestSellerController>();
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,7 @@ class BestSellerBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Best Seller",
-              style: context.textTheme.headline3
-                  .copyWith(fontWeight: FontWeight.bold)),
+          Text("Best Seller", style: context.textTheme.headline3.copyWith(fontWeight: FontWeight.bold)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -24,14 +22,10 @@ class BestSellerBar extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: controllerGrid.isGridView.value == true
-                                ? context.theme.primaryColor
-                                : null),
+                            color: controllerGrid.isGridView.value == true ? context.theme.primaryColor : null),
                         child: IconButton(
                           icon: Icon(Icons.grid_on_rounded),
-                          color: controllerGrid.isGridView.value == true
-                              ? context.theme.primaryColorDark
-                              : context.theme.primaryColor,
+                          color: controllerGrid.isGridView.value == true ? context.theme.primaryColorDark : context.theme.primaryColor,
                           padding: EdgeInsets.all(4),
                           constraints: BoxConstraints(),
                           onPressed: () => controllerGrid.changeView(true),
@@ -42,14 +36,10 @@ class BestSellerBar extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: controllerGrid.isGridView.value == false
-                                  ? context.theme.primaryColor
-                                  : null),
+                              color: controllerGrid.isGridView.value == false ? context.theme.primaryColor : null),
                           child: IconButton(
                             icon: Icon(Icons.list_rounded),
-                            color: controllerGrid.isGridView.value == false
-                                ? context.theme.primaryColorDark
-                                : context.theme.primaryColor,
+                            color: controllerGrid.isGridView.value == false ? context.theme.primaryColorDark : context.theme.primaryColor,
                             padding: EdgeInsets.all(4),
                             constraints: BoxConstraints(),
                             onPressed: () => controllerGrid.changeView(false),

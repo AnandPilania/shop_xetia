@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MyButton extends StatelessWidget {
   final Function onTap;
   final String text;
   final Color color;
 
-  const MyButton(
-      {Key key,
-      @required this.onTap,
-      @required this.text,
-      @required this.color})
-      : super(key: key);
+  const MyButton({Key key, @required this.onTap, @required this.text, @required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +15,7 @@ class MyButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: color.withOpacity(0.4),
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.4),
-              blurRadius: 4,
-              offset: Offset(0, 2))
-        ],
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.4), blurRadius: 4, offset: Offset(0, 2))],
       ),
       child: FlatButton(
         onPressed: onTap,
@@ -50,9 +39,7 @@ class ButtonIcon extends StatelessWidget {
   final Color color;
   final IconData icon;
 
-  const ButtonIcon(
-      {Key key, @required this.onTap, @required this.color, this.icon})
-      : super(key: key);
+  const ButtonIcon({Key key, @required this.onTap, @required this.color, this.icon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,12 +49,7 @@ class ButtonIcon extends StatelessWidget {
       decoration: BoxDecoration(
         color: color.withOpacity(0.4),
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.4),
-              blurRadius: 4,
-              offset: Offset(0, 2))
-        ],
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.4), blurRadius: 4, offset: Offset(0, 2))],
       ),
       child: FlatButton(
         onPressed: onTap,
