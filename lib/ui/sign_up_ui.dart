@@ -146,7 +146,7 @@ class SignUpUI extends StatelessWidget {
                         onTap: () {
                           Get.back();
                         },
-                        text: "Go to Sign In",
+                        text: "Back to Sign In",
                       ),
                       SizedBox(height: 60),
                     ],
