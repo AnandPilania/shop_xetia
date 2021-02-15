@@ -6,7 +6,7 @@ import 'package:xetia_shop/networks/_network.dart';
 import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
-class SignInController extends GetxController {
+class SignUpController extends GetxController {
   TextEditingController firstName;
   TextEditingController lastName;
   TextEditingController email;
@@ -22,7 +22,7 @@ class SignInController extends GetxController {
     super.onInit();
   }
 
-  void resSignIn({@required BuildContext context}) async {
+  void resSignUp({@required BuildContext context}) async {
     loading = LoadingOverlay.of(context);
 
     loading.show();
@@ -35,7 +35,7 @@ class SignInController extends GetxController {
       if (value.meta.code == 200) {
         Get.snackbar('Alert', value.meta.message,
             snackPosition: SnackPosition.BOTTOM);
-        Get.off(HomeUI());
+        Get.offAll(SignInUI());
       } else {
         Get.snackbar('Alert', value.meta.message,
             snackPosition: SnackPosition.BOTTOM);
@@ -45,7 +45,6 @@ class SignInController extends GetxController {
       loading.hide();
       Get.snackbar('Alert', "Sign Up Failed",
           snackPosition: SnackPosition.BOTTOM);
-
       print(onError);
     });
   }

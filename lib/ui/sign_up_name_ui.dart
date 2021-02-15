@@ -8,7 +8,7 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'sign_up_password_ui.dart';
 
 class SignUpNameUI extends StatelessWidget {
-  final SignInController _SignInController = Get.put(SignInController());
+  final SignInController _signInController = Get.put(SignInController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -67,7 +67,7 @@ class SignUpNameUI extends StatelessWidget {
                     children: [
                       TextFieldName(
                         textInputType: TextInputType.emailAddress,
-                        controller: _SignInController.email,
+                        controller: _signInController.email,
                         validator: Validator().name,
                         hintText: "first name",
                         iconData: Icons.person,
@@ -76,7 +76,7 @@ class SignUpNameUI extends StatelessWidget {
                       SizedBox(height: 15),
                       TextFieldName(
                         textInputType: TextInputType.emailAddress,
-                        controller: _SignInController.email,
+                        controller: _signInController.email,
                         validator: Validator().name,
                         hintText: "last name",
                         iconData: Icons.person,
@@ -85,7 +85,7 @@ class SignUpNameUI extends StatelessWidget {
                       SizedBox(height: 15),
                       TextFieldName(
                         textInputType: TextInputType.emailAddress,
-                        controller: _SignInController.email,
+                        controller: _signInController.email,
                         validator: Validator().name,
                         hintText: "email",
                         iconData: Icons.email,

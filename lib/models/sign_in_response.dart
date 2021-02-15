@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-SignInResponse SignInResponseFromJson(String str) =>
+SignInResponse signInResponseFromJson(String str) =>
     SignInResponse.fromJson(json.decode(str));
 
-String SignInResponseToJson(SignInResponse data) => json.encode(data.toJson());
+String signInResponseToJson(SignInResponse data) => json.encode(data.toJson());
 
 class SignInResponse {
   SignInResponse({
