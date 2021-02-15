@@ -13,3 +13,4 @@ export 'product_grid_card.dart';
 export 'product_list_card.dart';
 
 export 'text_field_password.dart';
+export 'detail_sheet.dart';
