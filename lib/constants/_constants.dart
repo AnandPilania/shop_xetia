@@ -2,3 +2,4 @@
 
 export 'dimens.dart';
 export 'lists.dart';
+export 'home_constant.dart';
