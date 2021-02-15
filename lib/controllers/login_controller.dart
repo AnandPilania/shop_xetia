@@ -26,6 +26,7 @@ class LoginController extends GetxController {
       Get.off(HomeUI());
       print(value.meta.message);
     }).catchError((onError) {
+      Get.snackbar('Response', onError);
       print(onError);
     });
   }
