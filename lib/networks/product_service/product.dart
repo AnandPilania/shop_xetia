@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:xetia_shop/models/_model.dart';
@@ -14,7 +13,6 @@ class Product {
           .timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });
-      ;
 
       if (res.statusCode == 200) {
         return productResponseFromJson(res.body);
