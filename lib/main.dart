@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Shop_Xetia',
       theme: themeController.theme,
-      home: SignInUI(),
+      home: HomeUI(),
     );
   }
 }

@@ -23,8 +23,8 @@ class ProductGridCard extends StatelessWidget {
         crossAxisSpacing: 10.0,
         itemCount: productController.listProduct.length,
         itemBuilder: (BuildContext context, int index) => GestureDetector(
-          onTap: () =>
-              Get.bottomSheet(DetailSheet(index: index), isScrollControlled: true, isDismissible: true, backgroundColor: Colors.white),
+          onTap: () => Get.bottomSheet(DetailSheet(index: index),
+              isScrollControlled: true, isDismissible: true, backgroundColor: const Color(0xfff2f2f2)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -54,7 +54,7 @@ class ProductGridCard extends StatelessWidget {
                           height: heightApp * 0.2,
                           width: widthApp * 0.2,
                           child: Image.network(
-                            productController.listProduct[index].imageUrl,
+                            productController.listProduct[index].imageUrl[0],
                           ),
                         ),
                       ),

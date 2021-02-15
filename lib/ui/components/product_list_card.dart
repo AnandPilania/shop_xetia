@@ -50,7 +50,7 @@ class ProductListCard extends StatelessWidget {
                         height: heightApp * 0.2,
                         width: widthApp * 0.2,
                         child: Image.network(
-                          productController.listProduct[index].imageUrl,
+                          productController.listProduct[index].imageUrl[productController.indexProductPicture.value],
                         ),
                       ),
                     ),

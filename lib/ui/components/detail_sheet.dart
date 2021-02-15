@@ -30,6 +30,7 @@ class DetailSheet extends StatelessWidget {
             child: Swiper(
               itemCount: productController.listProduct.length,
               index: index,
+              onIndexChanged: (_) => productController.updateIndexProductPicture(0),
               //pagination: SwiperPagination(),
               itemBuilder: (context, indexSwiper) {
                 return SingleChildScrollView(
@@ -49,9 +50,10 @@ class DetailSheet extends StatelessWidget {
                                 height: widthApp,
                                 child: Center(
                                   child: Swiper(
-                                    itemCount: 4,
-                                    itemBuilder: (context, snapshot) {
-                                      return Image.network(productController.listProduct[indexSwiper].imageUrl);
+                                    onIndexChanged: ((indexImage) => productController.updateIndexProductPicture(indexImage)),
+                                    itemCount: productController.listProduct[indexSwiper].imageUrl.length,
+                                    itemBuilder: (context, index) {
+                                      return Image.network(productController.listProduct[indexSwiper].imageUrl[index], fit: BoxFit.fill);
                                     },
                                   ),
                                 ),
@@ -88,10 +90,74 @@ class DetailSheet extends StatelessWidget {
                                       height: widthApp * 0.15,
                                     ),
                                   ),
-                                ))
+                                )),
                           ],
                         ),
                       ),
+                      Container(
+                        width: widthApp,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(bottomRight: Radius.circular(30), bottomLeft: Radius.circular(30))),
+                        child: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Spacer(),
+                                  for (int x in List<int>.generate(productController.listProduct[indexSwiper].imageUrl.length, (i) => i))
+                                    Obx(() => Padding(
+                                          padding: const EdgeInsets.all(2.0),
+                                          child: AnimatedContainer(
+                                              duration: Duration(milliseconds: 300),
+                                              height: 10,
+                                              width: x == productController.indexProductPicture.value ? 25 : 10,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(productController.indexProductPicture.value == x ? 5 : 50),
+                                                  color: context.theme.primaryColor)),
+                                        )),
+                                  Spacer(),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(productController.listProduct[indexSwiper].productName,
+                                      style: context.textTheme.headline2.copyWith(color: Colors.black)),
+                                  Text(productController.listProduct[indexSwiper].productPrice.toString(),
+                                      style: context.textTheme.headline4.copyWith(color: context.theme.primaryColor)),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text(productController.listProduct[indexSwiper].productPrice.toString(),
+                                          style: context.textTheme.headline5.copyWith(fontStyle: FontStyle.italic)),
+                                      SizedBox(width: 10),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: context.theme.primaryColor.withOpacity(0.25), borderRadius: BorderRadius.circular(10)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Center(
+                                            child: Text("50%",
+                                                style:
+                                                    context.textTheme.headline5.copyWith(color: context.theme.primaryColor.withOpacity(1))),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 );
