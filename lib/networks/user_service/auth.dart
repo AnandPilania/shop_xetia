@@ -7,10 +7,10 @@ import 'package:xetia_shop/models/_model.dart';
 import 'const_url.dart';
 
 class Auth {
-  Future<LoginResponse> loginRequest(String email, String password) async {
+  Future<SignInResponse> signInRequest(String email, String password) async {
     try {
       http.Response res = await http
-          .post("$base_url/api/v1/login",
+          .post("$base_url/api/v1/SignIn",
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -21,9 +21,9 @@ class Auth {
       });
 
       if (res.statusCode == 200) {
-        return loginResponseFromJson(res.body);
+        return SignInResponseFromJson(res.body);
       } else {
-        return loginResponseFromJson(res.body);
+        return SignInResponseFromJson(res.body);
       }
     } catch (e) {
       print("Error : $e");

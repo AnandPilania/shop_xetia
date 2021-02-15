@@ -1,16 +1,16 @@
 // To parse this JSON data, do
 //
-//     final loginResponse = loginResponseFromJson(jsonString);
+//     final SignInResponse = SignInResponseFromJson(jsonString);
 
 import 'dart:convert';
 
-LoginResponse loginResponseFromJson(String str) =>
-    LoginResponse.fromJson(json.decode(str));
+SignInResponse SignInResponseFromJson(String str) =>
+    SignInResponse.fromJson(json.decode(str));
 
-String loginResponseToJson(LoginResponse data) => json.encode(data.toJson());
+String SignInResponseToJson(SignInResponse data) => json.encode(data.toJson());
 
-class LoginResponse {
-  LoginResponse({
+class SignInResponse {
+  SignInResponse({
     this.meta,
     this.tokens,
     this.userId,
@@ -23,7 +23,7 @@ class LoginResponse {
     this.entityName,
   });
 
-  MetaLogin meta;
+  MetaSignIn meta;
   Tokens tokens;
   String userId;
   String firstName;
@@ -34,8 +34,8 @@ class LoginResponse {
   dynamic entityId;
   dynamic entityName;
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
-        meta: MetaLogin.fromJson(json["meta"]),
+  factory SignInResponse.fromJson(Map<String, dynamic> json) => SignInResponse(
+        meta: MetaSignIn.fromJson(json["meta"]),
         tokens: json["tokens"] != null ? Tokens.fromJson(json["tokens"]) : null,
         userId: json["user_id"] != null ? json["user_id"] : null,
         firstName: json["first_name"] != null ? json["first_name"] : null,
@@ -64,8 +64,8 @@ class LoginResponse {
       };
 }
 
-class MetaLogin {
-  MetaLogin({
+class MetaSignIn {
+  MetaSignIn({
     this.message,
     this.code,
   });
@@ -73,7 +73,7 @@ class MetaLogin {
   String message;
   int code;
 
-  factory MetaLogin.fromJson(Map<String, dynamic> json) => MetaLogin(
+  factory MetaSignIn.fromJson(Map<String, dynamic> json) => MetaSignIn(
         message: json["message"],
         code: json["code"],
       );

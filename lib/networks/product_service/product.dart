@@ -13,7 +13,6 @@ class Product {
           .timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });
-      ;
 
       if (res.statusCode == 200) {
         return productResponseFromJson(res.body);

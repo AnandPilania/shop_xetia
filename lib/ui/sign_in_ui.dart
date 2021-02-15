@@ -9,7 +9,7 @@ import 'package:xetia_shop/utils/_utils.dart';
 import 'components/_components.dart';
 
 class SignInUI extends StatelessWidget {
-  final LoginController _loginController = Get.put(LoginController());
+  final SignInController _SignInController = Get.put(SignInController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -69,7 +69,7 @@ class SignInUI extends StatelessWidget {
                     children: [
                       TextFieldName(
                         textInputType: TextInputType.emailAddress,
-                        controller: _loginController.email,
+                        controller: _SignInController.email,
                         validator: Validator().email,
                         hintText: "Email",
                         iconData: Icons.email,
@@ -78,7 +78,7 @@ class SignInUI extends StatelessWidget {
                       SizedBox(height: 30),
                       TextFieldName(
                         textInputType: TextInputType.emailAddress,
-                        controller: _loginController.pass,
+                        controller: _SignInController.pass,
                         validator: Validator().password,
                         hintText: "Password",
                         iconData: Icons.lock_outline,
@@ -93,7 +93,7 @@ class SignInUI extends StatelessWidget {
                         color: context.theme.primaryColor,
                         onTap: () {
                           if (_formKey.currentState.validate()) {
-                            _loginController.resLogin(context: context);
+                            _SignInController.resSignIn(context: context);
                           }
                         },
                         text: "sign in",
