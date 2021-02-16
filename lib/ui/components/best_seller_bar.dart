@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../controllers/best_seller_controller.dart';
 
 class BestSellerBar extends StatelessWidget {

@@ -38,7 +38,7 @@ class ProductController extends GetxController {
         ],
         isFavorite: false.obs,
         productName: Faker().food.cuisine(),
-        productPrice: "Rp" + (Random().nextInt(10000) + 10000).round().toString(),
+        productPrice: "Rp" + (Random().nextInt(90)).toString() + ".000",
         productWeight: Random().nextInt(20).toString() + "oz",
         shopLogo: Icons.shopping_bag,
       ));
