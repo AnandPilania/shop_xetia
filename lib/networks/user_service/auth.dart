@@ -7,7 +7,7 @@ import 'package:xetia_shop/models/_model.dart';
 import 'const_url.dart';
 
 class Auth {
-  Future<LoginResponse> loginRequest(String email, String password) async {
+  Future<SignInResponse> signInRequest(String email, String password) async {
     try {
       http.Response res = await http
           .post("$base_url/api/v1/login",
@@ -17,13 +17,13 @@ class Auth {
               },
               body: jsonEncode({"email": email, "password": password}))
           .timeout(const Duration(seconds: 10), onTimeout: () {
-        throw TimeoutException("connection time out try agian");
+        throw TimeoutException("connection time out try again");
       });
 
       if (res.statusCode == 200) {
-        return loginResponseFromJson(res.body);
+        return signInResponseFromJson(res.body);
       } else {
-        return loginResponseFromJson(res.body);
+        return signInResponseFromJson(res.body);
       }
     } catch (e) {
       print("Error : $e");

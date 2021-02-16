@@ -3,13 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 import 'components/_components.dart';
 
-class SignInUI extends StatelessWidget {
-  final SignInController _signInController = Get.put(SignInController());
+class SignUpUI extends StatelessWidget {
+  final SignUpController _signUpController = Get.put(SignUpController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -33,43 +32,33 @@ class SignInUI extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: context.theme.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.4),
-                              blurRadius: 4,
-                              offset: Offset(0, 2),
-                            )
-                          ],
-                        ),
-                        child: Center(
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.language,
-                              size: 28,
-                              color: context.theme.accentColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 40),
-                      Text("Welcome", style: context.theme.textTheme.headline3),
-                      Text("Sign in to Continue",
-                          style: context.theme.textTheme.headline2),
+                      Text("Sign Up", style: context.theme.textTheme.headline1),
                     ],
                   ),
                   SizedBox(height: 60),
                   Column(
                     children: [
                       TextFieldName(
+                        textInputType: TextInputType.name,
+                        controller: _signUpController.firstName,
+                        validator: Validator().name,
+                        hintText: "First Name",
+                        iconData: Icons.person,
+                        isPassword: false,
+                      ),
+                      SizedBox(height: 30),
+                      TextFieldName(
+                        textInputType: TextInputType.name,
+                        controller: _signUpController.lastName,
+                        validator: Validator().name,
+                        hintText: "Last Name",
+                        iconData: Icons.person,
+                        isPassword: false,
+                      ),
+                      SizedBox(height: 30),
+                      TextFieldName(
                         textInputType: TextInputType.emailAddress,
-                        controller: _signInController.email,
+                        controller: _signUpController.email,
                         validator: Validator().email,
                         hintText: "Email",
                         iconData: Icons.email,
@@ -78,32 +67,33 @@ class SignInUI extends StatelessWidget {
                       SizedBox(height: 30),
                       TextFieldName(
                         textInputType: TextInputType.emailAddress,
-                        controller: _signInController.pass,
+                        controller: _signUpController.pass,
                         validator: Validator().password,
                         hintText: "Password",
                         iconData: Icons.lock_outline,
                         isPassword: true,
                       ),
+                      SizedBox(height: 10),
+                      CheckboxListTile(
+                        title: Text(
+                          'Animate Slowly',
+                          style: context.theme.textTheme.headline5,
+                        ),
+                        value: true,
+                        onChanged: (bool value) {},
+                        activeColor: context.theme.primaryColor,
+                      ),
                     ],
                   ),
                   SizedBox(height: 30),
-                  Column(
-                    children: [
-                      MyButton(
-                        color: context.theme.primaryColor,
-                        onTap: () {
-                          if (_formKey.currentState.validate()) {
-                            _signInController.resSignIn(context: context);
-                          }
-                        },
-                        text: "Sign In",
-                      ),
-                      SizedBox(height: 10),
-                      GestureDetector(
-                          child: Text("forgot password",
-                              style: context.theme.textTheme.headline5),
-                          onTap: () {}),
-                    ],
+                  MyButton(
+                    color: context.theme.primaryColor,
+                    onTap: () {
+                      if (_formKey.currentState.validate()) {
+                        _signUpController.resSignUp(context: context);
+                      }
+                    },
+                    text: "Sign Up",
                   ),
                   SizedBox(height: 30),
                   Column(
@@ -154,9 +144,9 @@ class SignInUI extends StatelessWidget {
                       MyButton(
                         color: context.theme.primaryColor,
                         onTap: () {
-                          Get.to(SignUpUI());
+                          Get.back();
                         },
-                        text: "Create a Account",
+                        text: "Back to Sign In",
                       ),
                       SizedBox(height: 60),
                     ],
