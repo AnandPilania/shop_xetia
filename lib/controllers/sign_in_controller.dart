@@ -25,12 +25,12 @@ class SignInController extends GetxController {
     super.onInit();
   }
 
-  RxBool get loggedIn {
+  RxBool get _loggedIn {
     bool isHasLoggedIn = box.read(kHasLoggedIn);
     return isHasLoggedIn.obs;
   }
 
-  Widget get hasLoggedIn => loggedIn.value ? HomeUI() : SignInUI();
+  Widget get hasLoggedIn => _loggedIn.value ? HomeUI() : SignInUI();
 
   void changeLoginState(bool val) => box.write(kHasLoggedIn, val);
 

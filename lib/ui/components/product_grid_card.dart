@@ -12,7 +12,8 @@ class ProductGridCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: StaggeredGridView.countBuilder(
-        padding: EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
+        padding: EdgeInsets.only(
+            bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
         shrinkWrap: true,
         primary: false,
         crossAxisCount: 4,
@@ -24,9 +25,11 @@ class ProductGridCard extends StatelessWidget {
             onTap: () {
               productController.updateIndexProductPicture(0);
               Get.bottomSheet(
-                DetailSheet(indexItem: indexItem),
+                SafeArea(child: DetailSheet(indexItem: indexItem)),
                 isScrollControlled: true,
                 isDismissible: true,
+                enableDrag: true,
+                ignoreSafeArea: false,
                 backgroundColor: const Color(0xfff2f2f2),
               );
             },
@@ -59,7 +62,8 @@ class ProductGridCard extends StatelessWidget {
                             height: heightApp * 0.2,
                             width: widthApp * 0.2,
                             child: Image.network(
-                              productController.listProduct[indexItem].imageUrl[0],
+                              productController
+                                  .listProduct[indexItem].imageUrl[0],
                             ),
                           ),
                         ),
@@ -72,21 +76,29 @@ class ProductGridCard extends StatelessWidget {
                                   padding: EdgeInsets.all(4),
                                   constraints: BoxConstraints(),
                                   icon: Icon(
-                                    productController.listProduct[indexItem].isFavorite.value == true
+                                    productController.listProduct[indexItem]
+                                                .isFavorite.value ==
+                                            true
                                         ? Icons.favorite
                                         : Icons.favorite_border,
-                                    color: productController.listProduct[indexItem].isFavorite.value == true
+                                    color: productController
+                                                .listProduct[indexItem]
+                                                .isFavorite
+                                                .value ==
+                                            true
                                         ? Colors.redAccent
                                         : context.theme.scaffoldBackgroundColor,
                                   ),
-                                  onPressed: () => productController.addToFavorite(indexItem),
+                                  onPressed: () => productController
+                                      .addToFavorite(indexItem),
                                 ),
                                 IconButton(
                                   padding: EdgeInsets.all(4),
                                   constraints: BoxConstraints(),
                                   icon: Icon(
                                     Icons.add_circle_outline,
-                                    color: context.theme.scaffoldBackgroundColor,
+                                    color:
+                                        context.theme.scaffoldBackgroundColor,
                                   ),
                                   onPressed: () {},
                                 )
@@ -106,8 +118,13 @@ class ProductGridCard extends StatelessWidget {
                         style: context.textTheme.subtitle1,
                         maxLines: 1,
                       ),
-                      Text(productController.listProduct[indexItem].productWeight, style: context.textTheme.subtitle2),
-                      Text(productController.listProduct[indexItem].productPrice, style: context.textTheme.headline3),
+                      Text(
+                          productController
+                              .listProduct[indexItem].productWeight,
+                          style: context.textTheme.subtitle2),
+                      Text(
+                          productController.listProduct[indexItem].productPrice,
+                          style: context.textTheme.headline3),
                     ],
                   ),
                 ),
