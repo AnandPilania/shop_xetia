@@ -2,15 +2,18 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:xetia_shop/models/product_response.dart';
 import 'package:xetia_shop/networks/_network.dart';
 import '../models/product_dummy.dart';
 import 'package:faker/faker.dart';
 
 class ProductController extends GetxController {
   RxList<DummyProduct> listProduct = List<DummyProduct>().obs;
+  Rx<ProductResponse> listProductFetch = ProductResponse().obs;
   RxInt indexProductPicture = 0.obs;
-  RxString category;
-  RxInt page = 0.obs;
+  RxString category = "".obs;
+  RxInt page = 1.obs;
+  Product product = Product();
 
   void updateIndexProductPicture(int index) {
     indexProductPicture(index);
@@ -27,6 +30,7 @@ class ProductController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    fetchData();
     dummyInit();
   }
 
@@ -57,10 +61,16 @@ class ProductController extends GetxController {
   }
 
   void fetchData() async {
-    Product product = Product();
-    await product.getProduct(page: page.value).then((value) {
+    await product
+        .getProduct(
+            page: page.value,
+            category: category.isEmpty ? null : category.value)
+        .then((value) {
       if (value.meta.code == 200) {
-        print(value.meta.status);
+        print("load data product ${value.meta.status}");
+        print("load data length product ${value.response.data.length}");
+        // print(value.response.data[1].name);
+        listProductFetch(value);
       } else {
         print(value.meta.status);
       }

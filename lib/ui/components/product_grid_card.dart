@@ -30,6 +30,7 @@ class ProductGridCard extends StatelessWidget {
                 isDismissible: true,
                 backgroundColor: const Color(0xfff2f2f2),
               );
+              // productController.fetchData();
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

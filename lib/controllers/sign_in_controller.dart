@@ -13,6 +13,7 @@ class SignInController extends GetxController {
   TextEditingController pass;
   LoadingOverlay loading;
   final box = GetStorage();
+  Auth auth = Auth();
 
   @override
   void onInit() {
@@ -38,7 +39,6 @@ class SignInController extends GetxController {
     loading = LoadingOverlay.of(context);
 
     loading.show();
-    Auth auth = Auth();
 
     await auth
         .signInRequest(email.text, pass.text)

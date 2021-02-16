@@ -12,6 +12,8 @@ class SignUpController extends GetxController {
   TextEditingController email;
   TextEditingController pass;
   LoadingOverlay loading;
+    Auth auth = Auth();
+
 
   @override
   void onInit() {
@@ -26,7 +28,6 @@ class SignUpController extends GetxController {
     loading = LoadingOverlay.of(context);
 
     loading.show();
-    Auth auth = Auth();
 
     await auth
         .registerRequest(firstName.text, lastName.text, email.text, pass.text)
