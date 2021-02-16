@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/constants/_constants.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 
-import '../../ui/components/detail_sheet.dart';
-import '../../constants/dimens.dart';
-import '../../controllers/product_controller.dart';
+import '_components.dart';
 
 class ProductGridCard extends StatelessWidget {
   final ProductController productController = Get.find<ProductController>();

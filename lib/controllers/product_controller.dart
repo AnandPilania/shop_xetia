@@ -2,15 +2,26 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:xetia_shop/networks/_network.dart';
 import '../models/product_dummy.dart';
 import 'package:faker/faker.dart';
 
 class ProductController extends GetxController {
   RxList<DummyProduct> listProduct = List<DummyProduct>().obs;
   RxInt indexProductPicture = 0.obs;
+  RxString category;
+  RxInt page = 0.obs;
 
   void updateIndexProductPicture(int index) {
     indexProductPicture(index);
+  }
+
+  void updateCategory(String categoryId) {
+    category(categoryId);
+  }
+
+  void updatePage(int pageIndex) {
+    page(pageIndex);
   }
 
   @override
@@ -43,5 +54,18 @@ class ProductController extends GetxController {
         shopLogo: Icons.shopping_bag,
       ));
     }
+  }
+
+  void fetchData() async {
+    Product product = Product();
+    await product.getProduct(page: page.value).then((value) {
+      if (value.meta.code == 200) {
+        print(value.meta.status);
+      } else {
+        print(value.meta.status);
+      }
+    }).catchError((error) {
+      print(error);
+    });
   }
 }
