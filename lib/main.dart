@@ -6,13 +6,7 @@ import './controllers/_controllers.dart';
 
 void main() async {
   await GetStorage.init();
-  initController();
   runApp(MyApp());
-}
-
-void initController() {
-  Get.lazyPut(() => BestSellerController());
-  Get.lazyPut(() => HeaderHomeController());
 }
 
 class MyApp extends StatelessWidget {

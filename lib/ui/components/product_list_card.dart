@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
-import '../../ui/components/detail_sheet.dart';
 import '../../constants/dimens.dart';
 import '../../controllers/product_controller.dart';
+import '../../ui/components/detail_sheet.dart';
 
 class ProductListCard extends StatelessWidget {
-  final ProductController productController;
-
-  ProductListCard({Key key, this.productController}) : super(key: key);
+  final ProductController productController = Get.find<ProductController>();
 
   @override
   Widget build(BuildContext context) {

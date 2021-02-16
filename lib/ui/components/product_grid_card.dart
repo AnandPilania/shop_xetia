@@ -8,6 +8,7 @@ import '_components.dart';
 
 class ProductGridCard extends StatelessWidget {
   final ProductController productController = Get.find<ProductController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(

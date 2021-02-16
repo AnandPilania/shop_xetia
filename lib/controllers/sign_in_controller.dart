@@ -14,11 +14,23 @@ class SignInController extends GetxController {
   LoadingOverlay loading;
   final box = GetStorage();
 
+  // User user;
+  bool isLoading = false;
+
+  //
+  // void getUserData() async {
+  //   final user = await UserProvider.db.getUser();
+  //   print(user.accessToken);
+  //   print(user.accessToken);
+  //   this.user = user;
+  // }
+
   @override
   void onInit() {
     // TODO: implement onInit
     email = TextEditingController();
     pass = TextEditingController();
+    // getUserData();
     if (box.read(kHasLoggedIn) == null) {
       box.write(kHasLoggedIn, false);
     }
@@ -34,6 +46,26 @@ class SignInController extends GetxController {
 
   void changeLoginState(bool val) => box.write(kHasLoggedIn, val);
 
+  // void insertToDb(SignInResponse value) async {
+  //   User user = User(
+  //     id: 1,
+  //     role: 1,
+  //     roleName: value.userRoles[0].roleName,
+  //     roleDescription: value.userRoles[0].roleDescription,
+  //     entityId: value.entityId,
+  //     entityName: value.entityName,
+  //     entityType: value.entityType,
+  //     userId: value.userId,
+  //     first: value.firstName,
+  //     last: value.lastName,
+  //     photo: value.imageUrl,
+  //     refreshToken: value.tokens.refresh,
+  //     accessToken: value.tokens.access,
+  //     subcriptionToken: "1021",
+  //   );
+  //   await UserProvider.db.insertUser(user);
+  // }
+
   void resSignIn({@required BuildContext context}) async {
     loading = LoadingOverlay.of(context);
 
@@ -48,6 +80,7 @@ class SignInController extends GetxController {
         Get.snackbar('Alert', value.meta.message,
             snackPosition: SnackPosition.BOTTOM);
         Get.off(HomeUI());
+        // insertToDb(value);
         changeLoginState(true);
       } else {
         Get.snackbar('Alert', value.meta.message,
@@ -62,6 +95,35 @@ class SignInController extends GetxController {
       print(onError);
     });
   }
+
+  // void resSignOut({@required BuildContext context}) async {
+  //   loading = LoadingOverlay.of(context);
+  //
+  //   loading.show();
+  //   Auth auth = Auth();
+  //
+  //   await auth
+  //       .logoutRequest(user.accessToken, user.refreshToken)
+  //       .then((AuthResponse value) {
+  //     loading.hide();
+  //     if (value.meta.code == 200) {
+  //       Get.snackbar('Alert', value.meta.message,
+  //           snackPosition: SnackPosition.BOTTOM);
+  //       Get.offAll(SignInUI());
+  //       changeLoginState(false);
+  //     } else {
+  //       Get.snackbar('Alert', value.meta.message,
+  //           snackPosition: SnackPosition.BOTTOM);
+  //     }
+  //     print(value.meta.message);
+  //   }).catchError((onError) {
+  //     loading.hide();
+  //     Get.snackbar('Alert', "Sign Out Failed",
+  //         snackPosition: SnackPosition.BOTTOM);
+  //
+  //     print(onError);
+  //   });
+  // }
 
   @override
   void onClose() {
