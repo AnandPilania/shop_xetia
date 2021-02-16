@@ -1,14 +1,14 @@
-const List<List<String>> halalInfo = [
+const List<List<String>> kHalalInfo = [
   ["Halal Food", "3600"],
   ["Halal Shop", "210"],
   ["Halal Restaurant", "1300"]
 ];
-const List<List<String>> muslimInfo = [
+const List<List<String>> kMuslimInfo = [
   ["Mosque", "34"],
   ["Muslim community", "34"],
   ["Muslim corner", "3"]
 ];
-const List<List<String>> popularShopData = [
+const List<List<String>> kPopularShopData = [
   ["Sariraya", "Nagoya"],
   ["Okubo", "Tokyo"],
   ["Kobe-Halal", "Kobe"],

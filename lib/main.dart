@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
+
+import './controllers/_controllers.dart';
+import './ui/home_ui.dart';
 
 void main() async {
   await GetStorage.init();
@@ -18,12 +20,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeController = Get.put(ThemeController());
-    final signInController = Get.put(SignInController());
+    //final signInController = Get.put(SignInController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shop_Xetia',
       theme: themeController.theme,
-      home: signInController.hasLoggedIn,
+      home: HomeUI(),
     );
   }
 }

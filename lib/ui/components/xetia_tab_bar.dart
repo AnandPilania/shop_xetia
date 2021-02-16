@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/constants/_constants.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
+
+import '../../constants/_constants.dart';
+import '../../controllers/_controllers.dart';
 
 class XetiaTabBar extends StatelessWidget {
   final HeaderHomeController controllerPage = Get.find<HeaderHomeController>();
@@ -26,8 +27,7 @@ class XetiaTabBar extends StatelessWidget {
                               duration: Duration(milliseconds: 250),
                               child: controllerPage.currentPage.value != object[2]
                                   ? Icon(object[1], size: 24)
-                                  : Text(object[0],
-                                      style: context.textTheme.headline2))),
+                                  : Text(object[0], style: context.textTheme.headline2))),
                     ),
                 ],
               )),

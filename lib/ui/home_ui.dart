@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/ui/_ui.dart';
-import 'package:xetia_shop/ui/components/_components.dart';
+
+import '../controllers/_controllers.dart';
+import '../ui/_ui.dart';
+import '../ui/components/_components.dart';
 
 class HomeUI extends StatelessWidget {
   static List<Widget> bodyObject = [

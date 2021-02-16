@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:xetia_shop/constants/_constants.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/ui/components/_components.dart';
+import '../constants/_constants.dart';
+import '../controllers/_controllers.dart';
+import '../ui/components/_components.dart';
 
 class ShopUI extends StatelessWidget {
   final ProductController productController = Get.put(ProductController());
@@ -13,10 +13,7 @@ class ShopUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-            height: paddingTop,
-            width: widthApp,
-            color: context.theme.primaryColorDark),
+        Container(height: paddingTop, width: widthApp, color: context.theme.primaryColorDark),
         XetiaTabBar(),
         Expanded(
           child: PageView(
@@ -50,9 +47,9 @@ class ShopUI extends StatelessWidget {
                     PopularShop(),
                     BestSellerBar(),
                     Obx(() => AnimatedSwitcher(
-                        duration: Duration(milliseconds: 450),
+                        duration: Duration(milliseconds: 250),
                         child: bestSellerController.isGridView.value == true
-                            ? ProductGridCard(productController: productController)
+                            ? ProductGridCard()
                             : ProductListCard(productController: productController)))
                   ],
                 ),
