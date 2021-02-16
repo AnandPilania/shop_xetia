@@ -8,6 +8,7 @@ import '_components.dart';
 
 class ProductGridCard extends StatelessWidget {
   final ProductController productController = Get.find<ProductController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,9 +26,11 @@ class ProductGridCard extends StatelessWidget {
             onTap: () {
               productController.updateIndexProductPicture(0);
               Get.bottomSheet(
-                DetailSheet(indexItem: indexItem),
+                SafeArea(child: DetailSheet(indexItem: indexItem)),
                 isScrollControlled: true,
                 isDismissible: true,
+                enableDrag: true,
+                ignoreSafeArea: false,
                 backgroundColor: const Color(0xfff2f2f2),
               );
               // productController.fetchData();
