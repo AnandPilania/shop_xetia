@@ -28,7 +28,7 @@ class SignUpController extends GetxController {
     loading.show();
     Auth auth = Auth();
 
-    auth
+    await auth
         .registerRequest(firstName.text, lastName.text, email.text, pass.text)
         .then((AuthResponse value) {
       loading.hide();

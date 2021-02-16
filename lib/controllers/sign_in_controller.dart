@@ -40,7 +40,9 @@ class SignInController extends GetxController {
     loading.show();
     Auth auth = Auth();
 
-    auth.signInRequest(email.text, pass.text).then((SignInResponse value) {
+    await auth
+        .signInRequest(email.text, pass.text)
+        .then((SignInResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
         Get.snackbar('Alert', value.meta.message,
