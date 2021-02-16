@@ -7,3 +7,4 @@ export 'product_response.dart';
 export 'category_response.dart';
 export 'get_category_response.dart';
 export 'list_category_response.dart';
+export 'add_product_response.dart';
