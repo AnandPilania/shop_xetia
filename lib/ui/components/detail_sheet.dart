@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get/get.dart';
@@ -323,13 +325,13 @@ class DetailSheet extends StatelessWidget {
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(kPopularShopData[indexSwiper][0],
+                                          Text(kPopularShopData[Random().nextInt(7)][0],
                                               style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
                                           Row(
                                             children: [
                                               Icon(Icons.location_pin, color: Colors.grey, size: 15),
                                               SizedBox(width: 2),
-                                              Text(kPopularShopData[indexSwiper][1],
+                                              Text(kPopularShopData[Random().nextInt(7)][1],
                                                   style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
                                             ],
                                           ),
@@ -386,7 +388,9 @@ class DetailSheet extends StatelessWidget {
                                                 width: widthApp * 0.45,
                                                 height: widthApp * 0.5,
                                                 child: Center(
-                                                    child: Image.network(productController.listProduct[indexSwiper].imageUrl[indexItem],
+                                                    child: Image.network(
+                                                        productController
+                                                            .listProduct[indexSwiper].imageUrl[productController.indexProductPicture.value],
                                                         fit: BoxFit.fill)),
                                               ),
                                               Padding(
@@ -476,7 +480,9 @@ class DetailSheet extends StatelessWidget {
                                                 width: widthApp * 0.45,
                                                 height: widthApp * 0.5,
                                                 child: Center(
-                                                    child: Image.network(productController.listProduct[indexSwiper].imageUrl[indexItem],
+                                                    child: Image.network(
+                                                        productController
+                                                            .listProduct[indexSwiper].imageUrl[productController.indexProductPicture.value],
                                                         fit: BoxFit.fill)),
                                               ),
                                               Padding(
