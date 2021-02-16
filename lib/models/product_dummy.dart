@@ -7,7 +7,7 @@ DummyProduct packageFromJson(String str) => DummyProduct.fromJson(json.decode(st
 String packageToJson(DummyProduct data) => json.encode(data.toJson());
 
 class DummyProduct {
-  String imageUrl;
+  List<String> imageUrl;
   String productName;
   String productWeight;
   String productPrice;

@@ -11,6 +11,7 @@ void main() async {
 
 void initController() {
   Get.lazyPut(() => BestSellerController());
+  Get.lazyPut(() => HeaderHomeController());
 }
 
 class MyApp extends StatelessWidget {
