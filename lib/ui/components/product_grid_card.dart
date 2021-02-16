@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/constants/_constants.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 
-import '../../ui/components/detail_sheet.dart';
-import '../../constants/dimens.dart';
-import '../../controllers/product_controller.dart';
+import '_components.dart';
 
 class ProductGridCard extends StatelessWidget {
   final ProductController productController = Get.find<ProductController>();
@@ -12,7 +12,8 @@ class ProductGridCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: StaggeredGridView.countBuilder(
-        padding: EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
+        padding: EdgeInsets.only(
+            bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
         shrinkWrap: true,
         primary: false,
         crossAxisCount: 4,
@@ -59,7 +60,8 @@ class ProductGridCard extends StatelessWidget {
                             height: heightApp * 0.2,
                             width: widthApp * 0.2,
                             child: Image.network(
-                              productController.listProduct[indexItem].imageUrl[0],
+                              productController
+                                  .listProduct[indexItem].imageUrl[0],
                             ),
                           ),
                         ),
@@ -72,21 +74,29 @@ class ProductGridCard extends StatelessWidget {
                                   padding: EdgeInsets.all(4),
                                   constraints: BoxConstraints(),
                                   icon: Icon(
-                                    productController.listProduct[indexItem].isFavorite.value == true
+                                    productController.listProduct[indexItem]
+                                                .isFavorite.value ==
+                                            true
                                         ? Icons.favorite
                                         : Icons.favorite_border,
-                                    color: productController.listProduct[indexItem].isFavorite.value == true
+                                    color: productController
+                                                .listProduct[indexItem]
+                                                .isFavorite
+                                                .value ==
+                                            true
                                         ? Colors.redAccent
                                         : context.theme.scaffoldBackgroundColor,
                                   ),
-                                  onPressed: () => productController.addToFavorite(indexItem),
+                                  onPressed: () => productController
+                                      .addToFavorite(indexItem),
                                 ),
                                 IconButton(
                                   padding: EdgeInsets.all(4),
                                   constraints: BoxConstraints(),
                                   icon: Icon(
                                     Icons.add_circle_outline,
-                                    color: context.theme.scaffoldBackgroundColor,
+                                    color:
+                                        context.theme.scaffoldBackgroundColor,
                                   ),
                                   onPressed: () {},
                                 )
@@ -106,8 +116,13 @@ class ProductGridCard extends StatelessWidget {
                         style: context.textTheme.subtitle1,
                         maxLines: 1,
                       ),
-                      Text(productController.listProduct[indexItem].productWeight, style: context.textTheme.subtitle2),
-                      Text(productController.listProduct[indexItem].productPrice, style: context.textTheme.headline3),
+                      Text(
+                          productController
+                              .listProduct[indexItem].productWeight,
+                          style: context.textTheme.subtitle2),
+                      Text(
+                          productController.listProduct[indexItem].productPrice,
+                          style: context.textTheme.headline3),
                     ],
                   ),
                 ),
