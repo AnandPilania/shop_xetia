@@ -28,9 +28,11 @@ class ChatItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Avatar(color: Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1)),
+                Avatar(
+                    color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
+                        .withOpacity(1)),
                 SizedBox(width: 18),
-                Expanded(child: ChatInfo()) //Expanded(child: ChatItem()),
+                Expanded(child: ChatInfo())
               ],
             ),
           ),
@@ -40,7 +42,9 @@ class ChatItem extends StatelessWidget {
               children: [
                 Text(
                   "11:00",
-                  style: context.textTheme.headline2.copyWith(color: context.theme.primaryColor.withOpacity(0.5), fontSize: 12),
+                  style: context.textTheme.headline2.copyWith(
+                      color: context.theme.primaryColor.withOpacity(0.5),
+                      fontSize: 12),
                 ),
                 SizedBox(width: 10),
                 Container(
@@ -51,7 +55,9 @@ class ChatItem extends StatelessWidget {
                   ),
                   child: Text(
                     "1",
-                    style: context.textTheme.headline2.copyWith(color: context.theme.primaryColor.withOpacity(0.5), fontSize: 12),
+                    style: context.textTheme.headline2.copyWith(
+                        color: context.theme.primaryColor.withOpacity(0.5),
+                        fontSize: 12),
                   ),
                 )
               ],
