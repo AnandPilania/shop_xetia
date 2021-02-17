@@ -15,7 +15,8 @@ class DetailProductStore extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(15)),
+            color: context.theme.primaryColorDark,
+            borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -24,8 +25,8 @@ class DetailProductStore extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Store",
-                      style: context.textTheme.headline5.copyWith(
-                          fontWeight: FontWeight.bold, color: Colors.black)),
+                      style: context.textTheme.headline5
+                          .copyWith(fontWeight: FontWeight.bold)),
                   Text("See The Store >", style: context.textTheme.headline5),
                 ],
               ),

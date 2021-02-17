@@ -14,11 +14,8 @@ class DetailRelatedProductItem extends StatelessWidget {
     return Container(
       width: widthApp * 0.425,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomRight: Radius.circular(15.0),
-          bottomLeft: Radius.circular(15.0),
-        ),
-        color: const Color(0xffffffff),
+        borderRadius: BorderRadius.circular(20),
+        color: context.theme.scaffoldBackgroundColor,
         boxShadow: [
           BoxShadow(
             color: const Color(0x29000000),
@@ -33,12 +30,14 @@ class DetailRelatedProductItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: widthApp * 0.45,
-                height: widthApp * 0.5,
                 child: Center(
-                    child: Image.network(
-                        productController.listProduct[indexSwiper].imageUrl[
-                            productController.indexProductPicture.value],
-                        fit: BoxFit.fill)),
+                    child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                  child: Image.network(
+                      productController.listProduct[indexSwiper].imageUrl[
+                          productController.indexProductPicture.value],
+                      fit: BoxFit.fill),
+                )),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -70,8 +69,8 @@ class DetailRelatedProductItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(productController.listProduct[indexSwiper].productName,
-                    style: context.textTheme.headline2.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
+                    style: context.textTheme.headline2
+                        .copyWith(fontWeight: FontWeight.bold)),
                 Text(
                     productController.listProduct[indexSwiper].productPrice
                         .toString(),
@@ -86,7 +85,7 @@ class DetailRelatedProductItem extends StatelessWidget {
                           productController
                               .listProduct[indexSwiper].productPrice
                               .toString(),
-                          style: context.textTheme.headline4.copyWith(
+                          style: context.textTheme.headline5.copyWith(
                               decoration: TextDecoration.lineThrough)),
                     ),
                     SizedBox(width: 10),
@@ -99,9 +98,8 @@ class DetailRelatedProductItem extends StatelessWidget {
                           padding: const EdgeInsets.all(4.0),
                           child: Center(
                             child: Text("50%",
-                                style: context.textTheme.headline4.copyWith(
-                                    color: context.theme.primaryColor
-                                        .withOpacity(1))),
+                                style: context.textTheme.headline5.copyWith(
+                                    color: context.theme.primaryColor)),
                           ),
                         ),
                       ),

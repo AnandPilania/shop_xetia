@@ -10,15 +10,16 @@ class DetailProductDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(15)),
+          color: context.theme.primaryColorDark,
+          borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Product Details",
-                style: context.textTheme.headline5.copyWith(
-                    fontWeight: FontWeight.bold, color: Colors.black)),
+                style: context.textTheme.headline5
+                    .copyWith(fontWeight: FontWeight.bold)),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(

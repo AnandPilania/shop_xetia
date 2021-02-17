@@ -79,12 +79,12 @@ class Themes {
             fontWeight: FontWeight.w700,
             height: 1.5),
         headline4: TextStyle(
-            color: kBlack,
+            color: kWhite,
             fontFamily: 'SF Pro Rounded',
             fontSize: 14,
             fontWeight: FontWeight.normal),
         headline5: TextStyle(
-            color: kBlack,
+            color: kWhite,
             fontFamily: 'SF Pro Rounded',
             fontSize: 12,
             fontWeight: FontWeight.normal)),

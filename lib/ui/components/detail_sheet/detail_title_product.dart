@@ -17,7 +17,7 @@ class DetailTitleProduct extends StatelessWidget {
         children: [
           Text(productController.listProduct[indexSwiper].productName,
               style: context.textTheme.headline2
-                  .copyWith(color: Colors.black, fontWeight: FontWeight.bold)),
+                  .copyWith(fontWeight: FontWeight.bold)),
           Text(
               productController.listProduct[indexSwiper].productPrice
                   .toString(),

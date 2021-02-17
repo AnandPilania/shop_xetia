@@ -15,7 +15,7 @@ class DetailSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xfff2f2f2),
+      color: context.theme.scaffoldBackgroundColor,
       child: Column(
         children: [
           DetailHeader(),
@@ -41,7 +41,7 @@ class DetailSheet extends StatelessWidget {
                         Container(
                           width: widthApp,
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: context.theme.primaryColorDark,
                               borderRadius: BorderRadius.vertical(
                                 bottom: Radius.circular(15),
                               )),

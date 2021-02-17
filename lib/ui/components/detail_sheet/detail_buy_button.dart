@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:xetia_shop/constants/_constants.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/constants/_constants.dart';
 
 class DetailBuyButton extends StatelessWidget {
   const DetailBuyButton({
@@ -10,10 +10,11 @@ class DetailBuyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.only(top: 8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(15)),
+            color: context.theme.primaryColorDark,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -24,7 +25,7 @@ class DetailBuyButton extends StatelessWidget {
                 height: widthApp * 0.125,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
-                  color: const Color(0xffeaf2f5),
+                  color: context.theme.scaffoldBackgroundColor,
                 ),
                 child: Center(
                   child: Icon(Icons.shopping_bag,

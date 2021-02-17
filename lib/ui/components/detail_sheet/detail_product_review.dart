@@ -12,7 +12,8 @@ class DetailProductReview extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(15)),
+            color: context.theme.primaryColorDark,
+            borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -21,8 +22,8 @@ class DetailProductReview extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Review",
-                      style: context.textTheme.headline5.copyWith(
-                          fontWeight: FontWeight.bold, color: Colors.black)),
+                      style: context.textTheme.headline5
+                          .copyWith(fontWeight: FontWeight.bold)),
                   Text("See All Review >", style: context.textTheme.headline5)
                 ],
               ),
@@ -47,8 +48,7 @@ class DetailProductReview extends StatelessWidget {
                                 Icon(Icons.star),
                                 Text(
                                   "4.8",
-                                  style: context.textTheme.headline5.copyWith(
-                                      color: Colors.black.withOpacity(0.5)),
+                                  style: context.textTheme.headline5,
                                 ),
                               ],
                             ),

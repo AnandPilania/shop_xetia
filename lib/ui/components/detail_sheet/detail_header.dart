@@ -27,8 +27,8 @@ class DetailHeader extends StatelessWidget {
             child: Center(
               child: Text("Product Details",
                   textAlign: TextAlign.center,
-                  style: context.textTheme.headline3
-                      .copyWith(fontWeight: FontWeight.bold)),
+                  style: context.textTheme.headline3.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold)),
             ),
           ),
           SizedBox(
