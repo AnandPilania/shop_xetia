@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import '../../ui/components/_components.dart';
 
 class MessageScreen extends StatelessWidget {
@@ -11,7 +13,14 @@ class MessageScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.all(10),
             child: TextField(
-                decoration: InputDecoration(hintText: 'Search Chats', prefixIcon: Icon(Icons.search), suffixIcon: Icon(Icons.camera))),
+              decoration: InputDecoration(
+                hintText: 'Search Chats',
+                prefixIcon: IconTheme(
+                    child: Icon(Icons.search), data: context.theme.iconTheme),
+                suffixIcon: IconTheme(
+                    child: Icon(Icons.camera), data: context.theme.iconTheme),
+              ),
+            ),
           ),
           for (var _ in List.generate(10, (i) => i)) ChatItem(),
           SizedBox(height: 48),
