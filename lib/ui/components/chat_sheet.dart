@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
@@ -14,6 +15,14 @@ class ChatSheet extends StatelessWidget {
           Expanded(
             child: Container(
               width: widthApp,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(child: ChatBody()),
+                  ChatFooter(),
+                ],
+              ),
             ),
           ),
         ],
