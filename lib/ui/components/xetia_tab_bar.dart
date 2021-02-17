@@ -26,7 +26,7 @@ class XetiaTabBar extends StatelessWidget {
                           child: AnimatedSwitcher(
                               duration: Duration(milliseconds: 250),
                               child: controllerPage.currentPage.value != object[2]
-                                  ? Icon(object[1], size: 24)
+                                  ? Icon(object[1], color: context.theme.primaryColorLight)
                                   : Text(object[0], style: context.textTheme.headline2))),
                     ),
                 ],

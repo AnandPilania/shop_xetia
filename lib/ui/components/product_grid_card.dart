@@ -13,8 +13,7 @@ class ProductGridCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: StaggeredGridView.countBuilder(
-        padding: EdgeInsets.only(
-            bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
+        padding: EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
         shrinkWrap: true,
         primary: false,
         crossAxisCount: 4,
@@ -31,16 +30,14 @@ class ProductGridCard extends StatelessWidget {
                 isDismissible: true,
                 enableDrag: true,
                 ignoreSafeArea: false,
-                backgroundColor: const Color(0xfff2f2f2),
               );
-              // productController.fetchData();
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(15),
                     color: Colors.white,
                   ),
                   child: Stack(
@@ -64,8 +61,7 @@ class ProductGridCard extends StatelessWidget {
                             height: heightApp * 0.2,
                             width: widthApp * 0.2,
                             child: Image.network(
-                              productController
-                                  .listProduct[indexItem].imageUrl[0],
+                              productController.listProduct[indexItem].imageUrl[0],
                             ),
                           ),
                         ),
@@ -78,29 +74,21 @@ class ProductGridCard extends StatelessWidget {
                                   padding: EdgeInsets.all(4),
                                   constraints: BoxConstraints(),
                                   icon: Icon(
-                                    productController.listProduct[indexItem]
-                                                .isFavorite.value ==
-                                            true
+                                    productController.listProduct[indexItem].isFavorite.value == true
                                         ? Icons.favorite
                                         : Icons.favorite_border,
-                                    color: productController
-                                                .listProduct[indexItem]
-                                                .isFavorite
-                                                .value ==
-                                            true
-                                        ? Colors.redAccent
+                                    color: productController.listProduct[indexItem].isFavorite.value == true
+                                        ? const Color(0xffcd444a)
                                         : context.theme.scaffoldBackgroundColor,
                                   ),
-                                  onPressed: () => productController
-                                      .addToFavorite(indexItem),
+                                  onPressed: () => productController.addToFavorite(indexItem),
                                 ),
                                 IconButton(
                                   padding: EdgeInsets.all(4),
                                   constraints: BoxConstraints(),
                                   icon: Icon(
                                     Icons.add_circle_outline,
-                                    color:
-                                        context.theme.scaffoldBackgroundColor,
+                                    color: context.theme.scaffoldBackgroundColor,
                                   ),
                                   onPressed: () {},
                                 )
@@ -117,16 +105,13 @@ class ProductGridCard extends StatelessWidget {
                     children: [
                       Text(
                         productController.listProduct[indexItem].productName,
-                        style: context.textTheme.subtitle1,
+                        style: context.textTheme.headline1.copyWith(fontSize: 12, fontWeight: FontWeight.normal, height: 1.45),
                         maxLines: 1,
                       ),
-                      Text(
-                          productController
-                              .listProduct[indexItem].productWeight,
-                          style: context.textTheme.subtitle2),
-                      Text(
-                          productController.listProduct[indexItem].productPrice,
-                          style: context.textTheme.headline3),
+                      Text(productController.listProduct[indexItem].productWeight,
+                          style: context.textTheme.headline1.copyWith(fontSize: 10, fontWeight: FontWeight.normal, height: 1.45)),
+                      Text(productController.listProduct[indexItem].productPrice,
+                          style: context.textTheme.headline1.copyWith(fontSize: 13.5, height: 1.45)),
                     ],
                   ),
                 ),

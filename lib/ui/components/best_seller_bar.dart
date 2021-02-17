@@ -13,11 +13,11 @@ class BestSellerBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Best Seller", style: context.textTheme.headline3.copyWith(fontWeight: FontWeight.bold)),
+          Text("Best Seller", style: context.textTheme.headline1.copyWith(fontSize: 20)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("5,597 Product", style: context.textTheme.bodyText1),
+              Text("5,597 Product", style: context.textTheme.headline1.copyWith(fontSize: 12, color: context.theme.primaryColor)),
               Obx(() => Row(
                     children: [
                       Container(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xetia_shop/ui/components/_components.dart';
+import '../../ui/components/_components.dart';
 
 class MessageScreen extends StatelessWidget {
   @override
@@ -11,30 +11,9 @@ class MessageScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.all(10),
             child: TextField(
-                decoration: InputDecoration(
-                    hintText: 'Search Chats',
-                    prefixIcon: Icon(Icons.search),
-                    suffixIcon: Icon(Icons.camera))),
+                decoration: InputDecoration(hintText: 'Search Chats', prefixIcon: Icon(Icons.search), suffixIcon: Icon(Icons.camera))),
           ),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
-          ChatItem(),
+          for (var _ in List.generate(10, (i) => i)) ChatItem(),
           SizedBox(height: 48),
         ],
       ),
