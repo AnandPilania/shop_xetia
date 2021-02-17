@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:xetia_shop/ui/_ui.dart';
+import 'package:xetia_shop/ui/home_ui.dart';
+//import 'package:xetia_shop/ui/_ui.dart';
 
 import './controllers/_controllers.dart';
 
@@ -16,10 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Shop_Xetia',
-      theme: themeController.theme,
-      home: signInController.hasLoggedIn,
-    );
+        debugShowCheckedModeBanner: false, title: 'Shop_Xetia', theme: themeController.theme, home: HomeUI() //signInController.hasLoggedIn,
+        );
   }
 }
