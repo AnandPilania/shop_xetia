@@ -30,3 +30,5 @@ export 'detail_sheet/detail_images_indicator.dart';
 export 'detail_sheet/detail_header.dart';
 export 'detail_sheet/detail_product_images.dart';
 export 'detail_sheet/detail_favorite_button.dart';
+
+export 'chat_sheet/chat_header.dart';
