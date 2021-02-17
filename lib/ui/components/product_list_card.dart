@@ -12,8 +12,7 @@ class ProductListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StaggeredGridView.countBuilder(
-      padding:
-          EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
+      padding: EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
       shrinkWrap: true,
       primary: false,
       crossAxisCount: 4,
@@ -30,7 +29,6 @@ class ProductListCard extends StatelessWidget {
               isDismissible: true,
               enableDrag: true,
               ignoreSafeArea: false,
-              backgroundColor: const Color(0xfff2f2f2),
             );
           },
           child: Row(
@@ -46,6 +44,19 @@ class ProductListCard extends StatelessWidget {
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.all(25.0),
+                        child: Center(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Container(
+                              child: Image.network(
+                                productController.listProduct[indexItem].imageUrl[productController.indexProductPicture.value],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       Positioned(
                         left: 0,
                         top: 0,
@@ -54,19 +65,6 @@ class ProductListCard extends StatelessWidget {
                           child: Icon(
                             productController.listProduct[indexItem].shopLogo,
                             color: context.theme.primaryColorDark,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Center(
-                          child: Container(
-                            height: heightApp * 0.2,
-                            width: widthApp * 0.2,
-                            child: Image.network(
-                              productController.listProduct[indexItem].imageUrl[
-                                  productController.indexProductPicture.value],
-                            ),
                           ),
                         ),
                       ),
@@ -88,12 +86,13 @@ class ProductListCard extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.add_box_rounded),
+                                Icon(
+                                  Icons.add_box_rounded,
+                                  color: Colors.white,
+                                ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 3.0),
-                                  child: Text("2",
-                                      style: context.textTheme.headline6),
+                                  padding: const EdgeInsets.symmetric(vertical: 3.0),
+                                  child: Text("2", style: context.textTheme.headline6),
                                 ),
                                 Icon(Icons.remove_circle_outline),
                               ],
@@ -103,19 +102,13 @@ class ProductListCard extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                    productController
-                                        .listProduct[indexItem].productName,
-                                    style: context.textTheme.subtitle1,
+                                Text(productController.listProduct[indexItem].productName,
+                                    style: context.textTheme.headline1.copyWith(fontWeight: FontWeight.normal, fontSize: 12, height: 1.5),
                                     maxLines: 2),
-                                Text(
-                                    productController
-                                        .listProduct[indexItem].productWeight,
-                                    style: context.textTheme.subtitle2),
-                                Text(
-                                    productController
-                                        .listProduct[indexItem].productPrice,
-                                    style: context.textTheme.headline3),
+                                Text(productController.listProduct[indexItem].productWeight,
+                                    style: context.textTheme.headline1.copyWith(fontWeight: FontWeight.normal, fontSize: 10, height: 1.5)),
+                                Text(productController.listProduct[indexItem].productPrice,
+                                    style: context.textTheme.headline1.copyWith(fontSize: 13.5)),
                               ],
                             ),
                           ),
@@ -130,30 +123,34 @@ class ProductListCard extends StatelessWidget {
                                 padding: EdgeInsets.all(4),
                                 constraints: BoxConstraints(),
                                 icon: Icon(
-                                  productController.listProduct[indexItem]
-                                              .isFavorite.value ==
-                                          true
+                                  productController.listProduct[indexItem].isFavorite.value == true
                                       ? Icons.favorite
                                       : Icons.favorite_border,
-                                  color: productController
-                                              .listProduct[indexItem]
-                                              .isFavorite
-                                              .value ==
-                                          true
-                                      ? Colors.redAccent
+                                  color: productController.listProduct[indexItem].isFavorite.value == true
+                                      ? const Color(0xffcd444a)
                                       : context.theme.primaryColor,
                                 ),
-                                onPressed: () =>
-                                    productController.addToFavorite(indexItem),
+                                onPressed: () => productController.addToFavorite(indexItem),
                               ),
                               IconButton(
                                 padding: EdgeInsets.all(4),
                                 constraints: BoxConstraints(),
                                 icon: Icon(
-                                  Icons.add_circle_outline,
+                                  Icons.shopping_cart_outlined,
                                   color: context.theme.primaryColor,
                                 ),
                                 onPressed: () {},
+                              ),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Container(
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: context.theme.primaryColor,
+                                  ),
+                                  child: Center(child: Text("Buy", style: context.textTheme.headline4)),
+                                ),
                               ),
                             ],
                           ),

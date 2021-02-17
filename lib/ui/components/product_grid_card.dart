@@ -30,16 +30,14 @@ class ProductGridCard extends StatelessWidget {
                 isDismissible: true,
                 enableDrag: true,
                 ignoreSafeArea: false,
-                //backgroundColor: const Color(0xfff2f2f2),
               );
-              // productController.fetchData();
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(15),
                     color: Colors.white,
                   ),
                   child: Stack(
@@ -80,7 +78,7 @@ class ProductGridCard extends StatelessWidget {
                                         ? Icons.favorite
                                         : Icons.favorite_border,
                                     color: productController.listProduct[indexItem].isFavorite.value == true
-                                        ? Colors.redAccent
+                                        ? const Color(0xffcd444a)
                                         : context.theme.scaffoldBackgroundColor,
                                   ),
                                   onPressed: () => productController.addToFavorite(indexItem),
@@ -107,11 +105,13 @@ class ProductGridCard extends StatelessWidget {
                     children: [
                       Text(
                         productController.listProduct[indexItem].productName,
-                        style: context.textTheme.subtitle1,
+                        style: context.textTheme.headline1.copyWith(fontSize: 12, fontWeight: FontWeight.normal, height: 1.45),
                         maxLines: 1,
                       ),
-                      Text(productController.listProduct[indexItem].productWeight, style: context.textTheme.subtitle2),
-                      Text(productController.listProduct[indexItem].productPrice, style: context.textTheme.headline3),
+                      Text(productController.listProduct[indexItem].productWeight,
+                          style: context.textTheme.headline1.copyWith(fontSize: 10, fontWeight: FontWeight.normal, height: 1.45)),
+                      Text(productController.listProduct[indexItem].productPrice,
+                          style: context.textTheme.headline1.copyWith(fontSize: 13.5, height: 1.45)),
                     ],
                   ),
                 ),

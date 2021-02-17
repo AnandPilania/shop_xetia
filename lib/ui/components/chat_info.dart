@@ -1,4 +1,6 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/context_extensions.dart';
 
 class ChatInfo extends StatelessWidget {
   @override
@@ -9,17 +11,17 @@ class ChatInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Taylor Swift",
+          Faker().person.name(),
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline4,
+          style: context.textTheme.headline3.copyWith(fontSize: 14),
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
         ),
         SizedBox(height: 5),
         Text(
-          "Lorem Ipsum Dolor sit Amet Lorem Ipsum Dolor sit Amet Lorem Ipsum Dolor sit Amet",
+          Faker().lorem.sentence(),
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline5,
+          style: context.textTheme.headline3.copyWith(fontSize: 12, fontWeight: FontWeight.normal),
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
         ),

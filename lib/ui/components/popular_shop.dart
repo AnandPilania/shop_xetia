@@ -13,7 +13,7 @@ class PopularShop extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 8.0, left: 8.0, bottom: 4.0),
-          child: Text("Popular Shops", style: context.textTheme.headline3),
+          child: Text("Popular Shops", style: context.textTheme.headline1.copyWith(fontSize: 20)),
         ),
         Container(
           height: heightApp * 0.2,
@@ -33,9 +33,9 @@ class PopularShop extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 4.0),
-                          child: Text(popularItem[0], style: context.textTheme.subtitle1),
+                          child: Text(popularItem[0], style: context.textTheme.headline1.copyWith(fontSize: 12)),
                         ),
-                        Text(popularItem[1], style: context.textTheme.subtitle2),
+                        Text(popularItem[1], style: context.textTheme.headline1.copyWith(fontSize: 11, fontWeight: FontWeight.normal)),
                       ],
                     ),
                   ),
