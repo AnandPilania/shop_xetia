@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../ui/components/_components.dart';
 
@@ -15,11 +16,9 @@ class MessageScreen extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'Search Chats',
                 prefixIcon: IconTheme(
-                    child: Icon(Icons.search),
-                    data: Theme.of(context).iconTheme),
+                    child: Icon(Icons.search), data: context.theme.iconTheme),
                 suffixIcon: IconTheme(
-                    child: Icon(Icons.camera),
-                    data: Theme.of(context).iconTheme),
+                    child: Icon(Icons.camera), data: context.theme.iconTheme),
               ),
             ),
           ),

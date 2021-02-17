@@ -18,3 +18,15 @@ export 'detail_sheet.dart';
 export 'avatar.dart';
 export 'chat_info.dart';
 export 'chat_item.dart';
+
+export 'detail_sheet/detail_buy_button.dart';
+export 'detail_sheet/detail_related_product.dart';
+export 'detail_sheet/detail_related_product_item.dart';
+export 'detail_sheet/detail_product_store.dart';
+export 'detail_sheet/detail_product_detail.dart';
+export 'detail_sheet/detail_product_review.dart';
+export 'detail_sheet/detail_title_product.dart';
+export 'detail_sheet/detail_images_indicator.dart';
+export 'detail_sheet/detail_header.dart';
+export 'detail_sheet/detail_product_images.dart';
+export 'detail_sheet/detail_favorite_button.dart';
