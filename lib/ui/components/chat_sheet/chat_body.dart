@@ -1,82 +1,31 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 
 class ChatBody extends StatelessWidget {
+  final MessageItemController _messageItemController =
+      Get.put(MessageItemController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
+        reverse: true,
+        controller: _messageItemController.chatBodyScrollController,
         physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: true,
+        child: Obx(
+          () => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: List.generate(
+              _messageItemController.listMessage.length,
+              (index) => BubbleChat(
+                text: _messageItemController.listMessage[index].content,
+                isRight: _messageItemController.listMessage[index].isRight,
+              ),
             ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: true,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: false,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: true,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: false,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: true,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: false,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: false,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: true,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: false,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: true,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: true,
-            ),
-            BubbleChat(
-              text:
-                  "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet ",
-              isRight: false,
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -92,7 +41,7 @@ class BubbleChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Bubble(
-      alignment: Alignment.centerLeft,
+      alignment: isRight ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
         padding: EdgeInsets.all(5),
         child: Text(

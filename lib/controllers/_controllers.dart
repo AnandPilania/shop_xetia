@@ -9,3 +9,4 @@ export 'theme_controller.dart';
 export 'best_seller_controller.dart';
 export 'product_controller.dart';
 export 'chart_product_review_controller.dart';
+export 'message_item_controller.dart';
