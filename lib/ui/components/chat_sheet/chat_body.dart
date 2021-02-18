@@ -20,7 +20,6 @@ class ChatBody extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         child: Obx(
           () => Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: List.generate(
               _messageItemController.listMessage.length,
               (index) => BubbleChat(
@@ -61,41 +60,46 @@ class BubbleChat extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             reply.isNotEmpty
-                ? Container(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: Colors.white.withOpacity(0.3),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  Faker().person.name(),
-                                  style: context.textTheme.headline4.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black),
+                ? Column(
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4),
+                                  color: Colors.white.withOpacity(0.3),
                                 ),
-                                Text(
-                                  reply,
-                                  style: context.textTheme.headline5
-                                      .copyWith(color: Colors.black),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      Faker().person.name(),
+                                      style: context.textTheme.headline4
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black),
+                                    ),
+                                    Text(
+                                      reply,
+                                      style: context.textTheme.headline5
+                                          .copyWith(color: Colors.black),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 5),
+                    ],
                   )
                 : Container(),
-            SizedBox(height: 5),
             Container(
               padding: EdgeInsets.all(5),
               child: Text(
