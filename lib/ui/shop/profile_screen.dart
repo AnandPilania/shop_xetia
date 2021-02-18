@@ -1,10 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/ui/_ui.dart';
+import 'package:xetia_shop/ui/components/_components.dart';
 
-import '../../ui/components/profie_sheet/_component.dart';
+import '../../ui/components/profile_sheet/_component.dart';
 
 class ProfileScreen extends StatelessWidget {
+  final signInController = Get.put(SignInController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,19 +22,34 @@ class ProfileScreen extends StatelessWidget {
             ProfileCard(),
             MyBalance(),
             SizedBox(height: 25),
-            Container(padding: EdgeInsets.symmetric(horizontal: 25), child: Budgeting()),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Budgeting(),
+            ),
             SizedBox(height: 25),
-            Container(padding: EdgeInsets.symmetric(horizontal: 25), child: HistoryTransaction()),
-            SizedBox(height: 125),
-            // ProductReview(),
-            // SizedBox(height: 25),
-            // CarouselCardContainer(),
-            // SizedBox(height: 25),
-            // Container(
-            //   width: MediaQuery.of(context).size.width * 0.8,
-            //   child: MyButton(color: Colors.green, onTap: () async {}, text: "Logout"),
-            // ),
-            // SizedBox(height: 70),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: HistoryTransaction(),
+            ),
+            SizedBox(height: 25),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: ProductReview(),
+            ),
+            SizedBox(height: 25),
+            CarouselCardContainer(),
+            SizedBox(height: 25),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: MyButton(
+                  color: context.theme.primaryColor,
+                  onTap: () {
+                    signInController.changeLoginState(false);
+                    Get.off(SignInUI());
+                  },
+                  text: "Logout"),
+            ),
+            SizedBox(height: 70),
           ],
         ),
       ),

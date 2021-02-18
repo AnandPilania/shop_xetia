@@ -1,34 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/ui/components/profile_sheet/_component.dart';
 
-class CarouselCardContainer extends StatefulWidget {
-  final bool isDark;
-  final Color color;
-  final List<Widget> list;
-
-  const CarouselCardContainer({Key key, this.isDark, this.color, this.list}) : super(key: key);
-
-  @override
-  _CarouselCardContainerState createState() => _CarouselCardContainerState();
-}
-
-class _CarouselCardContainerState extends State<CarouselCardContainer> {
-  int _currentIndex = 0;
-
-  //Dot Indicator
-  List<T> map<T>(List list, Function handler) {
-    List<T> result = [];
-    for (var i = 0; i < list.length; i++) {
-      result.add(handler(i, list[i]));
-    }
-    return result;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
+class CarouselCardContainer extends StatelessWidget {
+  final CarouselCardController _carouselCardController =
+      Get.put(CarouselCardController());
+  final List<Widget> listCard = [
+    BusinessCardItem(),
+    BusinessCardItem(),
+    BusinessCardItem(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +32,10 @@ class _CarouselCardContainerState extends State<CarouselCardContainer> {
               scrollPhysics: BouncingScrollPhysics(),
               viewportFraction: 0.8,
               onPageChanged: (index, reason) {
-                setState(() {
-                  _currentIndex = index;
-                });
+                _carouselCardController.changeCurrentCard(index);
               },
             ),
-            items: widget.list.map((card) {
+            items: listCard.map((card) {
               return Container(
                 margin: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -66,14 +48,22 @@ class _CarouselCardContainerState extends State<CarouselCardContainer> {
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: map<Widget>(widget.list, (index, url) {
-                return Container(
-                  width: _currentIndex == index ? 30 : 10.0,
-                  height: 10.0,
-                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: _currentIndex == index ? widget.color : widget.color.withOpacity(0.3),
+              children:
+                  _carouselCardController.map<Widget>(listCard, (index, url) {
+                return Obx(
+                  () => Container(
+                    width: _carouselCardController.currentCard.value == index
+                        ? 30
+                        : 10.0,
+                    height: 10.0,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: _carouselCardController.currentCard.value == index
+                          ? context.theme.primaryColor
+                          : context.theme.primaryColor.withOpacity(0.3),
+                    ),
                   ),
                 );
               }),

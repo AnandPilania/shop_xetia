@@ -14,32 +14,15 @@ class HomeUI extends StatelessWidget {
   ];
 
   final bottomBarController = Get.put(BottomNavBarController());
-  final signInController = Get.put(SignInController());
 
   @override
   Widget build(BuildContext context) {
-    signInController.changeLoginState(false);
     return Stack(
       children: [
         Scaffold(
-          body: Obx(() => bodyObject[bottomBarController.currentBottomBar.value]),
-          floatingActionButton: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 48.0, left: 24.0),
-                child: FloatingActionButton(
-                  heroTag: null,
-                  onPressed: () {
-                    signInController.changeLoginState(false);
-                    Get.off(SignInUI());
-                  },
-                  child: Icon(Icons.logout),
-                ),
-              ),
-              FABTheme(),
-            ],
-          ),
+          body:
+              Obx(() => bodyObject[bottomBarController.currentBottomBar.value]),
+          floatingActionButton: FABTheme(),
         ),
         Positioned(bottom: 0, child: XetiaBottomBar()),
       ],

@@ -8,3 +8,4 @@ export 'list_history.dart';
 export 'my_balance.dart';
 export 'product_review.dart';
 export 'profile_card.dart';
+export 'business_card_item.dart';

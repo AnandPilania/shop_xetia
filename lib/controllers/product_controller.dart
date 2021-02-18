@@ -30,7 +30,7 @@ class ProductController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchData();
+    // fetchData();
     dummyInit();
   }
 
