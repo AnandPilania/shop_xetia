@@ -8,7 +8,7 @@ class ChatSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.theme.scaffoldBackgroundColor,
+      color: context.theme.primaryColorDark,
       child: Column(
         children: [
           ChatHeader(),

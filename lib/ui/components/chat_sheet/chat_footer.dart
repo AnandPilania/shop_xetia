@@ -10,26 +10,50 @@ class ChatFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.theme.scaffoldBackgroundColor,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      decoration: BoxDecoration(
+        color: context.theme.primaryColorDark,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+        boxShadow: [
+          BoxShadow(
+              color: context.theme.primaryColorLight.withOpacity(0.4),
+              blurRadius: 3),
+        ],
+      ),
+      padding: EdgeInsets.all(10),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(
-            CupertinoIcons.add_circled,
-            color: context.theme.primaryColor,
+          Row(
+            children: [
+              Icon(
+                CupertinoIcons.add_circled,
+                color: context.theme.primaryColor,
+              ),
+              SizedBox(width: 5),
+              Icon(
+                CupertinoIcons.camera,
+                color: context.theme.primaryColor,
+              ),
+              SizedBox(width: 5),
+              Icon(
+                CupertinoIcons.upload_circle_fill,
+                color: context.theme.primaryColor,
+              ),
+            ],
           ),
-          SizedBox(width: 20),
+          SizedBox(width: 10),
           Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "Type a Message",
+            child: Container(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Type a Message",
+                ),
               ),
             ),
           ),
-          SizedBox(width: 20),
+          SizedBox(width: 10),
           Icon(
             Icons.send_rounded,
             color: context.theme.primaryColor,

@@ -97,11 +97,10 @@ class BubbleChat extends StatelessWidget {
         padding: EdgeInsets.all(5),
         child: Text(
           text,
-          style: context.textTheme.headline5,
+          style: context.textTheme.headline5.copyWith(color: Colors.black),
         ),
       ),
-      color:
-          isRight ? context.theme.primaryColor : context.theme.primaryColorDark,
+      color: isRight ? context.theme.primaryColor : Colors.white,
       margin: isRight
           ? BubbleEdges.fromLTRB(
               MediaQuery.of(context).size.width * 0.2, 10, 0, 0)
