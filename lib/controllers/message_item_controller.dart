@@ -6,7 +6,10 @@ import 'package:get/get.dart';
 
 class MessageItemController extends GetxController {
   TextEditingController messageTextFieldController = TextEditingController();
-  ScrollController chatBodyScrollController = ScrollController();
+  ScrollController chatBodyScrollController = ScrollController(
+    initialScrollOffset: 0.0,
+    keepScrollOffset: true,
+  );
   RxList<MessageItem> listMessage = List<MessageItem>().obs;
   RxString selectedReplyMessage = "".obs;
 
@@ -35,6 +38,7 @@ class MessageItemController extends GetxController {
 
   void changeReplyMessage(String content) {
     selectedReplyMessage(content);
+    print(selectedReplyMessage.value);
   }
 }
 
