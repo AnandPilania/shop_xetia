@@ -25,46 +25,51 @@ class ChatFooter extends StatelessWidget {
         () => Column(
           children: [
             _messageItemController.showReplyMessage.value
-                ? Container(
-                    child: Row(
-                      children: [
-                        Icon(CupertinoIcons.reply,
-                            color: context.theme.primaryColor),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                Faker().person.name(),
-                                style: context.textTheme.headline4.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: context.theme.primaryColor),
+                ? Column(
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Icon(CupertinoIcons.reply,
+                                color: context.theme.primaryColor),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    Faker().person.name(),
+                                    style: context.textTheme.headline4.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: context.theme.primaryColor),
+                                  ),
+                                  Obx(() => Text(
+                                        _messageItemController
+                                            .selectedReplyMessage.value,
+                                        style: context.textTheme.headline5,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      )),
+                                ],
                               ),
-                              Obx(() => Text(
-                                    _messageItemController
-                                        .selectedReplyMessage.value,
-                                    style: context.textTheme.headline5,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  )),
-                            ],
-                          ),
+                            ),
+                            SizedBox(width: 10),
+                            IconButton(
+                              icon:
+                                  Icon(Icons.close_rounded, color: Colors.grey),
+                              onPressed: () {
+                                _messageItemController.changeReplyMessage("");
+                                _messageItemController
+                                    .changeVisibilityReplyMessage(false);
+                              },
+                            ),
+                          ],
                         ),
-                        SizedBox(width: 10),
-                        IconButton(
-                          icon: Icon(Icons.close_rounded, color: Colors.grey),
-                          onPressed: () {
-                            _messageItemController.changeReplyMessage("");
-                            _messageItemController
-                                .changeVisibilityReplyMessage(false);
-                          },
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 10),
+                    ],
                   )
                 : Container(),
-            SizedBox(height: 10),
             Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,

@@ -57,63 +57,61 @@ class BubbleChat extends StatelessWidget {
       },
       child: Bubble(
         alignment: isRight ? Alignment.centerRight : Alignment.centerLeft,
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              reply.isNotEmpty
-                  ? Container(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                                color: Colors.white.withOpacity(0.3),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    Faker().person.name(),
-                                    style: context.textTheme.headline4.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                  ),
-                                  Text(
-                                    reply,
-                                    style: context.textTheme.headline5
-                                        .copyWith(color: Colors.black),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            reply.isNotEmpty
+                ? Container(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: Colors.white.withOpacity(0.3),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Faker().person.name(),
+                                  style: context.textTheme.headline4.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                ),
+                                Text(
+                                  reply,
+                                  style: context.textTheme.headline5
+                                      .copyWith(color: Colors.black),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    )
-                  : Container(),
-              SizedBox(height: 5),
-              Container(
-                padding: EdgeInsets.all(5),
-                child: Text(
-                  text,
-                  style:
-                      context.textTheme.headline5.copyWith(color: Colors.black),
-                ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(),
+            SizedBox(height: 5),
+            Container(
+              padding: EdgeInsets.all(5),
+              child: Text(
+                text,
+                style:
+                    context.textTheme.headline5.copyWith(color: Colors.black),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         color: isRight ? context.theme.primaryColor : Colors.white,
         margin: isRight
             ? BubbleEdges.fromLTRB(
-                MediaQuery.of(context).size.width * 0.2, 10, 0, 0)
+                MediaQuery.of(context).size.width * 0.2, 5, 0, 5)
             : BubbleEdges.fromLTRB(
-                0, 10, MediaQuery.of(context).size.width * 0.2, 0),
+                0, 5, MediaQuery.of(context).size.width * 0.2, 5),
         nip: isRight ? BubbleNip.rightBottom : BubbleNip.leftBottom,
         nipWidth: 4,
         radius: Radius.circular(10),
@@ -122,98 +120,3 @@ class BubbleChat extends StatelessWidget {
     );
   }
 }
-
-//            reply.isNotEmpty
-//                 ? Container(
-//                     child: Row(
-//                       children: [
-//                         Container(
-//                           width: 4,
-//                           height: double.maxFinite,
-//                           color: context.theme.primaryColor,
-//                         ),
-//                         Expanded(
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Text(
-//                                 Faker().person.name(),
-//                                 style: context.textTheme.headline4.copyWith(
-//                                     fontWeight: FontWeight.bold,
-//                                     color: context.theme.primaryColor),
-//                               ),
-//                               Text(
-//                                 reply,
-//                                 style: context.textTheme.headline5,
-//                                 maxLines: 2,
-//                                 overflow: TextOverflow.ellipsis,
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   )
-//                 : Container()            reply.isNotEmpty
-//                 ? Container(
-//                     child: Row(
-//                       children: [
-//                         Container(
-//                           width: 4,
-//                           height: double.maxFinite,
-//                           color: context.theme.primaryColor,
-//                         ),
-//                         Expanded(
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Text(
-//                                 Faker().person.name(),
-//                                 style: context.textTheme.headline4.copyWith(
-//                                     fontWeight: FontWeight.bold,
-//                                     color: context.theme.primaryColor),
-//                               ),
-//                               Text(
-//                                 reply,
-//                                 style: context.textTheme.headline5,
-//                                 maxLines: 2,
-//                                 overflow: TextOverflow.ellipsis,
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   )
-//                 : Container()            reply.isNotEmpty
-//                 ? Container(
-//                     child: Row(
-//                       children: [
-//                         Container(
-//                           width: 4,
-//                           height: double.maxFinite,
-//                           color: context.theme.primaryColor,
-//                         ),
-//                         Expanded(
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Text(
-//                                 Faker().person.name(),
-//                                 style: context.textTheme.headline4.copyWith(
-//                                     fontWeight: FontWeight.bold,
-//                                     color: context.theme.primaryColor),
-//                               ),
-//                               Text(
-//                                 reply,
-//                                 style: context.textTheme.headline5,
-//                                 maxLines: 2,
-//                                 overflow: TextOverflow.ellipsis,
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   )
-//                 : Container()
