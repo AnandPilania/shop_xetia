@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 
-import '../../ui/components/profie_sheet/_component.dart';
+import '../../ui/components/profile_sheet/_component.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -16,11 +16,20 @@ class ProfileScreen extends StatelessWidget {
             ProfileCard(),
             MyBalance(),
             SizedBox(height: 25),
-            Container(padding: EdgeInsets.symmetric(horizontal: 25), child: Budgeting()),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Budgeting(),
+            ),
             SizedBox(height: 25),
-            Container(padding: EdgeInsets.symmetric(horizontal: 25), child: HistoryTransaction()),
-            SizedBox(height: 125),
-            // ProductReview(),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: HistoryTransaction(),
+            ),
+            SizedBox(height: 25),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: ProductReview(),
+            ),
             // SizedBox(height: 25),
             // CarouselCardContainer(),
             // SizedBox(height: 25),
@@ -28,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
             //   width: MediaQuery.of(context).size.width * 0.8,
             //   child: MyButton(color: Colors.green, onTap: () async {}, text: "Logout"),
             // ),
-            // SizedBox(height: 70),
+            SizedBox(height: 70),
           ],
         ),
       ),

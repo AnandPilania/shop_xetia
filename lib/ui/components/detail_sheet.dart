@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/ui/components/_components.dart';
+import 'package:xetia_shop/ui/components/detail_sheet/_components.dart';
 
 import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
