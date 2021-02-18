@@ -22,14 +22,21 @@ class MessageItemController extends GetxController {
 
   void dummyInit() {
     for (int i = 0; i < 15; i++) {
-      listMessage
-          .add(MessageItem(Faker().lorem.sentence(), Random().nextBool()));
+      listMessage.add(MessageItem(
+          content: Faker().lorem.sentence(),
+          isRight: Random().nextBool(),
+          reply: ""));
     }
   }
 
   void addMessage() {
-    listMessage.add(MessageItem(messageTextFieldController.text, true));
+    listMessage.add(MessageItem(
+        content: messageTextFieldController.text,
+        isRight: true,
+        reply: selectedReplyMessage.value));
     messageTextFieldController.clear();
+    changeReplyMessage("");
+    changeVisibilityReplyMessage(false);
     chatBodyScrollController.animateTo(
       0.0,
       curve: Curves.easeOut,
@@ -48,7 +55,8 @@ class MessageItemController extends GetxController {
 
 class MessageItem {
   final String content;
+  final String reply;
   final bool isRight;
 
-  MessageItem(this.content, this.isRight);
+  MessageItem({this.content, this.isRight, this.reply});
 }
