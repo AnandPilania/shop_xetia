@@ -14,10 +14,7 @@ class ShopUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-            height: paddingTop,
-            width: widthApp,
-            color: context.theme.primaryColorDark),
+        Container(height: paddingTop, width: widthApp, color: context.theme.backgroundColor),
         XetiaTabBar(),
         Expanded(
           child: PageView(
