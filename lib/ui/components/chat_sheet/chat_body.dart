@@ -50,6 +50,7 @@ class BubbleChat extends StatelessWidget {
       iconColor: context.theme.primaryColor,
       onLeftSwipe: () {
         controller.changeReplyMessage(text);
+        controller.changeVisibilityReplyMessage(true);
       },
       child: Bubble(
         alignment: isRight ? Alignment.centerRight : Alignment.centerLeft,

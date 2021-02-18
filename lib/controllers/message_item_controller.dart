@@ -12,6 +12,7 @@ class MessageItemController extends GetxController {
   );
   RxList<MessageItem> listMessage = List<MessageItem>().obs;
   RxString selectedReplyMessage = "".obs;
+  RxBool showReplyMessage = false.obs;
 
   @override
   void onInit() {
@@ -38,7 +39,10 @@ class MessageItemController extends GetxController {
 
   void changeReplyMessage(String content) {
     selectedReplyMessage(content);
-    print(selectedReplyMessage.value);
+  }
+
+  void changeVisibilityReplyMessage(bool val) {
+    showReplyMessage(val);
   }
 }
 
