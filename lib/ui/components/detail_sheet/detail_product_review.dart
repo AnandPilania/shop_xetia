@@ -11,9 +11,7 @@ class DetailProductReview extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
-        decoration: BoxDecoration(
-            color: context.theme.primaryColorDark,
-            borderRadius: BorderRadius.circular(15)),
+        decoration: BoxDecoration(color: context.theme.primaryColorDark, borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -21,9 +19,7 @@ class DetailProductReview extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Review",
-                      style: context.textTheme.headline5
-                          .copyWith(fontWeight: FontWeight.bold)),
+                  Text("Review", style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
                   Text("See All Review >", style: context.textTheme.headline5)
                 ],
               ),
@@ -34,15 +30,13 @@ class DetailProductReview extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      decoration: BoxDecoration(
-                          color: context.theme.primaryColor.withOpacity(0.25),
-                          borderRadius: BorderRadius.circular(15)),
+                      decoration:
+                          BoxDecoration(color: context.theme.primaryColor.withOpacity(0.25), borderRadius: BorderRadius.circular(15)),
                       child: Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: Center(
                           child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 4.0),
                             child: Row(
                               children: [
                                 Icon(Icons.star),
@@ -57,9 +51,7 @@ class DetailProductReview extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Text("9 Reviews",
-                        style: context.textTheme.headline5
-                            .copyWith(color: context.theme.primaryColor)),
+                    Text("9 Reviews", style: context.textTheme.headline5.copyWith(color: context.theme.primaryColor)),
                   ],
                 ),
               ),
@@ -85,12 +77,8 @@ class DetailProductReview extends StatelessWidget {
                     SizedBox(width: 10),
                     Row(
                       children: [
-                        for (bool isStarred
-                            in List.generate(5, (i) => i < 4 ? true : false))
-                          Icon(Icons.star,
-                              color: isStarred == true
-                                  ? context.theme.primaryColor
-                                  : Colors.grey)
+                        for (bool isStarred in List.generate(5, (i) => i < 4 ? true : false))
+                          Icon(Icons.star, color: isStarred == true ? context.theme.primaryColor : Colors.grey)
                       ],
                     )
                   ],
