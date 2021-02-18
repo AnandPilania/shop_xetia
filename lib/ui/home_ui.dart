@@ -19,30 +19,30 @@ class HomeUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     signInController.changeLoginState(false);
-    return Scaffold(
-      body: Stack(
-        children: [
-          Obx(() => bodyObject[bottomBarController.currentBottomBar.value]),
-          Positioned(bottom: 0, child: XetiaBottomBar()),
-        ],
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 48.0, left: 24.0),
-            child: FloatingActionButton(
-              heroTag: null,
-              onPressed: () {
-                signInController.changeLoginState(false);
-                Get.off(SignInUI());
-              },
-              child: Icon(Icons.logout),
-            ),
+    return Stack(
+      children: [
+        Scaffold(
+          body: Obx(() => bodyObject[bottomBarController.currentBottomBar.value]),
+          floatingActionButton: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 48.0, left: 24.0),
+                child: FloatingActionButton(
+                  heroTag: null,
+                  onPressed: () {
+                    signInController.changeLoginState(false);
+                    Get.off(SignInUI());
+                  },
+                  child: Icon(Icons.logout),
+                ),
+              ),
+              FABTheme(),
+            ],
           ),
-          FABTheme(),
-        ],
-      ),
+        ),
+        Positioned(bottom: 0, child: XetiaBottomBar()),
+      ],
     );
   }
 }
