@@ -11,3 +11,4 @@ export 'product_controller.dart';
 export 'chart_product_review_controller.dart';
 export 'message_item_controller.dart';
 export 'carousel_card_controller.dart';
+export 'login_controller.dart';

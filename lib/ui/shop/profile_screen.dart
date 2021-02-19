@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:xetia_shop/constants/enums.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
@@ -10,6 +11,7 @@ import '../../ui/components/profile_sheet/_component.dart';
 
 class ProfileScreen extends StatelessWidget {
   final signInController = Get.put(SignInController());
+  final LoginController loginController = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class ProfileScreen extends StatelessWidget {
               child: MyButton(
                   color: context.theme.primaryColor,
                   onTap: () {
+                    loginController.setMethod(LoginMethods.Unchosen);
                     signInController.changeLoginState(false);
                     Get.off(SignInUI());
                   },
