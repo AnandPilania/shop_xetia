@@ -16,7 +16,8 @@ class Themes {
         headline2: TextStyle(color: kOrangeXetia, fontFamily: 'SF Pro Rounded', fontSize: 24, fontWeight: FontWeight.w600),
         headline3: TextStyle(color: kBlack, fontFamily: 'SF Pro Rounded', fontSize: 16.5, fontWeight: FontWeight.w700, height: 1.5),
         headline4: TextStyle(color: kBlack, fontFamily: 'SF Pro Rounded', fontSize: 14, fontWeight: FontWeight.normal),
-        headline5: TextStyle(color: kBlack, fontFamily: 'SF Pro Rounded', fontSize: 12, fontWeight: FontWeight.normal)),
+        headline5: TextStyle(color: kBlack, fontFamily: 'SF Pro Rounded', fontSize: 12, fontWeight: FontWeight.normal),
+        subtitle1: TextStyle(color: kWhite, fontFamily: 'SF Pro Rounded', fontSize: 14, fontWeight: FontWeight.w300)),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: kWhite.withOpacity(0.8), fontFamily: 'SF Pro Rounded', fontSize: 17, fontWeight: FontWeight.normal),
       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5.0)), borderSide: BorderSide.none),
@@ -40,7 +41,8 @@ class Themes {
         headline2: TextStyle(color: kOrangeXetia, fontFamily: 'SF Pro Rounded', fontSize: 24, fontWeight: FontWeight.w600),
         headline3: TextStyle(color: kHintColor, fontFamily: 'SF Pro Rounded', fontSize: 16.5, fontWeight: FontWeight.w700, height: 1.5),
         headline4: TextStyle(color: kWhite, fontFamily: 'SF Pro Rounded', fontSize: 14, fontWeight: FontWeight.normal),
-        headline5: TextStyle(color: kWhite, fontFamily: 'SF Pro Rounded', fontSize: 12, fontWeight: FontWeight.normal)),
+        headline5: TextStyle(color: kWhite, fontFamily: 'SF Pro Rounded', fontSize: 12, fontWeight: FontWeight.normal),
+        subtitle1: TextStyle(color: kBlack, fontFamily: 'SF Pro Rounded', fontSize: 14, fontWeight: FontWeight.w300)),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: kHintColor.withOpacity(0.75), fontFamily: 'SF Pro Rounded', fontSize: 17, fontWeight: FontWeight.normal),
       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5.0)), borderSide: BorderSide.none),

@@ -9,14 +9,7 @@ class TextFieldName extends StatelessWidget {
   final TextInputType textInputType;
   final bool isPassword;
 
-  const TextFieldName(
-      {Key key,
-      this.hintText,
-      this.iconData,
-      this.validator,
-      this.controller,
-      this.textInputType,
-      this.isPassword})
+  const TextFieldName({Key key, this.hintText, this.iconData, this.validator, this.controller, this.textInputType, this.isPassword})
       : super(key: key);
 
   @override
@@ -25,73 +18,61 @@ class TextFieldName extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Stack(
-          children: [
-            Container(
-              width: 40,
-              height: 55,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: context.theme.primaryColor,
+        iconData == null
+            ? SizedBox()
+            : Stack(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 55,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: context.theme.primaryColor,
+                    ),
+                  ),
+                  Container(
+                    width: 40,
+                    height: 55,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: context.theme.primaryColor.withOpacity(0.5),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        iconData,
+                        color: context.theme.accentColor,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Container(
-              width: 40,
-              height: 55,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: context.theme.primaryColor.withOpacity(0.5),
+        iconData == null
+            ? SizedBox()
+            : SizedBox(
+                width: 20,
               ),
-              child: Center(
-                child: Icon(
-                  iconData,
-                  color: context.theme.accentColor,
-                ),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          width: 20,
-        ),
         Expanded(
-          child: TextFormField(
-            controller: controller,
-            validator: validator,
-            decoration: InputDecoration(
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                    color: context.theme.primaryColor.withOpacity(0.5)),
-                borderRadius: BorderRadius.circular(5),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextFormField(
+              controller: controller,
+              validator: validator,
+              decoration: InputDecoration(
+                hintText: hintText,
+                suffixIcon: isPassword
+                    ? IconButton(
+                        icon: Icon(isObscure ? Icons.visibility_off : Icons.visibility, color: context.theme.accentColor),
+                        onPressed: () {
+                          isObscure = !isObscure;
+                        },
+                      )
+                    : null,
               ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: context.theme.primaryColor),
-                borderRadius: BorderRadius.circular(5),
-              ),
-              border: UnderlineInputBorder(
-                borderSide: BorderSide(
-                    color: context.theme.primaryColor.withOpacity(0.5)),
-                borderRadius: BorderRadius.circular(5),
-              ),
-              fillColor: context.theme.primaryColorDark,
-              hintText: hintText,
-              hintStyle: context.theme.inputDecorationTheme.hintStyle,
-              focusColor: context.theme.accentColor,
-              suffixIcon: isPassword
-                  ? IconButton(
-                      icon: Icon(
-                          isObscure ? Icons.visibility_off : Icons.visibility,
-                          color: context.theme.accentColor),
-                      onPressed: () {
-                        isObscure = !isObscure;
-                      },
-                    )
-                  : null,
+              cursorColor: context.theme.accentColor,
+              style: TextStyle(color: context.theme.primaryColor),
+              keyboardType: null,
+              obscureText: false,
             ),
-            cursorColor: context.theme.accentColor,
-            style: TextStyle(color: context.theme.primaryColor),
-            keyboardType: null,
-            obscureText: false,
           ),
         )
       ],

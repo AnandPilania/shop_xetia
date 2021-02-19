@@ -1,175 +1,198 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/constants/_constants.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/ui/_ui.dart';
-import 'package:xetia_shop/utils/_utils.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
+import 'package:xetia_shop/ui/components/fab_theme.dart';
 
-import '../components/_components.dart';
+import '../../constants/_constants.dart';
+import '../../ui/components/login_method/_component.dart';
+import '../../controllers/login_controller.dart';
 
 class SignInUI extends StatelessWidget {
-  final SignInController _signInController = Get.put(SignInController());
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final LoginController loginController = Get.find<LoginController>();
 
+  final List<Widget> loginMethod = [
+    EmailLogin(),
+    FacebookLogin(),
+    AppleLogin(),
+    GmailLogin(),
+    DisplayMethod(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.primaryColorDark,
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.all(20),
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          height: heightApp,
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Form(
-              key: _formKey,
+    return Stack(
+      children: [
+        Scaffold(
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(bottom: 40.0),
+            child: FABTheme(),
+          ),
+          body: SingleChildScrollView(
+            child: SizedBox(
+              width: widthApp,
+              height: heightApp + paddingTop,
               child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(height: 60),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: context.theme.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.4),
-                              blurRadius: 4,
-                              offset: Offset(0, 2),
-                            )
+                  Container(
+                    width: widthApp,
+                    height: (heightApp + paddingTop) * 0.45,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+                      color: context.theme.primaryColorDark,
+                    ),
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: Container(
+                            width: widthApp * 0.4,
+                            height: widthApp * 0.4,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: const Color(0xff616569),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset("assets/svg/xetialogo.svg"),
+                                SizedBox(height: 10),
+                                SvgPicture.asset("assets/svg/xetiafont.svg"),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Spacer(),
+                                Expanded(
+                                    flex: 3,
+                                    child: GestureDetector(
+                                        onTap: () => loginController.toggle(),
+                                        child: Text("Login", style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                                Expanded(
+                                    flex: 3,
+                                    child: GestureDetector(
+                                        onTap: () => loginController.toggle(),
+                                        child: Text("Register", style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                                Spacer()
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Spacer(),
+                                Expanded(
+                                    flex: 6,
+                                    child: Obx(() => AnimatedAlign(
+                                          duration: Duration(milliseconds: 250),
+                                          alignment: loginController.isLogin.value == true ? Alignment.centerLeft : Alignment.centerRight,
+                                          child: Container(
+                                            width: widthApp * 3 / 8,
+                                            height: 10.0,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(20.0),
+                                              color: const Color(0xfffcb216),
+                                            ),
+                                          ),
+                                        ))),
+                                Spacer()
+                              ],
+                            ),
                           ],
                         ),
-                        child: Center(
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.language,
-                              size: 28,
-                              color: context.theme.accentColor,
-                            ),
-                          ),
+                        Positioned(
+                          top: paddingTop + 10,
+                          left: 10,
+                          child: Obx(() => loginController.loginMethod.value == LoginMethods.Unchosen
+                              ? SizedBox()
+                              : IconButton(
+                                  icon: Icon(
+                                    Icons.arrow_back,
+                                    color: kWhite,
+                                  ),
+                                  onPressed: () => loginController.loginMethod(LoginMethods.Unchosen),
+                                )),
                         ),
-                      ),
-                      SizedBox(height: 40),
-                      Text("Welcome", style: context.theme.textTheme.headline3),
-                      Text("Sign in to Continue",
-                          style: context.theme.textTheme.headline2),
-                    ],
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 60),
-                  Column(
-                    children: [
-                      TextFieldName(
-                        textInputType: TextInputType.emailAddress,
-                        controller: _signInController.email,
-                        validator: Validator().email,
-                        hintText: "Email",
-                        iconData: Icons.email,
-                        isPassword: false,
-                      ),
-                      SizedBox(height: 30),
-                      TextFieldName(
-                        textInputType: TextInputType.emailAddress,
-                        controller: _signInController.pass,
-                        validator: Validator().password,
-                        hintText: "Password",
-                        iconData: Icons.lock_outline,
-                        isPassword: true,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 30),
-                  Column(
-                    children: [
-                      MyButton(
-                        color: context.theme.primaryColor,
-                        onTap: () {
-                          if (_formKey.currentState.validate()) {
-                            _signInController.resSignIn(context: context);
-                          }
-                        },
-                        text: "Sign In",
-                      ),
-                      SizedBox(height: 10),
-                      GestureDetector(
-                          child: Text("forgot password",
-                              style: context.theme.textTheme.headline5),
-                          onTap: () {
-                            Get.to(RecoveryUI());
-                          }),
-                    ],
-                  ),
-                  SizedBox(height: 30),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              color: Colors.white,
-                              height: 1,
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              "or sign in with",
-                              textAlign: TextAlign.center,
-                              style: context.theme.textTheme.headline4,
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              color: Colors.white,
-                              height: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          for (String signOtherAsset in signInOtherAssets)
-                            CircleAvatar(
-                              radius: 30,
-                              child: SvgPicture.asset(
-                                signOtherAsset,
-                                height: 30,
-                              ),
-                            ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      MyButton(
-                        color: context.theme.primaryColor,
-                        onTap: () {
-                          Get.to(SignUpUI());
-                        },
-                        text: "Create a Account",
-                      ),
-                      SizedBox(height: 60),
-                    ],
-                  ),
+                  Obx(() => Expanded(
+                        child: AnimatedSwitcher(
+                            duration: Duration(milliseconds: 350), child: loginMethod[loginController.loginMethod.value.index]),
+                      )),
+                  SizedBox(height: 100),
                 ],
               ),
             ),
           ),
         ),
-      ),
-      floatingActionButton: FABTheme(),
+        Positioned(
+          bottom: 0,
+          child: SizedBox(
+            height: 120,
+            width: widthApp,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                WaveWidget(
+                  config: Get.isDarkMode == true
+                      ? CustomConfig(
+                          gradients: [
+                            [context.theme.primaryColor, context.theme.primaryColor],
+                            [Colors.black, Colors.black],
+                            [context.theme.primaryColor, context.theme.primaryColor],
+                            [Colors.black, Colors.black]
+                          ],
+                          durations: [35000, 19440, 10800, 6000],
+                          heightPercentages: [0.20, 0.23, 0.25, 0.30],
+                          blur: MaskFilter.blur(BlurStyle.solid, 2),
+                          gradientBegin: Alignment.bottomLeft,
+                          gradientEnd: Alignment.topRight,
+                        )
+                      : CustomConfig(
+                          gradients: [
+                            [Colors.black, Colors.black],
+                            [context.theme.primaryColor, context.theme.primaryColor],
+                            [Colors.black, Colors.black],
+                            [context.theme.primaryColor, context.theme.primaryColor]
+                          ],
+                          durations: [35000, 19440, 10800, 6000],
+                          heightPercentages: [0.20, 0.23, 0.25, 0.30],
+                          blur: MaskFilter.blur(BlurStyle.solid, 2),
+                          gradientBegin: Alignment.bottomLeft,
+                          gradientEnd: Alignment.topRight,
+                        ),
+                  waveAmplitude: 0,
+                  waveFrequency: 1.4,
+                  wavePhase: 4,
+                  size: Size(
+                    widthApp,
+                    120,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 60.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(width: 1),
+                      SvgPicture.asset("assets/svg/america.svg"),
+                      SvgPicture.asset("assets/svg/moon.svg", color: context.theme.primaryColorLight),
+                      SvgPicture.asset("assets/svg/onboarding.svg", color: context.theme.primaryColorLight),
+                      SizedBox(width: 1),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
