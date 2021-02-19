@@ -34,17 +34,18 @@ class HeaderLandingPage extends StatelessWidget {
           Positioned(
             top: paddingTop + 10,
             left: 10,
-            child: Obx(
-                () => loginController.loginMethod.value == LoginMethods.Unchosen
-                    ? SizedBox()
-                    : IconButton(
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: context.theme.primaryColorLight,
-                        ),
-                        onPressed: () =>
-                            loginController.loginMethod(LoginMethods.Unchosen),
-                      )),
+            child: Obx(() => loginController.loginMethod.value ==
+                        LoginMethods.Unchosen ||
+                    loginController.loginMethod.value == LoginMethods.Register
+                ? SizedBox()
+                : IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: context.theme.primaryColorLight,
+                    ),
+                    onPressed: () =>
+                        loginController.loginMethod(LoginMethods.Unchosen),
+                  )),
           ),
         ],
       ),

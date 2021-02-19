@@ -43,12 +43,14 @@ class Auth {
               body: jsonEncode({
                 "first_name": first,
                 "last_name": last,
-                "email": email,
-                "password": password
+                "password": password,
+                "email": email
               }))
           .timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });
+
+      print(res.body);
 
       if (res.statusCode == 200) {
         return authResponseFromJson(res.body);

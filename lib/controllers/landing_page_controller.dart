@@ -21,7 +21,7 @@ class LandingPageController extends GetxController {
       Get.snackbar("Login Methods", methods.toString(), colorText: textColor);
     } else {
       Get.back();
-      Get.snackbar("Login Methods", methods.toString());
+      Get.snackbar("Login Methods", methods.toString(), colorText: textColor);
     }
   }
 }
