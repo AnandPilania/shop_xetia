@@ -11,6 +11,7 @@ import 'package:xetia_shop/ui/components/_components.dart';
 class SignInController extends GetxController {
   TextEditingController email;
   TextEditingController pass;
+  RxBool isObscure = false.obs;
   LoadingOverlay loading;
   final box = GetStorage();
   Auth auth = Auth();
@@ -41,6 +42,10 @@ class SignInController extends GetxController {
   RxBool get _loggedIn {
     bool isHasLoggedIn = box.read(kHasLoggedIn);
     return isHasLoggedIn.obs;
+  }
+
+  void changeObscure(bool val) {
+    isObscure(val);
   }
 
   Widget get hasLoggedIn => _loggedIn.value ? HomeUI() : SignInUI();

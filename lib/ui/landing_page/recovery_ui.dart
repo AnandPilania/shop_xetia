@@ -40,7 +40,7 @@ class RecoveryUI extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 60),
-                  TextFieldName(
+                  XetiaTextField(
                     textInputType: TextInputType.emailAddress,
                     controller: recoveryController.recovery,
                     validator: Validator().email,

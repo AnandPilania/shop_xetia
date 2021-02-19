@@ -38,7 +38,7 @@ class SignUpUI extends StatelessWidget {
                   SizedBox(height: 60),
                   Column(
                     children: [
-                      TextFieldName(
+                      XetiaTextField(
                         textInputType: TextInputType.name,
                         controller: _signUpController.firstName,
                         validator: Validator().name,
@@ -47,7 +47,7 @@ class SignUpUI extends StatelessWidget {
                         isPassword: false,
                       ),
                       SizedBox(height: 30),
-                      TextFieldName(
+                      XetiaTextField(
                         textInputType: TextInputType.name,
                         controller: _signUpController.lastName,
                         validator: Validator().name,
@@ -56,7 +56,7 @@ class SignUpUI extends StatelessWidget {
                         isPassword: false,
                       ),
                       SizedBox(height: 30),
-                      TextFieldName(
+                      XetiaTextField(
                         textInputType: TextInputType.emailAddress,
                         controller: _signUpController.email,
                         validator: Validator().email,
@@ -65,7 +65,7 @@ class SignUpUI extends StatelessWidget {
                         isPassword: false,
                       ),
                       SizedBox(height: 30),
-                      TextFieldName(
+                      XetiaTextField(
                         textInputType: TextInputType.emailAddress,
                         controller: _signUpController.pass,
                         validator: Validator().password,

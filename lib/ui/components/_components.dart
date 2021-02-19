@@ -1,4 +1,4 @@
-export 'text_field_name.dart';
+export 'xetia_text_field.dart';
 export 'button_flat.dart';
 export 'loading.dart';
 
