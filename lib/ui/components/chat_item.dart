@@ -33,7 +33,6 @@ class ChatItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              flex: 3,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -47,32 +46,30 @@ class ChatItem extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "11:00",
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "11:00",
+                  style: context.textTheme.headline2.copyWith(
+                      color: context.theme.primaryColor.withOpacity(0.5),
+                      fontSize: 12),
+                ),
+                SizedBox(width: 10),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: ShapeDecoration(
+                    color: context.theme.primaryColor.withOpacity(0.5),
+                    shape: CircleBorder(),
+                  ),
+                  child: Text(
+                    "1",
                     style: context.textTheme.headline2.copyWith(
                         color: context.theme.primaryColor.withOpacity(0.5),
                         fontSize: 12),
                   ),
-                  SizedBox(width: 10),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: ShapeDecoration(
-                      color: context.theme.primaryColor.withOpacity(0.5),
-                      shape: CircleBorder(),
-                    ),
-                    child: Text(
-                      "1",
-                      style: context.textTheme.headline2.copyWith(
-                          color: context.theme.primaryColor.withOpacity(0.5),
-                          fontSize: 12),
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
           ],
         ),

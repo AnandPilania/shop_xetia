@@ -5,17 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MessageItemController extends GetxController {
-  TextEditingController messageTextFieldController = TextEditingController();
-  ScrollController chatBodyScrollController = ScrollController(
-    initialScrollOffset: 0.0,
-    keepScrollOffset: true,
-  );
+  TextEditingController messageTextFieldController;
+  ScrollController chatBodyScrollController;
   RxList<MessageItem> listMessage = List<MessageItem>().obs;
   RxString selectedReplyMessage = "".obs;
   RxBool showReplyMessage = false.obs;
 
   @override
   void onInit() {
+    messageTextFieldController = TextEditingController();
+    chatBodyScrollController = ScrollController(
+      initialScrollOffset: 0.0,
+      keepScrollOffset: true,
+    );
     super.onInit();
     dummyInit();
   }
@@ -50,6 +52,13 @@ class MessageItemController extends GetxController {
 
   void changeVisibilityReplyMessage(bool val) {
     showReplyMessage(val);
+  }
+
+  @override
+  void dispose() {
+    messageTextFieldController?.dispose();
+    chatBodyScrollController?.dispose();
+    super.dispose();
   }
 }
 
