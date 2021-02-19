@@ -11,9 +11,9 @@ class SignUpController extends GetxController {
   TextEditingController lastName;
   TextEditingController email;
   TextEditingController pass;
+  RxBool isObscure = true.obs;
   LoadingOverlay loading;
-    Auth auth = Auth();
-
+  Auth auth = Auth();
 
   @override
   void onInit() {
@@ -22,6 +22,10 @@ class SignUpController extends GetxController {
     email = TextEditingController();
     pass = TextEditingController();
     super.onInit();
+  }
+
+  void changeObscure(bool val) {
+    isObscure(val);
   }
 
   void resSignUp({@required BuildContext context}) async {

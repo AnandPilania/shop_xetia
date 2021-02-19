@@ -4,7 +4,8 @@ import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 
 class TabNameLandingPage extends StatelessWidget {
-  final LoginController loginController = Get.find<LoginController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +16,26 @@ class TabNameLandingPage extends StatelessWidget {
         Expanded(
             flex: 3,
             child: GestureDetector(
-                onTap: () => loginController.toggle(),
+                onTap: () {
+                  loginController.toggle();
+                  loginController.setMethod(
+                    methods: LoginMethods.Unchosen,
+                    textColor: context.theme.primaryColorLight,
+                  );
+                },
                 child: Text("Login",
                     style: context.textTheme.headline3,
                     textAlign: TextAlign.center))),
         Expanded(
             flex: 3,
             child: GestureDetector(
-                onTap: () => loginController.toggle(),
+                onTap: () {
+                  loginController.toggle();
+                  loginController.setMethod(
+                    methods: LoginMethods.Register,
+                    textColor: context.theme.primaryColorLight,
+                  );
+                },
                 child: Text("Register",
                     style: context.textTheme.headline3,
                     textAlign: TextAlign.center))),
@@ -33,7 +46,8 @@ class TabNameLandingPage extends StatelessWidget {
 }
 
 class TabIndicatorLandingPage extends StatelessWidget {
-  final LoginController loginController = Get.find<LoginController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
 
   @override
   Widget build(BuildContext context) {

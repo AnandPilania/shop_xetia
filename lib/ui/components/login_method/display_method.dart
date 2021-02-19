@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/enums.dart';
-import 'package:xetia_shop/controllers/login_controller.dart';
+import 'package:xetia_shop/controllers/landing_page_controller.dart';
 
 class DisplayMethod extends StatelessWidget {
-  final LoginController loginController = Get.find<LoginController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
 
   @override
   Widget build(BuildContext context) {

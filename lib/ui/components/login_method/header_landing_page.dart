@@ -6,7 +6,8 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/ui/components/login_method/_component.dart';
 
 class HeaderLandingPage extends StatelessWidget {
-  final LoginController loginController = Get.find<LoginController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
 
   @override
   Widget build(BuildContext context) {

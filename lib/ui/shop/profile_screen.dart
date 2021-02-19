@@ -11,7 +11,8 @@ import '../../ui/components/profile_sheet/_component.dart';
 
 class ProfileScreen extends StatelessWidget {
   final signInController = Get.put(SignInController());
-  final LoginController loginController = Get.find<LoginController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final HeaderHomeController headerHomeController =
       Get.find<HeaderHomeController>();
 

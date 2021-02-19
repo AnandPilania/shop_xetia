@@ -11,7 +11,7 @@ import 'package:xetia_shop/ui/components/_components.dart';
 class SignInController extends GetxController {
   TextEditingController email;
   TextEditingController pass;
-  RxBool isObscure = false.obs;
+  RxBool isObscure = true.obs;
   LoadingOverlay loading;
   final box = GetStorage();
   Auth auth = Auth();

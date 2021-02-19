@@ -6,7 +6,8 @@ import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
 
 class SignInUI extends StatelessWidget {
-  final LoginController loginController = Get.find<LoginController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
 
   final List<Widget> loginMethodWidget = [
     EmailLogin(),
@@ -14,6 +15,7 @@ class SignInUI extends StatelessWidget {
     AppleLogin(),
     GmailLogin(),
     DisplayMethod(),
+    RegisterUI(),
   ];
 
   Widget getMethodWidget() {

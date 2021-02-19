@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 
-class LoginController extends GetxController {
+class LandingPageController extends GetxController {
   RxBool isLogin = true.obs;
   Rx<LoginMethods> loginMethod = LoginMethods.Unchosen.obs;
   RxBool subscribeEmail = false.obs;

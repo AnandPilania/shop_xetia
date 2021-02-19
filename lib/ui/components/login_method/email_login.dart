@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +9,8 @@ import '../../components/_components.dart';
 
 class EmailLogin extends StatelessWidget {
   final SignInController _signInController = Get.put(SignInController());
-  final LoginController loginController = Get.find<LoginController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -67,32 +67,13 @@ class EmailLogin extends StatelessWidget {
                       text: "Sign In",
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 10),
                   GestureDetector(
                       child: Text("forgot password",
-                          style: context.theme.textTheme.headline5),
+                          style: context.theme.textTheme.headline4),
                       onTap: () {
                         Get.to(RecoveryUI());
                       }),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Obx(() => Checkbox(
-                            onChanged: (value) {
-                              loginController.subscribe(value);
-                            },
-                            value: loginController.subscribeEmail.value,
-                          )),
-                      SizedBox(height: 5),
-                      Expanded(
-                        child: AutoSizeText(
-                          "I would like to receive your newsletter and other promotional information.",
-                          maxLines: 2,
-                          style: context.textTheme.headline4,
-                        ),
-                      )
-                    ],
-                  )
                 ],
               ),
             ],
