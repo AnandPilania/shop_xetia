@@ -6,7 +6,7 @@ import './controllers/_controllers.dart';
 
 void main() async {
   await GetStorage.init();
-  Get.lazyPut(() => LoginController());
+  Get.lazyPut(() => LandingPageController());
   runApp(MyApp());
 }
 
@@ -17,6 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        debugShowCheckedModeBanner: false, title: 'Shop_Xetia', theme: themeController.theme, home: signInController.hasLoggedIn);
+      debugShowCheckedModeBanner: false,
+      title: 'Shop_Xetia',
+      theme: themeController.theme,
+      home: signInController.hasLoggedIn,
+    );
   }
 }

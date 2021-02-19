@@ -1,1 +1,1 @@
-enum LoginMethods { Email, Facebook, AppleID, Gmail, Unchosen }
+enum LoginMethods { Email, Facebook, AppleID, Gmail, Unchosen, Register }

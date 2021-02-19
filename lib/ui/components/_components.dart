@@ -1,4 +1,4 @@
-export 'text_field_name.dart';
+export 'xetia_text_field.dart';
 export 'button_flat.dart';
 export 'loading.dart';
 
@@ -18,3 +18,5 @@ export 'detail_sheet.dart';
 export 'avatar.dart';
 export 'chat_info.dart';
 export 'chat_item.dart';
+
+export 'xetia_logo_widget.dart';
