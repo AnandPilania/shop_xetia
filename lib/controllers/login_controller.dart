@@ -1,23 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/ui/components/login_method/_component.dart';
-
-import '../constants/enums.dart';
+import 'package:xetia_shop/constants/_constants.dart';
 
 class LoginController extends GetxController {
   RxBool isLogin = true.obs;
   Rx<LoginMethods> loginMethod = LoginMethods.Unchosen.obs;
   RxBool subscribeEmail = false.obs;
-
-  final List<Widget> loginMethodWidget = [
-    EmailLogin(),
-    FacebookLogin(),
-    AppleLogin(),
-    GmailLogin(),
-    DisplayMethod(),
-  ];
-
-  Widget getMethodWidget() => loginMethodWidget[loginMethod.value.index];
 
   void toggle() {
     isLogin.toggle();
@@ -27,10 +15,10 @@ class LoginController extends GetxController {
     subscribeEmail(value);
   }
 
-  void setMethod(LoginMethods methods) {
+  void setMethod({LoginMethods methods, Color textColor}) {
     loginMethod(methods);
     if (!Get.isSnackbarOpen) {
-      Get.snackbar("Login Methods", methods.toString());
+      Get.snackbar("Login Methods", methods.toString(), colorText: textColor);
     } else {
       Get.back();
       Get.snackbar("Login Methods", methods.toString());

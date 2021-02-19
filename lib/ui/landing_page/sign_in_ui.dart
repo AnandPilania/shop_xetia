@@ -8,6 +8,18 @@ import '../../controllers/_controllers.dart';
 class SignInUI extends StatelessWidget {
   final LoginController loginController = Get.find<LoginController>();
 
+  final List<Widget> loginMethodWidget = [
+    EmailLogin(),
+    FacebookLogin(),
+    AppleLogin(),
+    GmailLogin(),
+    DisplayMethod(),
+  ];
+
+  Widget getMethodWidget() {
+    return loginMethodWidget[loginController.loginMethod.value.index];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -24,7 +36,7 @@ class SignInUI extends StatelessWidget {
                   Obx(() => Expanded(
                         child: AnimatedSwitcher(
                             duration: Duration(milliseconds: 350),
-                            child: loginController.getMethodWidget()),
+                            child: getMethodWidget()),
                       )),
                   SizedBox(height: 100),
                 ],
