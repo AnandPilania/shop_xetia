@@ -18,3 +18,5 @@ export 'detail_sheet.dart';
 export 'avatar.dart';
 export 'chat_info.dart';
 export 'chat_item.dart';
+
+export 'xetia_logo_widget.dart';
