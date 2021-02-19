@@ -6,6 +6,7 @@ import './controllers/_controllers.dart';
 
 void main() async {
   await GetStorage.init();
+  Get.lazyPut(() => LoginController());
   runApp(MyApp());
 }
 

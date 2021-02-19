@@ -10,7 +10,7 @@ import '../../ui/components/login_method/_component.dart';
 import '../../controllers/login_controller.dart';
 
 class SignInUI extends StatelessWidget {
-  final LoginController loginController = Get.put(LoginController());
+  final LoginController loginController = Get.find<LoginController>();
 
   final List<Widget> loginMethod = [
     EmailLogin(),
