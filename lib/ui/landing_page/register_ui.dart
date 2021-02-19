@@ -20,89 +20,92 @@ class RegisterUI extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         child: Form(
           key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 10),
-              Column(
-                children: [
-                  XetiaTextField(
-                    textInputType: TextInputType.name,
-                    controller: _signUpController.firstName,
-                    validator: Validator().name,
-                    hintText: "First Name",
-                  ),
-                  SizedBox(height: 5),
-                  XetiaTextField(
-                    textInputType: TextInputType.name,
-                    controller: _signUpController.lastName,
-                    validator: Validator().name,
-                    hintText: "Last Name",
-                  ),
-                  SizedBox(height: 5),
-                  XetiaTextField(
-                    textInputType: TextInputType.emailAddress,
-                    controller: _signUpController.email,
-                    validator: Validator().email,
-                    hintText: "Email",
-                  ),
-                  SizedBox(height: 5),
-                  Obx(
-                    () => XetiaTextField(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 10),
+                Column(
+                  children: [
+                    XetiaTextField(
+                      textInputType: TextInputType.name,
+                      controller: _signUpController.firstName,
+                      validator: Validator().name,
+                      hintText: "First Name",
+                    ),
+                    SizedBox(height: 5),
+                    XetiaTextField(
+                      textInputType: TextInputType.name,
+                      controller: _signUpController.lastName,
+                      validator: Validator().name,
+                      hintText: "Last Name",
+                    ),
+                    SizedBox(height: 5),
+                    XetiaTextField(
                       textInputType: TextInputType.emailAddress,
-                      controller: _signUpController.pass,
-                      validator: Validator().password,
-                      hintText: "Password",
-                      isPassword: true,
-                      isObscure: _signUpController.isObscure.value,
-                      changeObscure: () {
-                        _signUpController
-                            .changeObscure(!_signUpController.isObscure.value);
-                      },
+                      controller: _signUpController.email,
+                      validator: Validator().email,
+                      hintText: "Email",
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 30),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: MyButton(
-                      color: context.theme.primaryColor,
-                      onTap: () {
-                        if (_formKey.currentState.validate()) {
-                          _signUpController.resSignUp(context: context);
-                        }
-                      },
-                      text: "Sign Up",
+                    SizedBox(height: 5),
+                    Obx(
+                      () => XetiaTextField(
+                        textInputType: TextInputType.emailAddress,
+                        controller: _signUpController.pass,
+                        validator: Validator().password,
+                        hintText: "Password",
+                        isPassword: true,
+                        isObscure: _signUpController.isObscure.value,
+                        changeObscure: () {
+                          _signUpController.changeObscure(
+                              !_signUpController.isObscure.value);
+                        },
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Obx(() => Checkbox(
-                            onChanged: (value) {
-                              loginController.subscribe(value);
-                            },
-                            value: loginController.subscribeEmail.value,
-                            activeColor: context.theme.primaryColor,
-                          )),
-                      SizedBox(height: 5),
-                      Expanded(
-                        child: AutoSizeText(
-                          "I would like to receive your newsletter and other promotional information.",
-                          maxLines: 2,
-                          style: context.textTheme.headline4,
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ],
+                  ],
+                ),
+                SizedBox(height: 30),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: MyButton(
+                        color: context.theme.primaryColor,
+                        onTap: () {
+                          if (_formKey.currentState.validate()) {
+                            _signUpController.resSignUp(context: context);
+                          }
+                        },
+                        text: "Sign Up",
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Obx(() => Checkbox(
+                              onChanged: (value) {
+                                loginController.subscribe(value);
+                              },
+                              value: loginController.subscribeEmail.value,
+                              activeColor: context.theme.primaryColor,
+                            )),
+                        SizedBox(height: 5),
+                        Expanded(
+                          child: AutoSizeText(
+                            "I would like to receive your newsletter and other promotional information.",
+                            maxLines: 2,
+                            style: context.textTheme.headline4,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

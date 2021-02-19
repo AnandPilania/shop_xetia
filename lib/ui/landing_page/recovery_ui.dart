@@ -45,7 +45,6 @@ class RecoveryUI extends StatelessWidget {
                     controller: recoveryController.recovery,
                     validator: Validator().email,
                     hintText: "Email",
-                    iconData: Icons.email,
                     isPassword: false,
                   ),
                   SizedBox(height: 30),

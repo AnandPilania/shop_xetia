@@ -21,62 +21,65 @@ class EmailLogin extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         child: Form(
           key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 10),
-              Column(
-                children: [
-                  XetiaTextField(
-                    textInputType: TextInputType.emailAddress,
-                    controller: _signInController.email,
-                    validator: Validator().email,
-                    hintText: "Email",
-                  ),
-                  SizedBox(height: 5),
-                  Obx(
-                    () => XetiaTextField(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 10),
+                Column(
+                  children: [
+                    XetiaTextField(
                       textInputType: TextInputType.emailAddress,
-                      controller: _signInController.pass,
-                      validator: Validator().password,
-                      hintText: "Password",
-                      isPassword: true,
-                      isObscure: _signInController.isObscure.value,
-                      changeObscure: () {
-                        _signInController
-                            .changeObscure(!_signInController.isObscure.value);
-                      },
+                      controller: _signInController.email,
+                      validator: Validator().email,
+                      hintText: "Email",
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 30),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: MyButton(
-                      color: context.theme.primaryColor,
-                      onTap: () {
-                        if (_formKey.currentState.validate()) {
-                          _signInController.resSignIn(context: context);
-                        }
-                      },
-                      text: "Sign In",
+                    SizedBox(height: 5),
+                    Obx(
+                      () => XetiaTextField(
+                        textInputType: TextInputType.emailAddress,
+                        controller: _signInController.pass,
+                        validator: Validator().password,
+                        hintText: "Password",
+                        isPassword: true,
+                        isObscure: _signInController.isObscure.value,
+                        changeObscure: () {
+                          _signInController.changeObscure(
+                              !_signInController.isObscure.value);
+                        },
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  GestureDetector(
-                      child: Text("forgot password",
-                          style: context.theme.textTheme.headline4),
-                      onTap: () {
-                        Get.to(RecoveryUI());
-                      }),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                SizedBox(height: 30),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: MyButton(
+                        color: context.theme.primaryColor,
+                        onTap: () {
+                          if (_formKey.currentState.validate()) {
+                            _signInController.resSignIn(context: context);
+                          }
+                        },
+                        text: "Sign In",
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    GestureDetector(
+                        child: Text("forgot password",
+                            style: context.theme.textTheme.headline4),
+                        onTap: () {
+                          Get.to(RecoveryUI());
+                        }),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -62,28 +62,25 @@ class XetiaTextField extends StatelessWidget {
                 width: 20,
               ),
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextFormField(
-              controller: controller,
-              validator: validator,
-              decoration: InputDecoration(
-                hintText: hintText,
-                suffixIcon: isPassword
-                    ? IconButton(
-                        icon: Icon(
-                            isObscure ? Icons.visibility_off : Icons.visibility,
-                            color: context.theme.primaryColor),
-                        onPressed: changeObscure,
-                      )
-                    : null,
-              ),
-              cursorColor: context.theme.accentColor,
-              style: context.textTheme.headline3
-                  .copyWith(color: context.theme.primaryColorDark),
-              keyboardType: null,
-              obscureText: isPassword ? isObscure : false,
+          child: TextFormField(
+            controller: controller,
+            validator: validator,
+            decoration: InputDecoration(
+              hintText: hintText,
+              suffixIcon: isPassword
+                  ? IconButton(
+                      icon: Icon(
+                          isObscure ? Icons.visibility_off : Icons.visibility,
+                          color: context.theme.primaryColor),
+                      onPressed: changeObscure,
+                    )
+                  : null,
             ),
+            cursorColor: context.theme.accentColor,
+            style: context.textTheme.headline3
+                .copyWith(color: context.theme.primaryColorDark),
+            keyboardType: null,
+            obscureText: isPassword ? isObscure : false,
           ),
         )
       ],
