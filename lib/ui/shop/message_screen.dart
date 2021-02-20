@@ -7,7 +7,7 @@ class MessageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.theme.primaryColor,
+      color: context.theme.primaryColorDark,
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
