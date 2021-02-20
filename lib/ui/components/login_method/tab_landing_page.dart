@@ -17,7 +17,7 @@ class TabNameLandingPage extends StatelessWidget {
             flex: 3,
             child: GestureDetector(
                 onTap: () {
-                  loginController.toggle();
+                  loginController.changeLoginState(true);
                   loginController.setMethod(
                     methods: LoginMethods.Unchosen,
                     textColor: context.theme.primaryColorLight,
@@ -30,7 +30,7 @@ class TabNameLandingPage extends StatelessWidget {
             flex: 3,
             child: GestureDetector(
                 onTap: () {
-                  loginController.toggle();
+                  loginController.changeLoginState(false);
                   loginController.setMethod(
                     methods: LoginMethods.Register,
                     textColor: context.theme.primaryColorLight,

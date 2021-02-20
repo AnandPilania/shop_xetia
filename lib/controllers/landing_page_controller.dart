@@ -11,6 +11,10 @@ class LandingPageController extends GetxController {
     isLogin.toggle();
   }
 
+  void changeLoginState(bool val){
+    isLogin(val);
+  }
+
   void subscribe(value) {
     subscribeEmail(value);
   }
