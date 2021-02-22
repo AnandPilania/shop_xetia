@@ -2,32 +2,37 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/models/_model.dart';
 
-import 'const_url.dart';
+import '../internet_available.dart';
 
 class Auth {
   Future<SignInResponse> signInRequest(String email, String password) async {
     try {
-      http.Response res = await http
-          .post("$base_url/api/v1/login",
-              headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-              },
-              body: jsonEncode({"email": email, "password": password}))
-          .timeout(const Duration(seconds: 10), onTimeout: () {
-        throw TimeoutException("connection time out try again");
-      });
+      bool isOnline = await intenetAvailable();
+      print("internet $isOnline");
+      if (isOnline) {
+        http.Response res = await http.post("$kUserUrl/api/v1/login",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: jsonEncode({"email": email, "password": password}));
 
-      if (res.statusCode == 200) {
-        return signInResponseFromJson(res.body);
+        if (res.statusCode == 200) {
+          return signInResponseFromJson(res.body);
+        } else {
+          return signInResponseFromJson(res.body);
+        }
       } else {
-        return signInResponseFromJson(res.body);
+        return SignInResponse(
+            meta: MetaSignIn(
+                code: 408, message: "Check Your Connection Internet"));
       }
     } catch (e) {
       print("Error : $e");
-      return null;
+      return e;
     }
   }
 
@@ -35,7 +40,7 @@ class Auth {
       String first, String last, String email, String password) async {
     try {
       http.Response res = await http
-          .post("$base_url/api/v1/register",
+          .post("$kUserUrl/api/v1/register",
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -71,7 +76,7 @@ class Auth {
       String tokenAccess, String tokenRefresh) async {
     try {
       http.Response res = await http
-          .post("$base_url/api/v1/logout",
+          .post("$kUserUrl/api/v1/logout",
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
