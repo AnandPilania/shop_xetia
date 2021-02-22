@@ -3,6 +3,9 @@
 //     final productResponse = productResponseFromJson(jsonString);
 
 import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 ProductResponse productResponseFromJson(String str) =>
     ProductResponse.fromJson(json.decode(str));
@@ -84,28 +87,29 @@ class Response {
 }
 
 class Datum {
-  Datum({
-    this.uuid,
-    this.name,
-    this.slug,
-    this.brand,
-    this.description,
-    this.weight,
-    this.discount,
-    this.thumbnail,
-    this.price,
-    this.categoryId,
-    this.category,
-    this.shopId,
-    this.quantity,
-    this.status,
-    this.statusLabel,
-    this.images,
-    this.variants,
-    this.userId,
-    this.createdAt,
-    this.updateAt,
-  });
+  Datum(
+      {this.uuid,
+      this.name,
+      this.slug,
+      this.brand,
+      this.description,
+      this.weight,
+      this.discount,
+      this.thumbnail,
+      this.price,
+      this.categoryId,
+      this.category,
+      this.shopId,
+      this.quantity,
+      this.status,
+      this.statusLabel,
+      this.images,
+      this.variants,
+      this.userId,
+      this.createdAt,
+      this.updateAt,
+      this.isFavorite,
+      this.shopLogo});
 
   String uuid;
   String name;
@@ -127,30 +131,34 @@ class Datum {
   String userId;
   String createdAt;
   String updateAt;
+  RxBool isFavorite;
+  IconData shopLogo;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        uuid: json["uuid"],
-        name: json["name"],
-        slug: json["slug"],
-        brand: json["brand"],
-        description: json["description"],
-        weight: json["weight"],
-        discount: json["discount"],
-        thumbnail: json["thumbnail"],
-        price: json["price"],
-        categoryId: json["category_id"],
-        category: json["category"],
-        shopId: json["shop_id"],
-        quantity: json["quantity"],
-        status: json["status"],
-        statusLabel: json["status_label"],
-        images: List<dynamic>.from(json["images"].map((x) => x)),
-        variants: List<Variant>.from(
-            json["variants"].map((x) => Variant.fromJson(x))),
-        userId: json["user_id"],
-        createdAt: json["created_at"],
-        updateAt: json["update_at"],
-      );
+      uuid: json["uuid"],
+      name: json["name"],
+      slug: json["slug"],
+      brand: json["brand"],
+      description: json["description"],
+      weight: json["weight"],
+      discount: json["discount"],
+      thumbnail: json["thumbnail"],
+      price: json["price"],
+      categoryId: json["category_id"],
+      category: json["category"],
+      shopId: json["shop_id"],
+      quantity: json["quantity"],
+      status: json["status"],
+      statusLabel: json["status_label"],
+      images: List<dynamic>.from(json["images"].map((x) => x)),
+      variants:
+          List<Variant>.from(json["variants"].map((x) => Variant.fromJson(x))),
+      userId: json["user_id"],
+      createdAt: json["created_at"],
+      updateAt: json["update_at"],
+      isFavorite: json["isFavorite"] != null ? json["isFavorite"] : false.obs,
+      shopLogo:
+          json["shopLogo"] != null ? json["shopLogo"] : Icons.shopping_bag);
 
   Map<String, dynamic> toJson() => {
         "uuid": uuid,
@@ -173,6 +181,8 @@ class Datum {
         "user_id": userId,
         "created_at": createdAt,
         "update_at": updateAt,
+        "isFavorite": isFavorite,
+        "shopLogo": shopLogo
       };
 }
 

@@ -5,21 +5,27 @@ import 'package:http/http.dart' as http;
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/models/_model.dart';
 
+import '../internet_available.dart';
+
 class Category {
   Future<GetCategoryResponse> getCategory() async {
     try {
-      http.Response res = await http
-          .get("$kProductUrl/api/v1/category")
-          .timeout(const Duration(seconds: 10), onTimeout: () {
-        throw TimeoutException("connection time out try agian");
-      });
+      bool isOnline = await intenetAvailable();
+      print("internet $isOnline");
+      if (isOnline) {
+        http.Response res = await http.get("$kProductUrl/api/v1/category");
 
-      if (res.statusCode == 200) {
-        return getCategoryResponseFromJson(res.body);
+        if (res.statusCode == 200) {
+          return getCategoryResponseFromJson(res.body);
+        } else {
+          return GetCategoryResponse(
+              meta: MetaCategory(
+                  code: res.statusCode, status: "Failed load category"));
+        }
       } else {
         return GetCategoryResponse(
             meta: MetaCategory(
-                code: res.statusCode, status: "Failed load category"));
+                code: 408, status: "Check Your Connection Internet"));
       }
     } catch (e) {
       print("Error : $e");
@@ -27,10 +33,11 @@ class Category {
     }
   }
 
-  Future<ListCategoryResponse> listGetCategory() async {
+  Future<ListCategoryResponse> listGetCategory(int limit,
+      {int page = 1}) async {
     try {
       http.Response res = await http
-          .get("$kProductUrl/api/v1/category/get-data?limit=10&page=1")
+          .get("$kProductUrl/api/v1/category/get-data?limit=$limit&page=$page")
           .timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });
