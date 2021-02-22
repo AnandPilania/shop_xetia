@@ -30,8 +30,10 @@ class ProductController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // untuk grid dan list sudh menggunakan data fetct
     fetchData();
-    // dummyInit();
+    // untuk detail mash menggunakan data dummy
+    dummyInit();
   }
 
   void addToFavorite(int idProduct) {
@@ -68,6 +70,7 @@ class ProductController extends GetxController {
         .then((value) {
       if (value.meta.code == 200) {
         print("load data product ${value.meta.status}");
+        print("load data product code ${value.meta.code}");
         listProductFetch.addAll(value.response.data);
       } else {
         print(value.meta.status);

@@ -55,15 +55,14 @@ class Category {
     }
   }
 
-  Future<CategoryResponse> postCategory() async {
+  Future<CategoryResponse> postCategory(String token) async {
     try {
       http.Response res = await http
           .post("$kProductUrl/api/v1/category/store",
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization":
-                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEzNjU5NjM4LCJqdGkiOiI0NjgzODFlYmU5MTQ0YTBlODFmZmJhZThmMjI1ZDlmZSIsInVzZXJfaWQiOiJlY2ViYmUwNy1lNGFiLTRlOWItYjljYy1mMjkxYmNlYjAxZTMifQ.nr6Ephl-HVa9FTR9nagnmOCoYSBCblUcLqD2t4fYU4A"
+                "Authorization": "Bearer $token"
               },
               body: jsonEncode({"name": "Example category"}))
           .timeout(const Duration(seconds: 10), onTimeout: () {
@@ -83,7 +82,7 @@ class Category {
     }
   }
 
-  Future<CategoryResponse> putCategory() async {
+  Future<CategoryResponse> putCategory(String token) async {
     try {
       http.Response res = await http
           .put(
@@ -91,8 +90,7 @@ class Category {
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization":
-                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEzNjU5NjM4LCJqdGkiOiI0NjgzODFlYmU5MTQ0YTBlODFmZmJhZThmMjI1ZDlmZSIsInVzZXJfaWQiOiJlY2ViYmUwNy1lNGFiLTRlOWItYjljYy1mMjkxYmNlYjAxZTMifQ.nr6Ephl-HVa9FTR9nagnmOCoYSBCblUcLqD2t4fYU4A"
+                "Authorization": "Bearer $token"
               },
               body: jsonEncode({"name": "Example category edit 2"}))
           .timeout(const Duration(seconds: 10), onTimeout: () {
@@ -112,15 +110,14 @@ class Category {
     }
   }
 
-  Future<CategoryResponse> deleteCategory() async {
+  Future<CategoryResponse> deleteCategory(String token) async {
     try {
       http.Response res = await http.delete(
           "$kProductUrl/api/v1/category/delete/d6aa8c3f-4145-49dc-8519-cd82a96fba98",
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization":
-                "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEzNjU5NjM4LCJqdGkiOiI0NjgzODFlYmU5MTQ0YTBlODFmZmJhZThmMjI1ZDlmZSIsInVzZXJfaWQiOiJlY2ViYmUwNy1lNGFiLTRlOWItYjljYy1mMjkxYmNlYjAxZTMifQ.nr6Ephl-HVa9FTR9nagnmOCoYSBCblUcLqD2t4fYU4A"
+            "Authorization": "Bearer $token"
           }).timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });

@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/models/_model.dart';
@@ -32,35 +34,47 @@ class Product {
       }
     } catch (e) {
       print("Error : $e");
-      return null;
+      return e;
     }
   }
 
-  Future<AddProductResponse> postProduct() async {
+  Future<AddProductResponse> postProduct(
+      {@required String token,
+      @required String name,
+      @required String desc,
+      @required String weight,
+      @required File thumbnail,
+      @required String categoryId,
+      @required String discount,
+      @required List<File> images,
+      @required String price,
+      String brand = null,
+      String quantity = null,
+      @required String shopId,
+      @required String userId}) async {
     try {
       http.Response res = await http.post("$kProductUrl/api/v1/product/store",
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization":
-                "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEzNjU5NjM4LCJqdGkiOiI0NjgzODFlYmU5MTQ0YTBlODFmZmJhZThmMjI1ZDlmZSIsInVzZXJfaWQiOiJlY2ViYmUwNy1lNGFiLTRlOWItYjljYy1mMjkxYmNlYjAxZTMifQ.nr6Ephl-HVa9FTR9nagnmOCoYSBCblUcLqD2t4fYU4A"
+            "Authorization": "Bearer $token"
           },
           body: jsonEncode({
-            "name": "example",
-            "description": "example description",
-            "weight": "120gram",
+            "name": name,
+            "description": desc,
+            "weight": weight,
             "thumbnail":
                 "https://media.suara.com/pictures/480x260/2020/05/28/40379-sajian-mie-ayam-bakso-shutterstock.jpg",
-            "category": "71088502-e2c5-4c66-a305-84064e30f48b",
-            "discount": "0",
+            "category": categoryId,
+            "discount": discount,
             "images": [
               "https://media.suara.com/pictures/480x260/2020/05/28/40379-sajian-mie-ayam-bakso-shutterstock.jpg"
             ],
-            "price": "1000",
-            "brand": "example brand",
-            "quantity": "0",
-            "shop": "b31f781c-5ccb-4e97-a0ee-c0d93fa8f446",
-            "user": "59b0fa92-239f-42b3-be8d-949a58b09986"
+            "price": price,
+            "brand": brand,
+            "quantity": quantity,
+            "shop": shopId,
+            "user": userId
           }));
 
       if (res.statusCode == 200) {
@@ -73,8 +87,7 @@ class Product {
       }
     } catch (e) {
       print("Error : $e");
-      return null;
+      return e;
     }
-    return null;
   }
 }
