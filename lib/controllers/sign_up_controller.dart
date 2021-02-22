@@ -12,10 +12,13 @@ class SignUpController extends GetxController {
   TextEditingController lastName;
   TextEditingController email;
   TextEditingController pass;
-  RxBool isObscure = true.obs;
+  RxBool _isObscure = true.obs;
   LoadingOverlay loading;
   Auth auth = Auth();
   final _landingPageController = Get.find<LandingPageController>();
+
+  set isObscure(value) => this._isObscure.value = value;
+  get isObscure => this._isObscure.value;
 
   @override
   void onInit() {
@@ -26,39 +29,28 @@ class SignUpController extends GetxController {
     super.onInit();
   }
 
-  void changeObscure(bool val) {
-    isObscure(val);
-  }
-
   void resSignUp({@required BuildContext context}) async {
     loading = LoadingOverlay.of(context);
 
     loading.show();
 
-    await auth
-        .registerRequest(firstName.text, lastName.text, email.text, pass.text)
-        .then((AuthResponse value) {
+    await auth.registerRequest(firstName.text, lastName.text, email.text, pass.text).then((AuthResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
-        Get.snackbar('Alert', value.meta.message,
-            colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
         firstName.clear();
         lastName.clear();
         email.clear();
         pass.clear();
-        _landingPageController.setMethod(
-            methods: LoginMethods.Unchosen,
-            textColor: context.theme.primaryColorLight);
+        _landingPageController.loginMethod = LoginMethods.Unchosen;
         _landingPageController.toggle();
       } else {
-        Get.snackbar('Alert', value.meta.message,
-            colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar('Alert', "Sign Up Failed",
-          colorText: context.theme.primaryColorLight);
+      Get.snackbar('Alert', "Sign Up Failed", colorText: context.theme.primaryColorLight);
       print(onError);
     });
   }

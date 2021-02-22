@@ -17,13 +17,10 @@ class DetailProductImages extends StatelessWidget {
       height: widthApp,
       child: Center(
         child: Swiper(
-          onIndexChanged: ((indexImage) =>
-              productController.updateIndexProductPicture(indexImage)),
+          onIndexChanged: ((indexImage) => productController.indexProductPicture = indexImage),
           itemCount: productController.listProduct[indexSwiper].imageUrl.length,
           itemBuilder: (context, indexImage) {
-            return Image.network(
-                productController.listProduct[indexSwiper].imageUrl[indexImage],
-                fit: BoxFit.fill);
+            return Image.network(productController.listProduct[indexSwiper].imageUrl[indexImage], fit: BoxFit.fill);
           },
         ),
       ),

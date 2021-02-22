@@ -13,6 +13,12 @@ class RecoveryController extends GetxController {
   }
 
   @override
+  void dispose() {
+    recovery.dispose();
+    super.dispose();
+  }
+
+  @override
   void onClose() {
     recovery?.dispose();
     super.onClose();

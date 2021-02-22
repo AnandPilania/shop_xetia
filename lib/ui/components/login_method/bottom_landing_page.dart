@@ -62,11 +62,9 @@ class BottomWaveLandingPage extends StatelessWidget {
                   controller.changeTheme(!controller.isDark.value);
                   Get.changeTheme(controller.theme);
                 },
-                child: SvgPicture.asset("assets/svg/moon.svg",
-                    color: context.theme.primaryColorLight),
+                child: SvgPicture.asset("assets/svg/moon.svg", color: context.theme.primaryColorLight),
               ),
-              SvgPicture.asset("assets/svg/onboarding.svg",
-                  color: context.theme.primaryColorLight),
+              SvgPicture.asset("assets/svg/onboarding.svg", color: context.theme.primaryColorLight),
               SizedBox(width: 1),
             ],
           ),

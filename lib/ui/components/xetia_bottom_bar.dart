@@ -22,7 +22,7 @@ class XetiaBottomBar extends StatelessWidget {
         FluidNavBarIcon(icon: Icons.list_sharp)
       ],
       defaultIndex: 0,
-      onChange: bottomBarController.changeBottomBarPosition,
+      onChange: (value) => bottomBarController.currentBottomBar = value,
     );
   }
 }

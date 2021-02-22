@@ -10,22 +10,19 @@ import 'package:faker/faker.dart';
 class ProductController extends GetxController {
   RxList<DummyProduct> listProduct = List<DummyProduct>().obs;
   Rx<ProductResponse> listProductFetch = ProductResponse().obs;
-  RxInt indexProductPicture = 0.obs;
-  RxString category = "".obs;
-  RxInt page = 1.obs;
+  RxInt _indexProductPicture = 0.obs;
+  RxString _category = "".obs;
+  RxInt _page = 1.obs;
   Product product = Product();
 
-  void updateIndexProductPicture(int index) {
-    indexProductPicture(index);
-  }
+  set indexProductPicture(value) => this._indexProductPicture.value = value;
+  get indexProductPicture => this._indexProductPicture.value;
 
-  void updateCategory(String categoryId) {
-    category(categoryId);
-  }
+  set category(value) => this._category.value = value;
+  get category => this._category.value;
 
-  void updatePage(int pageIndex) {
-    page(pageIndex);
-  }
+  set page(value) => this._page.value = value;
+  get page => this._page.value;
 
   @override
   void onInit() {
@@ -61,11 +58,7 @@ class ProductController extends GetxController {
   }
 
   void fetchData() async {
-    await product
-        .getProduct(
-            page: page.value,
-            category: category.isEmpty ? null : category.value)
-        .then((value) {
+    await product.getProduct(page: page, category: category.isEmpty ? null : category).then((value) {
       if (value.meta.code == 200) {
         print("load data product ${value.meta.status}");
         print("load data length product ${value.response.data.length}");

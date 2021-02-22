@@ -19,7 +19,7 @@ class DetailProductReview extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Review", style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
+                  Text("Review", style: context.textTheme.headline3),
                   Text("See All Review >", style: context.textTheme.headline5)
                 ],
               ),

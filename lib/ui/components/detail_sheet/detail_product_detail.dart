@@ -15,7 +15,7 @@ class DetailProductDetail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Product Details", style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
+            Text("Product Details", style: context.textTheme.headline3),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(

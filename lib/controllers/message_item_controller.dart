@@ -3,13 +3,20 @@ import 'dart:math';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/models/message_item.dart';
 
 class MessageItemController extends GetxController {
   TextEditingController messageTextFieldController;
   ScrollController chatBodyScrollController;
   RxList<MessageItem> listMessage = List<MessageItem>().obs;
-  RxString selectedReplyMessage = "".obs;
-  RxBool showReplyMessage = false.obs;
+  RxString _selectedReplyMessage = "".obs;
+  RxBool _showReplyMessage = false.obs;
+
+  set selectedReplyMessage(value) => this._selectedReplyMessage.value = value;
+  get selectedReplyMessage => this._selectedReplyMessage.value;
+
+  set showReplyMessage(value) => this._showReplyMessage.value = value;
+  get showReplyMessage => this._showReplyMessage.value;
 
   @override
   void onInit() {
@@ -24,34 +31,20 @@ class MessageItemController extends GetxController {
 
   void dummyInit() {
     for (int i = 0; i < 15; i++) {
-      listMessage.add(MessageItem(
-          content: Faker().lorem.sentence(),
-          isRight: Random().nextBool(),
-          reply: ""));
+      listMessage.add(MessageItem(content: Faker().lorem.sentence(), isRight: Random().nextBool(), reply: ""));
     }
   }
 
   void addMessage() {
-    listMessage.add(MessageItem(
-        content: messageTextFieldController.text,
-        isRight: true,
-        reply: selectedReplyMessage.value));
+    listMessage.add(MessageItem(content: messageTextFieldController.text, isRight: true, reply: selectedReplyMessage));
     messageTextFieldController.clear();
-    changeReplyMessage("");
-    changeVisibilityReplyMessage(false);
+    selectedReplyMessage = "";
+    showReplyMessage = false;
     chatBodyScrollController.animateTo(
       0.0,
       curve: Curves.easeOut,
       duration: const Duration(milliseconds: 300),
     );
-  }
-
-  void changeReplyMessage(String content) {
-    selectedReplyMessage(content);
-  }
-
-  void changeVisibilityReplyMessage(bool val) {
-    showReplyMessage(val);
   }
 
   @override
@@ -60,12 +53,4 @@ class MessageItemController extends GetxController {
     chatBodyScrollController?.dispose();
     super.dispose();
   }
-}
-
-class MessageItem {
-  final String content;
-  final String reply;
-  final bool isRight;
-
-  MessageItem({this.content, this.isRight, this.reply});
 }

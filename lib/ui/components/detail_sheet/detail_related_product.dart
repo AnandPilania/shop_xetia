@@ -10,9 +10,7 @@ class DetailRelatedProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          color: context.theme.primaryColorDark,
-          borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(color: context.theme.primaryColorDark, borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -20,9 +18,7 @@ class DetailRelatedProduct extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Related Product",
-                    style: context.textTheme.headline5
-                        .copyWith(fontWeight: FontWeight.bold)),
+                Text("Related Product", style: context.textTheme.headline3),
                 Text("See All >", style: context.textTheme.headline5),
               ],
             ),

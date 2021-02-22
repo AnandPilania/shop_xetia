@@ -14,9 +14,7 @@ class DetailProductStore extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
-        decoration: BoxDecoration(
-            color: context.theme.primaryColorDark,
-            borderRadius: BorderRadius.circular(15)),
+        decoration: BoxDecoration(color: context.theme.primaryColorDark, borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -24,9 +22,7 @@ class DetailProductStore extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Store",
-                      style: context.textTheme.headline5
-                          .copyWith(fontWeight: FontWeight.bold)),
+                  Text("Store", style: context.textTheme.headline3),
                   Text("See The Store >", style: context.textTheme.headline5),
                 ],
               ),
@@ -51,16 +47,13 @@ class DetailProductStore extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(kPopularShopData[Random().nextInt(7)][0],
-                            style: context.textTheme.headline5
-                                .copyWith(fontWeight: FontWeight.bold)),
+                            style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
                         Row(
                           children: [
-                            Icon(Icons.location_pin,
-                                color: Colors.grey, size: 15),
+                            Icon(Icons.location_pin, color: Colors.grey, size: 15),
                             SizedBox(width: 2),
                             Text(kPopularShopData[Random().nextInt(7)][1],
-                                style: context.textTheme.headline5
-                                    .copyWith(fontWeight: FontWeight.bold)),
+                                style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ],

@@ -12,8 +12,7 @@ class ProductListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StaggeredGridView.countBuilder(
-      padding:
-          EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
+      padding: EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
       shrinkWrap: true,
       primary: false,
       crossAxisCount: 4,
@@ -23,7 +22,7 @@ class ProductListCard extends StatelessWidget {
       itemBuilder: (BuildContext context, int indexItem) {
         return GestureDetector(
           onTap: () {
-            productController.updateIndexProductPicture(0);
+            productController.indexProductPicture = 0;
             Get.bottomSheet(
               SafeArea(child: DetailSheet(indexItem: indexItem)),
               isScrollControlled: true,
@@ -52,10 +51,7 @@ class ProductListCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                             child: Container(
                               child: Image.network(
-                                productController
-                                        .listProduct[indexItem].imageUrl[
-                                    productController
-                                        .indexProductPicture.value],
+                                productController.listProduct[indexItem].imageUrl[productController.indexProductPicture],
                               ),
                             ),
                           ),
@@ -95,12 +91,10 @@ class ProductListCard extends StatelessWidget {
                                   color: context.theme.primaryColorLight,
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 3.0),
+                                  padding: const EdgeInsets.symmetric(vertical: 3.0),
                                   child: Text(
                                     "2",
-                                    style: context.textTheme.headline4
-                                        .copyWith(fontWeight: FontWeight.bold),
+                                    style: context.textTheme.headline4.copyWith(fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 Icon(
@@ -115,20 +109,17 @@ class ProductListCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  productController
-                                      .listProduct[indexItem].productName,
+                                  productController.listProduct[indexItem].productName,
                                   style: context.textTheme.headline3,
                                   maxLines: 2,
                                 ),
                                 Text(
-                                  productController
-                                      .listProduct[indexItem].productWeight,
+                                  productController.listProduct[indexItem].productWeight,
                                   style: context.textTheme.headline4,
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  productController
-                                      .listProduct[indexItem].productPrice,
+                                  productController.listProduct[indexItem].productPrice,
                                   style: context.textTheme.headline5,
                                 ),
                               ],
@@ -145,21 +136,14 @@ class ProductListCard extends StatelessWidget {
                                 padding: EdgeInsets.all(4),
                                 constraints: BoxConstraints(),
                                 icon: Icon(
-                                  productController.listProduct[indexItem]
-                                              .isFavorite.value ==
-                                          true
+                                  productController.listProduct[indexItem].isFavorite.value == true
                                       ? Icons.favorite
                                       : Icons.favorite_border,
-                                  color: productController
-                                              .listProduct[indexItem]
-                                              .isFavorite
-                                              .value ==
-                                          true
+                                  color: productController.listProduct[indexItem].isFavorite.value == true
                                       ? const Color(0xffcd444a)
                                       : context.theme.primaryColor,
                                 ),
-                                onPressed: () =>
-                                    productController.addToFavorite(indexItem),
+                                onPressed: () => productController.addToFavorite(indexItem),
                               ),
                               IconButton(
                                 padding: EdgeInsets.all(4),
@@ -178,9 +162,7 @@ class ProductListCard extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(15.0),
                                     color: context.theme.primaryColor,
                                   ),
-                                  child: Center(
-                                      child: Text("Buy",
-                                          style: context.textTheme.headline4)),
+                                  child: Center(child: Text("Buy", style: context.textTheme.headline4)),
                                 ),
                               ),
                             ],

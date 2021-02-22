@@ -23,13 +23,13 @@ class BestSellerBar extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: controllerGrid.isGridView.value == true ? context.theme.primaryColor : null),
+                            color: controllerGrid.isGridView == true ? context.theme.primaryColor : null),
                         child: IconButton(
                           icon: Icon(Icons.grid_on_rounded),
-                          color: controllerGrid.isGridView.value == true ? context.theme.primaryColorDark : context.theme.primaryColor,
+                          color: controllerGrid.isGridView == true ? context.theme.primaryColorDark : context.theme.primaryColor,
                           padding: EdgeInsets.all(4),
                           constraints: BoxConstraints(),
-                          onPressed: () => controllerGrid.changeView(true),
+                          onPressed: () => controllerGrid.isGridView = true,
                         ),
                       ),
                       Padding(
@@ -37,13 +37,13 @@ class BestSellerBar extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: controllerGrid.isGridView.value == false ? context.theme.primaryColor : null),
+                              color: controllerGrid.isGridView == false ? context.theme.primaryColor : null),
                           child: IconButton(
                             icon: Icon(Icons.list_rounded),
-                            color: controllerGrid.isGridView.value == false ? context.theme.primaryColorDark : context.theme.primaryColor,
+                            color: controllerGrid.isGridView == false ? context.theme.primaryColorDark : context.theme.primaryColor,
                             padding: EdgeInsets.all(4),
                             constraints: BoxConstraints(),
-                            onPressed: () => controllerGrid.changeView(false),
+                            onPressed: () => controllerGrid.isGridView = false,
                           ),
                         ),
                       )

@@ -5,8 +5,7 @@ import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 
 class ChatFooter extends StatelessWidget {
-  final MessageItemController _messageItemController =
-      Get.put(MessageItemController());
+  final MessageItemController _messageItemController = Get.put(MessageItemController());
 
   @override
   Widget build(BuildContext context) {
@@ -15,23 +14,20 @@ class ChatFooter extends StatelessWidget {
         color: context.theme.primaryColorDark,
         borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
         boxShadow: [
-          BoxShadow(
-              color: context.theme.primaryColorLight.withOpacity(0.4),
-              blurRadius: 3),
+          BoxShadow(color: context.theme.primaryColorLight.withOpacity(0.4), blurRadius: 3),
         ],
       ),
       padding: EdgeInsets.all(10),
       child: Obx(
         () => Column(
           children: [
-            _messageItemController.showReplyMessage.value
+            _messageItemController.showReplyMessage
                 ? Column(
                     children: [
                       Container(
                         child: Row(
                           children: [
-                            Icon(CupertinoIcons.reply,
-                                color: context.theme.primaryColor),
+                            Icon(CupertinoIcons.reply, color: context.theme.primaryColor),
                             SizedBox(width: 10),
                             Expanded(
                               child: Column(
@@ -39,13 +35,11 @@ class ChatFooter extends StatelessWidget {
                                 children: [
                                   Text(
                                     Faker().person.name(),
-                                    style: context.textTheme.headline4.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: context.theme.primaryColor),
+                                    style: context.textTheme.headline4
+                                        .copyWith(fontWeight: FontWeight.bold, color: context.theme.primaryColor),
                                   ),
                                   Obx(() => Text(
-                                        _messageItemController
-                                            .selectedReplyMessage.value,
+                                        _messageItemController.selectedReplyMessage,
                                         style: context.textTheme.headline5,
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
@@ -55,12 +49,10 @@ class ChatFooter extends StatelessWidget {
                             ),
                             SizedBox(width: 10),
                             IconButton(
-                              icon:
-                                  Icon(Icons.close_rounded, color: Colors.grey),
+                              icon: Icon(Icons.close_rounded, color: Colors.grey),
                               onPressed: () {
-                                _messageItemController.changeReplyMessage("");
-                                _messageItemController
-                                    .changeVisibilityReplyMessage(false);
+                                _messageItemController.selectedReplyMessage = "";
+                                _messageItemController.showReplyMessage = false;
                               },
                             ),
                           ],
@@ -96,8 +88,7 @@ class ChatFooter extends StatelessWidget {
                 SizedBox(width: 10),
                 Expanded(
                   child: TextField(
-                    controller:
-                        _messageItemController.messageTextFieldController,
+                    controller: _messageItemController.messageTextFieldController,
                     decoration: InputDecoration(
                       hintText: "Type a Message",
                     ),

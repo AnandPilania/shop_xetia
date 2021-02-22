@@ -23,7 +23,7 @@ class ProductGridCard extends StatelessWidget {
         itemBuilder: (BuildContext context, int indexItem) {
           return GestureDetector(
             onTap: () {
-              productController.updateIndexProductPicture(0);
+              productController.indexProductPicture = 0;
               Get.bottomSheet(
                 SafeArea(bottom: false, child: DetailSheet(indexItem: indexItem)),
                 isScrollControlled: true,
