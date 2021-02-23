@@ -2,20 +2,30 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/models/_model.dart';
-import 'package:xetia_shop/networks/category_service/const_url.dart';
+
+import '../internet_available.dart';
 
 class Category {
   Future<GetCategoryResponse> getCategory() async {
     try {
-      http.Response res = await http.get("$baseUrl/api/v1/category").timeout(const Duration(seconds: 10), onTimeout: () {
-        throw TimeoutException("connection time out try agian");
-      });
+      bool isOnline = await intenetAvailable();
+      print("internet $isOnline");
+      if (isOnline) {
+        http.Response res = await http.get("$kProductUrl/api/v1/category");
 
-      if (res.statusCode == 200) {
-        return getCategoryResponseFromJson(res.body);
+        if (res.statusCode == 200) {
+          return getCategoryResponseFromJson(res.body);
+        } else {
+          return GetCategoryResponse(
+              meta: MetaCategory(
+                  code: res.statusCode, status: "Failed load category"));
+        }
       } else {
-        return GetCategoryResponse(meta: MetaCategory(code: res.statusCode, status: "Failed load category"));
+        return GetCategoryResponse(
+            meta: MetaCategory(
+                code: 408, status: "Check Your Connection Internet"));
       }
     } catch (e) {
       print("Error : $e");
@@ -23,17 +33,21 @@ class Category {
     }
   }
 
-  Future<ListCategoryResponse> listGetCategory() async {
+  Future<ListCategoryResponse> listGetCategory(int limit,
+      {int page = 1}) async {
     try {
-      http.Response res =
-          await http.get("$baseUrl/api/v1/category/get-data?limit=10&page=1").timeout(const Duration(seconds: 10), onTimeout: () {
+      http.Response res = await http
+          .get("$kProductUrl/api/v1/category/get-data?limit=$limit&page=$page")
+          .timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });
 
       if (res.statusCode == 200) {
         return listCategoryResponseFromJson(res.body);
       } else {
-        return ListCategoryResponse(meta: MetaCategoryList(code: res.statusCode, status: "Failed for list category"));
+        return ListCategoryResponse(
+            meta: MetaCategoryList(
+                code: res.statusCode, status: "Failed for list category"));
       }
     } catch (e) {
       print("Error: $e");
@@ -41,15 +55,14 @@ class Category {
     }
   }
 
-  Future<CategoryResponse> postCategory() async {
+  Future<CategoryResponse> postCategory(String token) async {
     try {
       http.Response res = await http
-          .post("$baseUrl/api/v1/category/store",
+          .post("$kProductUrl/api/v1/category/store",
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization":
-                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEzNjU5NjM4LCJqdGkiOiI0NjgzODFlYmU5MTQ0YTBlODFmZmJhZThmMjI1ZDlmZSIsInVzZXJfaWQiOiJlY2ViYmUwNy1lNGFiLTRlOWItYjljYy1mMjkxYmNlYjAxZTMifQ.nr6Ephl-HVa9FTR9nagnmOCoYSBCblUcLqD2t4fYU4A"
+                "Authorization": "Bearer $token"
               },
               body: jsonEncode({"name": "Example category"}))
           .timeout(const Duration(seconds: 10), onTimeout: () {
@@ -59,7 +72,9 @@ class Category {
       if (res.statusCode == 200) {
         return categoryResponseFromJson(res.body);
       } else {
-        return CategoryResponse(meta: PostMetaCategory(code: res.statusCode, status: "Failed for POST data category"));
+        return CategoryResponse(
+            meta: PostMetaCategory(
+                code: res.statusCode, status: "Failed for POST data category"));
       }
     } catch (e) {
       print("Error : $e");
@@ -67,15 +82,15 @@ class Category {
     }
   }
 
-  Future<CategoryResponse> putCategory() async {
+  Future<CategoryResponse> putCategory(String token) async {
     try {
       http.Response res = await http
-          .put("$baseUrl/api/v1/category/update/d6aa8c3f-4145-49dc-8519-cd82a96fba98",
+          .put(
+              "$kProductUrl/api/v1/category/update/d6aa8c3f-4145-49dc-8519-cd82a96fba98",
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization":
-                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEzNjU5NjM4LCJqdGkiOiI0NjgzODFlYmU5MTQ0YTBlODFmZmJhZThmMjI1ZDlmZSIsInVzZXJfaWQiOiJlY2ViYmUwNy1lNGFiLTRlOWItYjljYy1mMjkxYmNlYjAxZTMifQ.nr6Ephl-HVa9FTR9nagnmOCoYSBCblUcLqD2t4fYU4A"
+                "Authorization": "Bearer $token"
               },
               body: jsonEncode({"name": "Example category edit 2"}))
           .timeout(const Duration(seconds: 10), onTimeout: () {
@@ -85,7 +100,9 @@ class Category {
       if (res.statusCode == 200) {
         return categoryResponseFromJson(res.body);
       } else {
-        return CategoryResponse(meta: PostMetaCategory(code: res.statusCode, status: "Failed for PUT data category"));
+        return CategoryResponse(
+            meta: PostMetaCategory(
+                code: res.statusCode, status: "Failed for PUT data category"));
       }
     } catch (e) {
       print("Error : $e");
@@ -93,21 +110,25 @@ class Category {
     }
   }
 
-  Future<CategoryResponse> deleteCategory() async {
+  Future<CategoryResponse> deleteCategory(String token) async {
     try {
-      http.Response res = await http.delete("$baseUrl/api/v1/category/delete/d6aa8c3f-4145-49dc-8519-cd82a96fba98", headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "Authorization":
-            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEzNjU5NjM4LCJqdGkiOiI0NjgzODFlYmU5MTQ0YTBlODFmZmJhZThmMjI1ZDlmZSIsInVzZXJfaWQiOiJlY2ViYmUwNy1lNGFiLTRlOWItYjljYy1mMjkxYmNlYjAxZTMifQ.nr6Ephl-HVa9FTR9nagnmOCoYSBCblUcLqD2t4fYU4A"
-      }).timeout(const Duration(seconds: 10), onTimeout: () {
+      http.Response res = await http.delete(
+          "$kProductUrl/api/v1/category/delete/d6aa8c3f-4145-49dc-8519-cd82a96fba98",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer $token"
+          }).timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });
 
       if (res.statusCode == 200) {
         return categoryResponseFromJson(res.body);
       } else {
-        return CategoryResponse(meta: PostMetaCategory(code: res.statusCode, status: "Failed for DELETE data category"));
+        return CategoryResponse(
+            meta: PostMetaCategory(
+                code: res.statusCode,
+                status: "Failed for DELETE data category"));
       }
     } catch (e) {
       print("Error : $e");

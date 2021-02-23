@@ -9,10 +9,10 @@ import 'package:faker/faker.dart';
 
 class ProductController extends GetxController {
   RxList<DummyProduct> listProduct = List<DummyProduct>().obs;
-  Rx<ProductResponse> listProductFetch = ProductResponse().obs;
-  RxInt _indexProductPicture = 0.obs;
-  RxString _category = "".obs;
-  RxInt _page = 1.obs;
+  RxList<Datum> listProductFetch = List<Datum>().obs;
+  RxInt indexProductPicture = 0.obs;
+  RxString category = "".obs;
+  RxInt page = 1.obs;
   Product product = Product();
 
   set indexProductPicture(value) => this._indexProductPicture.value = value;
@@ -27,15 +27,17 @@ class ProductController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // fetchData();
+    // untuk grid dan list sudh menggunakan data fetct
+    fetchData();
+    // untuk detail mash menggunakan data dummy
     dummyInit();
   }
 
   void addToFavorite(int idProduct) {
-    if (listProduct[idProduct].isFavorite.value == true) {
-      listProduct[idProduct].isFavorite.value = false;
+    if (listProductFetch[idProduct].isFavorite.value == true) {
+      listProductFetch[idProduct].isFavorite.value = false;
     } else {
-      listProduct[idProduct].isFavorite.value = true;
+      listProductFetch[idProduct].isFavorite.value = true;
     }
   }
 
@@ -58,12 +60,15 @@ class ProductController extends GetxController {
   }
 
   void fetchData() async {
-    await product.getProduct(page: page, category: category.isEmpty ? null : category).then((value) {
+    await product
+        .getProduct(
+      page: page.value,
+    )
+        .then((value) {
       if (value.meta.code == 200) {
         print("load data product ${value.meta.status}");
-        print("load data length product ${value.response.data.length}");
-        // print(value.response.data[1].name);
-        listProductFetch(value);
+        print("load data product code ${value.meta.code}");
+        listProductFetch.addAll(value.response.data);
       } else {
         print(value.meta.status);
       }

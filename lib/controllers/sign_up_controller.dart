@@ -44,6 +44,9 @@ class SignUpController extends GetxController {
         pass.clear();
         _landingPageController.loginMethod = LoginMethods.Unchosen;
         _landingPageController.toggle();
+      } else if (value.meta.code == 408) {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
       } else {
         Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
       }
