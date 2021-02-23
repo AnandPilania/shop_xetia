@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:xetia_shop/db/_db.dart';
 import 'package:xetia_shop/models/product_response.dart';
 import 'package:xetia_shop/networks/_network.dart';
 import '../models/product_dummy.dart';
@@ -32,6 +33,12 @@ class ProductController extends GetxController {
     fetchData();
     // untuk detail mash menggunakan data dummy
     dummyInit();
+    checkUser();
+  }
+
+  void checkUser() async {
+    final user = await UserProvider.db.getUser();
+    print(user.first);
   }
 
   void addToFavorite(int idProduct) {
