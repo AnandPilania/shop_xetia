@@ -14,8 +14,10 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: false,
       child: Scaffold(
         body: Container(
+          padding: EdgeInsets.only(top: paddingTop),
           height: heightApp,
           width: widthApp,
           child: Column(
