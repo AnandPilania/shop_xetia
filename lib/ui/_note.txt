@@ -1,7 +1,0 @@
-folder ini khusus untuk penggunaan ui
-
-16-02-2021 :
-File Sign up name dan Sign up Password sudah tidak digunakan
-
-17-02-2021 :
-UI dibagi bagi lagi, ada landing page ada shop, sesuai kebutuhan

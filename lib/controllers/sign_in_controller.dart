@@ -87,6 +87,9 @@ class SignInController extends GetxController {
         Get.off(HomeUI());
         // insertToDb(value);
         changeLoginState(true);
+      } else if (value.meta.code == 408) {
+        Get.snackbar('Alert', value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
       } else {
         Get.snackbar('Alert', value.meta.message,
             snackPosition: SnackPosition.BOTTOM);
