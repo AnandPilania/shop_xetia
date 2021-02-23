@@ -10,6 +10,8 @@ import 'package:xetia_shop/networks/_network.dart';
 import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
+import '_controllers.dart';
+
 class SignInController extends GetxController {
   TextEditingController email;
   TextEditingController pass;
@@ -91,6 +93,8 @@ class SignInController extends GetxController {
         // insertToDb(value);
         changeLoginState(true);
       } else if (value.meta.code == 408) {
+        // exception untuk apabila tidak ada internet
+
         Get.snackbar('Alert', value.meta.message,
             snackPosition: SnackPosition.BOTTOM);
       } else {
