@@ -153,9 +153,9 @@ class Datum {
       images: json["images"].length != 0
           ? List<dynamic>.from(json["images"].map((x) => x))
           : [
+              json["thumbnail"],
               "https://images-na.ssl-images-amazon.com/images/I/81vJyb43URL._SL1500_.jpg",
               "https://i.pinimg.com/564x/fa/ae/0e/faae0efd550dd06800fccef79a63019b.jpg",
-              "https://i.pinimg.com/564x/14/6d/0a/146d0ad30465aea80427bdaff7345518.jpg"
             ],
       variants:
           List<Variant>.from(json["variants"].map((x) => Variant.fromJson(x))),

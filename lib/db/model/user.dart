@@ -14,7 +14,6 @@ class User {
   String photo;
   String refreshToken;
   String accessToken;
-  String subcriptionToken;
 
   User(
       {this.id,
@@ -29,8 +28,7 @@ class User {
       this.last,
       this.photo,
       this.refreshToken,
-      this.accessToken,
-      this.subcriptionToken});
+      this.accessToken});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
@@ -46,7 +44,6 @@ class User {
       UserProvider.PHOTO: photo,
       UserProvider.REFRESH_TOKEN: refreshToken,
       UserProvider.ACCESS_TOKEN: accessToken,
-      UserProvider.SUBCRIPTION_TOKEN: subcriptionToken,
     };
 
     if (id != null) {
@@ -70,6 +67,5 @@ class User {
     photo = map[UserProvider.PHOTO];
     refreshToken = map[UserProvider.REFRESH_TOKEN];
     accessToken = map[UserProvider.ACCESS_TOKEN];
-    subcriptionToken = map[UserProvider.SUBCRIPTION_TOKEN];
   }
 }
