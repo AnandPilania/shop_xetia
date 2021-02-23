@@ -10,9 +10,9 @@ import 'package:faker/faker.dart';
 class ProductController extends GetxController {
   RxList<DummyProduct> listProduct = List<DummyProduct>().obs;
   RxList<Datum> listProductFetch = List<Datum>().obs;
-  RxInt indexProductPicture = 0.obs;
-  RxString category = "".obs;
-  RxInt page = 1.obs;
+  RxInt _indexProductPicture = 0.obs;
+  RxString _category = "".obs;
+  RxInt _page = 1.obs;
   Product product = Product();
 
   set indexProductPicture(value) => this._indexProductPicture.value = value;
@@ -62,7 +62,7 @@ class ProductController extends GetxController {
   void fetchData() async {
     await product
         .getProduct(
-      page: page.value,
+      page: page,
     )
         .then((value) {
       if (value.meta.code == 200) {

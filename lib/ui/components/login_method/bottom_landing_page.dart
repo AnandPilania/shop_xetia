@@ -3,8 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/ui/landing_page/on_boarding.dart';
 
 class BottomWaveLandingPage extends StatelessWidget {
   final ThemeController controller = Get.put(ThemeController());
@@ -64,7 +66,9 @@ class BottomWaveLandingPage extends StatelessWidget {
                 },
                 child: SvgPicture.asset("assets/svg/moon.svg", color: context.theme.primaryColorLight),
               ),
-              SvgPicture.asset("assets/svg/onboarding.svg", color: context.theme.primaryColorLight),
+              GestureDetector(
+                  onTap: () => Get.off(OnBoardingPage()),
+                  child: SvgPicture.asset("assets/svg/onboarding.svg", color: context.theme.primaryColorLight)),
               SizedBox(width: 1),
             ],
           ),

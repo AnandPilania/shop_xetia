@@ -46,7 +46,7 @@ class SignInController extends GetxController {
     return isHasLoggedIn.obs;
   }
 
-  Widget get hasLoggedIn => _loggedIn.value ? HomeUI() : SignInUI();
+  Widget get hasLoggedIn => _loggedIn.value ? HomeUI() : OnBoardingPage();
 
   void changeLoginState(bool val) => box.write(kHasLoggedIn, val);
 
@@ -83,8 +83,7 @@ class SignInController extends GetxController {
         // insertToDb(value);
         changeLoginState(true);
       } else if (value.meta.code == 408) {
-        Get.snackbar('Alert', value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
       } else {
         Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
       }

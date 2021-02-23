@@ -16,21 +16,17 @@ class Product {
       print("internet $isOnline");
       if (isOnline) {
         http.Response res = category != null
-            ? await http.get(
-                "$kProductUrl/api/v1/product?page=$page&category=$category")
+            ? await http.get("$kProductUrl/api/v1/product?page=$page&category=$category")
             : await http.get("$kProductUrl/api/v1/product?page=$page");
 
         if (res.statusCode == 200) {
           return productResponseFromJson(res.body);
         } else {
-          return ProductResponse(
-              meta: MetaProduct(
-                  code: res.statusCode, status: "Get Product Gagal"));
+          print(res.statusCode);
+          return ProductResponse(meta: MetaProduct(code: res.statusCode, status: "Get Product Gagal"));
         }
       } else {
-        return ProductResponse(
-            meta: MetaProduct(
-                code: 408, status: "Check Your Connection Internet"));
+        return ProductResponse(meta: MetaProduct(code: 408, status: "Check Your Connection Internet"));
       }
     } catch (e) {
       print("Error : $e");
@@ -48,28 +44,21 @@ class Product {
       @required String discount,
       @required List<File> images,
       @required String price,
-      String brand = null,
-      String quantity = null,
+      String brand,
+      String quantity,
       @required String shopId,
       @required String userId}) async {
     try {
       http.Response res = await http.post("$kProductUrl/api/v1/product/store",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "Authorization": "Bearer $token"
-          },
+          headers: {"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer $token"},
           body: jsonEncode({
             "name": name,
             "description": desc,
             "weight": weight,
-            "thumbnail":
-                "https://media.suara.com/pictures/480x260/2020/05/28/40379-sajian-mie-ayam-bakso-shutterstock.jpg",
+            "thumbnail": "https://media.suara.com/pictures/480x260/2020/05/28/40379-sajian-mie-ayam-bakso-shutterstock.jpg",
             "category": categoryId,
             "discount": discount,
-            "images": [
-              "https://media.suara.com/pictures/480x260/2020/05/28/40379-sajian-mie-ayam-bakso-shutterstock.jpg"
-            ],
+            "images": ["https://media.suara.com/pictures/480x260/2020/05/28/40379-sajian-mie-ayam-bakso-shutterstock.jpg"],
             "price": price,
             "brand": brand,
             "quantity": quantity,
@@ -81,13 +70,12 @@ class Product {
         AddProductResponse decode = addProductResponseFromJson(res.body);
         print(decode.meta.status);
       } else {
-        return AddProductResponse(
-            meta: MetaAdd(
-                code: res.statusCode, status: "Failed post data product"));
+        return AddProductResponse(meta: MetaAdd(code: res.statusCode, status: "Failed post data product"));
       }
     } catch (e) {
       print("Error : $e");
       return e;
     }
+    return null;
   }
 }
