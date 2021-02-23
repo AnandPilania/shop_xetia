@@ -6,6 +6,7 @@ import 'package:xetia_shop/models/product_response.dart';
 import 'package:xetia_shop/networks/_network.dart';
 import '../models/product_dummy.dart';
 import 'package:faker/faker.dart';
+import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   RxList<DummyProduct> listProduct = List<DummyProduct>().obs;
@@ -60,20 +61,36 @@ class ProductController extends GetxController {
   }
 
   void fetchData() async {
-    await product
-        .getProduct(
-      page: page,
-    )
-        .then((value) {
-      if (value.meta.code == 200) {
-        print("load data product ${value.meta.status}");
-        print("load data product code ${value.meta.code}");
-        listProductFetch.addAll(value.response.data);
+    bool isLoadAgain = true;
+    int countLoad = 0;
+
+    // menggunakan while karena ada kemungkinan 502 bad gateway
+    while (isLoadAgain) {
+      if (countLoad <= 5) {
+        await product
+            .getProduct(
+          page: page,
+        )
+            .then((value) {
+          print("load data product ${value.meta.status}");
+          print("load data product code ${value.meta.code}");
+          if (value.meta.code == 200) {
+            listProductFetch.addAll(value.response.data);
+            isLoadAgain = false;
+          } else if (value.meta.code == 502) {
+            print("load data product again");
+          } else {
+            isLoadAgain = false;
+            print(value.meta.status);
+          }
+        }).catchError((error) {
+          print(error);
+        });
       } else {
-        print(value.meta.status);
+        // exception kalo sudah 5 kali request mash tetap salah
+        isLoadAgain = false;
       }
-    }).catchError((error) {
-      print(error);
-    });
+      countLoad++;
+    }
   }
 }
