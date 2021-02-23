@@ -15,17 +15,14 @@ class ProductController extends GetxController {
   RxInt page = 1.obs;
   Product product = Product();
 
-  void updateIndexProductPicture(int index) {
-    indexProductPicture(index);
-  }
+  set indexProductPicture(value) => this._indexProductPicture.value = value;
+  get indexProductPicture => this._indexProductPicture.value;
 
-  void updateCategory(String categoryId) {
-    category(categoryId);
-  }
+  set category(value) => this._category.value = value;
+  get category => this._category.value;
 
-  void updatePage(int pageIndex) {
-    page(pageIndex);
-  }
+  set page(value) => this._page.value = value;
+  get page => this._page.value;
 
   @override
   void onInit() {

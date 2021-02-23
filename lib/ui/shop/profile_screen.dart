@@ -11,10 +11,8 @@ import '../../ui/components/profile_sheet/_component.dart';
 
 class ProfileScreen extends StatelessWidget {
   final signInController = Get.put(SignInController());
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
-  final HeaderHomeController headerHomeController =
-      Get.find<HeaderHomeController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
+  final HeaderHomeController headerHomeController = Get.find<HeaderHomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +47,8 @@ class ProfileScreen extends StatelessWidget {
               child: MyButton(
                   color: context.theme.primaryColor,
                   onTap: () {
-                    headerHomeController.changeHeader(0);
-                    loginController.setMethod(
-                      methods: LoginMethods.Unchosen,
-                      textColor: context.theme.primaryColorLight,
-                    );
+                    headerHomeController.changeHeader(position: 0, isSwiped: false);
+                    loginController.loginMethod = LoginMethods.Unchosen;
                     signInController.changeLoginState(false);
                     Get.off(SignInUI());
                   },

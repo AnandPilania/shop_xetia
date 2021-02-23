@@ -40,7 +40,7 @@ class BestSellerBar extends StatelessWidget {
                               : context.theme.primaryColor,
                           padding: EdgeInsets.all(4),
                           constraints: BoxConstraints(),
-                          onPressed: () => controllerGrid.changeView(true),
+                          onPressed: () => controllerGrid.isGridView = true,
                         ),
                       ),
                       Padding(
@@ -58,7 +58,7 @@ class BestSellerBar extends StatelessWidget {
                                 : context.theme.primaryColor,
                             padding: EdgeInsets.all(4),
                             constraints: BoxConstraints(),
-                            onPressed: () => controllerGrid.changeView(false),
+                            onPressed: () => controllerGrid.isGridView = false,
                           ),
                         ),
                       )

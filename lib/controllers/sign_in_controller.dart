@@ -11,11 +11,13 @@ import 'package:xetia_shop/ui/components/_components.dart';
 class SignInController extends GetxController {
   TextEditingController email;
   TextEditingController pass;
-  RxBool isObscure = true.obs;
+  RxBool _isObscure = true.obs;
   LoadingOverlay loading;
   final box = GetStorage();
   Auth auth = Auth();
 
+  set isObscure(value) => this._isObscure.value = value;
+  get isObscure => this._isObscure.value;
   // User user;
   bool isLoading = false;
 
@@ -42,10 +44,6 @@ class SignInController extends GetxController {
   RxBool get _loggedIn {
     bool isHasLoggedIn = box.read(kHasLoggedIn);
     return isHasLoggedIn.obs;
-  }
-
-  void changeObscure(bool val) {
-    isObscure(val);
   }
 
   Widget get hasLoggedIn => _loggedIn.value ? HomeUI() : SignInUI();
@@ -77,13 +75,10 @@ class SignInController extends GetxController {
 
     loading.show();
 
-    await auth
-        .signInRequest(email.text, pass.text)
-        .then((SignInResponse value) {
+    await auth.signInRequest(email.text, pass.text).then((SignInResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
-        Get.snackbar('Alert', value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
         Get.off(HomeUI());
         // insertToDb(value);
         changeLoginState(true);
@@ -91,14 +86,12 @@ class SignInController extends GetxController {
         Get.snackbar('Alert', value.meta.message,
             snackPosition: SnackPosition.BOTTOM);
       } else {
-        Get.snackbar('Alert', value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar('Alert', "SignIn Failed",
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Alert', "SignIn Failed", snackPosition: SnackPosition.BOTTOM);
 
       print(onError);
     });

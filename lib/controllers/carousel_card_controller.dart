@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
 
 class CarouselCardController extends GetxController {
-  RxInt currentCard = 0.obs;
+  RxInt _currentCard = 0.obs;
 
-  void changeCurrentCard(int position) {
-    currentCard(position);
-  }
+  set currentCard(value) => this._currentCard.value = value;
+  get currentCard => this._currentCard.value;
 
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];

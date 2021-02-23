@@ -192,6 +192,48 @@ class ProductListCard extends StatelessWidget {
                               ],
                             ),
                           ),
+//                         ],
+//                       ),
+//                       Padding(
+//                         padding: const EdgeInsets.only(top: 8.0),
+//                         child: Obx(
+//                           () => Row(
+//                             children: [
+//                               IconButton(
+//                                 padding: EdgeInsets.all(4),
+//                                 constraints: BoxConstraints(),
+//                                 icon: Icon(
+//                                   productController.listProduct[indexItem].isFavorite.value == true
+//                                       ? Icons.favorite
+//                                       : Icons.favorite_border,
+//                                   color: productController.listProduct[indexItem].isFavorite.value == true
+//                                       ? const Color(0xffcd444a)
+//                                       : context.theme.primaryColor,
+//                                 ),
+//                                 onPressed: () => productController.addToFavorite(indexItem),
+//                               ),
+//                               IconButton(
+//                                 padding: EdgeInsets.all(4),
+//                                 constraints: BoxConstraints(),
+//                                 icon: Icon(
+//                                   Icons.shopping_cart_outlined,
+//                                   color: context.theme.primaryColor,
+//                                 ),
+//                                 onPressed: () {},
+//                               ),
+//                               SizedBox(width: 8),
+//                               Expanded(
+//                                 child: Container(
+//                                   height: 20,
+//                                   decoration: BoxDecoration(
+//                                     borderRadius: BorderRadius.circular(15.0),
+//                                     color: context.theme.primaryColor,
+//                                   ),
+//                                   child: Center(child: Text("Buy", style: context.textTheme.headline4)),
+//                                 ),
+//                               ),
+//                             ],
+//                           ),
                         ),
                       ],
                     ),

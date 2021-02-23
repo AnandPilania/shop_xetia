@@ -9,8 +9,7 @@ import '../../components/_components.dart';
 
 class EmailLogin extends StatelessWidget {
   final SignInController _signInController = Get.put(SignInController());
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -18,7 +17,6 @@ class EmailLogin extends StatelessWidget {
     return Container(
       height: (heightApp + paddingTop) * 0.4,
       child: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
         child: Form(
           key: _formKey,
           child: Padding(
@@ -45,10 +43,9 @@ class EmailLogin extends StatelessWidget {
                         validator: Validator().password,
                         hintText: "Password",
                         isPassword: true,
-                        isObscure: _signInController.isObscure.value,
+                        isObscure: _signInController.isObscure,
                         changeObscure: () {
-                          _signInController.changeObscure(
-                              !_signInController.isObscure.value);
+                          _signInController.isObscure = !_signInController.isObscure;
                         },
                       ),
                     ),
@@ -71,8 +68,7 @@ class EmailLogin extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     GestureDetector(
-                        child: Text("forgot password",
-                            style: context.theme.textTheme.headline4),
+                        child: Text("forgot password", style: context.theme.textTheme.headline4),
                         onTap: () {
                           Get.to(RecoveryUI());
                         }),
