@@ -36,9 +36,12 @@ class MessageItemController extends GetxController {
         content: messageTextFieldController.text,
         isRight: true,
         reply: selectedReplyMessage.value));
+
     messageTextFieldController.clear();
+
     changeReplyMessage("");
     changeVisibilityReplyMessage(false);
+    
     chatBodyScrollController.animateTo(
       0.0,
       curve: Curves.easeOut,
