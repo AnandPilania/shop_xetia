@@ -70,8 +70,8 @@ class Auth {
             meta: Meta(code: 408, message: "Check Your Connection Internet"));
       }
     } catch (e) {
-      print("Error : e");
-      return null;
+      print("Error : $e");
+      return e;
     }
   }
 
@@ -92,7 +92,8 @@ class Auth {
         if (res.statusCode == 200) {
           return authResponseFromJson(res.body);
         } else {
-          return authResponseFromJson(res.body);
+          return AuthResponse(
+              meta: Meta(code: res.statusCode, message: "Logout Failed"));
         }
       } else {
         return AuthResponse(
@@ -100,7 +101,7 @@ class Auth {
       }
     } catch (e) {
       print("Error : $e");
-      return null;
+      return e;
     }
   }
 }

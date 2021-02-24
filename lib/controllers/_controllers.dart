@@ -12,3 +12,4 @@ export 'recovery_controller.dart';
 export 'sign_in_controller.dart';
 export 'sign_up_controller.dart';
 export 'theme_controller.dart';
+export 'logout_controller.dart';
