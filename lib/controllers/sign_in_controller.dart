@@ -30,6 +30,9 @@ class SignInController extends GetxController {
     if (box.read(kHasLoggedIn) == null) {
       box.write(kHasLoggedIn, false);
     }
+    if (box.read(kShowOnBoard) == null) {
+      box.write(kShowOnBoard, true);
+    }
 
     super.onInit();
   }
@@ -39,9 +42,19 @@ class SignInController extends GetxController {
     return isHasLoggedIn.obs;
   }
 
-  Widget get hasLoggedIn => _loggedIn.value ? HomeUI() : OnBoardingPage();
+  RxBool get _showOnBoard {
+    bool showOnBoard = box.read(kShowOnBoard);
+    return showOnBoard.obs;
+  }
+
+  Widget get hasLoggedIn => _loggedIn.value
+      ? HomeUI()
+      : _showOnBoard.value
+          ? OnBoardingPage()
+          : SignInUI();
 
   void changeLoginState(bool val) => box.write(kHasLoggedIn, val);
+  void changeOnBoardState(bool val) => box.write(kShowOnBoard, val);
 
   void insertToDb(SignInResponse value) async {
     User user = User(

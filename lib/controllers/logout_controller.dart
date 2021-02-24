@@ -5,7 +5,6 @@ import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/db/_db.dart';
 import 'package:xetia_shop/models/_model.dart';
 import 'package:xetia_shop/networks/_network.dart';
-import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 import '_controllers.dart';
@@ -49,7 +48,7 @@ class LogoutController extends GetxController {
         signInController.changeLoginState(false);
         Get.snackbar('Alert', value.meta.message,
             snackPosition: SnackPosition.BOTTOM);
-        Get.off(OnBoardingPage());
+        Get.off(signInController.hasLoggedIn);
       } else {
         loading.hide();
         Get.snackbar('Alert', value.meta.message,
