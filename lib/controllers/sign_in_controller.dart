@@ -10,8 +10,6 @@ import 'package:xetia_shop/networks/_network.dart';
 import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
-import '_controllers.dart';
-
 class SignInController extends GetxController {
   TextEditingController email;
   TextEditingController pass;
@@ -67,9 +65,7 @@ class SignInController extends GetxController {
       userId: value.userId,
       first: value.firstName,
       last: value.lastName,
-      photo: value.imageUrl != null
-          ? value.imageUrl
-          : "https://i.pinimg.com/originals/29/47/9b/29479ba0435741580ca9f4a467be6207.png",
+      photo: value.imageUrl != null ? value.imageUrl : "https://i.pinimg.com/originals/29/47/9b/29479ba0435741580ca9f4a467be6207.png",
       refreshToken: value.tokens.refresh,
       accessToken: value.tokens.access,
     );
@@ -81,31 +77,25 @@ class SignInController extends GetxController {
 
     loading.show();
 
-    await auth
-        .signInRequest(email.text, pass.text)
-        .then((SignInResponse value) {
+    await auth.signInRequest(email.text, pass.text).then((SignInResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
         insertToDb(value);
-        Get.snackbar('Alert', value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
         Get.off(HomeUI());
         // insertToDb(value);
         changeLoginState(true);
       } else if (value.meta.code == 408) {
         // exception untuk apabila tidak ada internet
 
-        Get.snackbar('Alert', value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
       } else {
-        Get.snackbar('Alert', value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar('Alert', "SignIn Failed",
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Alert', "SignIn Failed", snackPosition: SnackPosition.BOTTOM);
 
       print(onError);
     });

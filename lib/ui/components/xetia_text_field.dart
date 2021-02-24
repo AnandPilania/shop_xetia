@@ -10,6 +10,7 @@ class XetiaTextField extends StatelessWidget {
   final bool isPassword;
   final bool isObscure;
   final Function changeObscure;
+  final FocusNode focusNode;
 
   XetiaTextField({
     Key key,
@@ -21,6 +22,7 @@ class XetiaTextField extends StatelessWidget {
     this.isPassword = false,
     this.isObscure = false,
     this.changeObscure,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -65,20 +67,18 @@ class XetiaTextField extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             validator: validator,
+            focusNode: focusNode,
             decoration: InputDecoration(
               hintText: hintText,
               suffixIcon: isPassword
                   ? IconButton(
-                      icon: Icon(
-                          isObscure ? Icons.visibility_off : Icons.visibility,
-                          color: context.theme.primaryColor),
+                      icon: Icon(isObscure ? Icons.visibility_off : Icons.visibility, color: context.theme.primaryColor),
                       onPressed: changeObscure,
                     )
                   : null,
             ),
             cursorColor: context.theme.accentColor,
-            style: context.textTheme.headline3
-                .copyWith(color: context.theme.primaryColorDark),
+            style: context.textTheme.headline3.copyWith(color: context.theme.primaryColorDark),
             keyboardType: null,
             obscureText: isPassword ? isObscure : false,
           ),

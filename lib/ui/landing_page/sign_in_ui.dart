@@ -26,21 +26,26 @@ class SignInUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Scaffold(
-          body: SingleChildScrollView(
-            child: SizedBox(
-              width: widthApp,
-              height: heightApp + paddingTop,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(height: paddingTop, width: widthApp, color: context.theme.backgroundColor),
-                  HeaderLandingPage(),
-                  Obx(() => Expanded(
-                        child: AnimatedSwitcher(duration: Duration(milliseconds: 350), child: getMethodWidget()),
-                      )),
-                  SizedBox(height: 100),
-                ],
+        GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            body: SingleChildScrollView(
+              child: SizedBox(
+                width: widthApp,
+                height: heightApp + paddingTop,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(height: paddingTop, width: widthApp, color: context.theme.backgroundColor),
+                    HeaderLandingPage(),
+                    Obx(() => Expanded(
+                          child: Align(
+                              alignment: Alignment.topCenter,
+                              child: AnimatedSwitcher(duration: Duration(milliseconds: 350), child: getMethodWidget())),
+                        )),
+                    SizedBox(height: 100),
+                  ],
+                ),
               ),
             ),
           ),
