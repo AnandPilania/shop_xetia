@@ -56,24 +56,35 @@ class SignInController extends GetxController {
   void changeLoginState(bool val) => box.write(kHasLoggedIn, val);
 
   void insertToDb(SignInResponse value) async {
-    User user = User(
-      id: 1,
-      role: 1,
-      roleName: value.userRoles[0].roleName,
-      roleDescription: value.userRoles[0].roleDescription,
-      entityId: value.entityId,
-      entityName: value.entityName,
-      entityType: value.entityType,
-      userId: value.userId,
-      first: value.firstName,
-      last: value.lastName,
-      photo: value.imageUrl != null
-          ? value.imageUrl
-          : "https://i.pinimg.com/originals/29/47/9b/29479ba0435741580ca9f4a467be6207.png",
-      refreshToken: value.tokens.refresh,
-      accessToken: value.tokens.access,
-    );
-    await UserProvider.db.insertUser(user);
+    bool isInsert = true;
+    int i = 0;
+
+    while (isInsert) {
+      User user = User(
+        id: i,
+        role: 1,
+        roleName: value.userRoles[0].roleName,
+        roleDescription: value.userRoles[0].roleDescription,
+        entityId: value.entityId,
+        entityName: value.entityName,
+        entityType: value.entityType,
+        userId: value.userId,
+        first: value.firstName,
+        last: value.lastName,
+        photo: value.imageUrl != null
+            ? value.imageUrl
+            : "https://i.pinimg.com/originals/29/47/9b/29479ba0435741580ca9f4a467be6207.png",
+        refreshToken: value.tokens.refresh,
+        accessToken: value.tokens.access,
+      );
+
+      User res = await UserProvider.db.insertUser(user);
+      if (!res.isBlank) {
+        print("ok");
+        isInsert = false;
+      }
+      i++;
+    }
   }
 
   void resSignIn({@required BuildContext context}) async {
