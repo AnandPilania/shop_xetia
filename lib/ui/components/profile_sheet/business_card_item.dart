@@ -48,8 +48,7 @@ class BusinessCardItem extends StatelessWidget {
                       "Muhammad Faisal",
                       textAlign: TextAlign.center,
                       style: context.textTheme.headline3.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: context.theme.primaryColorDark),
+                          fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                     Text(
                       "UI/UX Designer",

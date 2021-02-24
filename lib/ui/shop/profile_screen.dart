@@ -46,14 +46,6 @@ class ProfileScreen extends StatelessWidget {
               child: MyButton(
                   color: context.theme.primaryColor,
                   onTap: () {
-                    // LoadingOverlay loading = LoadingOverlay.of(context);
-
-                    // loading.show();
-                    // headerHomeController.changeHeader(
-                    //     position: 0, isSwiped: false);
-                    // loginController.loginMethod = LoginMethods.Unchosen;
-                    // signInController.changeLoginState(false);
-                    // Get.off(OnBoardingPage());
                     logoutController.logout(context: context);
                   },
                   text: "Logout"),
