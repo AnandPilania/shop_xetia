@@ -33,7 +33,6 @@ class ProductController extends GetxController {
     fetchData();
     // untuk detail mash menggunakan data dummy
     dummyInit();
-    checkUser();
   }
 
   void checkUser() async {

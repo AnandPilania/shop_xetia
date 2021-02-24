@@ -41,30 +41,34 @@ class LogoutController extends GetxController {
 
     loading.show();
 
-    await auth
-        .logoutRequest(accessToken, refreshToken)
-        .then((AuthResponse value) {
-      print("message response ${value.meta.message}");
-      if (value.meta.code == 200) {
-        headerHomeController.changeHeader(position: 0, isSwiped: false);
-        loginController.loginMethod = LoginMethods.Unchosen;
-        signInController.changeLoginState(false);
-        Get.snackbar('Alert', value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
-        Get.off(OnBoardingPage());
-      } else {
+    try {
+      await auth
+          .logoutRequest(accessToken, refreshToken)
+          .then((AuthResponse value) {
+        print("message response ${value.meta.message}");
+        if (value.meta.code == 200) {
+          headerHomeController.changeHeader(position: 0, isSwiped: false);
+          loginController.loginMethod = LoginMethods.Unchosen;
+          signInController.changeLoginState(false);
+          Get.snackbar('Alert', value.meta.message,
+              snackPosition: SnackPosition.BOTTOM);
+          Get.off(OnBoardingPage());
+        } else {
+          loading.hide();
+          Get.snackbar('Alert', value.meta.message,
+              snackPosition: SnackPosition.BOTTOM);
+        }
+      }).catchError((onError) {
         loading.hide();
-        Get.snackbar('Alert', value.meta.message,
+        Get.snackbar('Alert', "Logout Failed",
             snackPosition: SnackPosition.BOTTOM);
-      }
-    }).catchError((onError) {
-      loading.hide();
-      Get.snackbar('Alert', "Logout Failed",
-          snackPosition: SnackPosition.BOTTOM);
 
-      print(onError);
-    });
-    ;
-    await UserProvider.db.deleteUser(id);
+        print(onError);
+      });
+      ;
+      await UserProvider.db.deleteUser(id);
+    } catch (e) {
+      print("error $e");
+    }
   }
 }
