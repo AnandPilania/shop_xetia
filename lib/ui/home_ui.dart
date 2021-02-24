@@ -17,11 +17,11 @@ class HomeUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => HeaderHomeController());
     return Stack(
       children: [
         Scaffold(
-          body:
-              Obx(() => bodyObject[bottomBarController.currentBottomBar.value]),
+          body: Obx(() => bodyObject[bottomBarController.currentBottomBar]),
           floatingActionButton: FABTheme(),
         ),
         Positioned(bottom: 0, child: XetiaBottomBar()),

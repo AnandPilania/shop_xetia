@@ -14,8 +14,7 @@ class FABTheme extends StatelessWidget {
           controller.changeTheme(!controller.isDark.value);
           Get.changeTheme(controller.theme);
         },
-        child: Icon(
-            controller.isDark.value ? Icons.brightness_1 : Icons.brightness_2),
+        child: Icon(controller.isDark.value ? Icons.brightness_1 : Icons.brightness_2),
       ),
     );
   }

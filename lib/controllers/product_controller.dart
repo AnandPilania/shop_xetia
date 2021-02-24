@@ -2,43 +2,50 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:xetia_shop/db/_db.dart';
 import 'package:xetia_shop/models/product_response.dart';
 import 'package:xetia_shop/networks/_network.dart';
 import '../models/product_dummy.dart';
 import 'package:faker/faker.dart';
+import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   RxList<DummyProduct> listProduct = List<DummyProduct>().obs;
-  Rx<ProductResponse> listProductFetch = ProductResponse().obs;
-  RxInt indexProductPicture = 0.obs;
-  RxString category = "".obs;
-  RxInt page = 1.obs;
+  RxList<Datum> listProductFetch = List<Datum>().obs;
+  RxInt _indexProductPicture = 0.obs;
+  RxString _category = "".obs;
+  RxInt _page = 1.obs;
   Product product = Product();
 
-  void updateIndexProductPicture(int index) {
-    indexProductPicture(index);
-  }
+  set indexProductPicture(value) => this._indexProductPicture.value = value;
+  get indexProductPicture => this._indexProductPicture.value;
 
-  void updateCategory(String categoryId) {
-    category(categoryId);
-  }
+  set category(value) => this._category.value = value;
+  get category => this._category.value;
 
-  void updatePage(int pageIndex) {
-    page(pageIndex);
-  }
+  set page(value) => this._page.value = value;
+  get page => this._page.value;
 
   @override
   void onInit() {
     super.onInit();
-    // fetchData();
+    // untuk grid dan list sudh menggunakan data fetct
+    fetchData();
+    // untuk detail mash menggunakan data dummy
     dummyInit();
+    checkUser();
+  }
+
+  void checkUser() async {
+    final user = await UserProvider.db.getUser();
+    print(user.first);
   }
 
   void addToFavorite(int idProduct) {
-    if (listProduct[idProduct].isFavorite.value == true) {
-      listProduct[idProduct].isFavorite.value = false;
+    if (listProductFetch[idProduct].isFavorite.value == true) {
+      listProductFetch[idProduct].isFavorite.value = false;
     } else {
-      listProduct[idProduct].isFavorite.value = true;
+      listProductFetch[idProduct].isFavorite.value = true;
     }
   }
 
@@ -61,21 +68,36 @@ class ProductController extends GetxController {
   }
 
   void fetchData() async {
-    await product
-        .getProduct(
-            page: page.value,
-            category: category.isEmpty ? null : category.value)
-        .then((value) {
-      if (value.meta.code == 200) {
-        print("load data product ${value.meta.status}");
-        print("load data length product ${value.response.data.length}");
-        // print(value.response.data[1].name);
-        listProductFetch(value);
+    bool isLoadAgain = true;
+    int countLoad = 0;
+
+    // menggunakan while karena ada kemungkinan 502 bad gateway
+    while (isLoadAgain) {
+      if (countLoad <= 5) {
+        await product
+            .getProduct(
+          page: page,
+        )
+            .then((value) {
+          print("load data product ${value.meta.status}");
+          print("load data product code ${value.meta.code}");
+          if (value.meta.code == 200) {
+            listProductFetch.addAll(value.response.data);
+            isLoadAgain = false;
+          } else if (value.meta.code == 502) {
+            print("load data product again");
+          } else {
+            isLoadAgain = false;
+            print(value.meta.status);
+          }
+        }).catchError((error) {
+          print(error);
+        });
       } else {
-        print(value.meta.status);
+        // exception kalo sudah 5 kali request mash tetap salah
+        isLoadAgain = false;
       }
-    }).catchError((error) {
-      print(error);
-    });
+      countLoad++;
+    }
   }
 }

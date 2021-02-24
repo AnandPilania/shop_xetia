@@ -29,12 +29,12 @@ class DetailFavoriteButton extends StatelessWidget {
               ),
               child: IconButton(
                 icon: Icon(
-                  productController.listProduct[indexSwiper].isFavorite.value ==
+                  productController.listProductFetch[indexSwiper].isFavorite.value ==
                           true
                       ? Icons.favorite
                       : Icons.favorite_border,
                   color: productController
-                              .listProduct[indexSwiper].isFavorite.value ==
+                              .listProductFetch[indexSwiper].isFavorite.value ==
                           true
                       ? Colors.redAccent
                       : context.theme.scaffoldBackgroundColor,

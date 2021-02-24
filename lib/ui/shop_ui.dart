@@ -19,7 +19,7 @@ class ShopUI extends StatelessWidget {
         Expanded(
           child: PageView(
             controller: headerController.pageController,
-            onPageChanged: (value) => headerController.changeHeader(value),
+            onPageChanged: (value) => headerController.changeHeader(position: value),
             scrollDirection: Axis.horizontal,
             children: [
               ShopScreen(),

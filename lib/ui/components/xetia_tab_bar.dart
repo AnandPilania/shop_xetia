@@ -19,13 +19,13 @@ class XetiaTabBar extends StatelessWidget {
                 children: [
                   for (var object in kHeadingObject)
                     GestureDetector(
-                      onTap: () => controllerPage.changeHeader(kHeadingObject.indexOf(object)),
+                      onTap: () => controllerPage.changeHeader(position: kHeadingObject.indexOf(object), isSwiped: false),
                       child: Container(
                           width: widthApp * 0.3,
                           height: heightApp * 0.06,
                           child: AnimatedSwitcher(
                               duration: Duration(milliseconds: 250),
-                              child: controllerPage.currentPage.value != object[2]
+                              child: controllerPage.currentPage != object[2]
                                   ? Icon(object[1], color: context.theme.primaryColorLight)
                                   : Text(object[0], style: context.textTheme.headline2))),
                     ),
@@ -35,7 +35,7 @@ class XetiaTabBar extends StatelessWidget {
             child: Stack(
               children: [
                 Obx(() => AnimatedPositioned(
-                      left: (widthApp * 0.05) + ((widthApp * 0.325) * controllerPage.currentPage.value),
+                      left: (widthApp * 0.05) + ((widthApp * 0.325) * controllerPage.currentPage),
                       duration: Duration(milliseconds: 250),
                       child: Container(height: 3, width: widthApp * 0.25, color: context.theme.primaryColor),
                     )),

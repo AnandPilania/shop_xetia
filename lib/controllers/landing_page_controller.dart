@@ -1,31 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 
 class LandingPageController extends GetxController {
-  RxBool isLogin = true.obs;
-  Rx<LoginMethods> loginMethod = LoginMethods.Unchosen.obs;
-  RxBool subscribeEmail = false.obs;
+  RxBool _isLogin = true.obs;
+  Rx<LoginMethods> _loginMethod = LoginMethods.Unchosen.obs;
+  RxBool _subscribeEmail = false.obs;
+
+  set isLogin(value) => this._isLogin.value = value;
+  get isLogin => this._isLogin.value;
+
+  set loginMethod(value) => this._loginMethod.value = value;
+  get loginMethod => this._loginMethod.value;
+
+  set subscribeEmail(value) => this._subscribeEmail.value = value;
+  get subscribeEmail => this._subscribeEmail.value;
+
+  void text() {
+    print("landing");
+  }
 
   void toggle() {
-    isLogin.toggle();
-  }
-
-  void changeLoginState(bool val){
-    isLogin(val);
-  }
-
-  void subscribe(value) {
-    subscribeEmail(value);
-  }
-
-  void setMethod({LoginMethods methods, Color textColor}) {
-    loginMethod(methods);
-    if (!Get.isSnackbarOpen) {
-      Get.snackbar("Login Methods", methods.toString(), colorText: textColor);
-    } else {
-      Get.back();
-      Get.snackbar("Login Methods", methods.toString(), colorText: textColor);
-    }
+    _isLogin.toggle();
   }
 }

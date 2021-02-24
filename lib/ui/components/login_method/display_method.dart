@@ -5,8 +5,7 @@ import 'package:xetia_shop/constants/enums.dart';
 import 'package:xetia_shop/controllers/landing_page_controller.dart';
 
 class DisplayMethod extends StatelessWidget {
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +16,7 @@ class DisplayMethod extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () => loginController.setMethod(
-                methods: LoginMethods.Email,
-                textColor: context.theme.primaryColorLight,
-              ),
+              onTap: () => loginController.loginMethod = LoginMethods.Email,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column(children: [
@@ -34,10 +30,7 @@ class DisplayMethod extends StatelessWidget {
             ),
             SizedBox(width: 20),
             GestureDetector(
-              onTap: () => loginController.setMethod(
-                methods: LoginMethods.Facebook,
-                textColor: context.theme.primaryColorLight,
-              ),
+              onTap: () => loginController.loginMethod = LoginMethods.Facebook,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column(children: [
@@ -55,10 +48,7 @@ class DisplayMethod extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () => loginController.setMethod(
-                methods: LoginMethods.AppleID,
-                textColor: context.theme.primaryColorLight,
-              ),
+              onTap: () => loginController.loginMethod = LoginMethods.AppleID,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column(children: [
@@ -72,10 +62,7 @@ class DisplayMethod extends StatelessWidget {
             ),
             SizedBox(width: 20),
             GestureDetector(
-              onTap: () => loginController.setMethod(
-                methods: LoginMethods.Gmail,
-                textColor: context.theme.primaryColorLight,
-              ),
+              onTap: () => loginController.loginMethod = LoginMethods.Gmail,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column(children: [

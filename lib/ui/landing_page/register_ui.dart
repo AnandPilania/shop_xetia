@@ -8,8 +8,7 @@ import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI extends StatelessWidget {
   final SignUpController _signUpController = Get.put(SignUpController());
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -17,7 +16,6 @@ class RegisterUI extends StatelessWidget {
     return Container(
       height: (heightApp + paddingTop) * 0.4,
       child: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
         child: Form(
           key: _formKey,
           child: Padding(
@@ -58,10 +56,9 @@ class RegisterUI extends StatelessWidget {
                         validator: Validator().password,
                         hintText: "Password",
                         isPassword: true,
-                        isObscure: _signUpController.isObscure.value,
+                        isObscure: _signUpController.isObscure,
                         changeObscure: () {
-                          _signUpController.changeObscure(
-                              !_signUpController.isObscure.value);
+                          _signUpController.isObscure = !_signUpController.isObscure;
                         },
                       ),
                     ),
@@ -87,9 +84,9 @@ class RegisterUI extends StatelessWidget {
                       children: [
                         Obx(() => Checkbox(
                               onChanged: (value) {
-                                loginController.subscribe(value);
+                                loginController.subscribeEmail = value;
                               },
-                              value: loginController.subscribeEmail.value,
+                              value: loginController.subscribeEmail,
                               activeColor: context.theme.primaryColor,
                             )),
                         SizedBox(height: 5),

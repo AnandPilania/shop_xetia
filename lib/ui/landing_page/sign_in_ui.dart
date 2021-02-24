@@ -7,8 +7,7 @@ import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
 
 class SignInUI extends StatelessWidget {
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
 
   final List<Widget> loginMethodWidget = [
     EmailLogin(),
@@ -20,7 +19,7 @@ class SignInUI extends StatelessWidget {
   ];
 
   Widget getMethodWidget() {
-    return loginMethodWidget[loginController.loginMethod.value.index];
+    return loginMethodWidget[loginController.loginMethod.index];
   }
 
   @override
@@ -35,11 +34,10 @@ class SignInUI extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Container(height: paddingTop, width: widthApp, color: context.theme.backgroundColor),
                   HeaderLandingPage(),
                   Obx(() => Expanded(
-                        child: AnimatedSwitcher(
-                            duration: Duration(milliseconds: 350),
-                            child: getMethodWidget()),
+                        child: AnimatedSwitcher(duration: Duration(milliseconds: 350), child: getMethodWidget()),
                       )),
                   SizedBox(height: 100),
                 ],

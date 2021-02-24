@@ -18,11 +18,13 @@ class DetailProductImages extends StatelessWidget {
       child: Center(
         child: Swiper(
           onIndexChanged: ((indexImage) =>
-              productController.updateIndexProductPicture(indexImage)),
-          itemCount: productController.listProduct[indexSwiper].imageUrl.length,
+              productController.indexProductPicture = indexImage),
+          itemCount:
+              productController.listProductFetch[indexSwiper].images.length,
           itemBuilder: (context, indexImage) {
             return Image.network(
-                productController.listProduct[indexSwiper].imageUrl[indexImage],
+                productController
+                    .listProductFetch[indexSwiper].images[indexImage],
                 fit: BoxFit.fill);
           },
         ),

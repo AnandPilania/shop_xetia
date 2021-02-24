@@ -34,8 +34,8 @@ class DetailRelatedProductItem extends StatelessWidget {
                     child: ClipRRect(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                   child: Image.network(
-                      productController.listProduct[indexSwiper].imageUrl[
-                          productController.indexProductPicture.value],
+                      productController.listProductFetch[indexSwiper]
+                          .images[productController.indexProductPicture],
                       fit: BoxFit.fill),
                 )),
               ),
@@ -68,11 +68,13 @@ class DetailRelatedProductItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(productController.listProduct[indexSwiper].productName,
+                Text(
+                    productController.listProductFetch[indexSwiper].name
+                        .toString(),
                     style: context.textTheme.headline2
                         .copyWith(fontWeight: FontWeight.bold)),
                 Text(
-                    productController.listProduct[indexSwiper].productPrice
+                    productController.listProductFetch[indexSwiper].price
                         .toString(),
                     style: context.textTheme.headline4.copyWith(
                         color: context.theme.primaryColor,
@@ -82,8 +84,7 @@ class DetailRelatedProductItem extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                          productController
-                              .listProduct[indexSwiper].productPrice
+                          productController.listProductFetch[indexSwiper].price
                               .toString(),
                           style: context.textTheme.headline5.copyWith(
                               decoration: TextDecoration.lineThrough)),

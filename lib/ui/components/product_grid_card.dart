@@ -11,19 +11,19 @@ class ProductGridCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: StaggeredGridView.countBuilder(
+    return Obx(
+      () => StaggeredGridView.countBuilder(
         padding: EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
         shrinkWrap: true,
         primary: false,
         crossAxisCount: 4,
         mainAxisSpacing: 12.0,
         crossAxisSpacing: 10.0,
-        itemCount: productController.listProduct.length,
+        itemCount: productController.listProductFetch.length,
         itemBuilder: (BuildContext context, int indexItem) {
           return GestureDetector(
             onTap: () {
-              productController.updateIndexProductPicture(0);
+              productController.indexProductPicture = 0;
               Get.bottomSheet(
                 SafeArea(bottom: false, child: DetailSheet(indexItem: indexItem)),
                 isScrollControlled: true,
@@ -49,7 +49,7 @@ class ProductGridCard extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Icon(
-                            productController.listProduct[indexItem].shopLogo,
+                            productController.listProductFetch[indexItem].shopLogo,
                             color: Colors.black,
                           ),
                         ),
@@ -61,7 +61,9 @@ class ProductGridCard extends StatelessWidget {
                             height: heightApp * 0.2,
                             width: widthApp * 0.2,
                             child: Image.network(
-                              productController.listProduct[indexItem].imageUrl[0],
+                              productController.listProductFetch[indexItem].thumbnail != "[NO_IMAGE]"
+                                  ? productController.listProductFetch[indexItem].thumbnail
+                                  : "https://i.pinimg.com/564x/fa/ae/0e/faae0efd550dd06800fccef79a63019b.jpg",
                             ),
                           ),
                         ),
@@ -74,10 +76,10 @@ class ProductGridCard extends StatelessWidget {
                                   padding: EdgeInsets.all(4),
                                   constraints: BoxConstraints(),
                                   icon: Icon(
-                                    productController.listProduct[indexItem].isFavorite.value == true
+                                    productController.listProductFetch[indexItem].isFavorite.value == true
                                         ? Icons.favorite
                                         : Icons.favorite_border,
-                                    color: productController.listProduct[indexItem].isFavorite.value == true
+                                    color: productController.listProductFetch[indexItem].isFavorite.value == true
                                         ? const Color(0xffcd444a)
                                         : Colors.black,
                                   ),
@@ -104,13 +106,13 @@ class ProductGridCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        productController.listProduct[indexItem].productName,
+                        productController.listProductFetch[indexItem].name.toString(),
                         style: context.textTheme.headline1.copyWith(fontSize: 12, fontWeight: FontWeight.normal, height: 1.45),
                         maxLines: 1,
                       ),
-                      Text(productController.listProduct[indexItem].productWeight,
+                      Text(productController.listProductFetch[indexItem].weight.toString(),
                           style: context.textTheme.headline1.copyWith(fontSize: 10, fontWeight: FontWeight.normal, height: 1.45)),
-                      Text(productController.listProduct[indexItem].productPrice,
+                      Text(productController.listProductFetch[indexItem].price.toString(),
                           style: context.textTheme.headline1.copyWith(fontSize: 13.5, height: 1.45)),
                     ],
                   ),

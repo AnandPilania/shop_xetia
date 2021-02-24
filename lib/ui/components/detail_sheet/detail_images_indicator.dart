@@ -17,23 +17,21 @@ class DetailImagesIndicator extends StatelessWidget {
         children: [
           Spacer(),
           for (int x in List<int>.generate(
-              productController.listProduct[indexSwiper].imageUrl.length,
+              productController.listProductFetch[indexSwiper].images.length,
               (i) => i))
             Obx(() => Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: AnimatedContainer(
                       duration: Duration(milliseconds: 250),
                       height: 10,
-                      width: x == productController.indexProductPicture.value
-                          ? 30
-                          : 10,
+                      width:
+                          x == productController.indexProductPicture ? 30 : 10,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                              productController.indexProductPicture.value == x
+                              productController.indexProductPicture == x
                                   ? 5
                                   : 50),
-                          color: x ==
-                                  productController.indexProductPicture.value
+                          color: x == productController.indexProductPicture
                               ? context.theme.primaryColor
                               : context.theme.primaryColor.withOpacity(0.55))),
                 )),

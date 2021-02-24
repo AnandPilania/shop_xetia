@@ -6,8 +6,7 @@ import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/ui/components/profile_sheet/_component.dart';
 
 class CarouselCardContainer extends StatelessWidget {
-  final CarouselCardController _carouselCardController =
-      Get.put(CarouselCardController());
+  final CarouselCardController _carouselCardController = Get.put(CarouselCardController());
   final List<Widget> listCard = [
     BusinessCardItem(),
     BusinessCardItem(),
@@ -32,7 +31,7 @@ class CarouselCardContainer extends StatelessWidget {
               scrollPhysics: BouncingScrollPhysics(),
               viewportFraction: 0.8,
               onPageChanged: (index, reason) {
-                _carouselCardController.changeCurrentCard(index);
+                _carouselCardController.currentCard = index;
               },
             ),
             items: listCard.map((card) {
@@ -48,19 +47,15 @@ class CarouselCardContainer extends StatelessWidget {
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children:
-                  _carouselCardController.map<Widget>(listCard, (index, url) {
+              children: _carouselCardController.map<Widget>(listCard, (index, url) {
                 return Obx(
                   () => Container(
-                    width: _carouselCardController.currentCard.value == index
-                        ? 30
-                        : 10.0,
+                    width: _carouselCardController.currentCard == index ? 30 : 10.0,
                     height: 10.0,
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: _carouselCardController.currentCard.value == index
+                      color: _carouselCardController.currentCard == index
                           ? context.theme.primaryColor
                           : context.theme.primaryColor.withOpacity(0.3),
                     ),
