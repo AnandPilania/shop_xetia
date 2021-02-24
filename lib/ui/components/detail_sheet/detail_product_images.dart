@@ -3,6 +3,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/ui/components/_components.dart';
 
 class DetailProductImages extends StatelessWidget {
   DetailProductImages({Key key, this.indexSwiper}) : super(key: key);
@@ -22,10 +23,11 @@ class DetailProductImages extends StatelessWidget {
           itemCount:
               productController.listProductFetch[indexSwiper].images.length,
           itemBuilder: (context, indexImage) {
-            return Image.network(
-                productController
-                    .listProductFetch[indexSwiper].images[indexImage],
-                fit: BoxFit.fill);
+            return XetiaImageNetwork(
+              sourceImage: productController
+                  .listProductFetch[indexSwiper].images[indexImage],
+              boxFit: BoxFit.fitWidth,
+            );
           },
         ),
       ),

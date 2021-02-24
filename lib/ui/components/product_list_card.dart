@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/ui/components/button_flat.dart';
 
 import '../../constants/dimens.dart';
@@ -53,19 +54,10 @@ class ProductListCard extends StatelessWidget {
                             child: AspectRatio(
                               aspectRatio: 1,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Container(
-                                  child: Image.network(
-                                    productController
-                                                .listProductFetch[indexItem]
-                                                .thumbnail !=
-                                            "[NO_IMAGE]"
-                                        ? productController
-                                            .listProductFetch[indexItem]
-                                            .thumbnail
-                                        : "https://i.pinimg.com/564x/fa/ae/0e/faae0efd550dd06800fccef79a63019b.jpg",
-                                    fit: BoxFit.cover,
-                                  ),
+                                borderRadius: BorderRadius.circular(20),
+                                child: XetiaImageNetwork(
+                                  sourceImage: productController
+                                      .listProductFetch[indexItem].thumbnail,
                                 ),
                               ),
                             ),

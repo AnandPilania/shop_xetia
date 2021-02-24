@@ -64,14 +64,9 @@ class ProductGridCard extends StatelessWidget {
                             Center(
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
-                                child: Image.network(
-                                  productController.listProductFetch[indexItem]
-                                              .thumbnail !=
-                                          "[NO_IMAGE]"
-                                      ? productController
-                                          .listProductFetch[indexItem].thumbnail
-                                      : "https://i.pinimg.com/564x/fa/ae/0e/faae0efd550dd06800fccef79a63019b.jpg",
-                                  fit: BoxFit.cover,
+                                child: XetiaImageNetwork(
+                                  sourceImage: productController
+                                      .listProductFetch[indexItem].thumbnail,
                                 ),
                               ),
                             ),
