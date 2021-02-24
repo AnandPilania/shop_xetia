@@ -10,7 +10,7 @@ import '../internet_available.dart';
 class Category {
   Future<GetCategoryResponse> getCategory() async {
     try {
-      bool isOnline = await intenetAvailable();
+      bool isOnline = await internetAvailable();
       print("internet $isOnline");
       if (isOnline) {
         http.Response res = await http.get("$kProductUrl/api/v1/category");

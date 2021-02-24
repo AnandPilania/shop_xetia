@@ -1,10 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/db/_db.dart';
-import 'package:xetia_shop/db/model/user.dart';
 import 'package:xetia_shop/models/_model.dart';
 import 'package:xetia_shop/networks/_network.dart';
 import 'package:xetia_shop/ui/_ui.dart';
@@ -64,7 +62,6 @@ class LogoutController extends GetxController {
 
       print(onError);
     });
-    ;
     await UserProvider.db.deleteUser(id);
   }
 }
