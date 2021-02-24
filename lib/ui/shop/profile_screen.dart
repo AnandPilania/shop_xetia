@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
-
-import 'package:xetia_shop/constants/enums.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class ProfileScreen extends StatelessWidget {

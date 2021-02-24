@@ -3,13 +3,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-
 import 'package:xetia_shop/constants/_constants.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/controllers/landing_lottie_controller.dart';
 import 'package:xetia_shop/ui/components/button_flat.dart';
 
 class OnBoardingPage extends StatelessWidget {
   final lottieController = Get.put(LandingLottieController());
+  final signInController = Get.find<SignInController>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,8 @@ class OnBoardingPage extends StatelessWidget {
                 child: Obx(
                   () => AutoSizeText(
                     kListText[lottieController.pageNumber][0],
-                    style: context.textTheme.headline1.copyWith(color: context.theme.primaryColor),
+                    style: context.textTheme.headline1
+                        .copyWith(color: context.theme.primaryColor),
                     textAlign: TextAlign.center,
                     maxLines: 1,
                   ),
@@ -83,7 +85,8 @@ class OnBoardingPage extends StatelessWidget {
                   ),
                   Obx(
                     () => AnimatedPositioned(
-                      left: widthApp * ((lottieController.pageNumber * 2.5) / 10),
+                      left:
+                          widthApp * ((lottieController.pageNumber * 2.5) / 10),
                       duration: Duration(milliseconds: 500),
                       child: Container(
                         width: widthApp * 0.25,
@@ -100,7 +103,13 @@ class OnBoardingPage extends StatelessWidget {
               Spacer(flex: 2),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                child: MyButton(onTap: lottieController.changeToSignIn, text: "Login / Sign Up", color: context.theme.primaryColor),
+                child: MyButton(
+                    onTap: () {
+                      lottieController.changeToSignIn();
+                      signInController.changeOnBoardState(false);
+                    },
+                    text: "Login / Register",
+                    color: context.theme.primaryColor),
               ),
               Spacer(),
             ],

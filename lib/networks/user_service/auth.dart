@@ -10,7 +10,7 @@ import '../internet_available.dart';
 class Auth {
   Future<SignInResponse> signInRequest(String email, String password) async {
     try {
-      bool isOnline = await intenetAvailable();
+      bool isOnline = await internetAvailable();
       print("internet $isOnline");
       if (isOnline) {
         http.Response res = await http.post("$kUserUrl/api/v1/login",
@@ -39,7 +39,7 @@ class Auth {
   Future<AuthResponse> registerRequest(
       String first, String last, String email, String password) async {
     try {
-      bool isOnline = await intenetAvailable();
+      bool isOnline = await internetAvailable();
       print("internet $isOnline");
       if (isOnline) {
         http.Response res = await http.post("$kUserUrl/api/v1/register",
@@ -78,7 +78,7 @@ class Auth {
   Future<AuthResponse> logoutRequest(
       String tokenAccess, String tokenRefresh) async {
     try {
-      bool isOnline = await intenetAvailable();
+      bool isOnline = await internetAvailable();
       print("internet $isOnline");
       if (isOnline) {
         http.Response res = await http.post("$kUserUrl/api/v1/logout",
