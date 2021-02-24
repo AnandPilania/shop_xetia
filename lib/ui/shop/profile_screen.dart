@@ -6,11 +6,6 @@ import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class ProfileScreen extends StatelessWidget {
-  // final SignInController signInController = Get.put(SignInController());
-  // final LandingPageController loginController =
-  //     Get.find<LandingPageController>();
-  // final HeaderHomeController headerHomeController =
-  //     Get.find<HeaderHomeController>();
   final LogoutController logoutController = Get.put(LogoutController());
 
   @override
