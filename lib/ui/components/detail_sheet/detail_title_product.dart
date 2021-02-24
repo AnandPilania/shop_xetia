@@ -15,12 +15,10 @@ class DetailTitleProduct extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(productController.listProduct[indexSwiper].productName,
+          Text(productController.listProductFetch[indexSwiper].name,
               style: context.textTheme.headline2
                   .copyWith(fontWeight: FontWeight.bold)),
-          Text(
-              productController.listProduct[indexSwiper].productPrice
-                  .toString(),
+          Text(productController.listProductFetch[indexSwiper].price.toString(),
               style: context.textTheme.headline4.copyWith(
                   color: context.theme.primaryColor,
                   fontWeight: FontWeight.bold)),
@@ -28,7 +26,7 @@ class DetailTitleProduct extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                  productController.listProduct[indexSwiper].productPrice
+                  productController.listProductFetch[indexSwiper].price
                       .toString(),
                   style: context.textTheme.headline5
                       .copyWith(decoration: TextDecoration.lineThrough)),

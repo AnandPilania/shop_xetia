@@ -33,7 +33,9 @@ class DetailRelatedProductItem extends StatelessWidget {
                 child: Center(
                     child: ClipRRect(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                  child: Image.network(productController.listProduct[indexSwiper].imageUrl[productController.indexProductPicture],
+                  child: Image.network(
+                      productController.listProductFetch[indexSwiper]
+                          .images[productController.indexProductPicture],
                       fit: BoxFit.fill),
                 )),
               ),
@@ -66,26 +68,39 @@ class DetailRelatedProductItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(productController.listProduct[indexSwiper].productName,
-                    style: context.textTheme.headline2.copyWith(fontWeight: FontWeight.bold)),
-                Text(productController.listProduct[indexSwiper].productPrice.toString(),
-                    style: context.textTheme.headline4.copyWith(color: context.theme.primaryColor, fontWeight: FontWeight.bold)),
+                Text(
+                    productController.listProductFetch[indexSwiper].name
+                        .toString(),
+                    style: context.textTheme.headline2
+                        .copyWith(fontWeight: FontWeight.bold)),
+                Text(
+                    productController.listProductFetch[indexSwiper].price
+                        .toString(),
+                    style: context.textTheme.headline4.copyWith(
+                        color: context.theme.primaryColor,
+                        fontWeight: FontWeight.bold)),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: Text(productController.listProduct[indexSwiper].productPrice.toString(),
-                          style: context.textTheme.headline5.copyWith(decoration: TextDecoration.lineThrough)),
+                      child: Text(
+                          productController.listProductFetch[indexSwiper].price
+                              .toString(),
+                          style: context.textTheme.headline5.copyWith(
+                              decoration: TextDecoration.lineThrough)),
                     ),
                     SizedBox(width: 10),
                     Expanded(
                       child: Container(
-                        decoration:
-                            BoxDecoration(color: context.theme.primaryColor.withOpacity(0.25), borderRadius: BorderRadius.circular(10)),
+                        decoration: BoxDecoration(
+                            color: context.theme.primaryColor.withOpacity(0.25),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Center(
-                            child: Text("50%", style: context.textTheme.headline5.copyWith(color: context.theme.primaryColor)),
+                            child: Text("50%",
+                                style: context.textTheme.headline5.copyWith(
+                                    color: context.theme.primaryColor)),
                           ),
                         ),
                       ),
