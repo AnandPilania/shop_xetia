@@ -11,16 +11,23 @@ class XetiaLogoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => AnimatedContainer(
           duration: Duration(milliseconds: 700),
-          width: focusController.topContainer == true ? widthApp * 0.15 : widthApp * 0.4,
-          height: focusController.topContainer == true ? widthApp * 0.15 : widthApp * 0.4,
+          curve: Curves.easeOut,
+          width: focusController.topContainer == true
+              ? widthApp * 0.15
+              : widthApp * 0.4,
+          height: focusController.topContainer == true
+              ? widthApp * 0.15
+              : widthApp * 0.4,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: const Color(0xff616569),
           ),
           child: AnimatedPadding(
               duration: Duration(milliseconds: 700),
-              padding: EdgeInsets.all(focusController.topContainer == true ? 10 : 20),
-              child: SvgPicture.asset("assets/svg/xetia.svg", fit: BoxFit.scaleDown, color: kOrangeXetia)),
+              padding: EdgeInsets.all(
+                  focusController.topContainer == true ? 10 : 20),
+              child: SvgPicture.asset("assets/svg/xetia.svg",
+                  fit: BoxFit.scaleDown, color: kOrangeXetia)),
         ));
   }
 }

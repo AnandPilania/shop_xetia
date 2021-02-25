@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:xetia_shop/controllers/focus_node.dart';
-import 'package:xetia_shop/ui/landing_page/sign_in_ui.dart';
 
 import './controllers/_controllers.dart';
 

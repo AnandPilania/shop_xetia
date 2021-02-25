@@ -49,7 +49,7 @@ class LogoutController extends GetxController {
           signInController.changeLoginState(false);
           Get.snackbar('Alert', value.meta.message,
               snackPosition: SnackPosition.BOTTOM);
-        Get.off(signInController.hasLoggedIn);
+          Get.off(signInController.hasLoggedIn);
         } else {
           loading.hide();
           Get.snackbar('Alert', value.meta.message,
@@ -61,7 +61,6 @@ class LogoutController extends GetxController {
             snackPosition: SnackPosition.BOTTOM);
         print(onError);
       });
-      ;
       await UserProvider.db.deleteUser(id);
     } catch (e) {
       print("error $e");
