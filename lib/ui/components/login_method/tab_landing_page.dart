@@ -18,6 +18,7 @@ class TabNameLandingPage extends StatelessWidget {
                 onTap: () {
                   loginController.isLogin = true;
                   loginController.loginMethod = LoginMethods.Unchosen;
+                  FocusScope.of(context).unfocus();
                 },
                 child: Text("Login", style: context.textTheme.headline3, textAlign: TextAlign.center))),
         Expanded(
@@ -26,6 +27,7 @@ class TabNameLandingPage extends StatelessWidget {
                 onTap: () {
                   loginController.isLogin = false;
                   loginController.loginMethod = LoginMethods.Register;
+                  FocusScope.of(context).unfocus();
                 },
                 child: Text("Register", style: context.textTheme.headline3, textAlign: TextAlign.center))),
         Spacer()

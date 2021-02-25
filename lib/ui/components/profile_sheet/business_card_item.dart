@@ -22,10 +22,7 @@ class BusinessCardItem extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            colors: [
-              context.theme.primaryColor.withOpacity(0.3),
-              context.theme.primaryColor.withOpacity(0.1)
-            ],
+            colors: [context.theme.primaryColor.withOpacity(0.3), context.theme.primaryColor.withOpacity(0.1)],
           ),
         ),
         child: Stack(
@@ -53,8 +50,7 @@ class BusinessCardItem extends StatelessWidget {
                     Text(
                       "UI/UX Designer",
                       textAlign: TextAlign.center,
-                      style: context.textTheme.headline4
-                          .copyWith(color: Colors.grey),
+                      style: context.textTheme.headline4.copyWith(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -64,7 +60,7 @@ class BusinessCardItem extends StatelessWidget {
               top: 0,
               right: 0,
               child: SvgPicture.asset(
-                "assets/svg/logo-xetia.svg",
+                "assets/svg/xetialogo.svg",
                 color: context.theme.primaryColor.withOpacity(0.7),
                 height: 80,
               ),

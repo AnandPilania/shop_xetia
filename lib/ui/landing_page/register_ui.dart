@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/controllers/focus_node.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI extends StatelessWidget {
   final SignUpController _signUpController = Get.put(SignUpController());
   final LandingPageController loginController = Get.find<LandingPageController>();
+  final FocusController focusController = Get.find<FocusController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -33,6 +35,7 @@ class RegisterUI extends StatelessWidget {
                       controller: _signUpController.firstName,
                       validator: Validator().name,
                       hintText: "First Name",
+                      focusNode: focusController.firstName,
                     ),
                     SizedBox(height: 5),
                     XetiaTextField(
@@ -40,6 +43,7 @@ class RegisterUI extends StatelessWidget {
                       controller: _signUpController.lastName,
                       validator: Validator().name,
                       hintText: "Last Name",
+                      focusNode: focusController.lastName,
                     ),
                     SizedBox(height: 5),
                     XetiaTextField(
@@ -47,6 +51,7 @@ class RegisterUI extends StatelessWidget {
                       controller: _signUpController.email,
                       validator: Validator().email,
                       hintText: "Email",
+                      focusNode: focusController.emailSignUp,
                     ),
                     SizedBox(height: 5),
                     Obx(
@@ -56,6 +61,7 @@ class RegisterUI extends StatelessWidget {
                         validator: Validator().password,
                         hintText: "Password",
                         isPassword: true,
+                        focusNode: focusController.passwordSignUp,
                         isObscure: _signUpController.isObscure,
                         changeObscure: () {
                           _signUpController.isObscure = !_signUpController.isObscure;

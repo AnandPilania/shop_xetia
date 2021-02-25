@@ -17,7 +17,7 @@ class HomeUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => HeaderHomeController());
+    //Get.lazyPut(() => HeaderHomeController());
     return Stack(
       children: [
         Scaffold(
