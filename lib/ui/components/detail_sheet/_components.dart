@@ -1,6 +1,5 @@
 export 'detail_buy_button.dart';
 export 'detail_favorite_button.dart';
-export 'detail_header.dart';
 export 'detail_images_indicator.dart';
 export 'detail_product_detail.dart';
 export 'detail_product_images.dart';

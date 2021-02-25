@@ -20,3 +20,6 @@ export 'xetia_logo_widget.dart';
 export 'xetia_shop_info.dart';
 export 'xetia_tab_bar.dart';
 export 'xetia_text_field.dart';
+export 'add_product_sheet/_components.dart';
+export 'add_product_sheet.dart';
+export 'sheet_header.dart';
