@@ -7,7 +7,8 @@ import 'package:swipe_to/swipe_to.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 
 class ChatBody extends StatelessWidget {
-  final MessageItemController _messageItemController = Get.put(MessageItemController());
+  final MessageItemController _messageItemController =
+      Get.put(MessageItemController());
 
   @override
   Widget build(BuildContext context) {
@@ -55,59 +56,66 @@ class BubbleChat extends StatelessWidget {
       },
       child: Bubble(
         alignment: isRight ? Alignment.centerRight : Alignment.centerLeft,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            reply.isNotEmpty
-                ? Column(
+        child: reply.isNotEmpty
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
                     children: [
                       Container(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                padding: EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  color: Colors.white.withOpacity(0.3),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      Faker().person.name(),
-                                      style: context.textTheme.headline4.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
-                                    ),
-                                    Text(
-                                      reply,
-                                      style: context.textTheme.headline5.copyWith(color: Colors.black),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
-                                ),
+                        child: Container(
+                          padding: EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.white.withOpacity(0.3),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                Faker().person.name(),
+                                style: context.textTheme.headline4.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                               ),
-                            ),
-                          ],
+                              Text(
+                                reply,
+                                style: context.textTheme.headline4
+                                    .copyWith(color: Colors.black),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(height: 5),
                     ],
-                  )
-                : Container(),
-            Container(
-              padding: EdgeInsets.all(5),
-              child: Text(
-                text,
-                style: context.textTheme.headline5.copyWith(color: Colors.black),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                      text,
+                      style: context.textTheme.headline4
+                          .copyWith(color: Colors.black),
+                    ),
+                  ),
+                ],
+              )
+            : Container(
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  text,
+                  style:
+                      context.textTheme.headline4.copyWith(color: Colors.black),
+                ),
               ),
-            ),
-          ],
-        ),
         color: isRight ? context.theme.primaryColor : Colors.white,
         margin: isRight
-            ? BubbleEdges.fromLTRB(MediaQuery.of(context).size.width * 0.2, 5, 0, 5)
-            : BubbleEdges.fromLTRB(0, 5, MediaQuery.of(context).size.width * 0.2, 5),
+            ? BubbleEdges.fromLTRB(
+                MediaQuery.of(context).size.width * 0.2, 5, 0, 5)
+            : BubbleEdges.fromLTRB(
+                0, 5, MediaQuery.of(context).size.width * 0.2, 5),
         nip: isRight ? BubbleNip.rightBottom : BubbleNip.leftBottom,
         nipWidth: 4,
         radius: Radius.circular(10),

@@ -13,9 +13,11 @@ class MessageItemController extends GetxController {
   RxBool _showReplyMessage = false.obs;
 
   set selectedReplyMessage(value) => this._selectedReplyMessage.value = value;
+
   get selectedReplyMessage => this._selectedReplyMessage.value;
 
   set showReplyMessage(value) => this._showReplyMessage.value = value;
+
   get showReplyMessage => this._showReplyMessage.value;
 
   @override
@@ -31,20 +33,28 @@ class MessageItemController extends GetxController {
 
   void dummyInit() {
     for (int i = 0; i < 15; i++) {
-      listMessage.add(MessageItem(content: Faker().lorem.sentence(), isRight: Random().nextBool(), reply: ""));
+      listMessage.add(MessageItem(
+          content: Faker().lorem.sentence(),
+          isRight: Random().nextBool(),
+          reply: ""));
     }
   }
 
   void addMessage() {
-    listMessage.add(MessageItem(content: messageTextFieldController.text, isRight: true, reply: selectedReplyMessage));
-    messageTextFieldController.clear();
-    selectedReplyMessage = "";
-    showReplyMessage = false;
-    chatBodyScrollController.animateTo(
-      0.0,
-      curve: Curves.easeOut,
-      duration: const Duration(milliseconds: 300),
-    );
+    if (messageTextFieldController.text.isNotEmpty) {
+      listMessage.add(MessageItem(
+          content: messageTextFieldController.text,
+          isRight: true,
+          reply: selectedReplyMessage));
+      messageTextFieldController.clear();
+      selectedReplyMessage = "";
+      showReplyMessage = false;
+      chatBodyScrollController.animateTo(
+        0.0,
+        curve: Curves.easeOut,
+        duration: const Duration(milliseconds: 300),
+      );
+    }
   }
 
   @override

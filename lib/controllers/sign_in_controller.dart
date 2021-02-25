@@ -80,7 +80,7 @@ class SignInController extends GetxController {
       accessToken: value.tokens.access,
     );
 
-    UserDatabase res = await UserProvider.db.insertUser(user);
+    await UserProvider.db.insertUser(user);
   }
 
   void resSignIn({@required BuildContext context}) async {
