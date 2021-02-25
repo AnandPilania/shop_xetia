@@ -31,12 +31,18 @@ class MessageItemController extends GetxController {
 
   void dummyInit() {
     for (int i = 0; i < 15; i++) {
-      listMessage.add(MessageItem(content: Faker().lorem.sentence(), isRight: Random().nextBool(), reply: ""));
+      listMessage.add(MessageItem(
+          content: Faker().lorem.sentence(),
+          isRight: Random().nextBool(),
+          reply: ""));
     }
   }
 
   void addMessage() {
-    listMessage.add(MessageItem(content: messageTextFieldController.text, isRight: true, reply: selectedReplyMessage));
+    listMessage.add(MessageItem(
+        content: messageTextFieldController.text,
+        isRight: true,
+        reply: selectedReplyMessage));
     messageTextFieldController.clear();
     selectedReplyMessage = "";
     showReplyMessage = false;
