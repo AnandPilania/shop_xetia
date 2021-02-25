@@ -20,8 +20,7 @@ class AuthV2 {
               "Accept": "application/json",
               "Content-Type": "application/json"
             },
-            body: jsonEncode(
-                {"email": "example@gmail.com", "password": "02jsc2020"}));
+            body: jsonEncode({"email": email, "password": password}));
 
         if (res.statusCode == 200) {
           return signInResponseV2FromJson(res.body);

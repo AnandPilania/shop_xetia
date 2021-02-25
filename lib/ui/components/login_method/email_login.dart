@@ -67,7 +67,7 @@ class EmailLogin extends StatelessWidget {
                         onTap: () {
                           if (_formKey.currentState.validate()) {
                             _signInController.resSignIn(context: context);
-                            // _signInController.singInV2(context: context);
+                            // _signInController.resSignInV2(context: context);
                           }
                         },
                         text: "Sign In",

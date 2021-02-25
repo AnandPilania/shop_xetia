@@ -15,6 +15,7 @@ class SignUpController extends GetxController {
   RxBool _isObscure = true.obs;
   LoadingOverlay loading;
   Auth auth = Auth();
+  AuthV2 authV2 = AuthV2();
   final _landingPageController = Get.find<LandingPageController>();
 
   set isObscure(value) => this._isObscure.value = value;
@@ -34,10 +35,13 @@ class SignUpController extends GetxController {
 
     loading.show();
 
-    await auth.registerRequest(firstName.text, lastName.text, email.text, pass.text).then((AuthResponse value) {
+    await auth
+        .registerRequest(firstName.text, lastName.text, email.text, pass.text)
+        .then((AuthResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
-        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
         firstName.clear();
         lastName.clear();
         email.clear();
@@ -48,12 +52,52 @@ class SignUpController extends GetxController {
         Get.snackbar('Alert', value.meta.message,
             colorText: context.theme.primaryColorLight);
       } else {
-        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar('Alert', "Sign Up Failed", colorText: context.theme.primaryColorLight);
+      Get.snackbar('Alert', "Sign Up Failed",
+          colorText: context.theme.primaryColorLight);
+      print(onError);
+    });
+  }
+
+  void resSignUpV2({@required BuildContext context}) async {
+    loading = LoadingOverlay.of(context);
+
+    loading.show();
+
+    await authV2
+        .registerRequestV2(
+            first: firstName.text,
+            last: lastName.text,
+            email: email.text,
+            password: pass.text)
+        .then((AuthResponse value) {
+      loading.hide();
+      if (value.meta.code == 200) {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
+        firstName.clear();
+        lastName.clear();
+        email.clear();
+        pass.clear();
+        _landingPageController.loginMethod = LoginMethods.Unchosen;
+        _landingPageController.toggle();
+      } else if (value.meta.code == 408) {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
+      } else {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
+      }
+      print(value.meta.message);
+    }).catchError((onError) {
+      loading.hide();
+      Get.snackbar('Alert', "Sign Up Failed",
+          colorText: context.theme.primaryColorLight);
       print(onError);
     });
   }

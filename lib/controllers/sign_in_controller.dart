@@ -93,6 +93,8 @@ class SignInController extends GetxController {
         .then((SignInResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
+        email.clear();
+        pass.clear();
         insertToDb(value);
         changeLoginState(true);
         Get.snackbar('Alert', value.meta.message,
@@ -117,7 +119,7 @@ class SignInController extends GetxController {
     });
   }
 
-  void singInV2({@required BuildContext context}) async {
+  void reSignInV2({@required BuildContext context}) async {
     loading = LoadingOverlay.of(context);
 
     loading.show();
