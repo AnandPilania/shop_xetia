@@ -2,16 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
-
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class ProfileScreen extends StatelessWidget {
-  // final SignInController signInController = Get.put(SignInController());
-  // final LandingPageController loginController =
-  //     Get.find<LandingPageController>();
-  // final HeaderHomeController headerHomeController =
-  //     Get.find<HeaderHomeController>();
   final LogoutController logoutController = Get.put(LogoutController());
 
   @override
@@ -47,14 +41,6 @@ class ProfileScreen extends StatelessWidget {
               child: MyButton(
                   color: context.theme.primaryColor,
                   onTap: () {
-                    // LoadingOverlay loading = LoadingOverlay.of(context);
-
-                    // loading.show();
-                    // headerHomeController.changeHeader(
-                    //     position: 0, isSwiped: false);
-                    // loginController.loginMethod = LoginMethods.Unchosen;
-                    // signInController.changeLoginState(false);
-                    // Get.off(OnBoardingPage());
                     logoutController.logout(context: context);
                   },
                   text: "Logout"),

@@ -7,7 +7,8 @@ import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
 
 class SignInUI extends StatelessWidget {
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
 
   final List<Widget> loginMethodWidget = [
     EmailLogin(),

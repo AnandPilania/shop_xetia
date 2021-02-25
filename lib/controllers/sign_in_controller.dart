@@ -20,25 +20,18 @@ class SignInController extends GetxController {
 
   set isObscure(value) => this._isObscure.value = value;
   get isObscure => this._isObscure.value;
-  // User user;
   bool isLoading = false;
-
-  //
-  // void getUserData() async {
-  //   final user = await UserProvider.db.getUser();
-  //   print(user.accessToken);
-  //   print(user.accessToken);
-  //   this.user = user;
-  // }
 
   @override
   void onInit() {
     // TODO: implement onInit
     email = TextEditingController();
     pass = TextEditingController();
-    // getUserData();
     if (box.read(kHasLoggedIn) == null) {
       box.write(kHasLoggedIn, false);
+    }
+    if (box.read(kShowOnBoard) == null) {
+      box.write(kShowOnBoard, true);
     }
 
     super.onInit();
@@ -49,27 +42,50 @@ class SignInController extends GetxController {
     return isHasLoggedIn.obs;
   }
 
-  Widget get hasLoggedIn => _loggedIn.value ? HomeUI() : OnBoardingPage();
+  RxBool get _showOnBoard {
+    bool showOnBoard = box.read(kShowOnBoard);
+    return showOnBoard.obs;
+  }
+
+  Widget get hasLoggedIn => _loggedIn.value
+      ? HomeUI()
+      : _showOnBoard.value
+          ? OnBoardingPage()
+          : SignInUI();
 
   void changeLoginState(bool val) => box.write(kHasLoggedIn, val);
+  void changeOnBoardState(bool val) => box.write(kShowOnBoard, val);
 
   void insertToDb(SignInResponse value) async {
-    User user = User(
-      id: 1,
-      role: 1,
-      roleName: value.userRoles[0].roleName,
-      roleDescription: value.userRoles[0].roleDescription,
-      entityId: value.entityId,
-      entityName: value.entityName,
-      entityType: value.entityType,
-      userId: value.userId,
-      first: value.firstName,
-      last: value.lastName,
-      photo: value.imageUrl != null ? value.imageUrl : "https://i.pinimg.com/originals/29/47/9b/29479ba0435741580ca9f4a467be6207.png",
-      refreshToken: value.tokens.refresh,
-      accessToken: value.tokens.access,
-    );
-    await UserProvider.db.insertUser(user);
+    bool isInsert = true;
+    int i = 0;
+
+    while (isInsert) {
+      User user = User(
+        id: i,
+        role: 1,
+        roleName: value.userRoles[0].roleName,
+        roleDescription: value.userRoles[0].roleDescription,
+        entityId: value.entityId,
+        entityName: value.entityName,
+        entityType: value.entityType,
+        userId: value.userId,
+        first: value.firstName,
+        last: value.lastName,
+        photo: value.imageUrl != null
+            ? value.imageUrl
+            : "https://i.pinimg.com/originals/29/47/9b/29479ba0435741580ca9f4a467be6207.png",
+        refreshToken: value.tokens.refresh,
+        accessToken: value.tokens.access,
+      );
+
+      User res = await UserProvider.db.insertUser(user);
+      if (!res.isBlank) {
+        print("ok");
+        isInsert = false;
+      }
+      i++;
+    }
   }
 
   void resSignIn({@required BuildContext context}) async {
@@ -100,35 +116,6 @@ class SignInController extends GetxController {
       print(onError);
     });
   }
-
-  // void resSignOut({@required BuildContext context}) async {
-  //   loading = LoadingOverlay.of(context);
-  //
-  //   loading.show();
-  //   Auth auth = Auth();
-  //
-  //   await auth
-  //       .logoutRequest(user.accessToken, user.refreshToken)
-  //       .then((AuthResponse value) {
-  //     loading.hide();
-  //     if (value.meta.code == 200) {
-  //       Get.snackbar('Alert', value.meta.message,
-  //           snackPosition: SnackPosition.BOTTOM);
-  //       Get.offAll(SignInUI());
-  //       changeLoginState(false);
-  //     } else {
-  //       Get.snackbar('Alert', value.meta.message,
-  //           snackPosition: SnackPosition.BOTTOM);
-  //     }
-  //     print(value.meta.message);
-  //   }).catchError((onError) {
-  //     loading.hide();
-  //     Get.snackbar('Alert', "Sign Out Failed",
-  //         snackPosition: SnackPosition.BOTTOM);
-  //
-  //     print(onError);
-  //   });
-  // }
 
   @override
   void onClose() {

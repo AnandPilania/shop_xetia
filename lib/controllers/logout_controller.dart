@@ -5,7 +5,6 @@ import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/db/_db.dart';
 import 'package:xetia_shop/models/_model.dart';
 import 'package:xetia_shop/networks/_network.dart';
-import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 import '_controllers.dart';
@@ -39,24 +38,33 @@ class LogoutController extends GetxController {
 
     loading.show();
 
-    await auth.logoutRequest(accessToken, refreshToken).then((AuthResponse value) {
-      print("message response ${value.meta.message}");
-      if (value.meta.code == 200) {
-        headerHomeController.changeHeader(position: 0, isSwiped: false);
-        loginController.loginMethod = LoginMethods.Unchosen;
-        signInController.changeLoginState(false);
-        Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
-        Get.off(OnBoardingPage());
-      } else {
+    try {
+      await auth
+          .logoutRequest(accessToken, refreshToken)
+          .then((AuthResponse value) {
+        print("message response ${value.meta.message}");
+        if (value.meta.code == 200) {
+          headerHomeController.changeHeader(position: 0, isSwiped: false);
+          loginController.loginMethod = LoginMethods.Unchosen;
+          signInController.changeLoginState(false);
+          Get.snackbar('Alert', value.meta.message,
+              snackPosition: SnackPosition.BOTTOM);
+        Get.off(signInController.hasLoggedIn);
+        } else {
+          loading.hide();
+          Get.snackbar('Alert', value.meta.message,
+              snackPosition: SnackPosition.BOTTOM);
+        }
+      }).catchError((onError) {
         loading.hide();
-        Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
-      }
-    }).catchError((onError) {
-      loading.hide();
-      Get.snackbar('Alert', "Logout Failed", snackPosition: SnackPosition.BOTTOM);
-
-      print(onError);
-    });
-    await UserProvider.db.deleteUser(id);
+        Get.snackbar('Alert', "Logout Failed",
+            snackPosition: SnackPosition.BOTTOM);
+        print(onError);
+      });
+      ;
+      await UserProvider.db.deleteUser(id);
+    } catch (e) {
+      print("error $e");
+    }
   }
 }
