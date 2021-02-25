@@ -19,6 +19,7 @@ class SignInController extends GetxController {
   LoadingOverlay loading;
   final box = GetStorage();
   Auth auth = Auth();
+  AuthV2 authV2 = AuthV2();
 
   set isObscure(value) => this._isObscure.value = value;
   get isObscure => this._isObscure.value;
@@ -58,7 +59,7 @@ class SignInController extends GetxController {
   void changeLoginState(bool val) => box.write(kHasLoggedIn, val);
   void changeOnBoardState(bool val) => box.write(kShowOnBoard, val);
 
-  void insertToDb(SignInResponse value) async {
+  void insertToDb(dynamic value) async {
     Random random = new Random();
 
     UserDatabase user = UserDatabase(
@@ -93,6 +94,41 @@ class SignInController extends GetxController {
       loading.hide();
       if (value.meta.code == 200) {
         insertToDb(value);
+        changeLoginState(true);
+        Get.snackbar('Alert', value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
+        Get.off(HomeUI());
+      } else if (value.meta.code == 408) {
+        // exception untuk apabila tidak ada internet
+
+        Get.snackbar('Alert', value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
+      } else {
+        Get.snackbar('Alert', value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
+      }
+      print(value.meta.message);
+    }).catchError((onError) {
+      loading.hide();
+      Get.snackbar('Alert', "SignIn Failed",
+          snackPosition: SnackPosition.BOTTOM);
+
+      print(onError);
+    });
+  }
+
+  void singInV2({@required BuildContext context}) async {
+    loading = LoadingOverlay.of(context);
+
+    loading.show();
+
+    await authV2
+        .signInRequest(email: email.text, password: pass.text)
+        .then((SignInResponseV2 value) {
+      loading.hide();
+      print(value.meta.message);
+
+      if (value.meta.code == 200) {
         changeLoginState(true);
         Get.snackbar('Alert', value.meta.message,
             snackPosition: SnackPosition.BOTTOM);

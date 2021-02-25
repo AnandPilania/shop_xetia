@@ -1,14 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/models/_model.dart';
 
 import '../internet_available.dart';
 
-class Auth {
-  Future<SignInResponseV2> signInRequest(String email, String password) async {
+class AuthV2 {
+  Future<SignInResponseV2> signInRequest(
+      {@required String email, @required String password}) async {
     try {
       bool isOnline = await internetAvailable();
       print("internet $isOnline");
@@ -19,12 +21,10 @@ class Auth {
               "Content-Type": "application/json"
             },
             body: jsonEncode(
-                {"email": "example@gmail.co", "password": "02jsc2020"}));
+                {"email": "example@gmail.com", "password": "02jsc2020"}));
 
         if (res.statusCode == 200) {
-          SignInResponseV2 decode = signInResponseV2FromJson(res.body);
-
-          print(decode.meta.message);
+          return signInResponseV2FromJson(res.body);
         } else {
           return signInResponseV2FromJson(res.body);
         }
@@ -38,7 +38,10 @@ class Auth {
   }
 
   Future<AuthResponse> registerRequestV2(
-      String first, String last, String email, String password) async {
+      {@required String first,
+      @required String last,
+      @required String email,
+      @required String password}) async {
     try {
       bool isOnline = await internetAvailable();
       print("internet $isOnline");
@@ -76,7 +79,7 @@ class Auth {
   }
 
   Future<AuthResponse> logoutRequestV2(
-      String tokenAccess, String tokenRefresh) async {
+      {@required String tokenAccess, @required String tokenRefresh}) async {
     try {
       bool isOnline = await internetAvailable();
       print("internet $isOnline");
@@ -108,7 +111,8 @@ class Auth {
     }
   }
 
-  Future<TokenRefreshResponse> tokenRefreshRequestV2(String refreshT) async {
+  Future<TokenRefreshResponse> tokenRefreshRequestV2(
+      {@required String refreshT}) async {
     try {
       bool isOnline = await internetAvailable();
       print("internet $isOnline");
