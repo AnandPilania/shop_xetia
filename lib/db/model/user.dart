@@ -1,6 +1,6 @@
 import '../user_database_provider.dart';
 
-class User {
+class UserDatabase {
   int id;
   int role;
   String roleName;
@@ -15,7 +15,7 @@ class User {
   String refreshToken;
   String accessToken;
 
-  User(
+  UserDatabase(
       {this.id,
       this.role,
       this.roleName,
@@ -53,7 +53,7 @@ class User {
     return map;
   }
 
-  User.fromMap(Map<String, dynamic> map) {
+  UserDatabase.fromMap(Map<String, dynamic> map) {
     id = map[UserProvider.COLUMN_ID];
     role = map[UserProvider.ROLE];
     roleName = map[UserProvider.ROLE_NAME];

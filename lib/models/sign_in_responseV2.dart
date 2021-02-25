@@ -17,15 +17,15 @@ class SignInResponseV2 {
     this.tokens,
   });
 
-  Meta meta;
+  MetaV2 meta;
   User user;
-  Tokens tokens;
+  TokensV2 tokens;
 
   factory SignInResponseV2.fromJson(Map<String, dynamic> json) =>
       SignInResponseV2(
-        meta: Meta.fromJson(json["meta"]),
+        meta: MetaV2.fromJson(json["meta"]),
         user: User.fromJson(json["user"]),
-        tokens: Tokens.fromJson(json["tokens"]),
+        tokens: TokensV2.fromJson(json["tokens"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -35,8 +35,8 @@ class SignInResponseV2 {
       };
 }
 
-class Meta {
-  Meta({
+class MetaV2 {
+  MetaV2({
     this.code,
     this.message,
   });
@@ -44,7 +44,7 @@ class Meta {
   int code;
   String message;
 
-  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
+  factory MetaV2.fromJson(Map<String, dynamic> json) => MetaV2(
         code: json["code"],
         message: json["message"],
       );
@@ -55,8 +55,8 @@ class Meta {
       };
 }
 
-class Tokens {
-  Tokens({
+class TokensV2 {
+  TokensV2({
     this.refresh,
     this.refreshExp,
     this.access,
@@ -68,7 +68,7 @@ class Tokens {
   String access;
   DateTime accessExp;
 
-  factory Tokens.fromJson(Map<String, dynamic> json) => Tokens(
+  factory TokensV2.fromJson(Map<String, dynamic> json) => TokensV2(
         refresh: json["refresh"],
         refreshExp: DateTime.parse(json["refresh_exp"]),
         access: json["access"],

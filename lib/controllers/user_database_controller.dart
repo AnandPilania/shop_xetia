@@ -21,7 +21,7 @@ class UserDatabaseController extends GetxController {
   }
 
   void getUser() async {
-    await UserProvider.db.getUser().then((User value) {
+    await UserProvider.db.getUser().then((UserDatabase value) {
       role = value.role;
       roleName = value.roleName;
       entityID = value.entityId;

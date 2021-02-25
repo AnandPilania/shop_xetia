@@ -9,7 +9,8 @@ import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI extends StatelessWidget {
   final SignUpController _signUpController = Get.put(SignUpController());
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final FocusController focusController = Get.find<FocusController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -64,7 +65,8 @@ class RegisterUI extends StatelessWidget {
                         focusNode: focusController.passwordSignUp,
                         isObscure: _signUpController.isObscure,
                         changeObscure: () {
-                          _signUpController.isObscure = !_signUpController.isObscure;
+                          _signUpController.isObscure =
+                              !_signUpController.isObscure;
                         },
                       ),
                     ),
@@ -80,6 +82,7 @@ class RegisterUI extends StatelessWidget {
                         onTap: () {
                           if (_formKey.currentState.validate()) {
                             _signUpController.resSignUp(context: context);
+                            // _signUpController.resSignUpV2(context: context);
                           }
                         },
                         text: "Sign Up",
