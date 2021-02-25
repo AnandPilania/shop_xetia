@@ -8,41 +8,42 @@ import 'package:xetia_shop/models/_model.dart';
 import '../internet_available.dart';
 
 class Auth {
-  Future<SignInResponse> signInRequest(String email, String password) async {
+  Future<SignInResponseV2> signInRequest(String email, String password) async {
     try {
       bool isOnline = await internetAvailable();
       print("internet $isOnline");
       if (isOnline) {
-        http.Response res = await http.post("$kUserUrl/api/v1/login",
+        http.Response res = await http.post("$kUserUrlV2/api/v2/login",
             headers: {
               "Accept": "application/json",
               "Content-Type": "application/json"
             },
-            body: jsonEncode({"email": email, "password": password}));
+            body: jsonEncode(
+                {"email": "example@gmail.co", "password": "02jsc2020"}));
 
         if (res.statusCode == 200) {
-          return signInResponseFromJson(res.body);
+          SignInResponseV2 decode = signInResponseV2FromJson(res.body);
+
+          print(decode.meta.message);
         } else {
-          return signInResponseFromJson(res.body);
+          return signInResponseV2FromJson(res.body);
         }
       } else {
-        return SignInResponse(
-            meta: MetaSignIn(
-                code: 408, message: "Check Your Connection Internet"));
+        return SignInResponseV2(
+            meta: MetaV2(code: 408, message: "Check Your Connection Internet"));
       }
     } catch (e) {
-      print("Error : $e");
       return e;
     }
   }
 
-  Future<AuthResponse> registerRequest(
+  Future<AuthResponse> registerRequestV2(
       String first, String last, String email, String password) async {
     try {
       bool isOnline = await internetAvailable();
       print("internet $isOnline");
       if (isOnline) {
-        http.Response res = await http.post("$kUserUrl/api/v1/register",
+        http.Response res = await http.post("$kUserUrlV2/api/v2/register",
             headers: {
               "Accept": "application/json",
               "Content-Type": "application/json"
@@ -50,11 +51,9 @@ class Auth {
             body: jsonEncode({
               "first_name": first,
               "last_name": last,
-              "password": password,
-              "email": email
+              "email": email,
+              "password": password
             }));
-
-        print(res.body);
 
         if (res.statusCode == 200) {
           return authResponseFromJson(res.body);
@@ -63,25 +62,26 @@ class Auth {
               meta: Meta(
                   code: 500, message: "user with this email already exists."));
         } else {
-          return null;
+          return AuthResponse(
+              meta: Meta(code: res.statusCode, message: "Register Failed"));
         }
       } else {
         return AuthResponse(
             meta: Meta(code: 408, message: "Check Your Connection Internet"));
       }
     } catch (e) {
-      print("Error : $e");
+      print("Error : e");
       return e;
     }
   }
 
-  Future<AuthResponse> logoutRequest(
+  Future<AuthResponse> logoutRequestV2(
       String tokenAccess, String tokenRefresh) async {
     try {
       bool isOnline = await internetAvailable();
       print("internet $isOnline");
       if (isOnline) {
-        http.Response res = await http.post("$kUserUrl/api/v1/logout",
+        http.Response res = await http.post("$kUserUrlV2/api/v2/logout",
             headers: {
               "Accept": "application/json",
               "Content-Type": "application/json",
@@ -93,7 +93,10 @@ class Auth {
           return authResponseFromJson(res.body);
         } else {
           return AuthResponse(
-              meta: Meta(code: res.statusCode, message: "Logout Failed"));
+              meta: Meta(
+                  code: 500,
+                  message:
+                      "Refresh token is invalid, user might already logged out!"));
         }
       } else {
         return AuthResponse(
@@ -105,15 +108,31 @@ class Auth {
     }
   }
 
-  Future<TokenRefreshResponse> tokenRefreshRequest(String refreshT) async {
+  Future<TokenRefreshResponse> tokenRefreshRequestV2(String refreshT) async {
     try {
-      http.Response res = await http
-          .post("$kUserUrl/api/v1/login/refresh", body: {"refresh": refreshT});
+      bool isOnline = await internetAvailable();
+      print("internet $isOnline");
+      if (isOnline) {
+        http.Response res = await http.post("$kUserUrlV2/api/v2/login/refresh",
+            body: {"refresh": refreshT});
 
-      if (res.statusCode == 200) {
-        return tokenRefreshResponseFromJson(res.body);
+        if (res.statusCode == 200) {
+          return tokenRefreshResponseFromJson(res.body);
+        } else if (res.statusCode == 400) {
+          return TokenRefreshResponse(
+              meta: MetaTokenRefresh(
+                  code: 400,
+                  message:
+                      "Refresh token is invalid, user might already logged out!"));
+        } else {
+          return TokenRefreshResponse(
+              meta: MetaTokenRefresh(
+                  code: res.statusCode, message: "Refesh Token Failed"));
+        }
       } else {
-        return tokenRefreshResponseFromJson(res.body);
+        return TokenRefreshResponse(
+            meta: MetaTokenRefresh(
+                code: 408, message: "Check Your Connection Internet"));
       }
     } catch (e) {
       print("Error : $e");

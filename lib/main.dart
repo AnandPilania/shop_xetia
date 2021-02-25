@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Shop_Xetia',
-        theme: themeController.theme,
-        home: SignInUI() //signInController.hasLoggedIn,
-        );
+      debugShowCheckedModeBanner: false,
+      title: 'Shop_Xetia',
+      theme: themeController.theme,
+      home: signInController.hasLoggedIn,
+    );
   }
 }

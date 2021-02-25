@@ -64,7 +64,7 @@ class UserProvider {
     });
   }
 
-  Future<User> getUser() async {
+  Future<UserDatabase> getUser() async {
     final db = await database;
 
     var user = await db.query(TABLE, columns: [
@@ -83,17 +83,17 @@ class UserProvider {
       ROLE
     ]);
 
-    List<User> userList = List<User>();
+    List<UserDatabase> userList = List<UserDatabase>();
 
     user.forEach((currentUser) {
-      User user = User.fromMap(currentUser);
+      UserDatabase user = UserDatabase.fromMap(currentUser);
       userList.add(user);
     });
 
     return userList[0];
   }
 
-  Future<User> insertUser(User user) async {
+  Future<UserDatabase> insertUser(UserDatabase user) async {
     print("insert data");
 
     final db = await database;
@@ -110,7 +110,7 @@ class UserProvider {
     return await db.delete(TABLE, where: "id = ?", whereArgs: [id]);
   }
 
-  Future<int> updateUser(User user) async {
+  Future<int> updateUser(UserDatabase user) async {
     print("update data");
 
     final db = await database;
