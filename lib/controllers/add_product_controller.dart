@@ -1,9 +1,12 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddProductController extends GetxController {
+  //Image Picture
+  //////////////////////////////////////////////
   final RxList<File> images = List<File>().obs;
   final ImagePicker picker = ImagePicker();
 
@@ -36,4 +39,14 @@ class AddProductController extends GetxController {
       print('No image selected.');
     }
   }
+  //////////////////////////////////////
+
+  //Product Detail
+  //////////////////////////////////////
+  final TextEditingController productNameController = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+  final TextEditingController minimumOrderController = TextEditingController();
+  final TextEditingController weightController = TextEditingController();
+  final TextEditingController heightController = TextEditingController();
 }
