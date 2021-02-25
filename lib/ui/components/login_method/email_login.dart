@@ -37,6 +37,7 @@ class EmailLogin extends StatelessWidget {
                       validator: Validator().email,
                       hintText: "Email",
                       focusNode: focusController.emailLogin,
+                      nextFocus: focusController.passwordLogin,
                     ),
                     SizedBox(height: 5),
                     Obx(
@@ -63,6 +64,7 @@ class EmailLogin extends StatelessWidget {
                       child: MyButton(
                         color: context.theme.primaryColor,
                         onTap: () {
+                          FocusScope.of(context).unfocus();
                           if (_formKey.currentState.validate()) {
                             _signInController.resSignIn(context: context);
                           }

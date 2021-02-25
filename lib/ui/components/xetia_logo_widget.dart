@@ -15,7 +15,8 @@ class XetiaLogoWidget extends StatelessWidget {
           height: focusController.topContainer == true ? widthApp * 0.15 : widthApp * 0.4,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: const Color(0xff616569),
+            color: context.theme.highlightColor,
+            boxShadow: [BoxShadow(color: context.theme.shadowColor.withOpacity(0.4), blurRadius: 2, offset: Offset(0, 2))],
           ),
           child: AnimatedPadding(
               duration: Duration(milliseconds: 700),

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/login_method/_component.dart';
 
 import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
 
 class SignInUI extends StatelessWidget {
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
 
   final List<Widget> loginMethodWidget = [
     EmailLogin(),

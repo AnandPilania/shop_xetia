@@ -8,7 +8,7 @@ import '../ui/components/_components.dart';
 
 class ShopUI extends StatelessWidget {
   final ProductController productController = Get.put(ProductController());
-  final HeaderHomeController headerController = Get.put(HeaderHomeController());
+  final HeaderHomeController headerController = Get.find<HeaderHomeController>();
 
   @override
   Widget build(BuildContext context) {

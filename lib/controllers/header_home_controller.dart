@@ -12,21 +12,24 @@ class HeaderHomeController extends GetxController {
 
   @override
   void onInit() {
-    _pageController = PageController();
+    print("initializaiton");
+    _pageController = PageController(initialPage: 0);
     super.onInit();
   }
 
-  // @override
-  // void dispose() {
-  //   pageController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    print("disposed");
+    pageController.dispose();
+    super.dispose();
+  }
 
-  // @override
-  // void onClose() {
-  //   pageController?.dispose();
-  //   super.onClose();
-  // }
+  @override
+  void onClose() {
+    print("closed");
+    pageController?.dispose();
+    super.onClose();
+  }
 
   void changeHeader({int position, bool isSwiped = true}) {
     if (isSwiped) {

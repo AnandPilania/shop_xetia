@@ -31,9 +31,7 @@ class SignUpController extends GetxController {
 
   void resSignUp({@required BuildContext context}) async {
     loading = LoadingOverlay.of(context);
-
     loading.show();
-
     await auth.registerRequest(firstName.text, lastName.text, email.text, pass.text).then((AuthResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
@@ -45,8 +43,7 @@ class SignUpController extends GetxController {
         _landingPageController.loginMethod = LoginMethods.Unchosen;
         _landingPageController.toggle();
       } else if (value.meta.code == 408) {
-        Get.snackbar('Alert', value.meta.message,
-            colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
       } else {
         Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
       }

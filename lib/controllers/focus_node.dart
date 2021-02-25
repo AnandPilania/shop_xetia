@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
 
 class FocusController extends GetxController {
+  //Focus Node SignIn
   final FocusNode _emailLogin = FocusNode();
   get emailLogin => this._emailLogin;
   final FocusNode _passwordLogin = FocusNode();
   get passwordLogin => this._passwordLogin;
 
+  final RxBool _isEmailFocus = false.obs;
+  set isEmailFocus(value) => this._isEmailFocus.value = value;
+  get isEmailFocus => this._isEmailFocus.value;
+  final RxBool _isPasswordFocus = false.obs;
+  set isPasswordFocus(value) => this._isPasswordFocus.value = value;
+  get isPasswordFocus => this._isPasswordFocus.value;
+
+  //Focus Node SignUp - Register
   final FocusNode _firstName = FocusNode();
   get firstName => this._firstName;
   final FocusNode _lastName = FocusNode();
@@ -15,13 +24,6 @@ class FocusController extends GetxController {
   get emailSignUp => this._emailSignUp;
   final FocusNode _passwordSignUp = FocusNode();
   get passwordSignUp => this._passwordSignUp;
-
-  final RxBool _isEmailFocus = false.obs;
-  set isEmailFocus(value) => this._isEmailFocus.value = value;
-  get isEmailFocus => this._isEmailFocus.value;
-  final RxBool _isPasswordFocus = false.obs;
-  set isPasswordFocus(value) => this._isPasswordFocus.value = value;
-  get isPasswordFocus => this._isPasswordFocus.value;
 
   final RxBool _firstNameFocus = false.obs;
   set firstNameFocus(value) => this._firstNameFocus.value = value;
@@ -36,6 +38,7 @@ class FocusController extends GetxController {
   set passwordSignUpFocus(value) => this._passwordSignUpFocus.value = value;
   get passwordSignUpFocus => this._passwordSignUpFocus.value;
 
+  //Controller For top login container
   get topContainer => isEmailFocus == true ||
           isPasswordFocus == true ||
           firstNameFocus == true ||
@@ -47,36 +50,17 @@ class FocusController extends GetxController {
 
   @override
   void onInit() {
-    emailLogin.addListener(() {
-      print("Email has focus: ${emailLogin.hasFocus}");
-      isEmailFocus = emailLogin.hasFocus;
-    });
-    passwordLogin.addListener(() {
-      print("Password has focus: ${passwordLogin.hasFocus}");
-      isPasswordFocus = passwordLogin.hasFocus;
-    });
-    firstName.addListener(() {
-      print("FirstName has focus: ${firstName.hasFocus}");
-      firstNameFocus = firstName.hasFocus;
-    });
-    lastName.addListener(() {
-      print("LastName has focus: ${lastName.hasFocus}");
-      lastNameFocus = lastName.hasFocus;
-    });
-    emailSignUp.addListener(() {
-      print("Email has focus: ${emailSignUp.hasFocus}");
-      emailSignUpFocus = emailSignUp.hasFocus;
-    });
-    passwordSignUp.addListener(() {
-      print("Password has focus: ${passwordSignUp.hasFocus}");
-      passwordSignUpFocus = passwordSignUp.hasFocus;
-    });
+    emailLogin.addListener(() => isEmailFocus = emailLogin.hasFocus);
+    passwordLogin.addListener(() => isPasswordFocus = passwordLogin.hasFocus);
+    firstName.addListener(() => firstNameFocus = firstName.hasFocus);
+    lastName.addListener(() => lastNameFocus = lastName.hasFocus);
+    emailSignUp.addListener(() => emailSignUpFocus = emailSignUp.hasFocus);
+    passwordSignUp.addListener(() => passwordSignUpFocus = passwordSignUp.hasFocus);
     super.onInit();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     firstName.dispose();
     lastName.dispose();
     emailLogin.dispose();

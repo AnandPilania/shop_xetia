@@ -19,7 +19,7 @@ class XetiaTabBar extends StatelessWidget {
                 children: [
                   for (var object in kHeadingObject)
                     GestureDetector(
-                      onTap: () => controllerPage.changeHeader(position: kHeadingObject.indexOf(object), isSwiped: false),
+                      onTap: () => controllerPage.changeHeader(position: object[2], isSwiped: false),
                       child: Container(
                           width: widthApp * 0.3,
                           height: heightApp * 0.06,

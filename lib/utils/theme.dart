@@ -12,6 +12,8 @@ class Themes {
     primaryColorDark: kWhite,
     primaryColorLight: kBlack,
     backgroundColor: kBlack,
+    highlightColor: kBlack,
+    shadowColor: kBlack.withOpacity(0.4),
     textTheme: TextTheme(
         headline1: TextStyle(color: kBlack, fontFamily: 'SF Pro Rounded', fontSize: 34, fontWeight: FontWeight.bold),
         headline2: TextStyle(color: kOrangeXetia, fontFamily: 'SF Pro Rounded', fontSize: 24, fontWeight: FontWeight.w600),
@@ -38,6 +40,8 @@ class Themes {
     primaryColorDark: kBlack,
     primaryColorLight: kWhite,
     backgroundColor: kBlack,
+    shadowColor: kWhite.withOpacity(0.4),
+    highlightColor: const Color(0xff616569),
     textTheme: TextTheme(
         headline1: TextStyle(color: kWhite, fontFamily: 'SF Pro Rounded', fontSize: 34, fontWeight: FontWeight.bold),
         headline2: TextStyle(color: kOrangeXetia, fontFamily: 'SF Pro Rounded', fontSize: 24, fontWeight: FontWeight.w600),

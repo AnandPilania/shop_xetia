@@ -39,29 +39,24 @@ class LogoutController extends GetxController {
     loading.show();
 
     try {
-      await auth
-          .logoutRequest(accessToken, refreshToken)
-          .then((AuthResponse value) {
+      await auth.logoutRequest(accessToken, refreshToken).then((AuthResponse value) {
         print("message response ${value.meta.message}");
         if (value.meta.code == 200) {
           headerHomeController.changeHeader(position: 0, isSwiped: false);
           loginController.loginMethod = LoginMethods.Unchosen;
           signInController.changeLoginState(false);
-          Get.snackbar('Alert', value.meta.message,
-              snackPosition: SnackPosition.BOTTOM);
-        Get.off(signInController.hasLoggedIn);
+          Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
+          Get.offAll(signInController.hasLoggedIn);
         } else {
           loading.hide();
-          Get.snackbar('Alert', value.meta.message,
-              snackPosition: SnackPosition.BOTTOM);
+          Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
         }
       }).catchError((onError) {
         loading.hide();
-        Get.snackbar('Alert', "Logout Failed",
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar('Alert', "Logout Failed", snackPosition: SnackPosition.BOTTOM);
         print(onError);
       });
-      ;
+
       await UserProvider.db.deleteUser(id);
     } catch (e) {
       print("error $e");

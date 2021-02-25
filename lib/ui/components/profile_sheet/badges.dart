@@ -34,10 +34,7 @@ class Badges extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(round == null ? 15 : round),
-          border: Border.all(
-            color: color,
-            width: 1,
-          ),
+          border: Border.all(color: color, width: 1),
           color: bgColor,
         ),
         padding: EdgeInsets.symmetric(

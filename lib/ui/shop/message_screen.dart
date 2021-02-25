@@ -14,15 +14,7 @@ class MessageScreen extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.all(10),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search Chats',
-                  prefixIcon: IconTheme(
-                      child: Icon(Icons.search), data: context.theme.iconTheme),
-                  suffixIcon: IconTheme(
-                      child: Icon(Icons.camera), data: context.theme.iconTheme),
-                ),
-              ),
+              child: XetiaTextField(hintText: 'Search Chats', prefixIcon: Icons.search, suffixIcon: Icons.camera_alt),
             ),
             for (var _ in List.generate(10, (i) => i)) ChatItem(),
             SizedBox(height: 48),

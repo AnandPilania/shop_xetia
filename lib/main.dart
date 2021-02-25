@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:xetia_shop/controllers/focus_node.dart';
-import 'package:xetia_shop/ui/landing_page/sign_in_ui.dart';
 
 import './controllers/_controllers.dart';
 
 void main() async {
   await GetStorage.init();
+  initLazyController();
+  runApp(MyApp());
+}
+
+void initLazyController() {
   Get.lazyPut(() => LandingPageController());
   Get.lazyPut(() => HeaderHomeController());
-  Get.lazyPut(() => FocusController());
-  runApp(MyApp());
+  Get.lazyPut(() => FocusController(), fenix: true);
 }
 
 class MyApp extends StatelessWidget {
@@ -21,10 +23,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Shop_Xetia',
-        theme: themeController.theme,
-        home: SignInUI() //signInController.hasLoggedIn,
-        );
+      debugShowCheckedModeBanner: false,
+      title: 'Shop_Xetia',
+      theme: themeController.theme,
+      home: signInController.hasLoggedIn,
+    );
   }
 }

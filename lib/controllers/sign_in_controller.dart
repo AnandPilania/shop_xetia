@@ -11,20 +11,20 @@ import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class SignInController extends GetxController {
-  TextEditingController email;
-  TextEditingController pass;
   RxBool _isObscure = true.obs;
-  LoadingOverlay loading;
-  final box = GetStorage();
-  Auth auth = Auth();
-
   set isObscure(value) => this._isObscure.value = value;
   get isObscure => this._isObscure.value;
+
+  Auth auth = Auth();
+  final GetStorage box = GetStorage();
   bool isLoading = false;
+
+  TextEditingController email;
+  TextEditingController pass;
+  LoadingOverlay loading;
 
   @override
   void onInit() {
-    // TODO: implement onInit
     email = TextEditingController();
     pass = TextEditingController();
     if (box.read(kHasLoggedIn) == null) {
@@ -33,7 +33,7 @@ class SignInController extends GetxController {
     if (box.read(kShowOnBoard) == null) {
       box.write(kShowOnBoard, true);
     }
-
+    print("Has loggin status: " + box.read(kHasLoggedIn).toString());
     super.onInit();
   }
 
@@ -53,7 +53,11 @@ class SignInController extends GetxController {
           ? OnBoardingPage()
           : SignInUI();
 
-  void changeLoginState(bool val) => box.write(kHasLoggedIn, val);
+  void changeLoginState(bool val) {
+    box.write(kHasLoggedIn, val);
+    print("Has loggin status updated: " + box.read(kHasLoggedIn).toString());
+  }
+
   void changeOnBoardState(bool val) => box.write(kShowOnBoard, val);
 
   void insertToDb(SignInResponse value) async {
@@ -72,9 +76,7 @@ class SignInController extends GetxController {
         userId: value.userId,
         first: value.firstName,
         last: value.lastName,
-        photo: value.imageUrl != null
-            ? value.imageUrl
-            : "https://i.pinimg.com/originals/29/47/9b/29479ba0435741580ca9f4a467be6207.png",
+        photo: value.imageUrl != null ? value.imageUrl : "https://i.pinimg.com/originals/29/47/9b/29479ba0435741580ca9f4a467be6207.png",
         refreshToken: value.tokens.refresh,
         accessToken: value.tokens.access,
       );
@@ -89,21 +91,31 @@ class SignInController extends GetxController {
   }
 
   void resSignIn({@required BuildContext context}) async {
+    //Get.bottomSheet();
+    // SignInResponse response = await auth.signInRequest(email.text, pass.text);
+    // if (response.meta.code == 200) {
+    //   insertToDb(response);
+    //   changeLoginState(true);
+    //   Get.off(HomeUI());
+    // } else if (response.meta.code == 408) {
+    //   Get.snackbar('Alert', response.meta.message, snackPosition: SnackPosition.BOTTOM);
+    // } else {
+    //   Get.snackbar('Alert', response.meta.message, snackPosition: SnackPosition.BOTTOM);
+    // }
+
     loading = LoadingOverlay.of(context);
-
     loading.show();
-
     await auth.signInRequest(email.text, pass.text).then((SignInResponse value) {
-      loading.hide();
+      //loading.hide();
       if (value.meta.code == 200) {
         insertToDb(value);
         Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
-        Get.off(HomeUI());
-        // insertToDb(value);
+        print("get off here");
+        //insertToDb(value);
         changeLoginState(true);
+        Get.offAll(HomeUI());
       } else if (value.meta.code == 408) {
         // exception untuk apabila tidak ada internet
-
         Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
       } else {
         Get.snackbar('Alert', value.meta.message, snackPosition: SnackPosition.BOTTOM);
@@ -112,7 +124,6 @@ class SignInController extends GetxController {
     }).catchError((onError) {
       loading.hide();
       Get.snackbar('Alert', "SignIn Failed", snackPosition: SnackPosition.BOTTOM);
-
       print(onError);
     });
   }

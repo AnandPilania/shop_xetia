@@ -36,6 +36,7 @@ class RegisterUI extends StatelessWidget {
                       validator: Validator().name,
                       hintText: "First Name",
                       focusNode: focusController.firstName,
+                      nextFocus: focusController.lastName,
                     ),
                     SizedBox(height: 5),
                     XetiaTextField(
@@ -44,6 +45,7 @@ class RegisterUI extends StatelessWidget {
                       validator: Validator().name,
                       hintText: "Last Name",
                       focusNode: focusController.lastName,
+                      nextFocus: focusController.emailSignUp,
                     ),
                     SizedBox(height: 5),
                     XetiaTextField(
@@ -52,6 +54,7 @@ class RegisterUI extends StatelessWidget {
                       validator: Validator().email,
                       hintText: "Email",
                       focusNode: focusController.emailSignUp,
+                      nextFocus: focusController.passwordSignUp,
                     ),
                     SizedBox(height: 5),
                     Obx(
