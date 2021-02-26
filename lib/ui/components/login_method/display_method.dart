@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/constants/dimens.dart';
 import 'package:xetia_shop/constants/enums.dart';
 import 'package:xetia_shop/controllers/landing_page_controller.dart';
 
@@ -12,69 +14,85 @@ class DisplayMethod extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () => loginController.loginMethod = LoginMethods.Email,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(children: [
-                  SvgPicture.asset(
-                    "assets/svg/email.svg",
-                    color: context.theme.primaryColorLight,
+        SizedBox(
+          width: widthApp * 0.6,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => loginController.loginMethod = LoginMethods.Email,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/svg/email.svg",
+                          color: context.theme.primaryColorLight,
+                        ),
+                        AutoSizeText("email".tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                      ],
+                    ),
                   ),
-                  Text("E-mail", style: context.textTheme.headline3)
-                ]),
+                ),
               ),
-            ),
-            SizedBox(width: 20),
-            GestureDetector(
-              onTap: () => loginController.loginMethod = LoginMethods.Facebook,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(children: [
-                  SvgPicture.asset(
-                    "assets/svg/facebook.svg",
-                    color: context.theme.primaryColorLight,
+              SizedBox(width: 20),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => loginController.loginMethod = LoginMethods.Facebook,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(children: [
+                      SvgPicture.asset(
+                        "assets/svg/facebook.svg",
+                        color: context.theme.primaryColorLight,
+                      ),
+                      AutoSizeText("facebook".tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                    ]),
                   ),
-                  Text("Facebook", style: context.textTheme.headline3)
-                ]),
-              ),
-            )
-          ],
+                ),
+              )
+            ],
+          ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () => loginController.loginMethod = LoginMethods.AppleID,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(children: [
-                  SvgPicture.asset(
-                    "assets/svg/apple.svg",
-                    color: context.theme.primaryColorLight,
+        SizedBox(
+          width: widthApp * 0.6,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => loginController.loginMethod = LoginMethods.AppleID,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(children: [
+                      SvgPicture.asset(
+                        "assets/svg/apple.svg",
+                        color: context.theme.primaryColorLight,
+                      ),
+                      AutoSizeText("appleid".tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                    ]),
                   ),
-                  Text("Apple ID", style: context.textTheme.headline3)
-                ]),
+                ),
               ),
-            ),
-            SizedBox(width: 20),
-            GestureDetector(
-              onTap: () => loginController.loginMethod = LoginMethods.Gmail,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(children: [
-                  SvgPicture.asset(
-                    "assets/svg/gmail.svg",
-                    color: context.theme.primaryColorLight,
+              SizedBox(width: 20),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => loginController.loginMethod = LoginMethods.Gmail,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(children: [
+                      SvgPicture.asset(
+                        "assets/svg/gmail.svg",
+                        color: context.theme.primaryColorLight,
+                      ),
+                      AutoSizeText("gmail".tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                    ]),
                   ),
-                  Text("Gmail", style: context.textTheme.headline3)
-                ]),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

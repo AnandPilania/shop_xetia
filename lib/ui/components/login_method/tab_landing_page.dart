@@ -20,7 +20,7 @@ class TabNameLandingPage extends StatelessWidget {
                   loginController.loginMethod = LoginMethods.Unchosen;
                   FocusScope.of(context).unfocus();
                 },
-                child: Text("Login", style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                child: Text("login".tr, style: context.textTheme.headline3, textAlign: TextAlign.center))),
         Expanded(
             flex: 3,
             child: GestureDetector(
@@ -29,7 +29,7 @@ class TabNameLandingPage extends StatelessWidget {
                   loginController.loginMethod = LoginMethods.Register;
                   FocusScope.of(context).unfocus();
                 },
-                child: Text("Register", style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                child: Text("register".tr, style: context.textTheme.headline3, textAlign: TextAlign.center))),
         Spacer()
       ],
     );
