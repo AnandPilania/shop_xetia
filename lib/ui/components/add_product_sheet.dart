@@ -8,6 +8,8 @@ import 'package:xetia_shop/utils/_utils.dart';
 class AddProductSheet extends StatelessWidget {
   final AddProductController _addProductController =
       Get.put(AddProductController());
+  final OptionButtonController _optionButtonController =
+      Get.put(OptionButtonController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -91,13 +93,12 @@ class AddProductSheet extends StatelessWidget {
                               style: context.textTheme.headline3,
                             ),
                             SizedBox(height: 15),
-                            // OptionButtons(
-                            //   isDark: widget.isDark,
-                            //   listOption: weights,
-                            //   option: weight,
-                            //   color: widget.color,
-                            // ),
-                            // SizedBox(height: 15),
+                            OptionButtons(
+                              listOption: _optionButtonController.weights,
+                              option: _optionButtonController.weight,
+                              onChanged: _optionButtonController.setWeight,
+                            ),
+                            SizedBox(height: 15),
                             XetiaTextField(
                               textInputType: TextInputType.text,
                               controller: _addProductController.priceController,
@@ -109,13 +110,12 @@ class AddProductSheet extends StatelessWidget {
                               "Condition",
                               style: context.textTheme.headline3,
                             ),
-                            // SizedBox(height: 15),
-                            // OptionButtons(
-                            //   isDark: widget.isDark,
-                            //   listOption: weights,
-                            //   option: weight,
-                            //   color: widget.color,
-                            // ),
+                            SizedBox(height: 15),
+                            OptionButtons(
+                              listOption: _optionButtonController.heights,
+                              option: _optionButtonController.height,
+                              onChanged: _optionButtonController.setHeight,
+                            ),
                             SizedBox(height: 20),
                             XetiaDivider(),
                             SizedBox(height: 20),
@@ -131,14 +131,12 @@ class AddProductSheet extends StatelessWidget {
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  // child: OptionButtons(
-                                  //   isDark: widget.isDark,
-                                  //   listOption: weights,
-                                  //   option: weight,
-                                  //   color: widget.color,
-                                  // ),
-                                  child: Container(
-                                      color: context.theme.primaryColorLight),
+                                  child: OptionButtons(
+                                    listOption: _optionButtonController.weights,
+                                    option: _optionButtonController.weight,
+                                    onChanged:
+                                        _optionButtonController.setWeight,
+                                  ),
                                 ),
                                 Expanded(
                                   flex: 2,
@@ -165,14 +163,12 @@ class AddProductSheet extends StatelessWidget {
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  // child: OptionButtons(
-                                  //   isDark: widget.isDark,
-                                  //   listOption: weights,
-                                  //   option: weight,
-                                  //   color: widget.color,
-                                  // ),
-                                  child: Container(
-                                      color: context.theme.primaryColorDark),
+                                  child: OptionButtons(
+                                    listOption: _optionButtonController.weights,
+                                    option: _optionButtonController.weight,
+                                    onChanged:
+                                        _optionButtonController.setWeight,
+                                  ),
                                 ),
                                 Expanded(
                                   flex: 2,
@@ -199,12 +195,11 @@ class AddProductSheet extends StatelessWidget {
                               style: context.textTheme.headline3,
                             ),
                             SizedBox(height: 15),
-                            // OptionButtons(
-                            //   isDark: widget.isDark,
-                            //   listOption: posts,
-                            //   option: post,
-                            //   color: widget.color,
-                            // ),
+                            OptionButtons(
+                              listOption: _optionButtonController.posts,
+                              option: _optionButtonController.post,
+                              onChanged: _optionButtonController.setPost,
+                            ),
                           ],
                         ),
                       ),
