@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/constants/_constants.dart';
+
+import '../../constants/_constants.dart';
 
 class XetiaShopInfo extends StatelessWidget {
   @override
@@ -12,15 +13,13 @@ class XetiaShopInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (List halal in halalInfo)
+            for (List halal in kHalalInfo)
               SizedBox(
                 width: widthApp * 0.275,
                 child: Column(
                   children: [
-                    Text(halal[1], style: context.textTheme.headline4),
-                    Text(halal[0],
-                        style: context.textTheme.headline5,
-                        textAlign: TextAlign.center),
+                    Text(halal[1], style: context.textTheme.headline3),
+                    Text(halal[0], style: context.textTheme.headline3.copyWith(fontSize: 13), textAlign: TextAlign.center),
                   ],
                 ),
               ),
@@ -30,15 +29,13 @@ class XetiaShopInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (List muslim in muslimInfo)
+            for (List muslim in kMuslimInfo)
               SizedBox(
                 width: widthApp * 0.275,
                 child: Column(
                   children: [
-                    Text(muslim[1], style: context.textTheme.headline4),
-                    Text(muslim[0],
-                        style: context.textTheme.headline5,
-                        textAlign: TextAlign.center),
+                    Text(muslim[1], style: context.textTheme.headline3),
+                    Text(muslim[0], style: context.textTheme.headline3.copyWith(fontSize: 13), textAlign: TextAlign.center),
                   ],
                 ),
               ),
