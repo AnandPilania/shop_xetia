@@ -10,7 +10,8 @@ import '../../components/_components.dart';
 
 class EmailLogin extends StatelessWidget {
   final SignInController _signInController = Get.put(SignInController());
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final FocusController focusController = Get.find<FocusController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -50,7 +51,8 @@ class EmailLogin extends StatelessWidget {
                         isPassword: true,
                         isObscure: _signInController.isObscure,
                         changeObscure: () {
-                          _signInController.isObscure = !_signInController.isObscure;
+                          _signInController.isObscure =
+                              !_signInController.isObscure;
                         },
                       ),
                     ),
@@ -67,6 +69,7 @@ class EmailLogin extends StatelessWidget {
                           FocusScope.of(context).unfocus();
                           if (_formKey.currentState.validate()) {
                             _signInController.resSignIn(context: context);
+                            // _signInController.resSignInV2(context: context);
                           }
                         },
                         text: "Sign In",
@@ -74,7 +77,8 @@ class EmailLogin extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     GestureDetector(
-                        child: Text("forgot password", style: context.theme.textTheme.headline4),
+                        child: Text("forgot password",
+                            style: context.theme.textTheme.headline4),
                         onTap: () {
                           Get.to(RecoveryUI());
                         }),

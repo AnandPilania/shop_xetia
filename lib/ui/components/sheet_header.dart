@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 
-class DetailHeader extends StatelessWidget {
-  const DetailHeader({
+class SheetHeader extends StatelessWidget {
+  const SheetHeader({
     Key key,
+    @required this.title,
+    @required this.onTap,
   }) : super(key: key);
+
+  final String title;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +24,11 @@ class DetailHeader extends StatelessWidget {
         children: [
           IconButton(
             icon: Icon(CupertinoIcons.back),
-            onPressed: () {
-              Get.back();
-            },
+            onPressed: onTap,
           ),
           Expanded(
             child: Center(
-              child: Text("Product Details",
+              child: Text(title,
                   textAlign: TextAlign.center,
                   style: context.textTheme.headline3.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold)),
