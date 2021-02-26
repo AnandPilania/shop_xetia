@@ -17,8 +17,8 @@ class Product {
       if (isOnline) {
         http.Response res = category != null
             ? await http.get(
-                "$kProductUrl/api/v1/product?page=$page&category=$category")
-            : await http.get("$kProductUrl/api/v1/product?page=$page");
+                "$kProductUrlV2/api/v1/product?page=$page&category=$category")
+            : await http.get("$kProductUrlV2/api/v1/product?page=$page");
 
         if (res.statusCode == 200) {
           return productResponseFromJson(res.body);
@@ -54,7 +54,7 @@ class Product {
       @required String shopId,
       @required String userId}) async {
     try {
-      http.Response res = await http.post("$kProductUrl/api/v1/product/store",
+      http.Response res = await http.post("$kProductUrlV2/api/v1/product/store",
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",

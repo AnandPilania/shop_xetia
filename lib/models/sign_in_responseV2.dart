@@ -1,6 +1,6 @@
 // To parse this JSON data, do
 //
-//     final signInResponseV2 = signInResponseV2FromJson(jsonString);
+//     final signInResponse = signInResponseFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -105,12 +105,12 @@ class User {
   String firstName;
   String lastName;
   dynamic imageUrl;
-  dynamic mobilePhone;
-  dynamic address;
+  String mobilePhone;
+  String address;
   DateTime createdAt;
   DateTime updatedAt;
   bool isActive;
-  List<dynamic> userEntities;
+  List<UserEntity> userEntities;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
@@ -124,7 +124,8 @@ class User {
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         isActive: json["is_active"],
-        userEntities: List<dynamic>.from(json["user_entities"].map((x) => x)),
+        userEntities: List<UserEntity>.from(
+            json["user_entities"].map((x) => UserEntity.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -139,6 +140,39 @@ class User {
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "is_active": isActive,
-        "user_entities": List<dynamic>.from(userEntities.map((x) => x)),
+        "user_entities":
+            List<dynamic>.from(userEntities.map((x) => x.toJson())),
+      };
+}
+
+class UserEntity {
+  UserEntity({
+    this.entity,
+    this.entityType,
+    this.entityName,
+    this.entitySlug,
+    this.role,
+  });
+
+  String entity;
+  String entityType;
+  String entityName;
+  String entitySlug;
+  int role;
+
+  factory UserEntity.fromJson(Map<String, dynamic> json) => UserEntity(
+        entity: json["entity"],
+        entityType: json["entity_type"],
+        entityName: json["entity_name"],
+        entitySlug: json["entity_slug"],
+        role: json["role"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "entity": entity,
+        "entity_type": entityType,
+        "entity_name": entityName,
+        "entity_slug": entitySlug,
+        "role": role,
       };
 }
