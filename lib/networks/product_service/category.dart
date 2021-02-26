@@ -13,7 +13,7 @@ class Category {
       bool isOnline = await internetAvailable();
       print("internet $isOnline");
       if (isOnline) {
-        http.Response res = await http.get("$kProductUrl/api/v1/category");
+        http.Response res = await http.get("$kProductUrlV2/api/v1/category");
 
         if (res.statusCode == 200) {
           return getCategoryResponseFromJson(res.body);
@@ -37,7 +37,8 @@ class Category {
       {int page = 1}) async {
     try {
       http.Response res = await http
-          .get("$kProductUrl/api/v1/category/get-data?limit=$limit&page=$page")
+          .get(
+              "$kProductUrlV2/api/v1/category/get-data?limit=$limit&page=$page")
           .timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException("connection time out try agian");
       });
@@ -58,7 +59,7 @@ class Category {
   Future<CategoryResponse> postCategory(String token) async {
     try {
       http.Response res = await http
-          .post("$kProductUrl/api/v1/category/store",
+          .post("$kProductUrlV2/api/v1/category/store",
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
@@ -86,7 +87,7 @@ class Category {
     try {
       http.Response res = await http
           .put(
-              "$kProductUrl/api/v1/category/update/d6aa8c3f-4145-49dc-8519-cd82a96fba98",
+              "$kProductUrlV2/api/v1/category/update/d6aa8c3f-4145-49dc-8519-cd82a96fba98",
               headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
@@ -113,7 +114,7 @@ class Category {
   Future<CategoryResponse> deleteCategory(String token) async {
     try {
       http.Response res = await http.delete(
-          "$kProductUrl/api/v1/category/delete/d6aa8c3f-4145-49dc-8519-cd82a96fba98",
+          "$kProductUrlV2/api/v1/category/delete/d6aa8c3f-4145-49dc-8519-cd82a96fba98",
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
