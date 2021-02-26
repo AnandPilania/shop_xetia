@@ -23,3 +23,4 @@ export 'xetia_text_field.dart';
 export 'add_product_sheet/_components.dart';
 export 'add_product_sheet.dart';
 export 'sheet_header.dart';
+export 'xetia_divider.dart';
