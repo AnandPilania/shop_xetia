@@ -33,10 +33,9 @@ class RecoveryUI extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Recovery Password", style: context.theme.textTheme.headline1),
+                        Text("recovery_heading".tr, style: context.theme.textTheme.headline1),
                         SizedBox(height: 10),
-                        Text("Enter your emai address and we’ll send you an email with instructions to reset your password.",
-                            style: context.theme.textTheme.headline3),
+                        Text("recovery_sub".tr, style: context.theme.textTheme.headline3),
                       ],
                     ),
                     SizedBox(height: 60),
@@ -44,7 +43,7 @@ class RecoveryUI extends StatelessWidget {
                       textInputType: TextInputType.emailAddress,
                       controller: recoveryController.recovery,
                       validator: Validator().email,
-                      hintText: "Email",
+                      hintText: "email".tr,
                       isPassword: false,
                     ),
                     SizedBox(height: 30),
@@ -53,13 +52,13 @@ class RecoveryUI extends StatelessWidget {
                       onTap: () {
                         if (_formKey.currentState.validate()) {}
                       },
-                      text: "Reset Password",
+                      text: "reset_pass".tr,
                     ),
                     SizedBox(height: 30),
                     Center(
                       child: GestureDetector(
                           child: Text(
-                            "Back to Sign in",
+                            "back_sign_in".tr,
                             style: context.theme.textTheme.headline5,
                           ),
                           onTap: () {

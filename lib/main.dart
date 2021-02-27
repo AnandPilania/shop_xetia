@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import './controllers/_controllers.dart';
+import './utils/localization.dart';
 
 void main() async {
   await GetStorage.init();
@@ -24,6 +25,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      locale: Localization.locale,
+      fallbackLocale: Localization.fallbackLocale,
+      translations: Localization(),
       title: 'Shop_Xetia',
       theme: themeController.theme,
       home: signInController.hasLoggedIn,

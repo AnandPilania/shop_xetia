@@ -29,9 +29,8 @@ class OnBoardingPage extends StatelessWidget {
                 width: widthApp * 0.95,
                 child: Obx(
                   () => AutoSizeText(
-                    kListText[lottieController.pageNumber][0],
-                    style: context.textTheme.headline1
-                        .copyWith(color: context.theme.primaryColor),
+                    kListText[lottieController.pageNumber][0].tr,
+                    style: context.textTheme.headline1.copyWith(color: context.theme.primaryColor),
                     textAlign: TextAlign.center,
                     maxLines: 1,
                   ),
@@ -41,7 +40,7 @@ class OnBoardingPage extends StatelessWidget {
                 width: widthApp * 0.9,
                 height: heightApp * 0.1,
                 child: Obx(() => Text(
-                      kListText[lottieController.pageNumber][1],
+                      kListText[lottieController.pageNumber][1].tr,
                       style: context.textTheme.headline3,
                       textAlign: TextAlign.center,
                     )),
@@ -87,8 +86,7 @@ class OnBoardingPage extends StatelessWidget {
                   ),
                   Obx(
                     () => AnimatedPositioned(
-                      left:
-                          widthApp * ((lottieController.pageNumber * 2.5) / 10),
+                      left: widthApp * ((lottieController.pageNumber * 2.5) / 10),
                       duration: Duration(milliseconds: 500),
                       child: Container(
                         width: widthApp * 0.25,
@@ -110,7 +108,7 @@ class OnBoardingPage extends StatelessWidget {
                       lottieController.changeToSignIn();
                       signInController.changeOnBoardState(false);
                     },
-                    text: "Login / Register",
+                    text: "continue".tr,
                     color: context.theme.primaryColor),
               ),
               Spacer(),
