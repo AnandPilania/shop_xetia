@@ -14,7 +14,7 @@ void main() async {
 void initLazyController() {
   Get.lazyPut(() => LandingPageController());
   Get.lazyPut(() => HeaderHomeController());
-  Get.lazyPut(() => FocusController(), fenix: true);
+  Get.lazyPut(() => FocusNodeController(), fenix: true);
 }
 
 class MyApp extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/controllers/focus_node.dart';
+import 'package:xetia_shop/controllers/focus_node_controller.dart';
 import 'package:xetia_shop/language/_components.dart';
 
 import '../../../constants/_constants.dart';
@@ -13,7 +13,7 @@ class EmailLogin extends StatelessWidget {
   final SignInController _signInController = Get.put(SignInController());
   final LandingPageController loginController =
       Get.find<LandingPageController>();
-  final FocusController focusController = Get.find<FocusController>();
+  final FocusNodeController focusController = Get.find<FocusNodeController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

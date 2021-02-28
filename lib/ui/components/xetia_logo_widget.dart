@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
-import 'package:xetia_shop/controllers/focus_node.dart';
+import 'package:xetia_shop/controllers/focus_node_controller.dart';
 
 class XetiaLogoWidget extends StatelessWidget {
-  final FocusController focusController = Get.find<FocusController>();
+  final FocusNodeController focusController = Get.find<FocusNodeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,12 @@ class XetiaLogoWidget extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: context.theme.highlightColor,
-            boxShadow: [BoxShadow(color: context.theme.shadowColor.withOpacity(0.4), blurRadius: 2, offset: Offset(0, 2))],
+            boxShadow: [
+              BoxShadow(
+                  color: context.theme.shadowColor.withOpacity(0.4),
+                  blurRadius: 2,
+                  offset: Offset(0, 2))
+            ],
           ),
           child: AnimatedPadding(
               duration: Duration(milliseconds: 700),

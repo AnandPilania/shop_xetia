@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/controllers/focus_node.dart';
+import 'package:xetia_shop/controllers/focus_node_controller.dart';
 import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
@@ -12,7 +12,7 @@ class RegisterUI extends StatelessWidget {
   final SignUpController _signUpController = Get.put(SignUpController());
   final LandingPageController loginController =
       Get.find<LandingPageController>();
-  final FocusController focusController = Get.find<FocusController>();
+  final FocusNodeController focusController = Get.find<FocusNodeController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

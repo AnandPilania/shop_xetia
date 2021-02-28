@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/controllers/focus_node.dart';
+import 'package:xetia_shop/controllers/focus_node_controller.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/ui/components/login_method/_component.dart';
 
 class HeaderLandingPage extends StatelessWidget {
   final LandingPageController loginController =
       Get.find<LandingPageController>();
-  final FocusController focusController = Get.find<FocusController>();
+  final FocusNodeController focusController = Get.find<FocusNodeController>();
 
   @override
   Widget build(BuildContext context) {
