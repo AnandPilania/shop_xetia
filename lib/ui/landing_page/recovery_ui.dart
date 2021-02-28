@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 import '../components/_components.dart';
@@ -33,9 +34,11 @@ class RecoveryUI extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("recovery_heading".tr, style: context.theme.textTheme.headline1),
+                        Text(kRecoveryHeading.tr,
+                            style: context.theme.textTheme.headline1),
                         SizedBox(height: 10),
-                        Text("recovery_sub".tr, style: context.theme.textTheme.headline3),
+                        Text(kRecoverySub.tr,
+                            style: context.theme.textTheme.headline3),
                       ],
                     ),
                     SizedBox(height: 60),
@@ -43,7 +46,7 @@ class RecoveryUI extends StatelessWidget {
                       textInputType: TextInputType.emailAddress,
                       controller: recoveryController.recovery,
                       validator: Validator().email,
-                      hintText: "email".tr,
+                      hintText: kEmail.tr,
                       isPassword: false,
                     ),
                     SizedBox(height: 30),
@@ -52,13 +55,13 @@ class RecoveryUI extends StatelessWidget {
                       onTap: () {
                         if (_formKey.currentState.validate()) {}
                       },
-                      text: "reset_pass".tr,
+                      text: kResetPassword.tr,
                     ),
                     SizedBox(height: 30),
                     Center(
                       child: GestureDetector(
                           child: Text(
-                            "back_sign_in".tr,
+                            kBackSignIn.tr,
                             style: context.theme.textTheme.headline5,
                           ),
                           onTap: () {

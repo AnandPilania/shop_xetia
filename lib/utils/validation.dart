@@ -1,12 +1,13 @@
 // matching various patterns for kinds of data
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 class Validator {
   String email(String value) {
     Pattern pattern = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return "err_email".tr;
+      return kErrorEmail.tr;
     else
       return null;
   }
@@ -15,7 +16,7 @@ class Validator {
     Pattern pattern = r'^.{6,}$';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return "err_password".tr;
+      return kErrorPassword.tr;
     else
       return null;
   }
@@ -24,7 +25,7 @@ class Validator {
     Pattern pattern = r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return "err_name".tr;
+      return kErrorName.tr;
     else
       return null;
   }
@@ -33,7 +34,7 @@ class Validator {
     Pattern pattern = r'^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return "err_number".tr;
+      return kErrorNumber.tr;
     else
       return null;
   }
@@ -42,7 +43,7 @@ class Validator {
     Pattern pattern = r'^\d+$';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return "err_required".tr;
+      return kErrorRequired.tr;
     else
       return null;
   }
@@ -51,7 +52,7 @@ class Validator {
     Pattern pattern = r'^\S+$';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return "err_numberonly".tr;
+      return kErrorNumberOnly.tr;
     else
       return null;
   }

@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/controllers/focus_node.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI extends StatelessWidget {
   final SignUpController _signUpController = Get.put(SignUpController());
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final FocusController focusController = Get.find<FocusController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -34,7 +36,7 @@ class RegisterUI extends StatelessWidget {
                       textInputType: TextInputType.name,
                       controller: _signUpController.firstName,
                       validator: Validator().name,
-                      hintText: "f_name".tr,
+                      hintText: kFirstName.tr,
                       focusNode: focusController.firstName,
                       nextFocus: focusController.lastName,
                     ),
@@ -43,7 +45,7 @@ class RegisterUI extends StatelessWidget {
                       textInputType: TextInputType.name,
                       controller: _signUpController.lastName,
                       validator: Validator().name,
-                      hintText: "l_name".tr,
+                      hintText: kLastName.tr,
                       focusNode: focusController.lastName,
                       nextFocus: focusController.emailSignUp,
                     ),
@@ -52,7 +54,7 @@ class RegisterUI extends StatelessWidget {
                       textInputType: TextInputType.emailAddress,
                       controller: _signUpController.email,
                       validator: Validator().email,
-                      hintText: "email".tr,
+                      hintText: kEmail.tr,
                       focusNode: focusController.emailSignUp,
                       nextFocus: focusController.passwordSignUp,
                     ),
@@ -62,12 +64,13 @@ class RegisterUI extends StatelessWidget {
                         textInputType: TextInputType.emailAddress,
                         controller: _signUpController.pass,
                         validator: Validator().password,
-                        hintText: "password".tr,
+                        hintText: kPassword.tr,
                         isPassword: true,
                         focusNode: focusController.passwordSignUp,
                         isObscure: _signUpController.isObscure,
                         changeObscure: () {
-                          _signUpController.isObscure = !_signUpController.isObscure;
+                          _signUpController.isObscure =
+                              !_signUpController.isObscure;
                         },
                       ),
                     ),
@@ -86,7 +89,7 @@ class RegisterUI extends StatelessWidget {
                             // _signUpController.resSignUpV2(context: context);
                           }
                         },
-                        text: "sign_up".tr,
+                        text: kSignUp.tr,
                       ),
                     ),
                     SizedBox(height: 10),
@@ -102,7 +105,7 @@ class RegisterUI extends StatelessWidget {
                         SizedBox(height: 5),
                         Expanded(
                           child: AutoSizeText(
-                            "subscribe_text".tr,
+                            kSubscribeText.tr,
                             maxLines: 2,
                             style: context.textTheme.headline4,
                           ),

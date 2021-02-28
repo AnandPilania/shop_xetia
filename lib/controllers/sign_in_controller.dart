@@ -7,6 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/db/_db.dart';
 import 'package:xetia_shop/db/model/user.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/models/_model.dart';
 import 'package:xetia_shop/networks/_network.dart';
 import 'package:xetia_shop/ui/_ui.dart';
@@ -140,7 +141,9 @@ class SignInController extends GetxController {
 
     loading.show();
 
-    await authV2.signInRequest(email: email.text, password: pass.text).then((SignInResponseV2 value) {
+    await authV2
+        .signInRequest(email: email.text, password: pass.text)
+        .then((SignInResponseV2 value) {
       loading.hide();
       print(value.meta.message.toString());
 
@@ -150,18 +153,22 @@ class SignInController extends GetxController {
         insertToDb(value);
         changeLoginState(true);
         Get.offAll(HomeUI());
-        Get.snackbar('alert'.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
       } else if (value.meta.code == 408) {
         // exception untuk apabila tidak ada internet
 
-        Get.snackbar('alert'.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
       } else {
-        Get.snackbar('alert'.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar('alert'.tr, "signin_failed".tr, snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(kAlert.tr, kSignInFailed.tr,
+          snackPosition: SnackPosition.BOTTOM);
       print(onError);
     });
   }

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/language/_components.dart';
 
 class TabNameLandingPage extends StatelessWidget {
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,9 @@ class TabNameLandingPage extends StatelessWidget {
                   loginController.loginMethod = LoginMethods.Unchosen;
                   FocusScope.of(context).unfocus();
                 },
-                child: Text("login".tr, style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                child: Text(kLogin.tr,
+                    style: context.textTheme.headline3,
+                    textAlign: TextAlign.center))),
         Expanded(
             flex: 3,
             child: GestureDetector(
@@ -29,7 +33,9 @@ class TabNameLandingPage extends StatelessWidget {
                   loginController.loginMethod = LoginMethods.Register;
                   FocusScope.of(context).unfocus();
                 },
-                child: Text("register".tr, style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                child: Text(kRegister.tr,
+                    style: context.textTheme.headline3,
+                    textAlign: TextAlign.center))),
         Spacer()
       ],
     );
@@ -37,7 +43,8 @@ class TabNameLandingPage extends StatelessWidget {
 }
 
 class TabIndicatorLandingPage extends StatelessWidget {
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +56,9 @@ class TabIndicatorLandingPage extends StatelessWidget {
             flex: 6,
             child: Obx(() => AnimatedAlign(
                   duration: Duration(milliseconds: 250),
-                  alignment: loginController.isLogin == true ? Alignment.centerLeft : Alignment.centerRight,
+                  alignment: loginController.isLogin == true
+                      ? Alignment.centerLeft
+                      : Alignment.centerRight,
                   child: Container(
                     width: widthApp * 3 / 8,
                     height: 10.0,
