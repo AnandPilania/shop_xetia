@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
-class FocusController extends GetxController {
+class FocusNodeController extends GetxController {
   //Focus Node SignIn
   final FocusNode _emailLogin = FocusNode();
   get emailLogin => this._emailLogin;
@@ -55,7 +55,8 @@ class FocusController extends GetxController {
     firstName.addListener(() => firstNameFocus = firstName.hasFocus);
     lastName.addListener(() => lastNameFocus = lastName.hasFocus);
     emailSignUp.addListener(() => emailSignUpFocus = emailSignUp.hasFocus);
-    passwordSignUp.addListener(() => passwordSignUpFocus = passwordSignUp.hasFocus);
+    passwordSignUp
+        .addListener(() => passwordSignUpFocus = passwordSignUp.hasFocus);
     super.onInit();
   }
 

@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/controllers/landing_lottie_controller.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/button_flat.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -30,7 +31,8 @@ class OnBoardingPage extends StatelessWidget {
                 child: Obx(
                   () => AutoSizeText(
                     kListText[lottieController.pageNumber][0].tr,
-                    style: context.textTheme.headline1.copyWith(color: context.theme.primaryColor),
+                    style: context.textTheme.headline1
+                        .copyWith(color: context.theme.primaryColor),
                     textAlign: TextAlign.center,
                     maxLines: 1,
                   ),
@@ -86,7 +88,8 @@ class OnBoardingPage extends StatelessWidget {
                   ),
                   Obx(
                     () => AnimatedPositioned(
-                      left: widthApp * ((lottieController.pageNumber * 2.5) / 10),
+                      left:
+                          widthApp * ((lottieController.pageNumber * 2.5) / 10),
                       duration: Duration(milliseconds: 500),
                       child: Container(
                         width: widthApp * 0.25,
@@ -108,7 +111,7 @@ class OnBoardingPage extends StatelessWidget {
                       lottieController.changeToSignIn();
                       signInController.changeOnBoardState(false);
                     },
-                    text: "continue".tr,
+                    text: kContinue.tr,
                     color: context.theme.primaryColor),
               ),
               Spacer(),

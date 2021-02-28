@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/db/_db.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/models/_model.dart';
 import 'package:xetia_shop/networks/_network.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
@@ -39,21 +40,26 @@ class LogoutController extends GetxController {
     loading.show();
 
     try {
-      await authV2.logoutRequestV2(tokenAccess: accessToken, tokenRefresh: refreshToken).then((AuthResponse value) {
+      await authV2
+          .logoutRequestV2(tokenAccess: accessToken, tokenRefresh: refreshToken)
+          .then((AuthResponse value) {
         print("message response ${value.meta.message}");
         if (value.meta.code == 200) {
           headerHomeController.changeHeader(position: 0, isSwiped: false);
           loginController.loginMethod = LoginMethods.Unchosen;
           signInController.changeLoginState(false);
-          Get.snackbar('alert'.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
+          Get.snackbar(kAlert.tr, value.meta.message,
+              snackPosition: SnackPosition.BOTTOM);
           Get.offAll(signInController.hasLoggedIn);
         } else {
           loading.hide();
-          Get.snackbar('alert'.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
+          Get.snackbar(kAlert.tr, value.meta.message,
+              snackPosition: SnackPosition.BOTTOM);
         }
       }).catchError((onError) {
         loading.hide();
-        Get.snackbar('alert'.tr, "logout_failed".tr, snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, kLogoutFailed.tr,
+            snackPosition: SnackPosition.BOTTOM);
         print(onError);
       });
 

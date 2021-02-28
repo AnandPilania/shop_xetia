@@ -4,7 +4,7 @@ export 'best_seller_controller.dart';
 export 'bottom_nav_bar_controller.dart';
 export 'carousel_card_controller.dart';
 export 'chart_product_review_controller.dart';
-export 'focus_node.dart';
+export 'focus_node_controller.dart';
 export 'header_home_controller.dart';
 export 'landing_page_controller.dart';
 export 'logout_controller.dart';
