@@ -104,4 +104,7 @@ const Map<String, String> idId = {
   kTypeMinimumOrder: "Ketik minimal pesanan kamu",
   kAddProduct: "Tambah Produk",
   kProductDetail: "Rincian Produk",
+
+  kTypeMessage: "Ketik pesan",
+  kSearchChats: "Cari Obrolan",
 };

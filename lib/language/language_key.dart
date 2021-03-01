@@ -93,3 +93,6 @@ const kMinimumOrder = "Minimum_Order";
 const kTypeMinimumOrder = "Type_minimum_order";
 const kAddProduct = "Add_Product";
 const kProductDetail = "Product_Detail";
+
+const kTypeMessage = "Type_Message";
+const kSearchChats = "search_chats";
