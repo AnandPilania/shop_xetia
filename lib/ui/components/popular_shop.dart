@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 import '../../constants/_constants.dart';
 
@@ -13,8 +14,7 @@ class PopularShop extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 8.0, left: 8.0, bottom: 4.0),
-          child: Text("Popular Shops",
-              style: context.textTheme.headline1.copyWith(fontSize: 20)),
+          child: Text(kPopularShop.tr, style: context.textTheme.headline1.copyWith(fontSize: 20)),
         ),
         Container(
           height: heightApp * 0.2,
@@ -30,20 +30,15 @@ class PopularShop extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           maxRadius: 58 / 2,
-                          backgroundColor:
-                              Color((Random().nextDouble() * 0xFFFFFF).toInt())
-                                  .withOpacity(1),
+                          backgroundColor: Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1),
                           child: Icon(Icons.shop, color: Colors.white),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 4.0),
-                          child: Text(popularItem[0],
-                              style: context.textTheme.headline1
-                                  .copyWith(fontSize: 12)),
+                          child: Text(popularItem[0].toString().tr, style: context.textTheme.headline1.copyWith(fontSize: 12)),
                         ),
-                        Text(popularItem[1],
-                            style: context.textTheme.headline1.copyWith(
-                                fontSize: 11, fontWeight: FontWeight.normal)),
+                        Text(popularItem[1].toString().tr,
+                            style: context.textTheme.headline1.copyWith(fontSize: 11, fontWeight: FontWeight.normal)),
                       ],
                     ),
                   ),

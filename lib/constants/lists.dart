@@ -1,12 +1,14 @@
+import 'package:xetia_shop/language/language_key.dart';
+
 const List<List<String>> kHalalInfo = [
-  ["Halal Food", "3600"],
-  ["Halal Shop", "210"],
-  ["Halal Restaurant", "1300"]
+  [kHalalFood, "3600"],
+  [kHalalShop, "210"],
+  [kHalalRestaurant, "1300"]
 ];
 const List<List<String>> kMuslimInfo = [
-  ["Mosque", "34"],
-  ["Muslim community", "34"],
-  ["Muslim corner", "3"]
+  [kMosque, "34"],
+  [kMuslimCommunity, "34"],
+  [kMuslimCorner, "3"]
 ];
 const List<List<String>> kPopularShopData = [
   ["Sariraya", "Nagoya"],

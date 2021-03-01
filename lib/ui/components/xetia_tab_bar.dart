@@ -27,7 +27,7 @@ class XetiaTabBar extends StatelessWidget {
                               duration: Duration(milliseconds: 250),
                               child: controllerPage.currentPage != object[2]
                                   ? Icon(object[1], color: context.theme.primaryColorLight)
-                                  : Text(object[0], style: context.textTheme.headline2))),
+                                  : Text(object[0].toString().tr, style: context.textTheme.headline2))),
                     ),
                 ],
               )),

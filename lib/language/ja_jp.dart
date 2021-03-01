@@ -43,5 +43,45 @@ const Map<String, String> jaJP = {
 
   kAlert: "アラート",
   kLogoutFailed: "ログアウト失敗",
-  kSignInFailed: "サインイン失敗"
+  kSignInFailed: "サインイン失敗",
+
+  kShop: "ショップ",
+  kProfile: "プロフィール",
+  kMessage: "メッセージ",
+
+  kHalalTitle: "日本にハラルフード",
+  kHalalHint: "日本にハラルフードを検索",
+
+  kHalalFood: "ハラルフード",
+  kHalalShop: "ハラルショップ",
+  kHalalRestaurant: "ハラルレストラン",
+  kMosque: "モスク",
+  kMuslimCommunity: "イスラム教徒のコミュニティ",
+  kMuslimCorner: "ムスリムコーナー",
+
+  kPopularShop: "人気のショップ",
+  kBestSeller: "ベストセラー",
+  kProduct: "製品情報",
+
+  kProductDetails: "製品の詳細",
+  kReview: "レビュー",
+  kReviews: "レビュー",
+  kSeeReview: "すべてのレビューを見る >",
+  kWeight: "重量",
+  kKilogram: "キログラム",
+  kCondition: "条件",
+  kNew: "新しい",
+  kReadMore: "続きを読む",
+  kStore: "店舗",
+  kSeeStores: "店舗を見る >",
+  kRelateProduct: "関連製品",
+  kSeeAll: "すべてを見る >",
+  kBuy: "購入",
+  kDescription: "説明",
+
+  //日本語 only
+  "Nagoya": "名古屋",
+  "Tokyo": "東京",
+  "Kobe": "神戸",
+  "Osaka": "大阪",
 };

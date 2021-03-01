@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
@@ -22,10 +24,13 @@ class ShopScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 10),
-                Center(child: Text("Halal Food in Japan", style: context.textTheme.headline1)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Center(child: AutoSizeText(kHalalTitle.tr, style: context.textTheme.headline1, maxLines: 1)),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0, left: 10, right: 10),
-                  child: XetiaTextField(hintText: 'Search halal Food in Japan', prefixIcon: Icons.search, suffixIcon: Icons.camera_alt),
+                  child: XetiaTextField(hintText: kHalalHint.tr, prefixIcon: Icons.search, suffixIcon: Icons.camera_alt),
                 ),
                 Expanded(child: XetiaShopInfo()),
               ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 class DetailProductDetail extends StatelessWidget {
   const DetailProductDetail({
@@ -15,15 +16,15 @@ class DetailProductDetail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Product Details", style: context.textTheme.headline3),
+            Text(kProductDetails.tr, style: context.textTheme.headline3),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Weight", style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
-                  Text("1 Kg", style: context.textTheme.headline5),
+                  Text(kWeight.tr, style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
+                  Text("1 " + kKilogram.tr, style: context.textTheme.headline5),
                 ],
               ),
             ),
@@ -33,12 +34,15 @@ class DetailProductDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Condition", style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
-                  Text("New", style: context.textTheme.headline5),
+                  Text(kCondition.tr, style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
+                  Text(kNew.tr, style: context.textTheme.headline5),
                 ],
               ),
             ),
-            Text("Description", style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold, color: Colors.black)),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text(kDescription.tr, style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
+            ),
             Text(
               "lorem ipsum lorem ipsumlorem ipsum lorem ipsum",
               style: context.textTheme.headline4,
@@ -46,7 +50,7 @@ class DetailProductDetail extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
-                "Read more",
+                kReadMore.tr,
                 style: context.textTheme.headline4.copyWith(color: Colors.blueAccent),
               ),
             )
