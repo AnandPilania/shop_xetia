@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -65,10 +63,8 @@ class SignInController extends GetxController {
   void changeOnBoardState(bool val) => box.write(kShowOnBoard, val);
 
   void insertToDb(SignInResponseV2 value) async {
-    Random random = new Random();
-
     UserDatabase user = UserDatabase(
-      id: random.nextInt(100),
+      id: 1,
       role: value.user.userEntities[0].role,
       roleName: "",
       roleDescription: "",
@@ -88,52 +84,6 @@ class SignInController extends GetxController {
     await UserProvider.db.insertUser(user);
     print(user.id);
   }
-
-  // void resSignIn({@required BuildContext context}) async {
-  //   //Get.bottomSheet();
-  //   // SignInResponse response = await auth.signInRequest(email.text, pass.text);
-  //   // if (response.meta.code == 200) {
-  //   //   insertToDb(response);
-  //   //   changeLoginState(true);
-  //   //   Get.off(HomeUI());
-  //   // } else if (response.meta.code == 408) {
-  //   //   Get.snackbar('Alert', response.meta.message, snackPosition: SnackPosition.BOTTOM);
-  //   // } else {
-  //   //   Get.snackbar('Alert', response.meta.message, snackPosition: SnackPosition.BOTTOM);
-  //   // }
-  //
-  //   loading = LoadingOverlay.of(context);
-  //   loading.show();
-  //   await auth
-  //       .signInRequest(email.text, pass.text)
-  //       .then((SignInResponse value) {
-  //     loading.hide();
-  //     if (value.meta.code == 200) {
-  //       email.clear();
-  //       pass.clear();
-  //       insertToDb(value);
-  //       changeLoginState(true);
-  //       Get.snackbar('Alert', value.meta.message,
-  //           snackPosition: SnackPosition.BOTTOM);
-  //       Get.offAll(HomeUI());
-  //     } else if (value.meta.code == 408) {
-  //       // exception untuk apabila tidak ada internet
-  //
-  //       Get.snackbar('Alert', value.meta.message,
-  //           snackPosition: SnackPosition.BOTTOM);
-  //     } else {
-  //       Get.snackbar('Alert', value.meta.message,
-  //           snackPosition: SnackPosition.BOTTOM);
-  //     }
-  //     print(value.meta.message);
-  //   }).catchError((onError) {
-  //     loading.hide();
-  //     Get.snackbar('Alert', "SignIn Failed",
-  //         snackPosition: SnackPosition.BOTTOM);
-  //
-  //     print(onError);
-  //   });
-  // }
 
   void reSignInV2({@required BuildContext context}) async {
     loading = LoadingOverlay.of(context);
