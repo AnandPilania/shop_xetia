@@ -18,7 +18,6 @@ class SignInController extends GetxController {
 
   LoadingOverlay loading;
   final box = GetStorage();
-  Auth auth = Auth();
   AuthV2 authV2 = AuthV2();
 
   set isObscure(value) => this._isObscure.value = value;
