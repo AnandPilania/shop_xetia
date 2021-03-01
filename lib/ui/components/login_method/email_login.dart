@@ -73,7 +73,7 @@ class EmailLogin extends StatelessWidget {
                             _signInController.reSignInV2(context: context);
                           }
                         },
-                        text: "Sign In",
+                        text: kSignIn.tr,
                       ),
                     ),
                     SizedBox(height: 10),

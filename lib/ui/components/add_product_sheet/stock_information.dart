@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
+import 'package:xetia_shop/language/_components.dart';
 
 class StockInformation extends StatelessWidget {
   final AddProductController _addProductController =
@@ -18,7 +19,7 @@ class StockInformation extends StatelessWidget {
         XetiaDivider(),
         SizedBox(height: 20),
         Text(
-          "Stock",
+          kStock.tr,
           style: context.textTheme.headline3,
         ),
         SizedBox(height: 15),
@@ -29,7 +30,7 @@ class StockInformation extends StatelessWidget {
         ),
         SizedBox(height: 15),
         Text(
-          "Minimum Order",
+          kMinimumOrder.tr,
           style: context.textTheme.headline3,
         ),
         SizedBox(height: 15),
@@ -37,11 +38,11 @@ class StockInformation extends StatelessWidget {
           textInputType: TextInputType.text,
           controller: _addProductController.priceController,
           validator: Validator().notEmpty,
-          hintText: "Type your minimum order",
+          hintText: kTypeMinimumOrder.tr,
         ),
         SizedBox(height: 15),
         Text(
-          "Condition",
+          kCondition.tr,
           style: context.textTheme.headline3,
         ),
         SizedBox(height: 15),

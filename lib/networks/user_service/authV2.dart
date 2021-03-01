@@ -21,7 +21,7 @@ class AuthV2 {
               "Content-Type": "application/json"
             },
             body: jsonEncode({"email": email, "password": password}));
-
+        print(res.body);
         if (res.statusCode == 200) {
           return signInResponseV2FromJson(res.body);
         } else {

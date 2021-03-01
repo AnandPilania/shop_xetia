@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
+import 'package:xetia_shop/language/_components.dart';
 
 class ProductInformation extends StatelessWidget {
   final AddProductController _addProductController =
@@ -16,7 +17,7 @@ class ProductInformation extends StatelessWidget {
         XetiaDivider(),
         SizedBox(height: 20),
         Text(
-          "Product Name",
+          kProductName.tr,
           style: context.textTheme.headline3,
         ),
         SizedBox(height: 15),
@@ -24,11 +25,11 @@ class ProductInformation extends StatelessWidget {
           textInputType: TextInputType.text,
           controller: _addProductController.productNameController,
           validator: Validator().notEmpty,
-          hintText: "Type your product name",
+          hintText: kTypeProductName.tr,
         ),
         SizedBox(height: 15),
         Text(
-          "Category",
+          kCategory.tr,
           style: context.textTheme.headline3,
         ),
         SizedBox(height: 15),
@@ -36,11 +37,11 @@ class ProductInformation extends StatelessWidget {
           textInputType: TextInputType.text,
           controller: _addProductController.categoryController,
           validator: Validator().notEmpty,
-          hintText: "search category",
+          hintText: kSearchCategory.tr,
         ),
         SizedBox(height: 15),
         Text(
-          "Price",
+          kPrice.tr,
           style: context.textTheme.headline3,
         ),
         SizedBox(height: 15),
@@ -48,7 +49,7 @@ class ProductInformation extends StatelessWidget {
           textInputType: TextInputType.text,
           controller: _addProductController.priceController,
           validator: Validator().notEmpty,
-          hintText: "Type your product type",
+          hintText: kTypeProductPrice.tr,
         ),
       ],
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class SellerInformation extends StatelessWidget {
@@ -13,13 +15,13 @@ class SellerInformation extends StatelessWidget {
       children: [
         XetiaDivider(),
         ToggleButton(
-          text: "WholeSaler",
+          text: kWholesaler.tr,
           value: true,
           onTap: () {},
           onChanged: (bool value) {},
         ),
         ToggleButton(
-          text: "Saler",
+          text: kPreOrder.tr,
           value: true,
           onTap: () {},
           onChanged: (bool value) {},
