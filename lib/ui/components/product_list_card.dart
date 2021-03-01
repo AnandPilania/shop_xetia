@@ -7,7 +7,7 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/ui/components/button_flat.dart';
 
 import '../../constants/dimens.dart';
-import '../../ui/components/detail_sheet.dart';
+import 'sheet/detail_sheet.dart';
 
 class ProductListCard extends StatelessWidget {
   final ProductController productController = Get.find<ProductController>();
@@ -16,7 +16,8 @@ class ProductListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => StaggeredGridView.countBuilder(
-        padding: EdgeInsets.only(bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
+        padding: EdgeInsets.only(
+            bottom: widthApp * 0.175, top: 20, left: 8, right: 8),
         shrinkWrap: true,
         primary: false,
         crossAxisCount: 4,
@@ -56,7 +57,8 @@ class ProductListCard extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: XetiaImageNetwork(
-                                  sourceImage: productController.listProductFetch[indexItem].thumbnail,
+                                  sourceImage: productController
+                                      .listProductFetch[indexItem].thumbnail,
                                 ),
                               ),
                             ),
@@ -68,7 +70,8 @@ class ProductListCard extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(
-                              productController.listProductFetch[indexItem].shopLogo,
+                              productController
+                                  .listProductFetch[indexItem].shopLogo,
                               color: Colors.black,
                             ),
                           ),
@@ -96,10 +99,13 @@ class ProductListCard extends StatelessWidget {
                                     color: context.theme.primaryColorLight,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 3.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 3.0),
                                     child: Text(
                                       "2",
-                                      style: context.textTheme.headline4.copyWith(fontWeight: FontWeight.bold),
+                                      style: context.textTheme.headline4
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   Icon(
@@ -114,17 +120,23 @@ class ProductListCard extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    productController.listProductFetch[indexItem].name.toString(),
+                                    productController
+                                        .listProductFetch[indexItem].name
+                                        .toString(),
                                     style: context.textTheme.headline3,
                                     maxLines: 2,
                                   ),
                                   Text(
-                                    productController.listProductFetch[indexItem].weight.toString(),
+                                    productController
+                                        .listProductFetch[indexItem].weight
+                                        .toString(),
                                     style: context.textTheme.headline4,
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    productController.listProductFetch[indexItem].price.toString(),
+                                    productController
+                                        .listProductFetch[indexItem].price
+                                        .toString(),
                                     style: context.textTheme.headline5,
                                   ),
                                 ],
@@ -141,14 +153,23 @@ class ProductListCard extends StatelessWidget {
                                   padding: EdgeInsets.all(4),
                                   constraints: BoxConstraints(),
                                   icon: Icon(
-                                    productController.listProductFetch[indexItem].isFavorite.value == true
+                                    productController
+                                                .listProductFetch[indexItem]
+                                                .isFavorite
+                                                .value ==
+                                            true
                                         ? Icons.favorite
                                         : Icons.favorite_border,
-                                    color: productController.listProductFetch[indexItem].isFavorite.value == true
+                                    color: productController
+                                                .listProductFetch[indexItem]
+                                                .isFavorite
+                                                .value ==
+                                            true
                                         ? const Color(0xffcd444a)
                                         : context.theme.primaryColor,
                                   ),
-                                  onPressed: () => productController.addToFavorite(indexItem),
+                                  onPressed: () => productController
+                                      .addToFavorite(indexItem),
                                 ),
                                 IconButton(
                                   padding: EdgeInsets.all(4),

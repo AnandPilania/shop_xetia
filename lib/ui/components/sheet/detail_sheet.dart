@@ -5,8 +5,8 @@ import 'package:xetia_shop/language/language_key.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/ui/components/detail_sheet/_components.dart';
 
-import '../../constants/_constants.dart';
-import '../../controllers/_controllers.dart';
+import '../../../constants/_constants.dart';
+import '../../../controllers/_controllers.dart';
 
 class DetailSheet extends StatelessWidget {
   final int indexItem;
@@ -32,7 +32,8 @@ class DetailSheet extends StatelessWidget {
               child: Swiper(
                 itemCount: productController.listProduct.length,
                 index: indexItem,
-                onIndexChanged: (_) => productController.indexProductPicture = 0,
+                onIndexChanged: (_) =>
+                    productController.indexProductPicture = 0,
                 itemBuilder: (context, indexSwiper) {
                   return SingleChildScrollView(
                     child: Column(
