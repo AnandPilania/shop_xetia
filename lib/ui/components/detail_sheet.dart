@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/language/language_key.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/ui/components/detail_sheet/_components.dart';
 
@@ -20,7 +21,7 @@ class DetailSheet extends StatelessWidget {
       child: Column(
         children: [
           SheetHeader(
-            title: "Product Details",
+            title: kProductDetails.tr,
             onTap: () {
               Get.back();
             },
@@ -31,8 +32,7 @@ class DetailSheet extends StatelessWidget {
               child: Swiper(
                 itemCount: productController.listProduct.length,
                 index: indexItem,
-                onIndexChanged: (_) =>
-                    productController.indexProductPicture = 0,
+                onIndexChanged: (_) => productController.indexProductPicture = 0,
                 itemBuilder: (context, indexSwiper) {
                   return SingleChildScrollView(
                     child: Column(

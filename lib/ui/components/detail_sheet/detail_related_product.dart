@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/detail_sheet/_components.dart';
 
 class DetailRelatedProduct extends StatelessWidget {
@@ -18,8 +19,8 @@ class DetailRelatedProduct extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Related Product", style: context.textTheme.headline3),
-                Text("See All >", style: context.textTheme.headline5),
+                Text(kRelateProduct.tr, style: context.textTheme.headline3),
+                Text(kSeeAll.tr, style: context.textTheme.headline5),
               ],
             ),
             Padding(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/ui/components/fab_language.dart';
 
 import '../controllers/_controllers.dart';
 import '../ui/_ui.dart';
@@ -22,7 +23,16 @@ class HomeUI extends StatelessWidget {
       children: [
         Scaffold(
           body: Obx(() => bodyObject[bottomBarController.currentBottomBar]),
-          floatingActionButton: FABTheme(),
+          floatingActionButton: Align(
+            alignment: Alignment.bottomRight,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FABLanguage(),
+                FABTheme(),
+              ],
+            ),
+          ),
         ),
         Positioned(bottom: 0, child: XetiaBottomBar()),
       ],

@@ -11,7 +11,7 @@ import 'package:xetia_shop/ui/landing_page/on_boarding.dart';
 
 class BottomWaveLandingPage extends StatelessWidget {
   final ThemeController controller = Get.put(ThemeController());
-  final LocalizationController languageController = Get.put(LocalizationController());
+  final LocalizationController languageController = Get.find<LocalizationController>();
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 class DetailProductReview extends StatelessWidget {
   const DetailProductReview({
@@ -18,10 +19,7 @@ class DetailProductReview extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Review", style: context.textTheme.headline3),
-                  Text("See All Review >", style: context.textTheme.headline5)
-                ],
+                children: [Text(kReview.tr, style: context.textTheme.headline3), Text(kSeeReview.tr, style: context.textTheme.headline5)],
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -51,7 +49,7 @@ class DetailProductReview extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Text("9 Reviews", style: context.textTheme.headline5.copyWith(color: context.theme.primaryColor)),
+                    Text("9" + " " + kReviews.tr, style: context.textTheme.headline5.copyWith(color: context.theme.primaryColor)),
                   ],
                 ),
               ),
@@ -84,9 +82,16 @@ class DetailProductReview extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(
-                "lorem ipsum lorem ipsumlorem ipsum lorem ipsum",
-                style: context.textTheme.headline4,
+              Padding(
+                padding: EdgeInsets.only(top: 8),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "lorem ipsum lorem ipsumlorem ipsum lorem ipsum",
+                    style: context.textTheme.headline4,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
               )
             ],
           ),

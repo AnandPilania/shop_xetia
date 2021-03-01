@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 class DetailProductStore extends StatelessWidget {
   const DetailProductStore({
@@ -22,8 +23,8 @@ class DetailProductStore extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Store", style: context.textTheme.headline3),
-                  Text("See The Store >", style: context.textTheme.headline5),
+                  Text(kStore.tr, style: context.textTheme.headline3),
+                  Text(kSeeStores.tr, style: context.textTheme.headline5),
                 ],
               ),
               Padding(
@@ -46,13 +47,13 @@ class DetailProductStore extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(kPopularShopData[Random().nextInt(7)][0],
+                        Text(kPopularShopData[Random().nextInt(7)][0].toString().tr,
                             style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
                         Row(
                           children: [
                             Icon(Icons.location_pin, color: Colors.grey, size: 15),
                             SizedBox(width: 2),
-                            Text(kPopularShopData[Random().nextInt(7)][1],
+                            Text(kPopularShopData[Random().nextInt(7)][1].toString().tr,
                                 style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
                           ],
                         ),

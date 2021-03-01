@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/language/language_key.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class BestSellerBar extends StatelessWidget {
@@ -25,30 +26,23 @@ class BestSellerBar extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Best Seller",
-                style: context.textTheme.headline1.copyWith(fontSize: 20)),
+            Text(kBestSeller.tr, style: context.textTheme.headline1.copyWith(fontSize: 20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Obx(
-                  () => Text(
-                      "${productController.listProductFetch.length} Product",
-                      style: context.textTheme.headline1.copyWith(
-                          fontSize: 12, color: context.theme.primaryColor)),
+                  () => Text("${productController.listProductFetch.length} " + kProduct.tr,
+                      style: context.textTheme.headline1.copyWith(fontSize: 12, color: context.theme.primaryColor)),
                 ),
                 Obx(() => Row(
                       children: [
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: controllerGrid.isGridView == true
-                                  ? context.theme.primaryColor
-                                  : null),
+                              color: controllerGrid.isGridView == true ? context.theme.primaryColor : null),
                           child: IconButton(
                             icon: Icon(Icons.grid_on_rounded),
-                            color: controllerGrid.isGridView == true
-                                ? context.theme.primaryColorDark
-                                : context.theme.primaryColor,
+                            color: controllerGrid.isGridView == true ? context.theme.primaryColorDark : context.theme.primaryColor,
                             padding: EdgeInsets.all(4),
                             constraints: BoxConstraints(),
                             onPressed: () => controllerGrid.isGridView = true,
@@ -59,18 +53,13 @@ class BestSellerBar extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: controllerGrid.isGridView == false
-                                    ? context.theme.primaryColor
-                                    : null),
+                                color: controllerGrid.isGridView == false ? context.theme.primaryColor : null),
                             child: IconButton(
                               icon: Icon(Icons.list_rounded),
-                              color: controllerGrid.isGridView == false
-                                  ? context.theme.primaryColorDark
-                                  : context.theme.primaryColor,
+                              color: controllerGrid.isGridView == false ? context.theme.primaryColorDark : context.theme.primaryColor,
                               padding: EdgeInsets.all(4),
                               constraints: BoxConstraints(),
-                              onPressed: () =>
-                                  controllerGrid.isGridView = false,
+                              onPressed: () => controllerGrid.isGridView = false,
                             ),
                           ),
                         )

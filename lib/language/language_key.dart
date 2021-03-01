@@ -39,3 +39,36 @@ const kBackSignIn = "back_sign_in";
 const kAlert = "alert";
 const kLogoutFailed = "logout_failed";
 const kSignInFailed = "sign_in_failed";
+
+const kShop = "shop";
+const kProfile = "profile";
+const kMessage = "message";
+
+const kHalalTitle = "halal_title";
+const kHalalHint = "halal_hint";
+const kHalalFood = "halal_food";
+const kHalalShop = "halal_shop";
+const kHalalRestaurant = "halal_restaurant";
+const kMosque = "mosque";
+const kMuslimCommunity = "muslim_com";
+const kMuslimCorner = "muslim_cor";
+
+const kPopularShop = "popular_shop";
+const kBestSeller = "best_seller";
+const kProduct = "products";
+
+const kProductDetails = "product_detail";
+const kReview = "review";
+const kReviews = "reviews";
+const kSeeReview = "all_reviews";
+const kWeight = "weight";
+const kKilogram = "kg";
+const kCondition = "condition";
+const kNew = "new";
+const kReadMore = "more";
+const kStore = "store";
+const kSeeStores = "all_stores";
+const kRelateProduct = "relate";
+const kSeeAll = "see_all";
+const kBuy = "buy";
+const kDescription = "description";
