@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class DeliveryInformation extends StatelessWidget {
   final AddProductController _addProductController =
-  Get.put(AddProductController());
+      Get.put(AddProductController());
   final OptionButtonController _optionButtonController =
-  Get.put(OptionButtonController());
+      Get.put(OptionButtonController());
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class DeliveryInformation extends StatelessWidget {
         XetiaDivider(),
         SizedBox(height: 20),
         Text(
-          "Delivery Detail",
+          kDeliveryDetail.tr,
           style: context.textTheme.headline3,
         ),
         SizedBox(height: 20),
@@ -45,7 +46,7 @@ class DeliveryInformation extends StatelessWidget {
                   textInputType: TextInputType.text,
                   controller: _addProductController.weightController,
                   validator: Validator().notEmpty,
-                  hintText: "Weight",
+                  hintText: kWeight.tr,
                 ),
               ),
             ),
@@ -75,7 +76,7 @@ class DeliveryInformation extends StatelessWidget {
                   textInputType: TextInputType.text,
                   controller: _addProductController.heightController,
                   validator: Validator().notEmpty,
-                  hintText: "Height",
+                  hintText: kHeight.tr,
                 ),
               ),
             ),

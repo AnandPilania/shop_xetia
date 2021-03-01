@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class AddProductPicture extends StatelessWidget {
@@ -27,7 +28,7 @@ class AddProductPicture extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 20, top: 20),
               child:
-                  Text("Product Picture", style: context.textTheme.headline3),
+                  Text(kProductPicture.tr, style: context.textTheme.headline3),
             ),
             _addProductController.images.isEmpty
                 ? Container(
@@ -36,7 +37,7 @@ class AddProductPicture extends StatelessWidget {
                       onTap: () {
                         _addProductController.addImages(false);
                       },
-                      text: "Browse picture here",
+                      text: kBrowsePicture.tr,
                       color: context.theme.primaryColor,
                     ),
                   )
@@ -63,7 +64,7 @@ class AddProductPicture extends StatelessWidget {
                                 },
                                 child: Center(
                                   child: Text(
-                                    "browse picture here",
+                                    kBrowsePicture.tr,
                                     textAlign: TextAlign.center,
                                     style: context.textTheme.headline3,
                                   ),
