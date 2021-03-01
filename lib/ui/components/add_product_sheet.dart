@@ -1,15 +1,10 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class AddProductSheet extends StatelessWidget {
-  final AddProductController _addProductController =
-      Get.put(AddProductController());
-  final OptionButtonController _optionButtonController =
-      Get.put(OptionButtonController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

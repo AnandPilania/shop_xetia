@@ -17,6 +17,8 @@ void initLazyController() {
   Get.lazyPut(() => HeaderHomeController());
   Get.lazyPut(() => FocusNodeController(), fenix: true);
   Get.lazyPut(() => LocalizationController());
+  Get.lazyPut(() => AddProductController(), fenix: true);
+  Get.lazyPut(() => OptionButtonController(), fenix: true);
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
       translations: Localization(),
       title: 'Shop_Xetia',
       theme: themeController.theme,
-      home: signInController.hasLoggedIn,
+      home: HomeUI(), //signInController.hasLoggedIn,
     );
   }
 }
