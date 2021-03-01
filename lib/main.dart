@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       translations: Localization(),
       title: 'Shop_Xetia',
       theme: themeController.theme,
-      home: HomeUI(), //signInController.hasLoggedIn,
+      home: signInController.hasLoggedIn,
     );
   }
 }
