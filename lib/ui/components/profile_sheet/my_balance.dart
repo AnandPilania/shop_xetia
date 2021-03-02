@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:xetia_shop/constants/color_xetia.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 class MyBalance extends StatelessWidget {
   @override
@@ -25,13 +27,13 @@ class MyBalance extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "My Balance",
+                    kMyBalance.tr,
                     textAlign: TextAlign.center,
                     style: context.textTheme.headline1.copyWith(color: kBlack, fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   SizedBox(width: 140),
                   Text(
-                    "See Details",
+                    kSeeDetails.tr,
                     textAlign: TextAlign.center,
                     style: context.textTheme.headline5.copyWith(color: kBlack),
                   ),
@@ -73,7 +75,7 @@ class MyBalance extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        "Balance",
+                        kBalance.tr,
                         textAlign: TextAlign.center,
                         style: context.textTheme.headline4.copyWith(fontSize: 16, color: kWhite),
                       ),
@@ -117,7 +119,7 @@ class MyBalance extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        "Points",
+                        kPoint.tr,
                         textAlign: TextAlign.center,
                         style: context.textTheme.headline4.copyWith(fontSize: 16, color: kWhite),
                       ),

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 
@@ -20,10 +21,13 @@ class DetailGraph extends StatelessWidget {
           colorCircle: color,
         ),
         SizedBox(width: 16),
-        Text(
-          text,
-          textAlign: TextAlign.center,
-          style: context.textTheme.headline4,
+        Expanded(
+          child: AutoSizeText(
+            text,
+            textAlign: TextAlign.left,
+            style: context.textTheme.headline4,
+            maxLines: 2,
+          ),
         ),
       ],
     );

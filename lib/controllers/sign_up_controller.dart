@@ -12,14 +12,20 @@ class SignUpController extends GetxController {
   TextEditingController lastName;
   TextEditingController email;
   TextEditingController pass;
+  TextEditingController validatePass;
+  TextEditingController token;
+
   RxBool _isObscure = true.obs;
+  RxBool _isValidateObscure = true.obs;
   LoadingOverlay loading;
   AuthV2 authV2 = AuthV2();
   final _landingPageController = Get.find<LandingPageController>();
 
   set isObscure(value) => this._isObscure.value = value;
-
   get isObscure => this._isObscure.value;
+
+  set isValidateObscure(value) => this._isValidateObscure.value = value;
+  get isValidateObscure => this._isValidateObscure.value;
 
   @override
   void onInit() {
@@ -27,6 +33,8 @@ class SignUpController extends GetxController {
     lastName = TextEditingController();
     email = TextEditingController();
     pass = TextEditingController();
+    validatePass = TextEditingController();
+    token = TextEditingController();
     super.onInit();
   }
 
@@ -43,8 +51,7 @@ class SignUpController extends GetxController {
         .then((AuthResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
-        Get.snackbar('Alert', value.meta.message,
-            colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
         firstName.clear();
         lastName.clear();
         email.clear();
@@ -52,17 +59,14 @@ class SignUpController extends GetxController {
         _landingPageController.loginMethod = LoginMethods.Unchosen;
         _landingPageController.toggle();
       } else if (value.meta.code == 408) {
-        Get.snackbar('Alert', value.meta.message,
-            colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
       } else {
-        Get.snackbar('Alert', value.meta.message,
-            colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar('Alert', "Sign Up Failed",
-          colorText: context.theme.primaryColorLight);
+      Get.snackbar('Alert', "Sign Up Failed", colorText: context.theme.primaryColorLight);
       print(onError);
     });
   }
@@ -73,6 +77,8 @@ class SignUpController extends GetxController {
     lastName?.dispose();
     email?.dispose();
     pass?.dispose();
+    validatePass?.dispose();
+    token?.dispose();
     super.onClose();
   }
 }

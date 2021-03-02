@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0-nullsafety.1"
+  clay_containers:
+    dependency: "direct main"
+    description:
+      name: clay_containers
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.3"
   clock:
     dependency: transitive
     description:
@@ -188,6 +195,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_countdown_timer:
+    dependency: "direct main"
+    description:
+      name: flutter_countdown_timer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1"
   flutter_native_splash:
     dependency: "direct dev"
     description:
@@ -420,6 +434,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  slide_countdown_clock:
+    dependency: "direct main"
+    description:
+      name: slide_countdown_clock
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   source_span:
     dependency: transitive
     description:

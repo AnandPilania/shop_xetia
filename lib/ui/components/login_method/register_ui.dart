@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
@@ -10,8 +9,7 @@ import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI extends StatelessWidget {
   final SignUpController _signUpController = Get.put(SignUpController());
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -29,9 +27,9 @@ class RegisterUI extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 10),
                 Column(
                   children: [
+                    SizedBox(height: (heightApp + paddingTop) * 0.075),
                     XetiaTextField(
                       textInputType: TextInputType.name,
                       controller: _signUpController.firstName,
@@ -47,32 +45,13 @@ class RegisterUI extends StatelessWidget {
                       validator: Validator().name,
                       hintText: kLastName.tr,
                       focusNode: focusController.lastName,
-                      nextFocus: focusController.emailSignUp,
                     ),
                     SizedBox(height: 5),
-                    XetiaTextField(
-                      textInputType: TextInputType.emailAddress,
-                      controller: _signUpController.email,
-                      validator: Validator().email,
-                      hintText: kEmail.tr,
-                      focusNode: focusController.emailSignUp,
-                      nextFocus: focusController.passwordSignUp,
-                    ),
-                    SizedBox(height: 5),
-                    Obx(
-                      () => XetiaTextField(
-                        textInputType: TextInputType.emailAddress,
-                        controller: _signUpController.pass,
-                        validator: Validator().password,
-                        hintText: kPassword.tr,
-                        isPassword: true,
-                        focusNode: focusController.passwordSignUp,
-                        isObscure: _signUpController.isObscure,
-                        changeObscure: () {
-                          _signUpController.isObscure =
-                              !_signUpController.isObscure;
-                        },
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                          onTap: () {},
+                          child: Text("Resend activation token", style: context.textTheme.headline4, textAlign: TextAlign.center)),
                     ),
                   ],
                 ),
@@ -85,33 +64,14 @@ class RegisterUI extends StatelessWidget {
                         color: context.theme.primaryColor,
                         onTap: () {
                           if (_formKey.currentState.validate()) {
-                            _signUpController.resSignUp(context: context);
-                            // _signUpController.resSignUpV2(context: context);
+                            FocusScope.of(context).unfocus();
+                            loginController.loginMethod = LoginMethods.Register2;
                           }
                         },
-                        text: kSignUp.tr,
+                        text: kNext.tr,
                       ),
                     ),
                     SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Obx(() => Checkbox(
-                              onChanged: (value) {
-                                loginController.subscribeEmail = value;
-                              },
-                              value: loginController.subscribeEmail,
-                              activeColor: context.theme.primaryColor,
-                            )),
-                        SizedBox(height: 5),
-                        Expanded(
-                          child: AutoSizeText(
-                            kSubscribeText.tr,
-                            maxLines: 2,
-                            style: context.textTheme.headline4,
-                          ),
-                        )
-                      ],
-                    )
                   ],
                 ),
               ],

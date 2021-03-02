@@ -24,6 +24,8 @@ class FocusNodeController extends GetxController {
   get emailSignUp => this._emailSignUp;
   final FocusNode _passwordSignUp = FocusNode();
   get passwordSignUp => this._passwordSignUp;
+  final FocusNode _passwordSignUpValidate = FocusNode();
+  get passwordSignUpValidate => this._passwordSignUpValidate;
 
   final RxBool _firstNameFocus = false.obs;
   set firstNameFocus(value) => this._firstNameFocus.value = value;
@@ -37,6 +39,17 @@ class FocusNodeController extends GetxController {
   final RxBool _passwordSignUpFocus = false.obs;
   set passwordSignUpFocus(value) => this._passwordSignUpFocus.value = value;
   get passwordSignUpFocus => this._passwordSignUpFocus.value;
+  final RxBool _passwordSignUpValidateFocus = false.obs;
+  set passwordSignUpValidateFocus(value) => this._passwordSignUpValidateFocus.value = value;
+  get passwordSignUpValidateFocus => this._passwordSignUpValidateFocus.value;
+
+  //Focus Node Validate
+  final FocusNode _token = FocusNode();
+  get token => this._token;
+
+  final RxBool _tokenFocus = false.obs;
+  set tokenFocus(value) => this._tokenFocus.value = value;
+  get tokenFocus => this._tokenFocus.value;
 
   //Controller For top login container
   get topContainer => isEmailFocus == true ||
@@ -44,7 +57,9 @@ class FocusNodeController extends GetxController {
           firstNameFocus == true ||
           lastNameFocus == true ||
           emailSignUpFocus == true ||
-          passwordSignUpFocus == true
+          passwordSignUpFocus == true ||
+          passwordSignUpValidateFocus == true ||
+          tokenFocus == true
       ? true.obs
       : false.obs;
 
@@ -55,8 +70,9 @@ class FocusNodeController extends GetxController {
     firstName.addListener(() => firstNameFocus = firstName.hasFocus);
     lastName.addListener(() => lastNameFocus = lastName.hasFocus);
     emailSignUp.addListener(() => emailSignUpFocus = emailSignUp.hasFocus);
-    passwordSignUp
-        .addListener(() => passwordSignUpFocus = passwordSignUp.hasFocus);
+    passwordSignUp.addListener(() => passwordSignUpFocus = passwordSignUp.hasFocus);
+    passwordSignUpValidate.addListener(() => passwordSignUpValidateFocus = passwordSignUpValidate.hasFocus);
+    token.addListener(() => tokenFocus = token.hasFocus);
     super.onInit();
   }
 

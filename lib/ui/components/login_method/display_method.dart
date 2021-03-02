@@ -8,109 +8,97 @@ import 'package:xetia_shop/controllers/landing_page_controller.dart';
 import 'package:xetia_shop/language/_components.dart';
 
 class DisplayMethod extends StatelessWidget {
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: widthApp * 0.6,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () => loginController.loginMethod = LoginMethods.Email,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset(
-                          "assets/svg/email.svg",
-                          color: context.theme.primaryColorLight,
-                        ),
-                        AutoSizeText(kEmail.tr,
-                            style: context.textTheme.headline3,
-                            maxLines: 1,
-                            textAlign: TextAlign.center)
-                      ],
+    return SizedBox(
+      height: (heightApp + paddingTop) * 0.4,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: widthApp * 0.6,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => loginController.loginMethod = LoginMethods.Email,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/svg/email.svg",
+                            color: context.theme.primaryColorLight,
+                          ),
+                          AutoSizeText(kEmail.tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(width: 20),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () =>
-                      loginController.loginMethod = LoginMethods.Facebook,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(children: [
-                      SvgPicture.asset(
-                        "assets/svg/facebook.svg",
-                        color: context.theme.primaryColorLight,
-                      ),
-                      AutoSizeText(kFacebook.tr,
-                          style: context.textTheme.headline3,
-                          maxLines: 1,
-                          textAlign: TextAlign.center)
-                    ]),
+                SizedBox(width: 20),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => loginController.loginMethod = LoginMethods.Facebook,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(children: [
+                        SvgPicture.asset(
+                          "assets/svg/facebook.svg",
+                          color: context.theme.primaryColorLight,
+                        ),
+                        AutoSizeText(kFacebook.tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                      ]),
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
-        ),
-        SizedBox(
-          width: widthApp * 0.6,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () =>
-                      loginController.loginMethod = LoginMethods.AppleID,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(children: [
-                      SvgPicture.asset(
-                        "assets/svg/apple.svg",
-                        color: context.theme.primaryColorLight,
-                      ),
-                      AutoSizeText(kAppleId.tr,
-                          style: context.textTheme.headline3,
-                          maxLines: 1,
-                          textAlign: TextAlign.center)
-                    ]),
+          SizedBox(
+            width: widthApp * 0.6,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => loginController.loginMethod = LoginMethods.AppleID,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(children: [
+                        SvgPicture.asset(
+                          "assets/svg/apple.svg",
+                          color: context.theme.primaryColorLight,
+                        ),
+                        AutoSizeText(kAppleId.tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                      ]),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: 20),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () => loginController.loginMethod = LoginMethods.Gmail,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(children: [
-                      SvgPicture.asset(
-                        "assets/svg/gmail.svg",
-                        color: context.theme.primaryColorLight,
-                      ),
-                      AutoSizeText(kGmail.tr,
-                          style: context.textTheme.headline3,
-                          maxLines: 1,
-                          textAlign: TextAlign.center)
-                    ]),
+                SizedBox(width: 20),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => loginController.loginMethod = LoginMethods.Gmail,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(children: [
+                        SvgPicture.asset(
+                          "assets/svg/gmail.svg",
+                          color: context.theme.primaryColorLight,
+                        ),
+                        AutoSizeText(kGmail.tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                      ]),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

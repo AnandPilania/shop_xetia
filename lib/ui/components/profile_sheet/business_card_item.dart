@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 class BusinessCardItem extends StatelessWidget {
   @override
@@ -44,11 +45,10 @@ class BusinessCardItem extends StatelessWidget {
                     Text(
                       "Muhammad Faisal",
                       textAlign: TextAlign.center,
-                      style: context.textTheme.headline3.copyWith(
-                          fontWeight: FontWeight.bold, color: Colors.black),
+                      style: context.textTheme.headline3.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                     Text(
-                      "UI/UX Designer",
+                      kDesignerUIUX.tr,
                       textAlign: TextAlign.center,
                       style: context.textTheme.headline4.copyWith(color: Colors.grey),
                     ),

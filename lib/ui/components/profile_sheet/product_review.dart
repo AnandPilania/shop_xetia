@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/language/_components.dart';
 
 class ProductReview extends StatelessWidget {
   final Duration animDuration = const Duration(milliseconds: 250);
@@ -30,7 +31,7 @@ class ProductReview extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                'Halal Product Review',
+                kHalalProductReview.tr,
                 style: context.textTheme.headline2.copyWith(fontWeight: FontWeight.bold, color: context.theme.primaryColorLight),
               ),
               Text(
