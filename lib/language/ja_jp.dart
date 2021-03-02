@@ -100,6 +100,9 @@ const Map<String, String> jaJP = {
   kAddProduct: "製品を追加",
   kProductDetail: "製品の詳細",
 
+  kTypeMessage: "メッセージを入力する",
+  kSearchChats: "チャットを検索",
+
   //日本語 only
   "Nagoya": "名古屋",
   "Tokyo": "東京",

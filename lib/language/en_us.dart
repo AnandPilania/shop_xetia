@@ -105,4 +105,7 @@ const Map<String, String> enUS = {
   kTypeMinimumOrder: "Type your minimum order",
   kAddProduct: "Add Product",
   kProductDetail: "Product Detail",
+
+  kTypeMessage: "Type a Message",
+  kSearchChats: "Search chats",
 };

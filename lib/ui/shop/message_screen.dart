@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../ui/components/_components.dart';
+import 'package:xetia_shop/ui/components/_components.dart';
+import 'package:xetia_shop/language/_components.dart';
 
 class MessageScreen extends StatelessWidget {
   @override
@@ -14,7 +14,10 @@ class MessageScreen extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.all(10),
-              child: XetiaTextField(hintText: 'Search Chats', prefixIcon: Icons.search, suffixIcon: Icons.camera_alt),
+              child: XetiaTextField(
+                  hintText: kSearchChats.tr,
+                  prefixIcon: Icons.search,
+                  suffixIcon: Icons.camera_alt),
             ),
             for (var _ in List.generate(10, (i) => i)) ChatItem(),
             SizedBox(height: 48),

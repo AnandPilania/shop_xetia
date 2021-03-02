@@ -62,7 +62,6 @@ class LogoutController extends GetxController {
             snackPosition: SnackPosition.BOTTOM);
         print(onError);
       });
-
       await UserProvider.db.deleteUser(id);
     } catch (e) {
       print("error $e");

@@ -13,9 +13,10 @@ void main() async {
 
 void initLazyController() {
   Get.lazyPut(() => LandingPageController());
-  Get.lazyPut(() => HeaderHomeController());
+  Get.lazyPut(() => HeaderHomeController(), fenix: true);
   Get.lazyPut(() => FocusNodeController(), fenix: true);
   Get.lazyPut(() => LocalizationController());
+  Get.lazyPut(() => ProductController(), fenix: true);
   Get.lazyPut(() => AddProductController(), fenix: true);
   Get.lazyPut(() => OptionButtonController(), fenix: true);
 }
