@@ -3,13 +3,13 @@ import 'package:xetia_shop/constants/color_xetia.dart';
 
 class Themes {
   static final light = ThemeData.light().copyWith(
-    primaryColor: kOrangeXetia,
+    primaryColor: const Color(0xfffbb216),
     iconTheme: IconThemeData(color: kWhite, size: 24),
     primaryIconTheme: IconThemeData(color: kWhite, size: 20),
     accentIconTheme: IconThemeData(color: const Color(0xff333333)),
     scaffoldBackgroundColor: const Color(0xfff2f2f2),
     floatingActionButtonTheme: FloatingActionButtonThemeData(foregroundColor: const Color(0xff333333)),
-    primaryColorDark: kWhite,
+    primaryColorDark: const Color(0xffe6e6e6),
     primaryColorLight: kBlack,
     backgroundColor: kBlack,
     highlightColor: kBlack,
@@ -23,11 +23,11 @@ class Themes {
         headline5: TextStyle(color: kBlack, fontFamily: 'SF Pro Rounded', fontSize: 12, fontWeight: FontWeight.normal),
         subtitle1: TextStyle(color: kWhite, fontFamily: 'SF Pro Rounded', fontSize: 14, fontWeight: FontWeight.w300)),
     inputDecorationTheme: InputDecorationTheme(
-      hintStyle: TextStyle(color: kWhite.withOpacity(0.8), fontFamily: 'SF Pro Rounded', fontSize: 17, fontWeight: FontWeight.normal),
+      hintStyle: TextStyle(color: kBlack.withOpacity(0.5), fontFamily: 'SF Pro Rounded', fontSize: 17, fontWeight: FontWeight.normal),
       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5.0)), borderSide: BorderSide.none),
       contentPadding: const EdgeInsets.all(12),
       filled: true,
-      fillColor: kBlack,
+      fillColor: const Color(0xffe6e6e6),
     ),
   );
 
@@ -37,7 +37,7 @@ class Themes {
     primaryIconTheme: IconThemeData(color: kHintColor.withOpacity(0.75), size: 20),
     accentIconTheme: IconThemeData(color: const Color(0xff333333)),
     floatingActionButtonTheme: FloatingActionButtonThemeData(foregroundColor: const Color(0xff333333)),
-    scaffoldBackgroundColor: kScaffoldBgColor,
+    scaffoldBackgroundColor: const Color(0xff121212),
     primaryColorDark: kBlack,
     primaryColorLight: kWhite,
     backgroundColor: kBlack,
@@ -52,11 +52,11 @@ class Themes {
         headline5: TextStyle(color: kWhite, fontFamily: 'SF Pro Rounded', fontSize: 12, fontWeight: FontWeight.normal),
         subtitle1: TextStyle(color: kBlack, fontFamily: 'SF Pro Rounded', fontSize: 14, fontWeight: FontWeight.w300)),
     inputDecorationTheme: InputDecorationTheme(
-      hintStyle: TextStyle(color: kHintColor.withOpacity(0.75), fontFamily: 'SF Pro Rounded', fontSize: 17, fontWeight: FontWeight.normal),
+      hintStyle: TextStyle(color: kWhite.withOpacity(0.5), fontFamily: 'SF Pro Rounded', fontSize: 17, fontWeight: FontWeight.normal),
       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5.0)), borderSide: BorderSide.none),
       contentPadding: const EdgeInsets.all(12),
       filled: true,
-      fillColor: kSearchBgColor,
+      fillColor: const Color(0xff323232),
     ),
   );
 }

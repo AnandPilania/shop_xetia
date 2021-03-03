@@ -15,7 +15,7 @@ const Map<String, String> idId = {
   kLogin: "Login",
   kRegister: "Registrasi",
   kSignUp: "Sign Up",
-  kSignIn: "Sign In",
+  kSignIn: "Masuk",
 
   kFirstName: 'Nama Depan',
   kLastName: 'Nama Belakang',
@@ -35,7 +35,7 @@ const Map<String, String> idId = {
   kErrorRequired: 'Pertanyaan ini harus diisi',
   kErrorNumberOnly: "Masukan nomor. Contoh : 250, tanpa tanda mata uang",
 
-  kForgotPassword: "Lupa Kata sandi",
+  kForgotPassword: "Lupa Kata sandi?",
   kResetPassword: "Reset Kata Sandi",
 
   kRecoveryHeading: "Pemulihan Kata Sandi",
@@ -126,4 +126,11 @@ const Map<String, String> idId = {
   kCancel: "Batal",
   kFirstDate: "Tanggal awal transkasi",
   kLastDate: "Tanggal akhir transaksi",
+
+  kNext: "Selanjutnya",
+  kErrorValidatePass: "Kata sandi tidak sama!",
+  kThanksRegistration: "Terimakasih banyak telah melakukan registrasi. Sliahkan cek email anda untuk melihat token aktivasi akun",
+  kVerify: "Validasi",
+  kActivateToken: "Token aktivasi",
+  kResendActivationKey: "Kirim ulang token aktivasi",
 };

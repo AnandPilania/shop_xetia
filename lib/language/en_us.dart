@@ -15,7 +15,7 @@ const Map<String, String> enUS = {
   kLogin: "Login",
   kRegister: "Register",
   kSignUp: "Sign Up",
-  kSignIn: "Sign In",
+  kSignIn: "Login",
 
   kFirstName: 'First Name',
   kLastName: 'Last Name',
@@ -35,7 +35,7 @@ const Map<String, String> enUS = {
   kErrorRequired: 'This is a required field.',
   kErrorNumberOnly: "Please enter a number i.e. 250 - no dollar symbol and no cents",
 
-  kForgotPassword: "Forgot Password",
+  kForgotPassword: "Forgot your password?",
   kResetPassword: "Reset Password",
 
   kRecoveryHeading: "Recovery Password",
@@ -132,4 +132,5 @@ const Map<String, String> enUS = {
   kThanksRegistration: "Thank you very much for your registration. Please check your email for activation Token.",
   kVerify: "Verify",
   kActivateToken: "Activation token",
+  kResendActivationKey: "Resend activation token",
 };

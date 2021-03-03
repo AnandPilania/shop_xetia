@@ -54,7 +54,7 @@ class XetiaTextField extends StatelessWidget {
                         ),
             ),
             cursorColor: context.theme.accentColor,
-            style: context.textTheme.headline3.copyWith(color: context.theme.primaryColorDark),
+            style: context.textTheme.headline3.copyWith(color: context.theme.primaryColorLight),
             keyboardType: null,
             obscureText: isPassword ? isObscure : false,
             onFieldSubmitted: (_) => nextFocus == null ? FocusScope.of(context).unfocus() : FocusScope.of(context).requestFocus(nextFocus),

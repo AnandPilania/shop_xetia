@@ -106,6 +106,7 @@ class RegisterUI2 extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: MyButton(
+                        iconSuffix: Icons.arrow_right,
                         color: context.theme.primaryColor,
                         onTap: () {
                           if (_formKey.currentState.validate()) {

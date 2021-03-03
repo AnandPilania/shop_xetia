@@ -35,7 +35,7 @@ const Map<String, String> jaJP = {
   kErrorRequired: 'これは必須項目です。',
   kErrorNumberOnly: "数字を入力してください。250 - ドル記号とセントは入力しないでください。",
 
-  kForgotPassword: "パスワードを忘れた",
+  kForgotPassword: "パスワードを忘れますか？",
   kResetPassword: "パスワードのリセット",
 
   kRecoveryHeading: "リカバリーパスワード",
@@ -126,6 +126,13 @@ const Map<String, String> jaJP = {
   kCancel: "キャンセル",
   kFirstDate: "初デートの歴史",
   kLastDate: "最終日の履歴",
+
+  kNext: "次のページ",
+  kErrorValidatePass: "パスワードが一致しません",
+  kThanksRegistration: "ご登録ありがとうございます。アクティベーショントークンはメールにてご確認ください。",
+  kVerify: "検証",
+  kActivateToken: "アクティベーショントークン",
+  kResendActivationKey: "アクティベーショントークンの再送",
 
   //日本語 only
   "Nagoya": "名古屋",

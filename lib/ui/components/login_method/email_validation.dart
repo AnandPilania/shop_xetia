@@ -1,8 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
-//import 'package:slide_countdown_clock/slide_countdown_clock.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/controllers/focus_node_controller.dart';
@@ -32,40 +32,17 @@ class RegisterUI3 extends StatelessWidget {
                 CountdownTimer(
                   controller: tokenTimeController.controller,
                   widgetBuilder: (_, CurrentRemainingTime time) {
-                    if (time == null) {
-                      return Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: SizedBox(
-                            height: (heightApp + paddingTop) * 0.4,
-                            width: widthApp,
-                            child: Center(
-                                child: Column(
-                              children: [
-                                Text("Time Out", style: context.textTheme.headline2),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        loginController.isLogin = true;
-                                        loginController.loginMethod = LoginMethods.Unchosen;
-                                      },
-                                      child: Expanded(
-                                          child: Text("Back to Login", style: context.textTheme.headline3, textAlign: TextAlign.center))),
-                                )
-                              ],
-                            ))),
-                      );
-                    }
                     return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
-                            child: Text(
+                            padding: const EdgeInsets.only(top: 16.0),
+                            child: AutoSizeText(
                               kThanksRegistration.tr,
-                              style: context.textTheme.headline4.copyWith(fontSize: 15),
+                              style: context.textTheme.headline4.copyWith(fontSize: 14),
                               textAlign: TextAlign.center,
+                              maxLines: 2,
                             ),
                           ),
                           Padding(
@@ -78,12 +55,12 @@ class RegisterUI3 extends StatelessWidget {
                                   spread: 2,
                                   curveType: CurveType.convex,
                                   color: context.theme.primaryColorDark,
-                                  height: widthApp * 0.2,
-                                  width: widthApp * 0.2,
+                                  height: widthApp * 0.15,
+                                  width: widthApp * 0.15,
                                   borderRadius: 14,
                                   child: Center(
-                                    child: Text(time.min == null ? "0" : time.min.toString(), style: context.textTheme.headline2),
-                                  ),
+                                      child: Text(time != null ? (time.sec == null ? "0" : time.sec.toString()) : "0",
+                                          style: context.textTheme.headline2)),
                                 ),
                                 SizedBox(width: 8),
                                 Text(":", style: context.textTheme.headline2.copyWith(fontSize: 30)),
@@ -93,11 +70,12 @@ class RegisterUI3 extends StatelessWidget {
                                   spread: 2,
                                   curveType: CurveType.convex,
                                   color: context.theme.primaryColorDark,
-                                  height: widthApp * 0.2,
-                                  width: widthApp * 0.2,
+                                  height: widthApp * 0.15,
+                                  width: widthApp * 0.15,
                                   borderRadius: 14,
                                   child: Center(
-                                    child: Text(time.sec == null ? "0" : time.sec.toString(), style: context.textTheme.headline2),
+                                    child: Text(time != null ? (time.sec == null ? "0" : time.sec.toString()) : "0",
+                                        style: context.textTheme.headline2),
                                   ),
                                 ),
                               ],
@@ -110,6 +88,26 @@ class RegisterUI3 extends StatelessWidget {
                             hintText: kActivateToken.tr,
                             focusNode: focusController.token,
                           ),
+                          Obx(() => AnimatedSwitcher(
+                                duration: Duration(milliseconds: 200),
+                                child: tokenTimeController.isTicking == false
+                                    ? SizedBox(height: 30)
+                                    : SizedBox(
+                                        height: 30,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 10.0),
+                                          child: GestureDetector(
+                                              onTap: () {
+                                                tokenTimeController.controller.start();
+                                              },
+                                              child: Text(kResendActivationKey.tr,
+                                                  style: context.textTheme.headline4.copyWith(
+                                                    color: const Color(0xff3a7af2),
+                                                  ),
+                                                  textAlign: TextAlign.center)),
+                                        ),
+                                      ),
+                              )),
                           SizedBox(height: 20),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16.0),

@@ -126,3 +126,4 @@ const kErrorValidatePass = "validate_pass_err";
 const kThanksRegistration = "thanks_registration";
 const kVerify = "verify";
 const kActivateToken = "activated_token";
+const kResendActivationKey = "resend_token";

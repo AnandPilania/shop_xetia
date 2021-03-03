@@ -12,21 +12,18 @@ class HeaderHomeController extends GetxController {
 
   @override
   void onInit() {
-    print("initializaiton");
     _pageController = PageController(initialPage: 0);
     super.onInit();
   }
 
   @override
   void dispose() {
-    print("disposed");
     pageController.dispose();
     super.dispose();
   }
 
   @override
   void onClose() {
-    print("closed");
     pageController?.dispose();
     super.onClose();
   }

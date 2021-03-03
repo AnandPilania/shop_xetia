@@ -16,9 +16,9 @@ class HeaderLandingPage extends StatelessWidget {
           duration: Duration(milliseconds: 700),
           curve: Curves.easeOut,
           width: widthApp,
-          height: focusController.topContainer == true ? (heightApp) * 0.2 : (heightApp) * 0.425,
+          height: focusController.topContainer == true ? (heightApp) * 0.2 : (heightApp) * 0.455,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
             color: context.theme.primaryColorDark,
           ),
           child: Stack(

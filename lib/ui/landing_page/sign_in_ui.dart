@@ -39,7 +39,7 @@ class SignInUI extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(height: paddingTop, width: widthApp, color: context.theme.backgroundColor),
+                    Container(height: paddingTop, width: widthApp, color: context.theme.primaryColorDark),
                     HeaderLandingPage(),
                     Obx(() => Expanded(
                           child: Align(
