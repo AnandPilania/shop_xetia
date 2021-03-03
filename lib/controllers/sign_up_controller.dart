@@ -19,7 +19,9 @@ class SignUpController extends GetxController {
   RxBool _isValidateObscure = true.obs;
   LoadingOverlay loading;
   AuthV2 authV2 = AuthV2();
-  final _landingPageController = Get.find<LandingPageController>();
+  TokenTimeController tokenTimeController = Get.put(TokenTimeController());
+  LandingPageController _landingPageController =
+      Get.find<LandingPageController>();
 
   set isObscure(value) => this._isObscure.value = value;
   get isObscure => this._isObscure.value;
@@ -51,22 +53,29 @@ class SignUpController extends GetxController {
         .then((AuthResponse value) {
       loading.hide();
       if (value.meta.code == 200) {
-        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
+        // Get.snackbar('Alert', value.meta.message,
+        //     colorText: context.theme.primaryColorLight);
         firstName.clear();
         lastName.clear();
         email.clear();
         pass.clear();
-        _landingPageController.loginMethod = LoginMethods.Unchosen;
+        FocusScope.of(context).unfocus();
+        _landingPageController.loginMethod = LoginMethods.Register3;
+        tokenTimeController.startController();
+        // _landingPageController.loginMethod = LoginMethods.Unchosen;
         _landingPageController.toggle();
       } else if (value.meta.code == 408) {
-        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
       } else {
-        Get.snackbar('Alert', value.meta.message, colorText: context.theme.primaryColorLight);
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar('Alert', "Sign Up Failed", colorText: context.theme.primaryColorLight);
+      Get.snackbar('Alert', "Sign Up Failed",
+          colorText: context.theme.primaryColorLight);
       print(onError);
     });
   }
