@@ -57,7 +57,7 @@ class SignUpController extends GetxController {
         //     colorText: context.theme.primaryColorLight);
         firstName.clear();
         lastName.clear();
-        email.clear();
+        // email.clear();
         pass.clear();
         FocusScope.of(context).unfocus();
         _landingPageController.loginMethod = LoginMethods.Register3;
@@ -75,6 +75,35 @@ class SignUpController extends GetxController {
     }).catchError((onError) {
       loading.hide();
       Get.snackbar('Alert', "Sign Up Failed",
+          colorText: context.theme.primaryColorLight);
+      print(onError);
+    });
+  }
+
+  void resEmailVerify({@required BuildContext context}) async {
+    loading = LoadingOverlay.of(context);
+    loading.show();
+    await authV2
+        .verifyEmail(email: email.text, verifyT: token.text)
+        .then((AuthResponse value) {
+      loading.hide();
+      if (value.meta.code == 200) {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
+        email.clear();
+        _landingPageController.isLogin = true;
+        _landingPageController.loginMethod = LoginMethods.Unchosen;
+      } else if (value.meta.code == 408) {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
+      } else {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
+      }
+      print(value.meta.message);
+    }).catchError((onError) {
+      loading.hide();
+      Get.snackbar('Alert', "Email Verify Failed",
           colorText: context.theme.primaryColorLight);
       print(onError);
     });

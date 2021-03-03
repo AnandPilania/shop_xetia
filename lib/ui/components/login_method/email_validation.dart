@@ -13,9 +13,11 @@ import 'package:clay_containers/clay_containers.dart';
 
 class RegisterUI3 extends StatelessWidget {
   final SignUpController _signUpController = Get.find<SignUpController>();
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
-  final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
+  final TokenTimeController tokenTimeController =
+      Get.put(TokenTimeController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -41,30 +43,38 @@ class RegisterUI3 extends StatelessWidget {
                             child: Center(
                                 child: Column(
                               children: [
-                                Text("Time Out", style: context.textTheme.headline2),
+                                Text("Time Out",
+                                    style: context.textTheme.headline2),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: GestureDetector(
                                       onTap: () {
                                         loginController.isLogin = true;
-                                        loginController.loginMethod = LoginMethods.Unchosen;
+                                        loginController.loginMethod =
+                                            LoginMethods.Unchosen;
                                       },
                                       child: Expanded(
-                                          child: Text("Back to Login", style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                                          child: Text("Back to Login",
+                                              style:
+                                                  context.textTheme.headline3,
+                                              textAlign: TextAlign.center))),
                                 )
                               ],
                             ))),
                       );
                     }
                     return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15.0, horizontal: 20),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
+                            padding: const EdgeInsets.only(
+                                top: 16.0, left: 16, right: 16),
                             child: Text(
                               kThanksRegistration.tr,
-                              style: context.textTheme.headline4.copyWith(fontSize: 15),
+                              style: context.textTheme.headline4
+                                  .copyWith(fontSize: 15),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -82,11 +92,17 @@ class RegisterUI3 extends StatelessWidget {
                                   width: widthApp * 0.2,
                                   borderRadius: 14,
                                   child: Center(
-                                    child: Text(time.min == null ? "0" : time.min.toString(), style: context.textTheme.headline2),
+                                    child: Text(
+                                        time.min == null
+                                            ? "0"
+                                            : time.min.toString(),
+                                        style: context.textTheme.headline2),
                                   ),
                                 ),
                                 SizedBox(width: 8),
-                                Text(":", style: context.textTheme.headline2.copyWith(fontSize: 30)),
+                                Text(":",
+                                    style: context.textTheme.headline2
+                                        .copyWith(fontSize: 30)),
                                 SizedBox(width: 8),
                                 ClayContainer(
                                   emboss: true,
@@ -97,7 +113,11 @@ class RegisterUI3 extends StatelessWidget {
                                   width: widthApp * 0.2,
                                   borderRadius: 14,
                                   child: Center(
-                                    child: Text(time.sec == null ? "0" : time.sec.toString(), style: context.textTheme.headline2),
+                                    child: Text(
+                                        time.sec == null
+                                            ? "0"
+                                            : time.sec.toString(),
+                                        style: context.textTheme.headline2),
                                   ),
                                 ),
                               ],
@@ -112,11 +132,13 @@ class RegisterUI3 extends StatelessWidget {
                           ),
                           SizedBox(height: 20),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
                             child: MyButton(
                               color: context.theme.primaryColor,
                               onTap: () {
-                                FocusScope.of(context).unfocus();
+                                _signUpController.resEmailVerify(
+                                    context: context);
                               },
                               text: kVerify.tr,
                             ),
