@@ -18,3 +18,4 @@ export 'user_database_controller.dart';
 export 'add_product_controller.dart';
 export 'option_button_controller.dart';
 export 'localization_controller.dart';
+export 'shop_controller.dart';
