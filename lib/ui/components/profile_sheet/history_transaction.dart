@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:xetia_shop/constants/color_xetia.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:xetia_shop/language/language_key.dart';
+import 'package:get/get.dart';
 
 import 'badges.dart';
 import 'list_history.dart';
@@ -24,8 +26,8 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
       firstDate: DateTime(2000),
       lastDate: DateTime(2025),
       helpText: text,
-      cancelText: 'Cancel',
-      confirmText: 'Ok',
+      cancelText: kCancel.tr,
+      confirmText: kOk.tr,
       builder: (context, child) {
         return DatePickerTheme(child: child, color: color, isDark: isDark);
       },
@@ -38,9 +40,9 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
   }
 
   void getDate() async {
-    firstDate = await textInputSelectDate(context, Colors.green, true, "First date History");
+    firstDate = await textInputSelectDate(context, Colors.green, true, kFirstDate.tr);
     Future.delayed(const Duration(milliseconds: 1000), () async {
-      lastDate = await textInputSelectDate(context, Colors.blue, true, "Last date History");
+      lastDate = await textInputSelectDate(context, Colors.blue, true, kLastDate.tr);
     });
   }
 
@@ -48,12 +50,11 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
   void initState() {
     super.initState();
     chipName = [
-      "All",
-      "Payment",
-      "Acceptance",
-      "Output",
-      "Input",
-      "Lorem",
+      kAll.tr,
+      kPayment.tr,
+      kAcceptance.tr,
+      kOutput.tr,
+      kInput.tr,
     ];
   }
 
@@ -79,7 +80,7 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Text(
-                "History Transaction",
+                kHistoryTx.tr,
                 textAlign: TextAlign.center,
                 style: context.textTheme.headline1.copyWith(fontSize: 16),
               ),
@@ -148,7 +149,7 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListHistory(
-                      text: "Payment",
+                      text: kPayment.tr,
                       date: "1 Dec 2020",
                       price: "-21.285",
                       icon: Icons.money,
@@ -156,7 +157,7 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
                       isDark: context.isDarkMode,
                       colorPrice: Colors.red),
                   ListHistory(
-                      text: "Cashback",
+                      text: kCashBack.tr,
                       date: "1 Dec 2020",
                       price: "+41.285",
                       icon: Icons.money,

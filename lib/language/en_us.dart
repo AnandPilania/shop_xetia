@@ -7,12 +7,9 @@ const Map<String, String> enUS = {
   kOnBoardHeader3: 'Nearby store and the Supplies',
 
   //subheader on boarding
-  kOnBoardSub1:
-      'Xetia Shop will make it easier for you to find halal food around you',
-  kOnBoardSub2:
-      'The best prices and offers will always be given to you, Xetia Shop users',
-  kOnBoardSub3:
-      'You can always monitor the supply inventory for each product in every store',
+  kOnBoardSub1: 'Xetia Shop will make it easier for you to find halal food around you',
+  kOnBoardSub2: 'The best prices and offers will always be given to you, Xetia Shop users',
+  kOnBoardSub3: 'You can always monitor the supply inventory for each product in every store',
 
   kContinue: 'Continue',
   kLogin: "Login",
@@ -29,23 +26,20 @@ const Map<String, String> enUS = {
   kGmail: 'Gmail',
   kPassword: 'Password',
 
-  kSubscribeText:
-      'I would like to receive your newsletter and other promotional information.',
+  kSubscribeText: 'I would like to receive your newsletter and other promotional information.',
 
   kErrorEmail: "Please enter a valid email address.",
   kErrorPassword: "Password must be at least 6 characters.",
   kErrorName: "Please enter a name.",
   kErrorNumber: 'Please enter a number.',
   kErrorRequired: 'This is a required field.',
-  kErrorNumberOnly:
-      "Please enter a number i.e. 250 - no dollar symbol and no cents",
+  kErrorNumberOnly: "Please enter a number i.e. 250 - no dollar symbol and no cents",
 
   kForgotPassword: "Forgot Password",
   kResetPassword: "Reset Password",
 
   kRecoveryHeading: "Recovery Password",
-  kRecoverySub:
-      "Enter your email address and we’ll send you an email with instructions to reset your password.",
+  kRecoverySub: "Enter your email address and we’ll send you an email with instructions to reset your password.",
   kBackSignIn: "Back to Sign in",
 
   kAlert: "Alert",
@@ -108,4 +102,34 @@ const Map<String, String> enUS = {
 
   kTypeMessage: "Type a Message",
   kSearchChats: "Search chats",
+
+  kEditProfile: "Edit Profile",
+  kMyBalance: "My Balance",
+  kSeeDetails: "See Details",
+  kBalance: "Balance",
+  kPoint: "Point",
+  kBudgeting: "Budget",
+  kFoodDrink: "Food and Beverage",
+  kWifiBills: "WiFi Bills",
+  kHouseBills: "House Bills",
+  kHistoryTx: "Transactions History",
+  kAll: "All",
+  kPayment: "Payment",
+  kAcceptance: "Acceptance",
+  kOutput: "Output",
+  kInput: "Input",
+  kCashBack: "Cashback",
+  kHalalProductReview: "Halal Product Review",
+  kDesignerUIUX: "UI/UX Designer",
+  kLogout: "Logout",
+  kOk: "Ok",
+  kCancel: "Cancel",
+  kFirstDate: "First Date History",
+  kLastDate: "Last Date History",
+
+  kNext: "Next",
+  kErrorValidatePass: "Password doesn't match!",
+  kThanksRegistration: "Thank you very much for your registration. Please check your email for activation Token.",
+  kVerify: "Verify",
+  kActivateToken: "Activation token",
 };

@@ -94,5 +94,35 @@ const kTypeMinimumOrder = "Type_minimum_order";
 const kAddProduct = "Add_Product";
 const kProductDetail = "Product_Detail";
 
-const kTypeMessage = "Type_Message";
+const kTypeMessage = "type_message";
 const kSearchChats = "search_chats";
+
+const kEditProfile = "edit_profile";
+const kMyBalance = "my_balance";
+const kSeeDetails = "see_detials";
+const kBalance = "balance";
+const kPoint = "point";
+const kBudgeting = "budget";
+const kFoodDrink = "fnb";
+const kWifiBills = "wifi_bill";
+const kHouseBills = "house_bill";
+const kHistoryTx = "history_tx";
+const kAll = "all";
+const kPayment = "payment";
+const kAcceptance = "acceptance";
+const kOutput = "output";
+const kInput = "input";
+const kCashBack = "cash_back";
+const kHalalProductReview = "halal_product_review";
+const kDesignerUIUX = "designer_uiux";
+const kLogout = "logout";
+const kOk = "ok";
+const kCancel = "cancel";
+const kFirstDate = "first_date";
+const kLastDate = "last_date";
+
+const kNext = "next";
+const kErrorValidatePass = "validate_pass_err";
+const kThanksRegistration = "thanks_registration";
+const kVerify = "verify";
+const kActivateToken = "activated_token";

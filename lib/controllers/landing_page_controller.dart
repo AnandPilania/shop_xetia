@@ -15,10 +15,6 @@ class LandingPageController extends GetxController {
   set subscribeEmail(value) => this._subscribeEmail.value = value;
   get subscribeEmail => this._subscribeEmail.value;
 
-  void text() {
-    print("landing");
-  }
-
   void toggle() {
     _isLogin.toggle();
   }

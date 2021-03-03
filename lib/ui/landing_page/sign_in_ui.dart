@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/ui/components/login_method/_component.dart';
+import 'package:xetia_shop/ui/components/login_method/email_validation.dart';
+import 'package:xetia_shop/ui/components/login_method/register_2.dart';
 
 import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
@@ -15,6 +17,8 @@ class SignInUI extends StatelessWidget {
     GmailLogin(),
     DisplayMethod(),
     RegisterUI(),
+    RegisterUI2(),
+    RegisterUI3(),
   ];
 
   Widget getMethodWidget() {
