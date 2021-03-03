@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:connectivity/connectivity.dart';
 
 Future<bool> internetAvailable() async {
@@ -8,11 +10,24 @@ Future<bool> internetAvailable() async {
     return false;
   } else if (connectivityResult == ConnectivityResult.mobile) {
     print("online with mobile secular");
-    return true;
+    return retryConnection();
   } else if (connectivityResult == ConnectivityResult.wifi) {
     print("online");
-    return true;
+    return retryConnection();
   }
 
   return null;
+}
+
+Future<bool> retryConnection() async {
+  try {
+    final result = await InternetAddress.lookup('example.com');
+    if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+      print('connected');
+      return true;
+    }
+  } on SocketException catch (_) {
+    print('not connected : $_');
+    return false;
+  }
 }
