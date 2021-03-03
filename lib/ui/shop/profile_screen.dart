@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
               child: ProductReview(),
             ),
             SizedBox(height: 25),
-            CarouselCardContainer(),
+            BusinessCard(),
             SizedBox(height: 25),
             Container(
               width: MediaQuery.of(context).size.width * 0.8,

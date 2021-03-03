@@ -19,3 +19,4 @@ export 'add_product_controller.dart';
 export 'option_button_controller.dart';
 export 'localization_controller.dart';
 export 'time_token_controller.dart';
+export 'shop_controller.dart';
