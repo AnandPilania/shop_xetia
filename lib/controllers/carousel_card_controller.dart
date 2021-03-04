@@ -1,12 +1,19 @@
 import 'package:get/get.dart';
 
 class CarouselCardController extends GetxController {
-  RxInt _currentCard = 0.obs;
+  RxInt _currentBusinessCard = 0.obs;
 
-  set currentCard(value) => this._currentCard.value = value;
-  get currentCard => this._currentCard.value;
+  set currentBusinessCard(value) => this._currentBusinessCard.value = value;
 
-  List<T> map<T>(List list, Function handler) {
+  get currentBusinessCard => this._currentBusinessCard.value;
+
+  RxInt _currentHeaderShopCard = 0.obs;
+
+  set currentHeaderShopCard(value) => this._currentHeaderShopCard.value = value;
+
+  get currentHeaderShopCard => this._currentHeaderShopCard.value;
+
+  List<T> mapCard<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
       result.add(handler(i, list[i]));

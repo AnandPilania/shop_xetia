@@ -13,9 +13,11 @@ import 'package:clay_containers/clay_containers.dart';
 
 class RegisterUI3 extends StatelessWidget {
   final SignUpController _signUpController = Get.find<SignUpController>();
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
-  final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
+  final TokenTimeController tokenTimeController =
+      Get.put(TokenTimeController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

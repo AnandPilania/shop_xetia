@@ -39,32 +39,39 @@ class LogoutController extends GetxController {
 
     loading.show();
 
+    // if (id != null) {
     try {
-      await authV2
+      AuthResponse res = await authV2
           .logoutRequestV2(tokenAccess: accessToken, tokenRefresh: refreshToken)
-          .then((AuthResponse value) {
-        print("message response ${value.meta.message}");
-        if (value.meta.code == 200) {
-          headerHomeController.changeHeader(position: 0, isSwiped: false);
-          loginController.loginMethod = LoginMethods.Unchosen;
-          signInController.changeLoginState(false);
-          Get.snackbar(kAlert.tr, value.meta.message,
-              snackPosition: SnackPosition.BOTTOM);
-          Get.offAll(signInController.hasLoggedIn);
-        } else {
-          loading.hide();
-          Get.snackbar(kAlert.tr, value.meta.message,
-              snackPosition: SnackPosition.BOTTOM);
-        }
-      }).catchError((onError) {
+          .catchError((onError) {
         loading.hide();
         Get.snackbar(kAlert.tr, kLogoutFailed.tr,
             snackPosition: SnackPosition.BOTTOM);
         print(onError);
       });
-      await UserProvider.db.deleteUser(id);
+      if (res.meta.code == 200) {
+        headerHomeController.changeHeader(position: 0, isSwiped: false);
+        loginController.loginMethod = LoginMethods.Unchosen;
+        signInController.changeLoginState(false);
+        await UserProvider.db.deleteUser(id);
+        Get.snackbar(kAlert.tr, res.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
+        Get.offAll(signInController.hasLoggedIn);
+      } else {
+        loading.hide();
+        Get.snackbar(kAlert.tr, res.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
+      }
     } catch (e) {
       print("error $e");
     }
+    // } else {
+    //   headerHomeController.changeHeader(position: 0, isSwiped: false);
+    //   loginController.loginMethod = LoginMethods.Unchosen;
+    //   signInController.changeLoginState(false);
+    //   Get.snackbar(kAlert.tr, "User Logout",
+    //       snackPosition: SnackPosition.BOTTOM);
+    //   Get.offAll(signInController.hasLoggedIn);
+    // }
   }
 }

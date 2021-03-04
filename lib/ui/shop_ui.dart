@@ -7,7 +7,9 @@ import '../controllers/_controllers.dart';
 import '../ui/components/_components.dart';
 
 class ShopUI extends StatelessWidget {
-  final HeaderHomeController headerController = Get.find<HeaderHomeController>();
+  final HeaderHomeController headerController =
+      Get.find<HeaderHomeController>();
+  final ShopController shopController = Get.put(ShopController());
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,9 @@ class ShopUI extends StatelessWidget {
             onPageChanged: (value) => headerController.changeHeader(position: value),
             scrollDirection: Axis.horizontal,
             children: [
-              ShopScreen(),
+              Obx(() => AnimatedSwitcher(
+                  duration: Duration(milliseconds: 250),
+                  child: shopController.isShopOwner)),
               ProfileScreen(),
               MessageScreen(),
             ],

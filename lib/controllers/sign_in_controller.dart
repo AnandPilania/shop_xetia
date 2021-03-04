@@ -65,12 +65,20 @@ class SignInController extends GetxController {
   void insertToDb(SignInResponseV2 value) async {
     UserDatabase user = UserDatabase(
       id: 1,
-      role: value.user.userEntities[0].role,
+      role: value.user.userEntities.length != 0
+          ? value.user.userEntities[0].role
+          : 1,
       roleName: "",
       roleDescription: "",
-      entityId: value.user.userEntities[0].entity,
-      entityName: value.user.userEntities[0].entityName,
-      entityType: value.user.userEntities[0].entityType,
+      entityId: value.user.userEntities.length != 0
+          ? value.user.userEntities[0].entity
+          : "77e1e824-3d10-4487-81d0-f43639d42bb5",
+      entityName: value.user.userEntities.length != 0
+          ? value.user.userEntities[0].entityName
+          : "Toko Indonesia",
+      entityType: value.user.userEntities.length != 0
+          ? value.user.userEntities[0].entityType
+          : "shop",
       userId: value.user.id,
       first: value.user.firstName,
       last: value.user.lastName,
