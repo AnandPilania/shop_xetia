@@ -142,4 +142,117 @@ class AuthV2 {
       return e;
     }
   }
+
+  Future<AuthResponse> reqVerifyEmail({@required String email}) async {
+    try {
+      bool isOnline = await internetAvailable();
+      print("internet $isOnline");
+      if (isOnline) {
+        http.Response res = await http.post(
+            "$kUserUrlV2/api/v2/request-verify-email/",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: jsonEncode({"email": email}));
+
+        if (res.statusCode == 200) {
+          AuthResponse decode = authResponseFromJson(res.body);
+          print(decode.meta.message);
+        } else {
+          return authResponseFromJson(res.body);
+        }
+      } else {
+        return AuthResponse(
+            meta: Meta(code: 408, message: "Check Your Connection Internet"));
+      }
+    } catch (e) {
+      print("Error : $e");
+    }
+  }
+
+  Future<AuthResponse> verifyEmail(
+      {@required String email, @required String verifyT}) async {
+    try {
+      bool isOnline = await internetAvailable();
+      print("internet $isOnline");
+      if (isOnline) {
+        http.Response res = await http.post("$kUserUrlV2/api/v2/verify-email/",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: jsonEncode({"email": email, "verification_token": verifyT}));
+
+        if (res.statusCode == 200) {
+          return authResponseFromJson(res.body);
+        } else {
+          return authResponseFromJson(res.body);
+        }
+      } else {
+        return AuthResponse(
+            meta: Meta(code: 408, message: "Check Your Connection Internet"));
+      }
+    } catch (e) {
+      print("Error : $e");
+    }
+  }
+
+  Future<AuthResponse> resForgetPass({@required email}) async {
+    try {
+      bool isOnline = await internetAvailable();
+      print("internet $isOnline");
+      if (isOnline) {
+        http.Response res = await http.post(
+            "$kUserUrlV2/api/v2/request-forgot-password/",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: jsonEncode({
+              "email": email,
+            }));
+
+        if (res.statusCode == 200) {
+          return authResponseFromJson(res.body);
+        } else {
+          return authResponseFromJson(res.body);
+        }
+      } else {
+        return AuthResponse(
+            meta: Meta(code: 408, message: "Check Your Connection Internet"));
+      }
+    } catch (e) {
+      print("Error : $e");
+    }
+  }
+
+  Future<AuthResponse> forgetPass(
+      {@required newPass, @required email, @required token}) async {
+    try {
+      bool isOnline = await internetAvailable();
+      print("internet $isOnline");
+      if (isOnline) {
+        http.Response res = await http.post(
+            "$kUserUrlV2/api/v2/forgot-password/",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: jsonEncode(
+                {"new_password": newPass, "email": email, "token": token}));
+
+        if (res.statusCode == 200) {
+          return authResponseFromJson(res.body);
+        } else {
+          return authResponseFromJson(res.body);
+        }
+      } else {
+        return AuthResponse(
+            meta: Meta(code: 408, message: "Check Your Connection Internet"));
+      }
+    } catch (e) {
+      print("Error : $e");
+    }
+  }
 }
