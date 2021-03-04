@@ -8,8 +8,8 @@ import 'package:xetia_shop/models/message_item.dart';
 
 class MessageItemController extends GetxController {
   final TextFieldController _textFieldController = Get.find();
+  final ListController _listController = Get.find();
   ScrollController chatBodyScrollController;
-  RxList<MessageItem> listMessage = List<MessageItem>().obs;
   RxString _selectedReplyMessage = "".obs;
   RxBool _showReplyMessage = false.obs;
 
@@ -33,7 +33,7 @@ class MessageItemController extends GetxController {
 
   void dummyInit() {
     for (int i = 0; i < 15; i++) {
-      listMessage.add(MessageItem(
+      _listController.addMessage(MessageItem(
           content: Faker().lorem.sentence(),
           isRight: Random().nextBool(),
           reply: ""));
@@ -42,7 +42,7 @@ class MessageItemController extends GetxController {
 
   void addMessage() {
     if (_textFieldController.messageTextFieldController.text.isNotEmpty) {
-      listMessage.add(MessageItem(
+      _listController.addMessage(MessageItem(
           content: _textFieldController.messageTextFieldController.text,
           isRight: true,
           reply: selectedReplyMessage));

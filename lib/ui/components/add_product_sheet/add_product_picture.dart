@@ -45,9 +45,9 @@ class AddProductPicture extends StatelessWidget {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       physics: BouncingScrollPhysics(),
-                      itemCount: _listController.images.length + 1,
+                      itemCount: _listController.imagesLength() + 1,
                       itemBuilder: (context, index) {
-                        if (index == _listController.images.length) {
+                        if (index == _listController.imagesLength()) {
                           return AspectRatio(
                             aspectRatio: 1,
                             child: Container(
