@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/controllers/list_controller.dart';
 import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
@@ -9,8 +9,7 @@ class AddProductPicture extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  final AddProductController _addProductController =
-      Get.find<AddProductController>();
+  final ListController _listController = Get.put(ListController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +29,12 @@ class AddProductPicture extends StatelessWidget {
               child:
                   Text(kProductPicture.tr, style: context.textTheme.headline3),
             ),
-            _addProductController.images.isEmpty
+            _listController.images.isEmpty
                 ? Container(
                     margin: EdgeInsets.all(20),
                     child: MyButton(
                       onTap: () {
-                        _addProductController.addImages(false);
+                        _listController.addImages(false);
                       },
                       text: kBrowsePicture.tr,
                       color: context.theme.primaryColor,
@@ -46,9 +45,9 @@ class AddProductPicture extends StatelessWidget {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       physics: BouncingScrollPhysics(),
-                      itemCount: _addProductController.images.length + 1,
+                      itemCount: _listController.images.length + 1,
                       itemBuilder: (context, index) {
-                        if (index == _addProductController.images.length) {
+                        if (index == _listController.images.length) {
                           return AspectRatio(
                             aspectRatio: 1,
                             child: Container(
@@ -60,7 +59,7 @@ class AddProductPicture extends StatelessWidget {
                               ),
                               child: InkWell(
                                 onTap: () {
-                                  _addProductController.addImages(false);
+                                  _listController.addImages(false);
                                 },
                                 child: Center(
                                   child: Text(
@@ -95,7 +94,7 @@ class AddProductPicture extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.file(
-                                        _addProductController.images[index],
+                                        _listController.images[index],
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -123,9 +122,8 @@ class AddProductPicture extends StatelessWidget {
                                           size: 15,
                                         ),
                                         onPressed: () {
-                                          _addProductController.removeImages(
-                                              _addProductController
-                                                  .images[index]);
+                                          _listController.removeImages(
+                                              _listController.images[index]);
                                         },
                                       ),
                                     ),
