@@ -90,9 +90,7 @@ class SignInController extends GetxController {
 
     loading.show();
 
-    await authV2
-        .signInRequest(email: email.text, password: pass.text)
-        .then((SignInResponseV2 value) {
+    await authV2.signInRequest(email: email.text, password: pass.text).then((SignInResponseV2 value) {
       loading.hide();
       print(value.meta.message.toString());
 
@@ -102,22 +100,18 @@ class SignInController extends GetxController {
         insertToDb(value);
         changeLoginState(true);
         Get.offAll(HomeUI());
-        Get.snackbar(kAlert.tr, value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       } else if (value.meta.code == 408) {
         // exception untuk apabila tidak ada internet
 
-        Get.snackbar(kAlert.tr, value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       } else {
-        Get.snackbar(kAlert.tr, value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar(kAlert.tr, kSignInFailed.tr,
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(kAlert.tr, kSignInFailed.tr, snackPosition: SnackPosition.BOTTOM);
       print(onError);
     });
   }

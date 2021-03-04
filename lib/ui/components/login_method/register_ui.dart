@@ -54,7 +54,9 @@ class RegisterUI extends StatelessWidget {
                           child: focusController.topContainer == true
                               ? SizedBox()
                               : GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    loginController.loginMethod = LoginMethods.ResendTokenEmail;
+                                  },
                                   child: Text(kResendActivationKey.tr,
                                       style: context.textTheme.headline4.copyWith(
                                         color: const Color(0xff3a7af2),

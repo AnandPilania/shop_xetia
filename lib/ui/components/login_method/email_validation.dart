@@ -20,115 +20,133 @@ class RegisterUI3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: (heightApp + paddingTop) * 0.4,
-      child: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 9.0),
-            child: Column(
-              children: [
-                CountdownTimer(
-                  controller: tokenTimeController.controller,
-                  widgetBuilder: (_, CurrentRemainingTime time) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+    return Obx(() => AnimatedSwitcher(
+        duration: Duration(milliseconds: 200),
+        child: tokenTimeController.isTicking == false
+            ? SizedBox(
+                height: (heightApp + paddingTop) * 0.4,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16.0),
+                          child: AutoSizeText(
+                            kTokenTimeDown.tr,
+                            style: context.textTheme.headline4.copyWith(fontSize: 16),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: MyButton(
+                            color: context.theme.primaryColor,
+                            onTap: () {
+                              tokenTimeController.startController();
+                              FocusScope.of(context).unfocus();
+                            },
+                            text: kResendActivationKey.tr,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            : Container(
+                height: (heightApp + paddingTop) * 0.4,
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: _formKey,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 9.0),
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16.0),
-                            child: AutoSizeText(
-                              kThanksRegistration.tr,
-                              style: context.textTheme.headline4.copyWith(fontSize: 14),
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ClayContainer(
-                                  emboss: true,
-                                  spread: 2,
-                                  curveType: CurveType.convex,
-                                  color: context.theme.primaryColorDark,
-                                  height: widthApp * 0.15,
-                                  width: widthApp * 0.15,
-                                  borderRadius: 14,
-                                  child: Center(
-                                      child: Text(time != null ? (time.sec == null ? "0" : time.sec.toString()) : "0",
-                                          style: context.textTheme.headline2)),
-                                ),
-                                SizedBox(width: 8),
-                                Text(":", style: context.textTheme.headline2.copyWith(fontSize: 30)),
-                                SizedBox(width: 8),
-                                ClayContainer(
-                                  emboss: true,
-                                  spread: 2,
-                                  curveType: CurveType.convex,
-                                  color: context.theme.primaryColorDark,
-                                  height: widthApp * 0.15,
-                                  width: widthApp * 0.15,
-                                  borderRadius: 14,
-                                  child: Center(
-                                    child: Text(time != null ? (time.sec == null ? "0" : time.sec.toString()) : "0",
-                                        style: context.textTheme.headline2),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          XetiaTextField(
-                            textInputType: TextInputType.emailAddress,
-                            controller: _signUpController.token,
-                            hintText: kActivateToken.tr,
-                            focusNode: focusController.token,
-                          ),
-                          Obx(() => AnimatedSwitcher(
-                                duration: Duration(milliseconds: 200),
-                                child: tokenTimeController.isTicking == false
-                                    ? SizedBox(height: 30)
-                                    : SizedBox(
-                                        height: 30,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(top: 10.0),
-                                          child: GestureDetector(
-                                              onTap: () {
-                                                tokenTimeController.controller.start();
-                                              },
-                                              child: Text(kResendActivationKey.tr,
-                                                  style: context.textTheme.headline4.copyWith(
-                                                    color: const Color(0xff3a7af2),
-                                                  ),
-                                                  textAlign: TextAlign.center)),
-                                        ),
+                          CountdownTimer(
+                            controller: tokenTimeController.controller,
+                            widgetBuilder: (_, CurrentRemainingTime time) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 16.0),
+                                      child: AutoSizeText(
+                                        kThanksRegistration.tr,
+                                        style: context.textTheme.headline4.copyWith(fontSize: 14),
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
                                       ),
-                              )),
-                          SizedBox(height: 20),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: MyButton(
-                              color: context.theme.primaryColor,
-                              onTap: () {
-                                FocusScope.of(context).unfocus();
-                              },
-                              text: kVerify.tr,
-                            ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(15.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          ClayContainer(
+                                            emboss: true,
+                                            spread: 2,
+                                            curveType: CurveType.convex,
+                                            color: context.theme.primaryColorDark,
+                                            height: widthApp * 0.15,
+                                            width: widthApp * 0.15,
+                                            borderRadius: 14,
+                                            child: Center(
+                                              child: Text(time != null ? (time.min == null ? "0" : time.min.toString()) : "0",
+                                                  style: context.textTheme.headline2),
+                                            ),
+                                          ),
+                                          SizedBox(width: 8),
+                                          Text(":", style: context.textTheme.headline2.copyWith(fontSize: 30)),
+                                          SizedBox(width: 8),
+                                          ClayContainer(
+                                            emboss: true,
+                                            spread: 2,
+                                            curveType: CurveType.convex,
+                                            color: context.theme.primaryColorDark,
+                                            height: widthApp * 0.15,
+                                            width: widthApp * 0.15,
+                                            borderRadius: 14,
+                                            child: Center(
+                                              child: Text(time != null ? (time.sec == null ? "0" : time.sec.toString()) : "0",
+                                                  style: context.textTheme.headline2),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 5),
+                                    XetiaTextField(
+                                      textInputType: TextInputType.emailAddress,
+                                      controller: _signUpController.token,
+                                      hintText: kActivateToken.tr,
+                                      focusNode: focusController.token,
+                                    ),
+                                    SizedBox(height: 20),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                      child: MyButton(
+                                        color: context.theme.primaryColor,
+                                        onTap: () {
+                                          FocusScope.of(context).unfocus();
+                                        },
+                                        text: kVerify.tr,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+              )));
   }
 }

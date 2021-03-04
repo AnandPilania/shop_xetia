@@ -133,4 +133,7 @@ const Map<String, String> enUS = {
   kVerify: "Verify",
   kActivateToken: "Activation token",
   kResendActivationKey: "Resend activation token",
+  kTokenTimeDown:
+      "Ups! your time is out, the token for your account activation is expired, click the button below to resend token verification",
+  kResendToken: "Resend Token",
 };

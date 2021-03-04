@@ -10,9 +10,15 @@ class TokenTimeController extends GetxController {
   CountdownTimerController controller;
   CurrentRemainingTime timeController;
 
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+  }
+
   void startController() {
     isTicking = true;
-    controller = CountdownTimerController(endTime: DateTime.now().millisecondsSinceEpoch + 1000 * 5, onEnd: endTicking);
+    controller = CountdownTimerController(endTime: DateTime.now().millisecondsSinceEpoch + 1000 * 180, onEnd: endTicking);
   }
 
   void endTicking() {

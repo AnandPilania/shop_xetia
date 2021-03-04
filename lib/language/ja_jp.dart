@@ -133,6 +133,8 @@ const Map<String, String> jaJP = {
   kVerify: "検証",
   kActivateToken: "アクティベーショントークン",
   kResendActivationKey: "アクティベーショントークンの再送",
+  kTokenTimeDown: "アップス！時間切れです。 アカウントのアクティベーションのトークンは期限切れです。",
+  kResendToken: "トークンの再送",
 
   //日本語 only
   "Nagoya": "名古屋",

@@ -127,3 +127,5 @@ const kThanksRegistration = "thanks_registration";
 const kVerify = "verify";
 const kActivateToken = "activated_token";
 const kResendActivationKey = "resend_token";
+const kTokenTimeDown = "token_timeout_message";
+const kResendToken = "resend_token_button";

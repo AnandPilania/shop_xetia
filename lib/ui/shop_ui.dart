@@ -7,23 +7,18 @@ import '../controllers/_controllers.dart';
 import '../ui/components/_components.dart';
 
 class ShopUI extends StatelessWidget {
-  final HeaderHomeController headerController =
-      Get.find<HeaderHomeController>();
+  final HeaderHomeController headerController = Get.find<HeaderHomeController>();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-            height: paddingTop,
-            width: widthApp,
-            color: context.theme.backgroundColor),
+        Container(height: paddingTop, width: widthApp, color: context.theme.primaryColorDark),
         XetiaTabBar(),
         Expanded(
           child: PageView(
             controller: headerController.pageController,
-            onPageChanged: (value) =>
-                headerController.changeHeader(position: value),
+            onPageChanged: (value) => headerController.changeHeader(position: value),
             scrollDirection: Axis.horizontal,
             children: [
               ShopScreen(),

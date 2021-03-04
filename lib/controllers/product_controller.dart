@@ -50,7 +50,7 @@ class ProductController extends GetxController {
 
   //nantinya fetch dari database
   void dummyInit() {
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 10; i++) {
       listProduct.add(DummyProduct(
         imageUrl: [
           "https://images-na.ssl-images-amazon.com/images/I/81vJyb43URL._SL1500_.jpg",
