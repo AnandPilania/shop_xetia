@@ -51,6 +51,14 @@ class FocusNodeController extends GetxController {
   set tokenFocus(value) => this._tokenFocus.value = value;
   get tokenFocus => this._tokenFocus.value;
 
+  //Focus Node Resend Email
+  final FocusNode _resendTokenEmail = FocusNode();
+  get resendTokenEmail => this._resendTokenEmail;
+
+  final RxBool _resendTokenEmailFocus = false.obs;
+  set resendTokenEmailFocus(value) => this._resendTokenEmailFocus.value = value;
+  get resendTokenEmailFocus => this._resendTokenEmailFocus.value;
+
   //Controller For top login container
   get topContainer => isEmailFocus == true ||
           isPasswordFocus == true ||
@@ -59,7 +67,8 @@ class FocusNodeController extends GetxController {
           emailSignUpFocus == true ||
           passwordSignUpFocus == true ||
           passwordSignUpValidateFocus == true ||
-          tokenFocus == true
+          tokenFocus == true ||
+          resendTokenEmailFocus == true
       ? true.obs
       : false.obs;
 
@@ -73,6 +82,7 @@ class FocusNodeController extends GetxController {
     passwordSignUp.addListener(() => passwordSignUpFocus = passwordSignUp.hasFocus);
     passwordSignUpValidate.addListener(() => passwordSignUpValidateFocus = passwordSignUpValidate.hasFocus);
     token.addListener(() => tokenFocus = token.hasFocus);
+    resendTokenEmail.addListener(() => resendTokenEmailFocus = resendTokenEmail.hasFocus);
     super.onInit();
   }
 
@@ -84,6 +94,9 @@ class FocusNodeController extends GetxController {
     emailSignUp.dispose();
     passwordLogin.dispose();
     passwordSignUp.dispose();
+    passwordSignUpValidate.dispose();
+    resendTokenEmail.dispose();
+    token.dispose();
     super.dispose();
   }
 }

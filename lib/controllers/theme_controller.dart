@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/state_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:xetia_shop/constants/_constants.dart';
@@ -11,7 +12,14 @@ class ThemeController extends GetxController {
   void onInit() {
     super.onInit();
     if (box.read(kDarkMode) == null) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
       box.write(kDarkMode, false);
+    } else {
+      if (box.read(kDarkMode) == true) {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent));
+      } else {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent));
+      }
     }
   }
 
@@ -21,5 +29,12 @@ class ThemeController extends GetxController {
   }
 
   ThemeData get theme => isDark.value ? Themes.dark : Themes.light;
-  void changeTheme(bool val) => box.write(kDarkMode, val);
+  void changeTheme(bool val) {
+    if (val == true) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent));
+    } else {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    }
+    box.write(kDarkMode, val);
+  }
 }

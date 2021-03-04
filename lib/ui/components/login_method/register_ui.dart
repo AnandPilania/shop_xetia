@@ -49,9 +49,19 @@ class RegisterUI extends StatelessWidget {
                     SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                          onTap: () {},
-                          child: Text("Resend activation token", style: context.textTheme.headline4, textAlign: TextAlign.center)),
+                      child: Obx(() => AnimatedSwitcher(
+                          duration: Duration(milliseconds: 250),
+                          child: focusController.topContainer == true
+                              ? SizedBox()
+                              : GestureDetector(
+                                  onTap: () {
+                                    loginController.loginMethod = LoginMethods.ResendTokenEmail;
+                                  },
+                                  child: Text(kResendActivationKey.tr,
+                                      style: context.textTheme.headline4.copyWith(
+                                        color: const Color(0xff3a7af2),
+                                      ),
+                                      textAlign: TextAlign.center)))),
                     ),
                   ],
                 ),
@@ -61,6 +71,7 @@ class RegisterUI extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: MyButton(
+                        iconSuffix: Icons.arrow_right,
                         color: context.theme.primaryColor,
                         onTap: () {
                           if (_formKey.currentState.validate()) {

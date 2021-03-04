@@ -32,8 +32,7 @@ class DetailSheet extends StatelessWidget {
               child: Swiper(
                 itemCount: productController.listProduct.length,
                 index: indexItem,
-                onIndexChanged: (_) =>
-                    productController.indexProductPicture = 0,
+                onIndexChanged: (_) => productController.indexProductPicture = 0,
                 itemBuilder: (context, indexSwiper) {
                   return SingleChildScrollView(
                     child: Column(

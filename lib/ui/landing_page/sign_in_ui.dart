@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/ui/components/login_method/_component.dart';
+import 'package:xetia_shop/ui/components/login_method/email_resend_token.dart';
 import 'package:xetia_shop/ui/components/login_method/email_validation.dart';
 import 'package:xetia_shop/ui/components/login_method/register_2.dart';
 
@@ -19,6 +20,7 @@ class SignInUI extends StatelessWidget {
     RegisterUI(),
     RegisterUI2(),
     RegisterUI3(),
+    ResendTokenEmail(),
   ];
 
   Widget getMethodWidget() {
@@ -39,7 +41,7 @@ class SignInUI extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(height: paddingTop, width: widthApp, color: context.theme.backgroundColor),
+                    Container(height: paddingTop, width: widthApp, color: context.theme.primaryColorDark),
                     HeaderLandingPage(),
                     Obx(() => Expanded(
                           child: Align(

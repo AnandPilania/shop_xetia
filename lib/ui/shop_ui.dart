@@ -15,16 +15,12 @@ class ShopUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-            height: paddingTop,
-            width: widthApp,
-            color: context.theme.backgroundColor),
+        Container(height: paddingTop, width: widthApp, color: context.theme.primaryColorDark),
         XetiaTabBar(),
         Expanded(
           child: PageView(
             controller: headerController.pageController,
-            onPageChanged: (value) =>
-                headerController.changeHeader(position: value),
+            onPageChanged: (value) => headerController.changeHeader(position: value),
             scrollDirection: Axis.horizontal,
             children: [
               Obx(() => AnimatedSwitcher(

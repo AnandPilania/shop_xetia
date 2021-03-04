@@ -22,10 +22,10 @@ class BottomWaveLandingPage extends StatelessWidget {
           config: Get.isDarkMode == true
               ? CustomConfig(
                   gradients: [
-                    [context.theme.primaryColor, kLightOrangeXetia],
-                    [Colors.black, Colors.black],
-                    [context.theme.primaryColor, kLightOrangeXetia],
-                    [Colors.black, Colors.black]
+                    [context.theme.primaryColor, context.theme.primaryColor],
+                    [context.theme.primaryColorDark, context.theme.primaryColorDark],
+                    [context.theme.primaryColor, context.theme.primaryColor],
+                    [context.theme.primaryColorDark, context.theme.primaryColorDark]
                   ],
                   durations: [35000, 19440, 10800, 6000],
                   heightPercentages: [0.20, 0.23, 0.25, 0.30],
@@ -35,10 +35,10 @@ class BottomWaveLandingPage extends StatelessWidget {
                 )
               : CustomConfig(
                   gradients: [
-                    [Colors.black, Colors.black],
-                    [context.theme.primaryColor, kLightOrangeXetia],
-                    [Colors.black, Colors.black],
-                    [context.theme.primaryColor, kLightOrangeXetia]
+                    [context.theme.primaryColorDark, context.theme.primaryColorDark],
+                    [context.theme.primaryColor, context.theme.primaryColor],
+                    [context.theme.primaryColorDark, context.theme.primaryColorDark],
+                    [context.theme.primaryColor, context.theme.primaryColor]
                   ],
                   durations: [35000, 19440, 10800, 6000],
                   heightPercentages: [0.20, 0.23, 0.25, 0.30],
