@@ -6,8 +6,7 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class DeliveryInformation extends StatelessWidget {
-  final AddProductController _addProductController =
-      Get.put(AddProductController());
+  final TextFieldController _textFieldController = Get.find();
   final OptionButtonController _optionButtonController =
       Get.put(OptionButtonController());
 
@@ -44,7 +43,7 @@ class DeliveryInformation extends StatelessWidget {
                 ),
                 child: XetiaTextField(
                   textInputType: TextInputType.text,
-                  controller: _addProductController.weightController,
+                  controller: _textFieldController.weightController,
                   validator: Validator().notEmpty,
                   hintText: kWeight.tr,
                 ),
@@ -74,7 +73,7 @@ class DeliveryInformation extends StatelessWidget {
                 ),
                 child: XetiaTextField(
                   textInputType: TextInputType.text,
-                  controller: _addProductController.heightController,
+                  controller: _textFieldController.heightController,
                   validator: Validator().notEmpty,
                   hintText: kHeight.tr,
                 ),

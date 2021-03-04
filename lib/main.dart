@@ -17,8 +17,8 @@ void initLazyController() {
   Get.lazyPut(() => FocusNodeController(), fenix: true);
   Get.lazyPut(() => LocalizationController());
   Get.lazyPut(() => ProductController(), fenix: true);
-  Get.lazyPut(() => AddProductController(), fenix: true);
   Get.lazyPut(() => OptionButtonController(), fenix: true);
+  Get.lazyPut(() => TextFieldController(), fenix: true);
 }
 
 class MyApp extends StatelessWidget {

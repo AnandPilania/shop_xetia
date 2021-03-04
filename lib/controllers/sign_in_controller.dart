@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:xetia_shop/constants/_constants.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/db/_db.dart';
 import 'package:xetia_shop/db/model/user.dart';
 import 'package:xetia_shop/language/_components.dart';
@@ -18,17 +19,14 @@ class SignInController extends GetxController {
   final box = GetStorage();
   AuthV2 authV2 = AuthV2();
 
+  final TextFieldController _textFieldController = Get.find();
+
   set isObscure(value) => this._isObscure.value = value;
 
   get isObscure => this._isObscure.value;
 
-  TextEditingController email;
-  TextEditingController pass;
-
   @override
   void onInit() {
-    email = TextEditingController();
-    pass = TextEditingController();
     if (box.read(kHasLoggedIn) == null) {
       box.write(kHasLoggedIn, false);
     }
@@ -98,37 +96,38 @@ class SignInController extends GetxController {
 
     loading.show();
 
-    await authV2.signInRequest(email: email.text, password: pass.text).then((SignInResponseV2 value) {
+    await authV2
+        .signInRequest(
+            email: _textFieldController.email.text,
+            password: _textFieldController.pass.text)
+        .then((SignInResponseV2 value) {
       loading.hide();
       print(value.meta.message.toString());
 
       if (value.meta.code == 200) {
-        email.clear();
-        pass.clear();
+        _textFieldController.email.clear();
+        _textFieldController.email.clear();
+        _textFieldController.pass.clear();
         insertToDb(value);
         changeLoginState(true);
         Get.offAll(HomeUI());
-        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
       } else if (value.meta.code == 408) {
         // exception untuk apabila tidak ada internet
 
-        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
       } else {
-        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message,
+            snackPosition: SnackPosition.BOTTOM);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar(kAlert.tr, kSignInFailed.tr, snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(kAlert.tr, kSignInFailed.tr,
+          snackPosition: SnackPosition.BOTTOM);
       print(onError);
     });
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    email?.dispose();
-    pass?.dispose();
-    super.onClose();
   }
 }
