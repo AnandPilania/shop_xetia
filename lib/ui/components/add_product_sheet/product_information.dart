@@ -6,8 +6,7 @@ import 'package:xetia_shop/utils/_utils.dart';
 import 'package:xetia_shop/language/_components.dart';
 
 class ProductInformation extends StatelessWidget {
-  final AddProductController _addProductController =
-      Get.put(AddProductController());
+  final TextFieldController _textFieldController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class ProductInformation extends StatelessWidget {
         SizedBox(height: 15),
         XetiaTextField(
           textInputType: TextInputType.text,
-          controller: _addProductController.productNameController,
+          controller: _textFieldController.productNameController,
           validator: Validator().notEmpty,
           hintText: kTypeProductName.tr,
         ),
@@ -35,7 +34,7 @@ class ProductInformation extends StatelessWidget {
         SizedBox(height: 15),
         XetiaTextField(
           textInputType: TextInputType.text,
-          controller: _addProductController.categoryController,
+          controller: _textFieldController.categoryController,
           validator: Validator().notEmpty,
           hintText: kSearchCategory.tr,
         ),
@@ -47,7 +46,7 @@ class ProductInformation extends StatelessWidget {
         SizedBox(height: 15),
         XetiaTextField(
           textInputType: TextInputType.text,
-          controller: _addProductController.priceController,
+          controller: _textFieldController.priceController,
           validator: Validator().notEmpty,
           hintText: kTypeProductPrice.tr,
         ),

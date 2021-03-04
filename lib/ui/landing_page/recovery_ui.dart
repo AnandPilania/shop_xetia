@@ -8,7 +8,7 @@ import 'package:xetia_shop/utils/_utils.dart';
 import '../components/_components.dart';
 
 class RecoveryUI extends StatelessWidget {
-  final RecoveryController recoveryController = Get.put(RecoveryController());
+  final TextFieldController _textFieldController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -44,7 +44,7 @@ class RecoveryUI extends StatelessWidget {
                     SizedBox(height: 60),
                     XetiaTextField(
                       textInputType: TextInputType.emailAddress,
-                      controller: recoveryController.recovery,
+                      controller: _textFieldController.recovery,
                       validator: Validator().email,
                       hintText: kEmail.tr,
                       isPassword: false,

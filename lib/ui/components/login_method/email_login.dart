@@ -10,8 +10,10 @@ import '../../../utils/validation.dart';
 import '../../components/_components.dart';
 
 class EmailLogin extends StatelessWidget {
+  final TextFieldController _textFieldController = Get.find();
   final SignInController _signInController = Get.put(SignInController());
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -34,7 +36,7 @@ class EmailLogin extends StatelessWidget {
                   children: [
                     XetiaTextField(
                       textInputType: TextInputType.emailAddress,
-                      controller: _signInController.email,
+                      controller: _textFieldController.email,
                       validator: Validator().email,
                       hintText: kEmail.tr,
                       focusNode: focusController.emailLogin,
@@ -44,14 +46,15 @@ class EmailLogin extends StatelessWidget {
                     Obx(
                       () => XetiaTextField(
                         textInputType: TextInputType.emailAddress,
-                        controller: _signInController.pass,
+                        controller: _textFieldController.pass,
                         focusNode: focusController.passwordLogin,
                         validator: Validator().password,
                         hintText: kPassword.tr,
                         isPassword: true,
                         isObscure: _signInController.isObscure,
                         changeObscure: () {
-                          _signInController.isObscure = !_signInController.isObscure;
+                          _signInController.isObscure =
+                              !_signInController.isObscure;
                         },
                       ),
                     ),
@@ -76,7 +79,8 @@ class EmailLogin extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     GestureDetector(
-                        child: Text(kForgotPassword.tr, style: context.theme.textTheme.headline4),
+                        child: Text(kForgotPassword.tr,
+                            style: context.theme.textTheme.headline4),
                         onTap: () {
                           Get.to(RecoveryUI());
                         }),

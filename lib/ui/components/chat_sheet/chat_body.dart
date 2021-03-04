@@ -7,6 +7,7 @@ import 'package:swipe_to/swipe_to.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 
 class ChatBody extends StatelessWidget {
+  final ListController _listController = Get.find();
   final MessageItemController _messageItemController =
       Get.put(MessageItemController());
 
@@ -21,11 +22,11 @@ class ChatBody extends StatelessWidget {
         child: Obx(
           () => Column(
             children: List.generate(
-              _messageItemController.listMessage.length,
+              _listController.listMessage.length,
               (index) => BubbleChat(
-                text: _messageItemController.listMessage[index].content,
-                isRight: _messageItemController.listMessage[index].isRight,
-                reply: _messageItemController.listMessage[index].reply,
+                text: _listController.listMessage[index].content,
+                isRight: _listController.listMessage[index].isRight,
+                reply: _listController.listMessage[index].reply,
               ),
             ),
           ),

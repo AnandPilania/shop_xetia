@@ -3,12 +3,13 @@ import 'dart:math';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/models/message_item.dart';
 
 class MessageItemController extends GetxController {
-  TextEditingController messageTextFieldController;
+  final TextFieldController _textFieldController = Get.find();
+  final ListController _listController = Get.find();
   ScrollController chatBodyScrollController;
-  RxList<MessageItem> listMessage = List<MessageItem>().obs;
   RxString _selectedReplyMessage = "".obs;
   RxBool _showReplyMessage = false.obs;
 
@@ -22,7 +23,6 @@ class MessageItemController extends GetxController {
 
   @override
   void onInit() {
-    messageTextFieldController = TextEditingController();
     chatBodyScrollController = ScrollController(
       initialScrollOffset: 0.0,
       keepScrollOffset: true,
@@ -33,7 +33,7 @@ class MessageItemController extends GetxController {
 
   void dummyInit() {
     for (int i = 0; i < 15; i++) {
-      listMessage.add(MessageItem(
+      _listController.addMessage(MessageItem(
           content: Faker().lorem.sentence(),
           isRight: Random().nextBool(),
           reply: ""));
@@ -41,12 +41,12 @@ class MessageItemController extends GetxController {
   }
 
   void addMessage() {
-    if (messageTextFieldController.text.isNotEmpty) {
-      listMessage.add(MessageItem(
-          content: messageTextFieldController.text,
+    if (_textFieldController.messageTextFieldController.text.isNotEmpty) {
+      _listController.addMessage(MessageItem(
+          content: _textFieldController.messageTextFieldController.text,
           isRight: true,
           reply: selectedReplyMessage));
-      messageTextFieldController.clear();
+      _textFieldController.messageTextFieldController.clear();
       selectedReplyMessage = "";
       showReplyMessage = false;
       chatBodyScrollController.animateTo(
@@ -59,7 +59,6 @@ class MessageItemController extends GetxController {
 
   @override
   void dispose() {
-    messageTextFieldController?.dispose();
     chatBodyScrollController?.dispose();
     super.dispose();
   }
