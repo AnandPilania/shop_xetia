@@ -110,7 +110,10 @@ class RegisterUI2 extends StatelessWidget {
                         color: context.theme.primaryColor,
                         onTap: () {
                           if (_formKey.currentState.validate()) {
-                            _signUpController.resSignUp(context: context);
+                            FocusScope.of(context).unfocus();
+                            loginController.loginMethod = LoginMethods.Register3;
+                            tokenTimeController.startController();
+                            //_signUpController.resSignUp(context: context);
                           }
                         },
                         text: kRegister.tr,
