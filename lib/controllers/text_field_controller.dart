@@ -12,6 +12,19 @@ class TextFieldController extends GetxController {
   TextEditingController email;
   TextEditingController pass;
 
+  TextEditingController messageTextFieldController;
+
+  TextEditingController recovery;
+  TextEditingController recoverPassword;
+  TextEditingController resendEmail;
+
+  TextEditingController firstName;
+  TextEditingController lastName;
+  TextEditingController emailSignUp;
+  TextEditingController passSignUp;
+  TextEditingController validatePass;
+  TextEditingController token;
+
   @override
   void onInit() {
     super.onInit();
@@ -24,6 +37,19 @@ class TextFieldController extends GetxController {
 
     email = TextEditingController();
     pass = TextEditingController();
+
+    messageTextFieldController = TextEditingController();
+
+    recovery = TextEditingController();
+    recoverPassword = TextEditingController();
+    resendEmail = TextEditingController();
+
+    firstName = TextEditingController();
+    lastName = TextEditingController();
+    emailSignUp = TextEditingController();
+    passSignUp = TextEditingController();
+    validatePass = TextEditingController();
+    token = TextEditingController();
   }
 
   @override
@@ -38,5 +64,18 @@ class TextFieldController extends GetxController {
 
     email.dispose();
     pass.dispose();
+
+    messageTextFieldController.dispose();
+
+    recovery.dispose();
+    recoverPassword.dispose();
+    resendEmail.dispose();
+
+    firstName.dispose();
+    lastName.dispose();
+    emailSignUp.dispose();
+    passSignUp.dispose();
+    validatePass.dispose();
+    token.dispose();
   }
 }

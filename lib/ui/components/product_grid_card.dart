@@ -7,7 +7,7 @@ import 'package:xetia_shop/controllers/_controllers.dart';
 import '_components.dart';
 
 class ProductGridCard extends StatelessWidget {
-  final ProductController productController = Get.find<ProductController>();
+  final ProductController productController = Get.find();
 
   @override
   Widget build(BuildContext context) {

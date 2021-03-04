@@ -1,23 +1,24 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
-import 'package:xetia_shop/controllers/focus_node_controller.dart';
-import 'package:xetia_shop/controllers/landing_page_controller.dart';
-import 'package:xetia_shop/controllers/resend_token_email_controller.dart';
-import 'package:xetia_shop/controllers/time_token_controller.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/xetia_text_field.dart';
 import 'package:xetia_shop/utils/validation.dart';
 
 import '../button_flat.dart';
-import 'package:get/get.dart';
 
 class ResendTokenEmail extends StatelessWidget {
-  final FocusNodeController focusNodeController = Get.find<FocusNodeController>();
+  final FocusNodeController focusNodeController =
+      Get.find<FocusNodeController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final ResendEmailTokenController controllerEmail = Get.put(ResendEmailTokenController());
-  final LandingPageController loginController = Get.find<LandingPageController>();
-  final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
+  final TextFieldController _textFieldController = Get.find();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
+  final TokenTimeController tokenTimeController =
+      Get.put(TokenTimeController());
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -44,7 +45,7 @@ class ResendTokenEmail extends StatelessWidget {
                     hintText: kEmail.tr,
                     focusNode: focusNodeController.resendTokenEmail,
                     validator: Validator().email,
-                    controller: controllerEmail.resendEmail,
+                    controller: _textFieldController.resendEmail,
                   ),
                 )
               ],

@@ -3,10 +3,11 @@ import 'dart:math';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/models/message_item.dart';
 
 class MessageItemController extends GetxController {
-  TextEditingController messageTextFieldController;
+  final TextFieldController _textFieldController = Get.find();
   ScrollController chatBodyScrollController;
   RxList<MessageItem> listMessage = List<MessageItem>().obs;
   RxString _selectedReplyMessage = "".obs;
@@ -22,7 +23,6 @@ class MessageItemController extends GetxController {
 
   @override
   void onInit() {
-    messageTextFieldController = TextEditingController();
     chatBodyScrollController = ScrollController(
       initialScrollOffset: 0.0,
       keepScrollOffset: true,
@@ -41,12 +41,12 @@ class MessageItemController extends GetxController {
   }
 
   void addMessage() {
-    if (messageTextFieldController.text.isNotEmpty) {
+    if (_textFieldController.messageTextFieldController.text.isNotEmpty) {
       listMessage.add(MessageItem(
-          content: messageTextFieldController.text,
+          content: _textFieldController.messageTextFieldController.text,
           isRight: true,
           reply: selectedReplyMessage));
-      messageTextFieldController.clear();
+      _textFieldController.messageTextFieldController.clear();
       selectedReplyMessage = "";
       showReplyMessage = false;
       chatBodyScrollController.animateTo(
@@ -59,7 +59,6 @@ class MessageItemController extends GetxController {
 
   @override
   void dispose() {
-    messageTextFieldController?.dispose();
     chatBodyScrollController?.dispose();
     super.dispose();
   }

@@ -11,9 +11,12 @@ import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI2 extends StatelessWidget {
   final SignUpController _signUpController = Get.find<SignUpController>();
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
-  final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
+  final TokenTimeController tokenTimeController =
+      Get.put(TokenTimeController());
+  final TextFieldController _textFieldController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -35,7 +38,7 @@ class RegisterUI2 extends StatelessWidget {
                     SizedBox(height: 10),
                     XetiaTextField(
                       textInputType: TextInputType.emailAddress,
-                      controller: _signUpController.email,
+                      controller: _textFieldController.emailSignUp,
                       validator: Validator().email,
                       hintText: kEmail.tr,
                       focusNode: focusController.emailSignUp,
@@ -45,7 +48,7 @@ class RegisterUI2 extends StatelessWidget {
                     Obx(
                       () => XetiaTextField(
                         textInputType: TextInputType.emailAddress,
-                        controller: _signUpController.pass,
+                        controller: _textFieldController.passSignUp,
                         validator: Validator().password,
                         hintText: kPassword.tr,
                         isPassword: true,
@@ -53,7 +56,8 @@ class RegisterUI2 extends StatelessWidget {
                         isObscure: _signUpController.isObscure,
                         nextFocus: focusController.passwordSignUpValidate,
                         changeObscure: () {
-                          _signUpController.isObscure = !_signUpController.isObscure;
+                          _signUpController.isObscure =
+                              !_signUpController.isObscure;
                         },
                       ),
                     ),
@@ -61,9 +65,10 @@ class RegisterUI2 extends StatelessWidget {
                     Obx(
                       () => XetiaTextField(
                         textInputType: TextInputType.emailAddress,
-                        controller: _signUpController.validatePass,
+                        controller: _textFieldController.validatePass,
                         validator: ((value) {
-                          if (value != _signUpController.pass.value.text) {
+                          if (value !=
+                              _textFieldController.passSignUp.value.text) {
                             return kErrorValidatePass.tr;
                           } else {
                             return null;
@@ -74,7 +79,8 @@ class RegisterUI2 extends StatelessWidget {
                         focusNode: focusController.passwordSignUpValidate,
                         isObscure: _signUpController.isValidateObscure,
                         changeObscure: () {
-                          _signUpController.isValidateObscure = !_signUpController.isValidateObscure;
+                          _signUpController.isValidateObscure =
+                              !_signUpController.isValidateObscure;
                         },
                       ),
                     ),
@@ -111,7 +117,8 @@ class RegisterUI2 extends StatelessWidget {
                         onTap: () {
                           if (_formKey.currentState.validate()) {
                             FocusScope.of(context).unfocus();
-                            loginController.loginMethod = LoginMethods.Register3;
+                            loginController.loginMethod =
+                                LoginMethods.Register3;
                             tokenTimeController.startController();
                             //_signUpController.resSignUp(context: context);
                           }

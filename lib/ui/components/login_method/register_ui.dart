@@ -8,9 +8,10 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI extends StatelessWidget {
-  final SignUpController _signUpController = Get.put(SignUpController());
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final TextFieldController _textFieldController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -32,7 +33,7 @@ class RegisterUI extends StatelessWidget {
                     SizedBox(height: (heightApp + paddingTop) * 0.075),
                     XetiaTextField(
                       textInputType: TextInputType.name,
-                      controller: _signUpController.firstName,
+                      controller: _textFieldController.firstName,
                       validator: Validator().name,
                       hintText: kFirstName.tr,
                       focusNode: focusController.firstName,
@@ -41,7 +42,7 @@ class RegisterUI extends StatelessWidget {
                     SizedBox(height: 5),
                     XetiaTextField(
                       textInputType: TextInputType.name,
-                      controller: _signUpController.lastName,
+                      controller: _textFieldController.lastName,
                       validator: Validator().name,
                       hintText: kLastName.tr,
                       focusNode: focusController.lastName,
@@ -51,14 +52,16 @@ class RegisterUI extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Obx(() => AnimatedSwitcher(
                           duration: Duration(milliseconds: 250),
-                          child: focusController.topContainer == true
+                          child: focusController.topContainer.value == true
                               ? SizedBox()
                               : GestureDetector(
                                   onTap: () {
-                                    loginController.loginMethod = LoginMethods.ResendTokenEmail;
+                                    loginController.loginMethod =
+                                        LoginMethods.ResendTokenEmail;
                                   },
                                   child: Text(kResendActivationKey.tr,
-                                      style: context.textTheme.headline4.copyWith(
+                                      style:
+                                          context.textTheme.headline4.copyWith(
                                         color: const Color(0xff3a7af2),
                                       ),
                                       textAlign: TextAlign.center)))),
@@ -76,7 +79,8 @@ class RegisterUI extends StatelessWidget {
                         onTap: () {
                           if (_formKey.currentState.validate()) {
                             FocusScope.of(context).unfocus();
-                            loginController.loginMethod = LoginMethods.Register2;
+                            loginController.loginMethod =
+                                LoginMethods.Register2;
                           }
                         },
                         text: kNext.tr,

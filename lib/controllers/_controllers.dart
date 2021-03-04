@@ -10,7 +10,6 @@ export 'landing_page_controller.dart';
 export 'logout_controller.dart';
 export 'message_item_controller.dart';
 export 'product_controller.dart';
-export 'recovery_controller.dart';
 export 'sign_in_controller.dart';
 export 'sign_up_controller.dart';
 export 'theme_controller.dart';
