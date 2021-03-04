@@ -12,8 +12,8 @@ import '_controllers.dart';
 
 class LogoutController extends GetxController {
   SignInController signInController = Get.put(SignInController());
-  LandingPageController loginController = Get.find<LandingPageController>();
-  HeaderHomeController headerHomeController = Get.find<HeaderHomeController>();
+  LandingPageController loginController = Get.find();
+  HeaderHomeController headerHomeController = Get.find();
   String accessToken, refreshToken;
   int id;
   AuthV2 authV2 = AuthV2();

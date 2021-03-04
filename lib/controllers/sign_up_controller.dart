@@ -13,8 +13,7 @@ class SignUpController extends GetxController {
   LoadingOverlay loading;
   AuthV2 authV2 = AuthV2();
   TokenTimeController tokenTimeController = Get.put(TokenTimeController());
-  LandingPageController _landingPageController =
-      Get.find<LandingPageController>();
+  LandingPageController _landingPageController = Get.find();
   final TextFieldController _textFieldController = Get.find();
 
   set isObscure(value) => this._isObscure.value = value;
