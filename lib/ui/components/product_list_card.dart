@@ -10,7 +10,7 @@ import '../../constants/dimens.dart';
 import 'sheet/detail_sheet.dart';
 
 class ProductListCard extends StatelessWidget {
-  final ProductController productController = Get.find<ProductController>();
+  final ProductController productController = Get.find();
 
   @override
   Widget build(BuildContext context) {

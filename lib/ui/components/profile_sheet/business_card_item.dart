@@ -23,7 +23,10 @@ class BusinessCardItem extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            colors: [context.theme.primaryColor.withOpacity(0.3), context.theme.primaryColor.withOpacity(0.1)],
+            colors: [
+              context.theme.primaryColor.withOpacity(0.3),
+              context.theme.primaryColor.withOpacity(0.1)
+            ],
           ),
         ),
         child: Stack(
@@ -45,12 +48,14 @@ class BusinessCardItem extends StatelessWidget {
                     Text(
                       "Muhammad Faisal",
                       textAlign: TextAlign.center,
-                      style: context.textTheme.headline3.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                      style: context.textTheme.headline3.copyWith(
+                          fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                     Text(
                       kDesignerUIUX.tr,
                       textAlign: TextAlign.center,
-                      style: context.textTheme.headline4.copyWith(color: Colors.grey),
+                      style: context.textTheme.headline4
+                          .copyWith(color: Colors.grey),
                     ),
                   ],
                 ),

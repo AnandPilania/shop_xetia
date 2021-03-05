@@ -12,9 +12,8 @@ import '../../components/_components.dart';
 class EmailLogin extends StatelessWidget {
   final TextFieldController _textFieldController = Get.find();
   final SignInController _signInController = Get.put(SignInController());
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
-  final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final LandingPageController loginController = Get.find();
+  final FocusNodeController focusController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

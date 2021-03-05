@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 
 class TokenTimeController extends GetxController {
   final _isTicking = false.obs;
+
   set isTicking(value) => this._isTicking.value = value;
+
   get isTicking => this._isTicking.value;
 
   CountdownTimerController controller;
@@ -18,7 +20,9 @@ class TokenTimeController extends GetxController {
 
   void startController() {
     isTicking = true;
-    controller = CountdownTimerController(endTime: DateTime.now().millisecondsSinceEpoch + 1000 * 180, onEnd: endTicking);
+    controller = CountdownTimerController(
+        endTime: DateTime.now().millisecondsSinceEpoch + 1000 * 180,
+        onEnd: endTicking);
   }
 
   void endTicking() {

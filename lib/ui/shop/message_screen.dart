@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/language/_components.dart';
+import 'package:xetia_shop/ui/components/_components.dart';
 
 class MessageScreen extends StatelessWidget {
   @override

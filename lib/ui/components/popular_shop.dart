@@ -9,6 +9,7 @@ import '../../constants/_constants.dart';
 
 class PopularShop extends StatelessWidget {
   final ShopController shopController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -10,10 +10,9 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI2 extends StatelessWidget {
-  final SignUpController _signUpController = Get.find<SignUpController>();
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
-  final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final SignUpController _signUpController = Get.find();
+  final LandingPageController loginController = Get.find();
+  final FocusNodeController focusController = Get.find();
   final TokenTimeController tokenTimeController =
       Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();

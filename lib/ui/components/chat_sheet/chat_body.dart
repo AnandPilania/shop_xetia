@@ -43,7 +43,7 @@ class BubbleChat extends StatelessWidget {
 
   BubbleChat({Key key, this.text, this.isRight, this.reply}) : super(key: key);
 
-  final MessageItemController controller = Get.find<MessageItemController>();
+  final MessageItemController controller = Get.find();
   final ToggleController _toggleController = Get.find();
 
   @override

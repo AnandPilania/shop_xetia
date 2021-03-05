@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:xetia_shop/language/language_key.dart';
-import 'package:get/get.dart';
 
 import 'detail_graph.dart';
 
@@ -40,7 +40,8 @@ class Budgeting extends StatelessWidget {
                   Text(
                     kSeeDetails.tr,
                     textAlign: TextAlign.center,
-                    style: context.textTheme.headline5.copyWith(color: context.theme.primaryColor),
+                    style: context.textTheme.headline5
+                        .copyWith(color: context.theme.primaryColor),
                   ),
                 ],
               ),
@@ -68,15 +69,18 @@ class Budgeting extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: DetailGraph(text: kFoodDrink.tr, color: Color(0xff6b96fa)),
+                        child: DetailGraph(
+                            text: kFoodDrink.tr, color: Color(0xff6b96fa)),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: DetailGraph(text: kWifiBills.tr, color: Color(0xFFf1bb41)),
+                        child: DetailGraph(
+                            text: kWifiBills.tr, color: Color(0xFFf1bb41)),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: DetailGraph(text: kHouseBills.tr, color: Color(0xFF25C685)),
+                        child: DetailGraph(
+                            text: kHouseBills.tr, color: Color(0xFF25C685)),
                       ),
                     ],
                   ),

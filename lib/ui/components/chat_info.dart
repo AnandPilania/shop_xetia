@@ -21,7 +21,8 @@ class ChatInfo extends StatelessWidget {
         Text(
           Faker().lorem.sentence(),
           textAlign: TextAlign.center,
-          style: context.textTheme.headline3.copyWith(fontSize: 12, fontWeight: FontWeight.normal),
+          style: context.textTheme.headline3
+              .copyWith(fontSize: 12, fontWeight: FontWeight.normal),
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
         ),

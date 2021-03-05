@@ -10,12 +10,10 @@ import 'package:xetia_shop/utils/validation.dart';
 import '../button_flat.dart';
 
 class ResendTokenEmail extends StatelessWidget {
-  final FocusNodeController focusNodeController =
-      Get.find<FocusNodeController>();
+  final FocusNodeController focusNodeController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextFieldController _textFieldController = Get.find();
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find();
   final TokenTimeController tokenTimeController =
       Get.put(TokenTimeController());
 

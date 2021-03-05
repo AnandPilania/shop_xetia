@@ -12,9 +12,8 @@ import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class RegisterUI3 extends StatelessWidget {
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
-  final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final LandingPageController loginController = Get.find();
+  final FocusNodeController focusController = Get.find();
   final TokenTimeController tokenTimeController =
       Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();

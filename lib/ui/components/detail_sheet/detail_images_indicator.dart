@@ -6,7 +6,7 @@ class DetailImagesIndicator extends StatelessWidget {
   DetailImagesIndicator({Key key, this.indexSwiper}) : super(key: key);
 
   final int indexSwiper;
-  final ProductController productController = Get.find<ProductController>();
+  final ProductController productController = Get.find();
 
   @override
   Widget build(BuildContext context) {

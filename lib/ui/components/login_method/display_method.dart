@@ -8,7 +8,7 @@ import 'package:xetia_shop/controllers/landing_page_controller.dart';
 import 'package:xetia_shop/language/_components.dart';
 
 class DisplayMethod extends StatelessWidget {
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,8 @@ class DisplayMethod extends StatelessWidget {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => loginController.loginMethod = LoginMethods.Email,
+                    onTap: () =>
+                        loginController.loginMethod = LoginMethods.Email,
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Column(
@@ -33,7 +34,10 @@ class DisplayMethod extends StatelessWidget {
                             "assets/svg/email.svg",
                             color: context.theme.primaryColorLight,
                           ),
-                          AutoSizeText(kEmail.tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                          AutoSizeText(kEmail.tr,
+                              style: context.textTheme.headline3,
+                              maxLines: 1,
+                              textAlign: TextAlign.center)
                         ],
                       ),
                     ),
@@ -42,7 +46,8 @@ class DisplayMethod extends StatelessWidget {
                 SizedBox(width: 20),
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => loginController.loginMethod = LoginMethods.Facebook,
+                    onTap: () =>
+                        loginController.loginMethod = LoginMethods.Facebook,
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Column(children: [
@@ -50,7 +55,10 @@ class DisplayMethod extends StatelessWidget {
                           "assets/svg/facebook.svg",
                           color: context.theme.primaryColorLight,
                         ),
-                        AutoSizeText(kFacebook.tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                        AutoSizeText(kFacebook.tr,
+                            style: context.textTheme.headline3,
+                            maxLines: 1,
+                            textAlign: TextAlign.center)
                       ]),
                     ),
                   ),
@@ -65,7 +73,8 @@ class DisplayMethod extends StatelessWidget {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => loginController.loginMethod = LoginMethods.AppleID,
+                    onTap: () =>
+                        loginController.loginMethod = LoginMethods.AppleID,
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Column(children: [
@@ -73,7 +82,10 @@ class DisplayMethod extends StatelessWidget {
                           "assets/svg/apple.svg",
                           color: context.theme.primaryColorLight,
                         ),
-                        AutoSizeText(kAppleId.tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                        AutoSizeText(kAppleId.tr,
+                            style: context.textTheme.headline3,
+                            maxLines: 1,
+                            textAlign: TextAlign.center)
                       ]),
                     ),
                   ),
@@ -81,7 +93,8 @@ class DisplayMethod extends StatelessWidget {
                 SizedBox(width: 20),
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => loginController.loginMethod = LoginMethods.Gmail,
+                    onTap: () =>
+                        loginController.loginMethod = LoginMethods.Gmail,
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Column(children: [
@@ -89,7 +102,10 @@ class DisplayMethod extends StatelessWidget {
                           "assets/svg/gmail.svg",
                           color: context.theme.primaryColorLight,
                         ),
-                        AutoSizeText(kGmail.tr, style: context.textTheme.headline3, maxLines: 1, textAlign: TextAlign.center)
+                        AutoSizeText(kGmail.tr,
+                            style: context.textTheme.headline3,
+                            maxLines: 1,
+                            textAlign: TextAlign.center)
                       ]),
                     ),
                   ),

@@ -13,7 +13,9 @@ class DetailBuyButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: Container(
-        decoration: BoxDecoration(color: context.theme.primaryColorDark, borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+        decoration: BoxDecoration(
+            color: context.theme.primaryColorDark,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -27,7 +29,8 @@ class DetailBuyButton extends StatelessWidget {
                   color: context.theme.scaffoldBackgroundColor,
                 ),
                 child: Center(
-                  child: Icon(Icons.shopping_bag, color: context.theme.primaryColor),
+                  child: Icon(Icons.shopping_bag,
+                      color: context.theme.primaryColor),
                 ),
               ),
               SizedBox(width: 10),

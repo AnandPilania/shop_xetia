@@ -7,9 +7,12 @@ const Map<String, String> idId = {
   kOnBoardHeader3: 'Lihat Toko Terdekat dan Persediaannya',
 
   //subheader on boarding
-  kOnBoardSub1: 'Kamu bisa menemukan makanan halal dengan sangat mudah dengan Xetia Shop',
-  kOnBoardSub2: 'Harga dan penawaran terbaik akan selalu diberikan kepada anda pengguna Xetia Shop',
-  kOnBoardSub3: 'Kamu bisa selalu menemukan toko terdekat dan melihat persediaan produk makanan yang kamu cari',
+  kOnBoardSub1:
+      'Kamu bisa menemukan makanan halal dengan sangat mudah dengan Xetia Shop',
+  kOnBoardSub2:
+      'Harga dan penawaran terbaik akan selalu diberikan kepada anda pengguna Xetia Shop',
+  kOnBoardSub3:
+      'Kamu bisa selalu menemukan toko terdekat dan melihat persediaan produk makanan yang kamu cari',
 
   kContinue: 'Lanjutkan',
   kLogin: "Login",
@@ -26,7 +29,8 @@ const Map<String, String> idId = {
   kGmail: 'Gmail',
   kPassword: 'Kata Sandi',
 
-  kSubscribeText: 'Saya ingin menerima informasi terbaru dan promosi terbaru melalui email.',
+  kSubscribeText:
+      'Saya ingin menerima informasi terbaru dan promosi terbaru melalui email.',
 
   kErrorEmail: "Masukan email yang valid",
   kErrorPassword: "Kata sandi harus melebihi 6 karakter",
@@ -39,7 +43,8 @@ const Map<String, String> idId = {
   kResetPassword: "Reset Kata Sandi",
 
   kRecoveryHeading: "Pemulihan Kata Sandi",
-  kRecoverySub: "Masukan email anda lalu kami akan mengirimkan instruksi untuk mereset password anda melalui email",
+  kRecoverySub:
+      "Masukan email anda lalu kami akan mengirimkan instruksi untuk mereset password anda melalui email",
   kBackSignIn: "Kembali ke Sign In",
 
   kAlert: "Alert",
@@ -129,7 +134,8 @@ const Map<String, String> idId = {
 
   kNext: "Selanjutnya",
   kErrorValidatePass: "Kata sandi tidak sama!",
-  kThanksRegistration: "Terimakasih banyak telah melakukan registrasi. Sliahkan cek email anda untuk melihat token aktivasi akun",
+  kThanksRegistration:
+      "Terimakasih banyak telah melakukan registrasi. Sliahkan cek email anda untuk melihat token aktivasi akun",
   kVerify: "Validasi",
   kActivateToken: "Token aktivasi",
   kResendActivationKey: "Kirim ulang token aktivasi",

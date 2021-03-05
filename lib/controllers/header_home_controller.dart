@@ -6,6 +6,7 @@ class HeaderHomeController extends GetxController {
   PageController _pageController;
 
   set currentPage(value) => this._currentPage.value = value;
+
   get currentPage => this._currentPage.value;
 
   get pageController => this._pageController;
@@ -32,7 +33,8 @@ class HeaderHomeController extends GetxController {
     if (isSwiped) {
       currentPage = position;
     } else {
-      pageController.animateToPage(position, duration: Duration(milliseconds: 50), curve: Curves.linear);
+      pageController.animateToPage(position,
+          duration: Duration(milliseconds: 50), curve: Curves.linear);
       currentPage = position;
     }
   }

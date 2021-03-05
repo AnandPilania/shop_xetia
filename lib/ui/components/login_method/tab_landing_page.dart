@@ -9,8 +9,7 @@ import 'package:xetia_shop/utils/_utils.dart';
 class TabNameLandingPage extends StatelessWidget {
   final TokenTimeController tokenTimeController =
       Get.put(TokenTimeController());
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find();
   final ToggleController _toggleController = Get.find();
 
   @override
@@ -53,8 +52,7 @@ class TabNameLandingPage extends StatelessWidget {
 }
 
 class TabIndicatorLandingPage extends StatelessWidget {
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find();
   final ToggleController _toggleController = Get.find();
 
   @override

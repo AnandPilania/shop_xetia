@@ -5,7 +5,7 @@ import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/focus_node_controller.dart';
 
 class XetiaLogoWidget extends StatelessWidget {
-  final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final FocusNodeController focusController = Get.find();
 
   @override
   Widget build(BuildContext context) {

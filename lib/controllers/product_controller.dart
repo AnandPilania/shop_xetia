@@ -1,13 +1,14 @@
 import 'dart:math';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:xetia_shop/db/_db.dart';
 import 'package:xetia_shop/models/product_response.dart';
 import 'package:xetia_shop/networks/_network.dart';
+
 import '../models/product_dummy.dart';
-import 'package:faker/faker.dart';
-import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   RxList<DummyProduct> listProduct = List<DummyProduct>().obs;
@@ -18,12 +19,15 @@ class ProductController extends GetxController {
   Product product = Product();
 
   set indexProductPicture(value) => this._indexProductPicture.value = value;
+
   get indexProductPicture => this._indexProductPicture.value;
 
   set category(value) => this._category.value = value;
+
   get category => this._category.value;
 
   set page(value) => this._page.value = value;
+
   get page => this._page.value;
 
   @override
