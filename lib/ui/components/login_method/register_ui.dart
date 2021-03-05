@@ -51,7 +51,7 @@ class RegisterUI extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Obx(() => AnimatedSwitcher(
                           duration: Duration(milliseconds: 250),
-                          child: focusController.topContainer.value == true
+                          child: focusController.topContainer.value
                               ? SizedBox()
                               : GestureDetector(
                                   onTap: () {

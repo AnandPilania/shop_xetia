@@ -89,15 +89,15 @@ class FocusNodeController extends GetxController {
   bool get resendTokenEmailFocus => this._resendTokenEmailFocus.value;
 
   //Controller For top login container
-  RxBool get topContainer => isEmailFocus == true ||
-          isPasswordFocus == true ||
-          firstNameFocus == true ||
-          lastNameFocus == true ||
-          emailSignUpFocus == true ||
-          passwordSignUpFocus == true ||
-          passwordSignUpValidateFocus == true ||
-          tokenFocus == true ||
-          resendTokenEmailFocus == true
+  RxBool get topContainer => isEmailFocus ||
+          isPasswordFocus ||
+          firstNameFocus ||
+          lastNameFocus ||
+          emailSignUpFocus ||
+          passwordSignUpFocus ||
+          passwordSignUpValidateFocus ||
+          tokenFocus ||
+          resendTokenEmailFocus
       ? true.obs
       : false.obs;
 

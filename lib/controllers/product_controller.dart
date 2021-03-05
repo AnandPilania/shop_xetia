@@ -45,7 +45,7 @@ class ProductController extends GetxController {
   }
 
   void addToFavorite(int idProduct) {
-    if (listProductFetch[idProduct].isFavorite.value == true) {
+    if (listProductFetch[idProduct].isFavorite.value) {
       listProductFetch[idProduct].isFavorite.value = false;
     } else {
       listProductFetch[idProduct].isFavorite.value = true;

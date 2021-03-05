@@ -210,10 +210,10 @@ class ProductListCard extends StatelessWidget {
 //                                 padding: EdgeInsets.all(4),
 //                                 constraints: BoxConstraints(),
 //                                 icon: Icon(
-//                                   productController.listProduct[indexItem].isFavorite.value == true
+//                                   productController.listProduct[indexItem].isFavorite.value
 //                                       ? Icons.favorite
 //                                       : Icons.favorite_border,
-//                                   color: productController.listProduct[indexItem].isFavorite.value == true
+//                                   color: productController.listProduct[indexItem].isFavorite.value
 //                                       ? const Color(0xffcd444a)
 //                                       : context.theme.primaryColor,
 //                                 ),

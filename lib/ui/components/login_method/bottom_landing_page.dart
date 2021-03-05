@@ -18,7 +18,7 @@ class BottomWaveLandingPage extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         WaveWidget(
-          config: Get.isDarkMode == true
+          config: Get.isDarkMode
               ? CustomConfig(
                   gradients: [
                     [context.theme.primaryColor, context.theme.primaryColor],

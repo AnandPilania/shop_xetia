@@ -15,7 +15,7 @@ class ThemeController extends GetxController {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
       box.write(kDarkMode, false);
     } else {
-      if (box.read(kDarkMode) == true) {
+      if (box.read(kDarkMode)) {
         SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
             .copyWith(statusBarColor: Colors.transparent));
       } else {
@@ -33,7 +33,7 @@ class ThemeController extends GetxController {
   ThemeData get theme => isDark.value ? Themes.dark : Themes.light;
 
   void changeTheme(bool val) {
-    if (val == true) {
+    if (val) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
           .copyWith(statusBarColor: Colors.transparent));
     } else {

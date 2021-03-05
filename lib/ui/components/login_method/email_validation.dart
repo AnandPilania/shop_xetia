@@ -23,7 +23,7 @@ class RegisterUI3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => AnimatedSwitcher(
         duration: Duration(milliseconds: 200),
-        child: tokenTimeController.isTicking == false
+        child: !tokenTimeController.isTicking
             ? SizedBox(
                 height: (heightApp + paddingTop) * 0.4,
                 child: Center(

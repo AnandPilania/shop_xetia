@@ -87,7 +87,7 @@ class DetailProductReview extends StatelessWidget {
                         for (bool isStarred
                             in List.generate(5, (i) => i < 4 ? true : false))
                           Icon(Icons.star,
-                              color: isStarred == true
+                              color: isStarred
                                   ? context.theme.primaryColor
                                   : Colors.grey)
                       ],
