@@ -9,8 +9,9 @@ import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/button_flat.dart';
 
 class OnBoardingPage extends StatelessWidget {
-  final lottieController = Get.put(LandingLottieController());
-  final signInController = Get.find();
+  final LandingLottieController lottieController =
+      Get.put(LandingLottieController());
+  final SignInController signInController = Get.find();
 
   @override
   Widget build(BuildContext context) {
