@@ -12,10 +12,10 @@ class XetiaLogoWidget extends StatelessWidget {
     return Obx(() => AnimatedContainer(
           duration: Duration(milliseconds: 700),
           curve: Curves.easeOut,
-          width: focusController.topContainer == true
+          width: focusController.topContainer.value == true
               ? widthApp * 0.15
               : widthApp * 0.4,
-          height: focusController.topContainer == true
+          height: focusController.topContainer.value == true
               ? widthApp * 0.15
               : widthApp * 0.4,
           decoration: BoxDecoration(
@@ -31,7 +31,7 @@ class XetiaLogoWidget extends StatelessWidget {
           child: AnimatedPadding(
               duration: Duration(milliseconds: 700),
               padding: EdgeInsets.all(
-                  focusController.topContainer == true ? 10 : 20),
+                  focusController.topContainer.value == true ? 10 : 20),
               child: SvgPicture.asset("assets/svg/xetia.svg",
                   fit: BoxFit.scaleDown, color: kOrangeXetia)),
         ));
