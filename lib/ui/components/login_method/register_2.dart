@@ -10,7 +10,6 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI2 extends StatelessWidget {
-  final SignUpController _signUpController = Get.find();
   final LandingPageController loginController = Get.find();
   final FocusNodeController focusController = Get.find();
   final TokenTimeController tokenTimeController =
@@ -53,12 +52,10 @@ class RegisterUI2 extends StatelessWidget {
                         hintText: kPassword.tr,
                         isPassword: true,
                         focusNode: focusController.passwordSignUp,
-                        isObscure: _signUpController.isObscure,
+                        isObscure: _toggleController.isObscureSignUp,
                         nextFocus: focusController.passwordSignUpValidate,
-                        changeObscure: () {
-                          _signUpController.isObscure =
-                              !_signUpController.isObscure;
-                        },
+                        changeObscure: () =>
+                            _toggleController.isObscureSignUp.toggle(),
                       ),
                     ),
                     SizedBox(height: 5),
@@ -77,11 +74,9 @@ class RegisterUI2 extends StatelessWidget {
                         hintText: kPassword.tr,
                         isPassword: true,
                         focusNode: focusController.passwordSignUpValidate,
-                        isObscure: _signUpController.isValidateObscure,
-                        changeObscure: () {
-                          _signUpController.isValidateObscure =
-                              !_signUpController.isValidateObscure;
-                        },
+                        isObscure: _toggleController.isObscureSignUpValidate,
+                        changeObscure: () =>
+                            _toggleController.isObscureSignUpValidate.toggle(),
                       ),
                     ),
                   ],

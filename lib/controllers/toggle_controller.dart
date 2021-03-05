@@ -27,11 +27,11 @@ class ToggleController extends GetxController {
 
   bool get showReplyMessage => this._showReplyMessage.value;
 
-  RxBool _isObscure = true.obs;
+  RxBool _isObscureSignIn = true.obs;
 
-  set isObscure(value) => this._isObscure.value = value;
+  set isObscureSignIn(value) => this._isObscureSignIn.value = value;
 
-  bool get isObscure => this._isObscure.value;
+  bool get isObscureSignIn => this._isObscureSignIn.value;
 
   RxBool _isShopOwner = false.obs;
 
@@ -39,4 +39,17 @@ class ToggleController extends GetxController {
 
   Widget get isShopOwner =>
       _isShopOwner.value ? ShopOwnerScreen() : ShopScreen();
+
+  RxBool _isObscureSignUp = true.obs;
+
+  set isObscureSignUp(value) => this._isObscureSignUp.value = value;
+
+  bool get isObscureSignUp => this._isObscureSignUp.value;
+
+  RxBool _isObscureSignUpValidate = true.obs;
+
+  set isObscureSignUpValidate(value) =>
+      this._isObscureSignUpValidate.value = value;
+
+  bool get isObscureSignUpValidate => this._isObscureSignUpValidate.value;
 }

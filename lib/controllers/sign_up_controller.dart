@@ -9,8 +9,6 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class SignUpController extends GetxController {
-  RxBool _isObscure = true.obs;
-  RxBool _isValidateObscure = true.obs;
   LoadingOverlay loading;
   AuthV2 authV2 = AuthV2();
   final TokenTimeController tokenTimeController =
@@ -18,14 +16,6 @@ class SignUpController extends GetxController {
   final LandingPageController _landingPageController = Get.find();
   final TextFieldController _textFieldController = Get.find();
   final ToggleController _toggleController = Get.find();
-
-  set isObscure(value) => this._isObscure.value = value;
-
-  get isObscure => this._isObscure.value;
-
-  set isValidateObscure(value) => this._isValidateObscure.value = value;
-
-  get isValidateObscure => this._isValidateObscure.value;
 
   void resSignUp({@required BuildContext context}) async {
     loading = LoadingOverlay.of(context);
