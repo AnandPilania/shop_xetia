@@ -11,7 +11,6 @@ import '../../ui/components/_components.dart';
 
 class ShopOwnerScreen extends StatelessWidget {
   final ToggleController _toggleController = Get.find();
-  final ShopController shopController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class ShopOwnerScreen extends StatelessWidget {
                             color: context.theme.primaryColorLight,
                           ),
                           onPressed: () {
-                            shopController.isShopOwner = false;
+                            _toggleController.isShopOwner = false;
                           }),
                       Expanded(
                         child: Center(

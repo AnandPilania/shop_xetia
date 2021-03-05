@@ -8,7 +8,7 @@ import 'package:xetia_shop/language/language_key.dart';
 import '../../constants/_constants.dart';
 
 class PopularShop extends StatelessWidget {
-  final ShopController shopController = Get.find();
+  final ToggleController _toggleController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class PopularShop extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-                        shopController.isShopOwner = true;
+                        _toggleController.isShopOwner = true;
                       },
                       child: Column(
                         children: [
