@@ -1,6 +1,5 @@
 // export semua file dari folder controller simpan disini
 
-export 'best_seller_controller.dart';
 export 'bottom_nav_bar_controller.dart';
 export 'carousel_card_controller.dart';
 export 'chart_product_review_controller.dart';
@@ -21,3 +20,4 @@ export 'shop_controller.dart';
 export 'list_controller.dart';
 export 'image_picker_controller.dart';
 export 'text_field_controller.dart';
+export 'toggle_controller.dart';

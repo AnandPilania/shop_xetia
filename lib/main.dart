@@ -20,6 +20,7 @@ void initLazyController() {
   Get.lazyPut(() => OptionButtonController(), fenix: true);
   Get.lazyPut(() => TextFieldController(), fenix: true);
   Get.lazyPut(() => ListController(), fenix: true);
+  Get.lazyPut(() => ToggleController(), fenix: true);
 }
 
 class MyApp extends StatelessWidget {

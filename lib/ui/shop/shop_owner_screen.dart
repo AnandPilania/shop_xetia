@@ -3,14 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/ui/components/shop_owner/_components.dart';
+import 'package:xetia_shop/utils/_utils.dart';
 
 import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
 import '../../ui/components/_components.dart';
 
 class ShopOwnerScreen extends StatelessWidget {
-  final BestSellerController bestSellerController =
-      Get.put(BestSellerController());
+  final ToggleController _toggleController = Get.find();
   final ShopController shopController = Get.find();
 
   @override
@@ -64,7 +64,7 @@ class ShopOwnerScreen extends StatelessWidget {
           BestSellerBar(),
           Obx(() => AnimatedSwitcher(
                 duration: Duration(milliseconds: 250),
-                child: bestSellerController.isGridView == true
+                child: _toggleController.isGridView.isTrue()
                     ? ProductGridCard()
                     : ProductListCard(),
               )),

@@ -2,3 +2,4 @@
 export 'theme.dart';
 export 'validation.dart';
 export 'localization.dart';
+export 'extensions.dart';
