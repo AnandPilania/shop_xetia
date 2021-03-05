@@ -9,7 +9,13 @@ class MyButton extends StatelessWidget {
   final Color color;
   final IconData iconSuffix;
 
-  const MyButton({Key key, @required this.onTap, @required this.text, @required this.color, this.iconSuffix}) : super(key: key);
+  const MyButton(
+      {Key key,
+      @required this.onTap,
+      @required this.text,
+      @required this.color,
+      this.iconSuffix})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,12 @@ class MyButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: color.withOpacity(0.4),
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.4), blurRadius: 4, offset: Offset(0, 2))],
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.4),
+              blurRadius: 4,
+              offset: Offset(0, 2))
+        ],
       ),
       child: FlatButton(
         onPressed: onTap,

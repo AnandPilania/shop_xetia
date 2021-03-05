@@ -4,6 +4,7 @@ import 'package:xetia_shop/controllers/_controllers.dart';
 
 class FABTheme extends StatelessWidget {
   final ThemeController controller = Get.put(ThemeController());
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,7 +15,8 @@ class FABTheme extends StatelessWidget {
           controller.changeTheme(!controller.isDark.value);
           Get.changeTheme(controller.theme);
         },
-        child: Icon(controller.isDark.value ? Icons.brightness_1 : Icons.brightness_2),
+        child: Icon(
+            controller.isDark.value ? Icons.brightness_1 : Icons.brightness_2),
       ),
     );
   }

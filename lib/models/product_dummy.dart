@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
-DummyProduct packageFromJson(String str) => DummyProduct.fromJson(json.decode(str));
+DummyProduct packageFromJson(String str) =>
+    DummyProduct.fromJson(json.decode(str));
+
 String packageToJson(DummyProduct data) => json.encode(data.toJson());
 
 class DummyProduct {

@@ -43,7 +43,8 @@ class BubbleChat extends StatelessWidget {
 
   BubbleChat({Key key, this.text, this.isRight, this.reply}) : super(key: key);
 
-  final MessageItemController controller = Get.find<MessageItemController>();
+  final MessageItemController controller = Get.find();
+  final ToggleController _toggleController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class BubbleChat extends StatelessWidget {
       iconColor: context.theme.primaryColor,
       onLeftSwipe: () {
         controller.selectedReplyMessage = text;
-        controller.showReplyMessage = true;
+        _toggleController.showReplyMessage = true;
       },
       child: Bubble(
         alignment: isRight ? Alignment.centerRight : Alignment.centerLeft,

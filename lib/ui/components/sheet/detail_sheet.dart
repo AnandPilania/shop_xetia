@@ -10,7 +10,7 @@ import '../../../controllers/_controllers.dart';
 
 class DetailSheet extends StatelessWidget {
   final int indexItem;
-  final ProductController productController = Get.find<ProductController>();
+  final ProductController productController = Get.find();
 
   DetailSheet({Key key, this.indexItem}) : super(key: key);
 

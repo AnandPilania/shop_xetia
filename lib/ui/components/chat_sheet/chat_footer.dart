@@ -7,6 +7,7 @@ import 'package:xetia_shop/language/_components.dart';
 
 class ChatFooter extends StatelessWidget {
   final TextFieldController _textFieldController = Get.find();
+  final ToggleController _toggleController = Get.find();
   final MessageItemController _messageItemController =
       Get.put(MessageItemController());
 
@@ -26,7 +27,7 @@ class ChatFooter extends StatelessWidget {
       child: Obx(
         () => Column(
           children: [
-            _messageItemController.showReplyMessage
+            _toggleController.showReplyMessage
                 ? Column(
                     children: [
                       Container(
@@ -62,7 +63,7 @@ class ChatFooter extends StatelessWidget {
                               onPressed: () {
                                 _messageItemController.selectedReplyMessage =
                                     "";
-                                _messageItemController.showReplyMessage = false;
+                                _toggleController.showReplyMessage = false;
                               },
                             ),
                           ],

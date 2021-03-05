@@ -18,8 +18,12 @@ class XetiaShopInfo extends StatelessWidget {
                 width: widthApp * 0.275,
                 child: Column(
                   children: [
-                    Text(halal[1].toString().tr, style: context.textTheme.headline3),
-                    Text(halal[0].toString().tr, style: context.textTheme.headline3.copyWith(fontSize: 13), textAlign: TextAlign.center),
+                    Text(halal[1].toString().tr,
+                        style: context.textTheme.headline3),
+                    Text(halal[0].toString().tr,
+                        style:
+                            context.textTheme.headline3.copyWith(fontSize: 13),
+                        textAlign: TextAlign.center),
                   ],
                 ),
               ),
@@ -34,8 +38,12 @@ class XetiaShopInfo extends StatelessWidget {
                 width: widthApp * 0.275,
                 child: Column(
                   children: [
-                    Text(muslim[1].toString().tr, style: context.textTheme.headline3),
-                    Text(muslim[0].toString().tr, style: context.textTheme.headline3.copyWith(fontSize: 13), textAlign: TextAlign.center),
+                    Text(muslim[1].toString().tr,
+                        style: context.textTheme.headline3),
+                    Text(muslim[0].toString().tr,
+                        style:
+                            context.textTheme.headline3.copyWith(fontSize: 13),
+                        textAlign: TextAlign.center),
                   ],
                 ),
               ),

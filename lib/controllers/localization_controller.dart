@@ -6,7 +6,9 @@ import 'package:xetia_shop/utils/localization.dart';
 
 class LocalizationController extends GetxController {
   final RxString _language = "".obs;
+
   set language(value) => this._language.value = value;
+
   get language => this._language.value;
 
   final box = GetStorage();

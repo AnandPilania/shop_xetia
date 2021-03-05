@@ -15,10 +15,12 @@ class ThemeController extends GetxController {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
       box.write(kDarkMode, false);
     } else {
-      if (box.read(kDarkMode) == true) {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent));
+      if (box.read(kDarkMode)) {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
+            .copyWith(statusBarColor: Colors.transparent));
       } else {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent));
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark
+            .copyWith(statusBarColor: Colors.transparent));
       }
     }
   }
@@ -29,9 +31,11 @@ class ThemeController extends GetxController {
   }
 
   ThemeData get theme => isDark.value ? Themes.dark : Themes.light;
+
   void changeTheme(bool val) {
-    if (val == true) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent));
+    if (val) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
+          .copyWith(statusBarColor: Colors.transparent));
     } else {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     }

@@ -8,9 +8,8 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI extends StatelessWidget {
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
-  final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final LandingPageController loginController = Get.find();
+  final FocusNodeController focusController = Get.find();
   final TextFieldController _textFieldController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -52,7 +51,7 @@ class RegisterUI extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Obx(() => AnimatedSwitcher(
                           duration: Duration(milliseconds: 250),
-                          child: focusController.topContainer.value == true
+                          child: focusController.topContainer.value
                               ? SizedBox()
                               : GestureDetector(
                                   onTap: () {

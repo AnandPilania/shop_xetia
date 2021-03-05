@@ -5,7 +5,9 @@ import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:xetia_shop/language/language_key.dart';
 
 class ProfileCard extends StatelessWidget {
-  final UserDatabaseController userDatabaseController = Get.put(UserDatabaseController());
+  final UserDatabaseController userDatabaseController =
+      Get.put(UserDatabaseController());
+
   @override
   Widget build(BuildContext context) {
     print(userDatabaseController.first);
@@ -38,7 +40,8 @@ class ProfileCard extends StatelessWidget {
                 children: [
                   Text(
                     "Tince",
-                    style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold),
+                    style: context.textTheme.headline5
+                        .copyWith(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 5),
                   Text(

@@ -11,7 +11,16 @@ class ListHistory extends StatelessWidget {
   final Color colorPrice;
   final IconData icon;
 
-  const ListHistory({Key key, this.color, this.isDark, this.text, this.date, this.price, this.colorPrice, this.icon}) : super(key: key);
+  const ListHistory(
+      {Key key,
+      this.color,
+      this.isDark,
+      this.text,
+      this.date,
+      this.price,
+      this.colorPrice,
+      this.icon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -27,5 +27,6 @@ class MessageItem {
 
   String toJson() => json.encode(toMap());
 
-  factory MessageItem.fromJson(String source) => MessageItem.fromMap(json.decode(source));
+  factory MessageItem.fromJson(String source) =>
+      MessageItem.fromMap(json.decode(source));
 }

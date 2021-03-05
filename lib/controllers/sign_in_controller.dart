@@ -13,17 +13,11 @@ import 'package:xetia_shop/ui/_ui.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class SignInController extends GetxController {
-  RxBool _isObscure = true.obs;
-
   LoadingOverlay loading;
   final box = GetStorage();
   AuthV2 authV2 = AuthV2();
 
   final TextFieldController _textFieldController = Get.find();
-
-  set isObscure(value) => this._isObscure.value = value;
-
-  get isObscure => this._isObscure.value;
 
   @override
   void onInit() {

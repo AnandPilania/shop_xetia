@@ -9,9 +9,7 @@ import '../../controllers/_controllers.dart';
 import '../../ui/components/_components.dart';
 
 class ShopOwnerScreen extends StatelessWidget {
-  final BestSellerController bestSellerController =
-      Get.put(BestSellerController());
-  final ShopController shopController = Get.find();
+  final ToggleController _toggleController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +36,7 @@ class ShopOwnerScreen extends StatelessWidget {
                             color: context.theme.primaryColorLight,
                           ),
                           onPressed: () {
-                            shopController.isShopOwner = false;
+                            _toggleController.isShopOwner = false;
                           }),
                       Expanded(
                         child: Center(
@@ -64,7 +62,7 @@ class ShopOwnerScreen extends StatelessWidget {
           BestSellerBar(),
           Obx(() => AnimatedSwitcher(
                 duration: Duration(milliseconds: 250),
-                child: bestSellerController.isGridView == true
+                child: _toggleController.isGridView
                     ? ProductGridCard()
                     : ProductListCard(),
               )),

@@ -40,7 +40,8 @@ class MetaCategoryList {
   int code;
   String status;
 
-  factory MetaCategoryList.fromJson(Map<String, dynamic> json) => MetaCategoryList(
+  factory MetaCategoryList.fromJson(Map<String, dynamic> json) =>
+      MetaCategoryList(
         code: json["code"],
         status: json["status"],
       );
@@ -66,8 +67,10 @@ class ResponseCategoryList {
   dynamic previousePageUrl;
   int total;
 
-  factory ResponseCategoryList.fromJson(Map<String, dynamic> json) => ResponseCategoryList(
-        data: List<DatumCategory>.from(json["data"].map((x) => DatumCategory.fromJson(x))),
+  factory ResponseCategoryList.fromJson(Map<String, dynamic> json) =>
+      ResponseCategoryList(
+        data: List<DatumCategory>.from(
+            json["data"].map((x) => DatumCategory.fromJson(x))),
         currentPage: json["current_page"],
         nextPageUrl: json["next_page_url"],
         previousePageUrl: json["previouse_page_url"],

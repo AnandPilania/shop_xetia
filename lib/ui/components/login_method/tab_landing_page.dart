@@ -6,8 +6,10 @@ import 'package:xetia_shop/controllers/time_token_controller.dart';
 import 'package:xetia_shop/language/_components.dart';
 
 class TabNameLandingPage extends StatelessWidget {
-  final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final TokenTimeController tokenTimeController =
+      Get.put(TokenTimeController());
+  final LandingPageController loginController = Get.find();
+  final ToggleController _toggleController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +21,19 @@ class TabNameLandingPage extends StatelessWidget {
             flex: 3,
             child: GestureDetector(
                 onTap: () {
-                  loginController.isLogin = true;
+                  _toggleController.isLogin = true;
                   loginController.loginMethod = LoginMethods.Unchosen;
                   FocusScope.of(context).unfocus();
                 },
-                child: Text(kLogin.tr, style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                child: Text(kLogin.tr,
+                    style: context.textTheme.headline3,
+                    textAlign: TextAlign.center))),
         Expanded(
             flex: 3,
             child: GestureDetector(
                 onTap: () {
-                  loginController.isLogin = false;
-                  if (tokenTimeController.isTicking == true) {
+                  _toggleController.isLogin = false;
+                  if (_toggleController.isTicking) {
                     loginController.loginMethod = LoginMethods.Register3;
                   } else {
                     loginController.loginMethod = LoginMethods.Register;
@@ -37,7 +41,9 @@ class TabNameLandingPage extends StatelessWidget {
 
                   FocusScope.of(context).unfocus();
                 },
-                child: Text(kRegister.tr, style: context.textTheme.headline3, textAlign: TextAlign.center))),
+                child: Text(kRegister.tr,
+                    style: context.textTheme.headline3,
+                    textAlign: TextAlign.center))),
         Spacer()
       ],
     );
@@ -45,7 +51,8 @@ class TabNameLandingPage extends StatelessWidget {
 }
 
 class TabIndicatorLandingPage extends StatelessWidget {
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find();
+  final ToggleController _toggleController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +64,9 @@ class TabIndicatorLandingPage extends StatelessWidget {
             flex: 6,
             child: Obx(() => AnimatedAlign(
                   duration: Duration(milliseconds: 250),
-                  alignment: loginController.isLogin == true ? Alignment.centerLeft : Alignment.centerRight,
+                  alignment: _toggleController.isLogin
+                      ? Alignment.centerLeft
+                      : Alignment.centerRight,
                   child: Container(
                     width: widthApp * 3 / 8,
                     height: 10.0,

@@ -6,7 +6,8 @@ import 'package:xetia_shop/language/_components.dart';
 
 class ProductReview extends StatelessWidget {
   final Duration animDuration = const Duration(milliseconds: 250);
-  final ChartProductReviewController controller = Get.put(ChartProductReviewController());
+  final ChartProductReviewController controller =
+      Get.put(ChartProductReviewController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +33,14 @@ class ProductReview extends StatelessWidget {
             children: <Widget>[
               Text(
                 kHalalProductReview.tr,
-                style: context.textTheme.headline2.copyWith(fontWeight: FontWeight.bold, color: context.theme.primaryColorLight),
+                style: context.textTheme.headline2.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: context.theme.primaryColorLight),
               ),
               Text(
                 '2021',
-                style: context.textTheme.headline3.copyWith(color: context.theme.primaryColor),
+                style: context.textTheme.headline3
+                    .copyWith(color: context.theme.primaryColor),
               ),
               const SizedBox(
                 height: 38,
@@ -90,11 +94,16 @@ class ProductReview extends StatelessWidget {
                   break;
               }
               return BarTooltipItem(
-                  weekDay + '\n' + (rod.y - 1).toString(), context.textTheme.headline5.copyWith(color: context.theme.primaryColorDark));
+                  weekDay + '\n' + (rod.y - 1).toString(),
+                  context.textTheme.headline5
+                      .copyWith(color: context.theme.primaryColorDark));
             }),
         touchCallback: (barTouchResponse) {
-          if (barTouchResponse.spot != null && barTouchResponse.touchInput is! FlPanEnd && barTouchResponse.touchInput is! FlLongPressEnd) {
-            controller.currentTouchedIndex = barTouchResponse.spot.touchedBarGroupIndex;
+          if (barTouchResponse.spot != null &&
+              barTouchResponse.touchInput is! FlPanEnd &&
+              barTouchResponse.touchInput is! FlLongPressEnd) {
+            controller.currentTouchedIndex =
+                barTouchResponse.spot.touchedBarGroupIndex;
           } else {
             controller.currentTouchedIndex = -1;
           }
@@ -104,7 +113,8 @@ class ProductReview extends StatelessWidget {
         show: true,
         bottomTitles: SideTitles(
           showTitles: true,
-          getTextStyles: (value) => context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold),
+          getTextStyles: (value) =>
+              context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold),
           margin: 16,
           getTitles: (double value) {
             switch (value.toInt()) {
@@ -138,22 +148,30 @@ class ProductReview extends StatelessWidget {
     );
   }
 
-  List<BarChartGroupData> showingGroups(BuildContext context) => List.generate(7, (i) {
+  List<BarChartGroupData> showingGroups(BuildContext context) =>
+      List.generate(7, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0, 5, context, isTouched: i == controller.currentTouchedIndex);
+            return makeGroupData(0, 5, context,
+                isTouched: i == controller.currentTouchedIndex);
           case 1:
-            return makeGroupData(1, 6.5, context, isTouched: i == controller.currentTouchedIndex);
+            return makeGroupData(1, 6.5, context,
+                isTouched: i == controller.currentTouchedIndex);
           case 2:
-            return makeGroupData(2, 5, context, isTouched: i == controller.currentTouchedIndex);
+            return makeGroupData(2, 5, context,
+                isTouched: i == controller.currentTouchedIndex);
           case 3:
-            return makeGroupData(3, 7.5, context, isTouched: i == controller.currentTouchedIndex);
+            return makeGroupData(3, 7.5, context,
+                isTouched: i == controller.currentTouchedIndex);
           case 4:
-            return makeGroupData(4, 9, context, isTouched: i == controller.currentTouchedIndex);
+            return makeGroupData(4, 9, context,
+                isTouched: i == controller.currentTouchedIndex);
           case 5:
-            return makeGroupData(5, 11.5, context, isTouched: i == controller.currentTouchedIndex);
+            return makeGroupData(5, 11.5, context,
+                isTouched: i == controller.currentTouchedIndex);
           case 6:
-            return makeGroupData(6, 6.5, context, isTouched: i == controller.currentTouchedIndex);
+            return makeGroupData(6, 6.5, context,
+                isTouched: i == controller.currentTouchedIndex);
           default:
             return null;
         }
@@ -172,7 +190,9 @@ class ProductReview extends StatelessWidget {
       barRods: [
         BarChartRodData(
           y: isTouched ? y + 1 : y,
-          colors: isTouched ? [context.theme.primaryColor] : [context.theme.primaryColorLight],
+          colors: isTouched
+              ? [context.theme.primaryColor]
+              : [context.theme.primaryColorLight],
           width: width,
           backDrawRodData: BackgroundBarChartRodData(
             show: true,

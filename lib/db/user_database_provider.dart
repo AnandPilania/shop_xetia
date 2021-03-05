@@ -83,7 +83,7 @@ class UserProvider {
       ROLE
     ]);
 
-    List<UserDatabase> userList = List<UserDatabase>();
+    List<UserDatabase> userList = List<UserDatabase>.empty(growable: true);
 
     user.forEach((currentUser) {
       UserDatabase user = UserDatabase.fromMap(currentUser);

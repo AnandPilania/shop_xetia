@@ -10,7 +10,9 @@ class DetailProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: context.theme.primaryColorDark, borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+          color: context.theme.primaryColorDark,
+          borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -23,7 +25,9 @@ class DetailProductDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(kWeight.tr, style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
+                  Text(kWeight.tr,
+                      style: context.textTheme.headline5
+                          .copyWith(fontWeight: FontWeight.bold)),
                   Text("1 " + kKilogram.tr, style: context.textTheme.headline5),
                 ],
               ),
@@ -34,14 +38,18 @@ class DetailProductDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(kCondition.tr, style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
+                  Text(kCondition.tr,
+                      style: context.textTheme.headline5
+                          .copyWith(fontWeight: FontWeight.bold)),
                   Text(kNew.tr, style: context.textTheme.headline5),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: Text(kDescription.tr, style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold)),
+              child: Text(kDescription.tr,
+                  style: context.textTheme.headline5
+                      .copyWith(fontWeight: FontWeight.bold)),
             ),
             Text(
               "lorem ipsum lorem ipsumlorem ipsum lorem ipsum",
@@ -51,7 +59,8 @@ class DetailProductDetail extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 kReadMore.tr,
-                style: context.textTheme.headline4.copyWith(color: Colors.blueAccent),
+                style: context.textTheme.headline4
+                    .copyWith(color: Colors.blueAccent),
               ),
             )
           ],
