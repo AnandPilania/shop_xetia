@@ -5,4 +5,14 @@ class ToggleController extends GetxController {
 
   set isGridView(value) => this._isGridView.value = value;
   bool get isGridView => this._isGridView.value;
+
+  RxBool _isLogin = true.obs;
+
+  set isLogin(value) => this._isLogin.value = value;
+  bool get isLogin => this._isLogin.value;
+
+  RxBool _subscribeEmail = false.obs;
+
+  set subscribeEmail(value) => this._subscribeEmail.value = value;
+  bool get subscribeEmail => this._subscribeEmail.value;
 }

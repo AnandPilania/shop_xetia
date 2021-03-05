@@ -17,6 +17,7 @@ class RegisterUI2 extends StatelessWidget {
   final TokenTimeController tokenTimeController =
       Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();
+  final ToggleController _toggleController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -93,9 +94,9 @@ class RegisterUI2 extends StatelessWidget {
                       children: [
                         Obx(() => Checkbox(
                               onChanged: (value) {
-                                loginController.subscribeEmail = value;
+                                _toggleController.subscribeEmail = value;
                               },
-                              value: loginController.subscribeEmail,
+                              value: _toggleController.subscribeEmail,
                               activeColor: context.theme.primaryColor,
                             )),
                         SizedBox(height: 5),

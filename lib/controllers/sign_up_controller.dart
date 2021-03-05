@@ -6,15 +6,18 @@ import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/models/_model.dart';
 import 'package:xetia_shop/networks/_network.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
+import 'package:xetia_shop/utils/_utils.dart';
 
 class SignUpController extends GetxController {
   RxBool _isObscure = true.obs;
   RxBool _isValidateObscure = true.obs;
   LoadingOverlay loading;
   AuthV2 authV2 = AuthV2();
-  TokenTimeController tokenTimeController = Get.put(TokenTimeController());
-  LandingPageController _landingPageController = Get.find();
+  final TokenTimeController tokenTimeController =
+      Get.put(TokenTimeController());
+  final LandingPageController _landingPageController = Get.find();
   final TextFieldController _textFieldController = Get.find();
+  final ToggleController _toggleController = Get.find();
 
   set isObscure(value) => this._isObscure.value = value;
 
@@ -47,7 +50,7 @@ class SignUpController extends GetxController {
         _landingPageController.loginMethod = LoginMethods.Register3;
         tokenTimeController.startController();
         // _landingPageController.loginMethod = LoginMethods.Unchosen;
-        _landingPageController.toggle();
+        _toggleController.isLogin.toggle();
       } else if (value.meta.code == 408) {
         Get.snackbar('Alert', value.meta.message,
             colorText: context.theme.primaryColorLight);
@@ -77,7 +80,7 @@ class SignUpController extends GetxController {
         Get.snackbar('Alert', value.meta.message,
             colorText: context.theme.primaryColorLight);
         _textFieldController.emailSignUp.clear();
-        _landingPageController.isLogin = true;
+        _toggleController.isLogin = true;
         _landingPageController.loginMethod = LoginMethods.Unchosen;
       } else if (value.meta.code == 408) {
         Get.snackbar('Alert', value.meta.message,

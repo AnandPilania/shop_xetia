@@ -7,7 +7,9 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/ui/components/login_method/_component.dart';
 
 class HeaderLandingPage extends StatelessWidget {
-  final LandingPageController loginController = Get.find<LandingPageController>();
+  final LandingPageController loginController =
+      Get.find<LandingPageController>();
+  final ToggleController _toggleController = Get.find();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
 
   @override
@@ -16,9 +18,13 @@ class HeaderLandingPage extends StatelessWidget {
           duration: Duration(milliseconds: 700),
           curve: Curves.easeOut,
           width: widthApp,
-          height: focusController.topContainer == true ? (heightApp) * 0.2 : (heightApp) * 0.455,
+          height: focusController.topContainer.value == true
+              ? (heightApp) * 0.2
+              : (heightApp) * 0.455,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(40)),
             color: context.theme.primaryColorDark,
           ),
           child: Stack(
@@ -36,24 +42,26 @@ class HeaderLandingPage extends StatelessWidget {
               Positioned(
                 top: paddingTop + 10,
                 left: 10,
-                child:
-                    Obx(() => loginController.loginMethod == LoginMethods.Unchosen || loginController.loginMethod == LoginMethods.Register
-                        ? SizedBox()
-                        : IconButton(
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: context.theme.primaryColorLight,
-                            ),
-                            onPressed: () {
-                              loginController.isLogin = true;
-                              FocusScope.of(context).unfocus();
-                              if (loginController.loginMethod == LoginMethods.Register2) {
-                                loginController.loginMethod = LoginMethods.Register;
-                              } else {
-                                loginController.loginMethod = LoginMethods.Unchosen;
-                              }
-                            },
-                          )),
+                child: Obx(() => loginController.loginMethod ==
+                            LoginMethods.Unchosen ||
+                        loginController.loginMethod == LoginMethods.Register
+                    ? SizedBox()
+                    : IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: context.theme.primaryColorLight,
+                        ),
+                        onPressed: () {
+                          _toggleController.isLogin = true;
+                          FocusScope.of(context).unfocus();
+                          if (loginController.loginMethod ==
+                              LoginMethods.Register2) {
+                            loginController.loginMethod = LoginMethods.Register;
+                          } else {
+                            loginController.loginMethod = LoginMethods.Unchosen;
+                          }
+                        },
+                      )),
               ),
             ],
           ),
