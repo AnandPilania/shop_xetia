@@ -136,4 +136,6 @@ const Map<String, String> enUS = {
   kTokenTimeDown:
       "Ups! your time is out, the token for your account activation is expired, click the button below to resend token verification",
   kResendToken: "Resend Token",
+
+  kSuccessRegisterText: "Congratulation . . .\nYour Account has been verified",
 };

@@ -34,11 +34,9 @@ class RecoveryUI extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(kRecoveryHeading.tr,
-                            style: context.theme.textTheme.headline1),
+                        Text(kRecoveryHeading.tr, style: context.theme.textTheme.headline1),
                         SizedBox(height: 10),
-                        Text(kRecoverySub.tr,
-                            style: context.theme.textTheme.headline3),
+                        Text(kRecoverySub.tr, style: context.theme.textTheme.headline3),
                       ],
                     ),
                     SizedBox(height: 60),
@@ -75,7 +73,6 @@ class RecoveryUI extends StatelessWidget {
             ),
           ),
         ),
-        floatingActionButton: FABTheme(),
       ),
     );
   }

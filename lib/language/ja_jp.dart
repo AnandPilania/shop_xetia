@@ -136,6 +136,8 @@ const Map<String, String> jaJP = {
   kTokenTimeDown: "アップス！時間切れです。 アカウントのアクティベーションのトークンは期限切れです。",
   kResendToken: "トークンの再送",
 
+  kSuccessRegisterText: "おめでとうございます \nあなたのアカウントは確認されています",
+
   //日本語 only
   "Nagoya": "名古屋",
   "Tokyo": "東京",

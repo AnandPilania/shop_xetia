@@ -1,21 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/constants/_constants.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/controllers/focus_node_controller.dart';
-import 'package:xetia_shop/controllers/time_token_controller.dart';
-import 'package:xetia_shop/language/_components.dart';
-import 'package:xetia_shop/ui/components/_components.dart';
-import 'package:xetia_shop/utils/_utils.dart';
+
+import '../../../constants/_constants.dart';
+import '../../../controllers/_controllers.dart';
+import '../../../language/_components.dart';
+import '../../../ui/components/_components.dart';
+import '../../../utils/_utils.dart';
 
 class RegisterUI2 extends StatelessWidget {
   final SignUpController _signUpController = Get.find<SignUpController>();
-  final LandingPageController loginController =
-      Get.find<LandingPageController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
-  final TokenTimeController tokenTimeController =
-      Get.put(TokenTimeController());
+  final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -56,8 +53,7 @@ class RegisterUI2 extends StatelessWidget {
                         isObscure: _signUpController.isObscure,
                         nextFocus: focusController.passwordSignUpValidate,
                         changeObscure: () {
-                          _signUpController.isObscure =
-                              !_signUpController.isObscure;
+                          _signUpController.isObscure = !_signUpController.isObscure;
                         },
                       ),
                     ),
@@ -67,8 +63,7 @@ class RegisterUI2 extends StatelessWidget {
                         textInputType: TextInputType.emailAddress,
                         controller: _textFieldController.validatePass,
                         validator: ((value) {
-                          if (value !=
-                              _textFieldController.passSignUp.value.text) {
+                          if (value != _textFieldController.passSignUp.value.text) {
                             return kErrorValidatePass.tr;
                           } else {
                             return null;
@@ -79,8 +74,7 @@ class RegisterUI2 extends StatelessWidget {
                         focusNode: focusController.passwordSignUpValidate,
                         isObscure: _signUpController.isValidateObscure,
                         changeObscure: () {
-                          _signUpController.isValidateObscure =
-                              !_signUpController.isValidateObscure;
+                          _signUpController.isValidateObscure = !_signUpController.isValidateObscure;
                         },
                       ),
                     ),
@@ -117,8 +111,7 @@ class RegisterUI2 extends StatelessWidget {
                         onTap: () {
                           if (_formKey.currentState.validate()) {
                             FocusScope.of(context).unfocus();
-                            loginController.loginMethod =
-                                LoginMethods.Register3;
+                            loginController.loginMethod = LoginMethods.Register3;
                             tokenTimeController.startController();
                             //_signUpController.resSignUp(context: context);
                           }

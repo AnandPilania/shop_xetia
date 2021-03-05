@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/ui/components/login_method/_component.dart';
-import 'package:xetia_shop/ui/components/login_method/email_resend_token.dart';
-import 'package:xetia_shop/ui/components/login_method/email_validation.dart';
-import 'package:xetia_shop/ui/components/login_method/register_2.dart';
+import 'package:xetia_shop/ui/components/login_method/reset_password_new.dart';
 
+import '../components/login_method/_component.dart';
 import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
 
@@ -21,6 +19,7 @@ class SignInUI extends StatelessWidget {
     RegisterUI2(),
     RegisterUI3(),
     ResendTokenEmail(),
+    ResetPassword(),
   ];
 
   Widget getMethodWidget() {

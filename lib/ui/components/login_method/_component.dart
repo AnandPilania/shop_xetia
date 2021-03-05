@@ -7,3 +7,7 @@ export 'gmail_login.dart';
 export 'header_landing_page.dart';
 export 'tab_landing_page.dart';
 export 'register_ui.dart';
+export 'success_register.dart';
+export 'register_2.dart';
+export 'email_validation.dart';
+export 'email_resend_token.dart';

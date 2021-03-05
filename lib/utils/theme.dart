@@ -9,7 +9,7 @@ class Themes {
     accentIconTheme: IconThemeData(color: const Color(0xff333333)),
     scaffoldBackgroundColor: const Color(0xfff2f2f2),
     floatingActionButtonTheme: FloatingActionButtonThemeData(foregroundColor: const Color(0xff333333)),
-    primaryColorDark: const Color(0xffe6e6e6),
+    primaryColorDark: const Color(0xfff1efe5),
     primaryColorLight: kBlack,
     backgroundColor: kBlack,
     highlightColor: kBlack,
@@ -24,7 +24,9 @@ class Themes {
         subtitle1: TextStyle(color: kWhite, fontFamily: 'SF Pro Rounded', fontSize: 14, fontWeight: FontWeight.w300)),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: kBlack.withOpacity(0.5), fontFamily: 'SF Pro Rounded', fontSize: 17, fontWeight: FontWeight.normal),
-      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5.0)), borderSide: BorderSide.none),
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          borderSide: BorderSide(width: 1, color: const Color(0xff4c4c4c).withOpacity(0.5))),
       contentPadding: const EdgeInsets.all(12),
       filled: true,
       fillColor: const Color(0xffe6e6e6),

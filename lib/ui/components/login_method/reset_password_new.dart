@@ -8,7 +8,7 @@ import '../../../language/language_key.dart';
 import '../../../ui/components/_components.dart';
 import '../../../utils/validation.dart';
 
-class ResendTokenEmail extends StatelessWidget {
+class ResetPassword extends StatelessWidget {
   final FocusNodeController focusNodeController = Get.find<FocusNodeController>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextFieldController _textFieldController = Get.find();
@@ -29,7 +29,7 @@ class ResendTokenEmail extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: AutoSizeText(
-                    "Enter your email to resend activation token here ",
+                    "Enter your email to reset your password",
                     style: context.textTheme.headline4.copyWith(fontSize: 16),
                     textAlign: TextAlign.center,
                     maxLines: 2,
@@ -54,12 +54,12 @@ class ResendTokenEmail extends StatelessWidget {
                 color: context.theme.primaryColor,
                 onTap: () {
                   if (_formKey.currentState.validate()) {
-                    FocusScope.of(context).unfocus();
-                    loginController.loginMethod = LoginMethods.Register3;
-                    tokenTimeController.startController();
+                    //FocusScope.of(context).unfocus();
+                    //loginController.loginMethod = LoginMethods.Register3;
+                    //tokenTimeController.startController();
                   }
                 },
-                text: kResendToken.tr,
+                text: "Reset my password",
               ),
             ),
           ],
