@@ -9,17 +9,13 @@ import 'package:xetia_shop/models/message_item.dart';
 class MessageItemController extends GetxController {
   final TextFieldController _textFieldController = Get.find();
   final ListController _listController = Get.find();
+  final ToggleController _toggleController = Get.find();
   ScrollController chatBodyScrollController;
   RxString _selectedReplyMessage = "".obs;
-  RxBool _showReplyMessage = false.obs;
 
   set selectedReplyMessage(value) => this._selectedReplyMessage.value = value;
 
   get selectedReplyMessage => this._selectedReplyMessage.value;
-
-  set showReplyMessage(value) => this._showReplyMessage.value = value;
-
-  get showReplyMessage => this._showReplyMessage.value;
 
   @override
   void onInit() {
@@ -48,7 +44,7 @@ class MessageItemController extends GetxController {
           reply: selectedReplyMessage));
       _textFieldController.messageTextFieldController.clear();
       selectedReplyMessage = "";
-      showReplyMessage = false;
+      _toggleController.showReplyMessage = false;
       chatBodyScrollController.animateTo(
         0.0,
         curve: Curves.easeOut,
