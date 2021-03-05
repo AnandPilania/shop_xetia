@@ -23,5 +23,11 @@ class ToggleController extends GetxController {
 
   set showReplyMessage(value) => this._showReplyMessage.value = value;
 
-  get showReplyMessage => this._showReplyMessage.value;
+  bool get showReplyMessage => this._showReplyMessage.value;
+
+  RxBool _isObscure = true.obs;
+
+  set isObscure(value) => this._isObscure.value = value;
+
+  bool get isObscure => this._isObscure.value;
 }
