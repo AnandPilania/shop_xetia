@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/language/language_key.dart';
-import 'package:xetia_shop/utils/_utils.dart';
 
 import '../../constants/_constants.dart';
 import '../../controllers/_controllers.dart';
@@ -49,7 +48,7 @@ class ShopScreen extends StatelessWidget {
           BestSellerBar(),
           Obx(() => AnimatedSwitcher(
                 duration: Duration(milliseconds: 250),
-                child: _toggleController.isGridView.isTrue()
+                child: _toggleController.isGridView
                     ? ProductGridCard()
                     : ProductListCard(),
               )),

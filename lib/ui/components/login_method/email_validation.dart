@@ -12,8 +12,8 @@ import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class RegisterUI3 extends StatelessWidget {
-  final LandingPageController loginController = Get.find();
   final FocusNodeController focusController = Get.find();
+  final ToggleController _toggleController = Get.find();
   final TokenTimeController tokenTimeController =
       Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();
@@ -23,7 +23,7 @@ class RegisterUI3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => AnimatedSwitcher(
         duration: Duration(milliseconds: 200),
-        child: !tokenTimeController.isTicking
+        child: !_toggleController.isTicking
             ? SizedBox(
                 height: (heightApp + paddingTop) * 0.4,
                 child: Center(

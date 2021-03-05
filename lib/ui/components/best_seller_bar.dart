@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/language/language_key.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
-import 'package:xetia_shop/utils/_utils.dart';
 
 class BestSellerBar extends StatelessWidget {
   final ToggleController _toggleController = Get.find();
@@ -43,12 +42,12 @@ class BestSellerBar extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: _toggleController.isGridView.isTrue()
+                              color: _toggleController.isGridView
                                   ? context.theme.primaryColor
                                   : null),
                           child: IconButton(
                             icon: Icon(Icons.grid_on_rounded),
-                            color: _toggleController.isGridView.isTrue()
+                            color: _toggleController.isGridView
                                 ? context.theme.primaryColorDark
                                 : context.theme.primaryColor,
                             padding: EdgeInsets.all(4),
@@ -62,12 +61,12 @@ class BestSellerBar extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: !_toggleController.isGridView.isTrue()
+                                color: !_toggleController.isGridView
                                     ? context.theme.primaryColor
                                     : null),
                             child: IconButton(
                               icon: Icon(Icons.list_rounded),
-                              color: !_toggleController.isGridView.isTrue()
+                              color: !_toggleController.isGridView
                                   ? context.theme.primaryColorDark
                                   : context.theme.primaryColor,
                               padding: EdgeInsets.all(4),

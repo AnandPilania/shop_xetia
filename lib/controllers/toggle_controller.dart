@@ -52,4 +52,10 @@ class ToggleController extends GetxController {
       this._isObscureSignUpValidate.value = value;
 
   bool get isObscureSignUpValidate => this._isObscureSignUpValidate.value;
+
+  final _isTicking = false.obs;
+
+  set isTicking(value) => this._isTicking.value = value;
+
+  bool get isTicking => this._isTicking.value;
 }

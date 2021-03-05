@@ -4,7 +4,6 @@ import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/controllers/time_token_controller.dart';
 import 'package:xetia_shop/language/_components.dart';
-import 'package:xetia_shop/utils/_utils.dart';
 
 class TabNameLandingPage extends StatelessWidget {
   final TokenTimeController tokenTimeController =
@@ -34,7 +33,7 @@ class TabNameLandingPage extends StatelessWidget {
             child: GestureDetector(
                 onTap: () {
                   _toggleController.isLogin = false;
-                  if (tokenTimeController.isTicking.isTrue()) {
+                  if (_toggleController.isTicking) {
                     loginController.loginMethod = LoginMethods.Register3;
                   } else {
                     loginController.loginMethod = LoginMethods.Register;
@@ -65,7 +64,7 @@ class TabIndicatorLandingPage extends StatelessWidget {
             flex: 6,
             child: Obx(() => AnimatedAlign(
                   duration: Duration(milliseconds: 250),
-                  alignment: _toggleController.isLogin.isTrue()
+                  alignment: _toggleController.isLogin
                       ? Alignment.centerLeft
                       : Alignment.centerRight,
                   child: Container(
