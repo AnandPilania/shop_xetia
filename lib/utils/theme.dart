@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xetia_shop/constants/color_xetia.dart';
 
@@ -14,6 +15,9 @@ class Themes {
     primaryColorLight: kBlack,
     backgroundColor: kBlack,
     highlightColor: kBlack,
+    brightness: Brightness.light,
+    cupertinoOverrideTheme:
+        CupertinoThemeData().copyWith(brightness: Brightness.light),
     shadowColor: kBlack.withOpacity(0.4),
     canvasColor: Colors.transparent,
     textTheme: TextTheme(
@@ -73,6 +77,9 @@ class Themes {
         FloatingActionButtonThemeData(foregroundColor: const Color(0xff333333)),
     scaffoldBackgroundColor: const Color(0xff121212),
     primaryColorDark: kBlack,
+    brightness: Brightness.dark,
+    cupertinoOverrideTheme:
+        CupertinoThemeData().copyWith(brightness: Brightness.dark),
     primaryColorLight: kWhite,
     backgroundColor: kBlack,
     shadowColor: kWhite.withOpacity(0.4),
