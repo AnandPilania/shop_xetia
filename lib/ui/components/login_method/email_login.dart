@@ -53,8 +53,11 @@ class EmailLogin extends StatelessWidget {
                         hintText: kPassword.tr,
                         isPassword: true,
                         isObscure: _toggleController.isObscureSignIn,
-                        changeObscure: () =>
-                            _toggleController.isObscureSignIn.toggle(),
+                        changeObscure: () {
+                          print("change");
+                          return _toggleController.isObscureSignIn =
+                              _toggleController.isObscureSignIn.toggle();
+                        },
                       ),
                     ),
                   ],

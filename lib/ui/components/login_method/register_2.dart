@@ -54,8 +54,10 @@ class RegisterUI2 extends StatelessWidget {
                         focusNode: focusController.passwordSignUp,
                         isObscure: _toggleController.isObscureSignUp,
                         nextFocus: focusController.passwordSignUpValidate,
-                        changeObscure: () =>
-                            _toggleController.isObscureSignUp.toggle(),
+                        changeObscure: () {
+                          return _toggleController.isObscureSignUp =
+                              _toggleController.isObscureSignUp.toggle();
+                        },
                       ),
                     ),
                     SizedBox(height: 5),
@@ -75,7 +77,8 @@ class RegisterUI2 extends StatelessWidget {
                         isPassword: true,
                         focusNode: focusController.passwordSignUpValidate,
                         isObscure: _toggleController.isObscureSignUpValidate,
-                        changeObscure: () =>
+                        changeObscure: () => _toggleController
+                                .isObscureSignUpValidate =
                             _toggleController.isObscureSignUpValidate.toggle(),
                       ),
                     ),
