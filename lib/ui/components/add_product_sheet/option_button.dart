@@ -19,32 +19,19 @@ class OptionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
       isExpanded: true,
-      dropdownColor: context.theme.primaryColorLight,
       decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: context.theme.primaryColor.withOpacity(0.5)),
-            borderRadius: BorderRadius.circular(10)),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: context.theme.primaryColor),
-            borderRadius: BorderRadius.circular(10)),
-        border: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: context.theme.primaryColor.withOpacity(0.5)),
-            borderRadius: BorderRadius.circular(10)),
         hintText: kInputHere.tr,
-        hintStyle: context.textTheme.headline4
-            .copyWith(color: context.theme.primaryColorDark),
-        focusColor: context.theme.primaryColor,
       ),
       value: option,
       icon: Icon(
         Icons.keyboard_arrow_down,
         color: context.theme.primaryColor,
       ),
+      dropdownColor: context.theme.primaryColorDark,
+      focusColor: context.theme.primaryColorDark,
       elevation: 16,
-      style: context.textTheme.headline4
-          .copyWith(color: context.theme.primaryColorDark),
+      style: context.textTheme.headline3
+          .copyWith(color: context.theme.primaryColorLight),
       onChanged: onChanged,
       items: listOption.map((value) {
         return DropdownMenuItem<String>(

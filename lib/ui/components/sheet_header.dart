@@ -23,7 +23,10 @@ class SheetHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: Icon(CupertinoIcons.back),
+            icon: Icon(
+              CupertinoIcons.back,
+              color: kWhite,
+            ),
             onPressed: onTap,
           ),
           Expanded(

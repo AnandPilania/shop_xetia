@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/language/_components.dart';
+import 'package:xetia_shop/ui/components/_components.dart';
 
 class ChatFooter extends StatelessWidget {
   final TextFieldController _textFieldController = Get.find();
@@ -98,11 +99,10 @@ class ChatFooter extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  child: TextField(
+                  child: XetiaTextField(
+                    textInputType: TextInputType.text,
                     controller: _textFieldController.messageTextFieldController,
-                    decoration: InputDecoration(
-                      hintText: kTypeMessage.tr,
-                    ),
+                    hintText: kTypeMessage.tr,
                   ),
                 ),
                 SizedBox(width: 10),
