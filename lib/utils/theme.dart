@@ -5,8 +5,8 @@ import 'package:xetia_shop/constants/color_xetia.dart';
 class Themes {
   static final light = ThemeData.light().copyWith(
     primaryColor: const Color(0xfffbb216),
-    iconTheme: IconThemeData(color: kWhite, size: 24),
-    primaryIconTheme: IconThemeData(color: kWhite, size: 20),
+    iconTheme: IconThemeData(color: kBlack, size: 24),
+    primaryIconTheme: IconThemeData(color: kBlack, size: 20),
     accentIconTheme: IconThemeData(color: const Color(0xff333333)),
     scaffoldBackgroundColor: const Color(0xfff2f2f2),
     floatingActionButtonTheme:
@@ -63,7 +63,7 @@ class Themes {
           borderSide: BorderSide.none),
       contentPadding: const EdgeInsets.all(12),
       filled: true,
-      fillColor: const Color(0xffe6e6e6),
+      fillColor: kWhite,
     ),
   );
 
