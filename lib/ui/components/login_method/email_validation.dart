@@ -18,6 +18,7 @@ class RegisterUI3 extends StatelessWidget {
       Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final SignUpController signUpController = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +156,9 @@ class RegisterUI3 extends StatelessWidget {
                                       child: MyButton(
                                         color: context.theme.primaryColor,
                                         onTap: () {
-                                          FocusScope.of(context).unfocus();
+                                          // FocusScope.of(context).unfocus();
+                                          signUpController.resEmailVerify(
+                                              context: context);
                                         },
                                         text: kVerify.tr,
                                       ),

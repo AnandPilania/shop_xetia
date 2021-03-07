@@ -10,10 +10,11 @@ import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
 
 class RegisterUI2 extends StatelessWidget {
-  final LandingPageController loginController = Get.find();
+  // final LandingPageController loginController = Get.find();
+  // final TokenTimeController tokenTimeController =
+  //     Get.put(TokenTimeController());
+  final SignUpController signUpController = Get.put(SignUpController());
   final FocusNodeController focusController = Get.find();
-  final TokenTimeController tokenTimeController =
-      Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();
   final ToggleController _toggleController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -114,11 +115,11 @@ class RegisterUI2 extends StatelessWidget {
                         color: context.theme.primaryColor,
                         onTap: () {
                           if (_formKey.currentState.validate()) {
-                            FocusScope.of(context).unfocus();
-                            loginController.loginMethod =
-                                LoginMethods.Register3;
-                            tokenTimeController.startController();
-                            //_signUpController.resSignUp(context: context);
+                            // FocusScope.of(context).unfocus();
+                            // loginController.loginMethod =
+                            //     LoginMethods.Register3;
+                            // tokenTimeController.startController();
+                            signUpController.resSignUp(context: context);
                           }
                         },
                         text: kRegister.tr,

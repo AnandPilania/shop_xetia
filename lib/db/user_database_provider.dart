@@ -6,8 +6,6 @@ import 'model/user.dart';
 class UserProvider {
   static const String TABLE = "user";
   static const String COLUMN_ID = "id";
-  static const String ROLE_NAME = "role_name";
-  static const String ROLE_DESCRIPTION = "role_description";
   static const String ENTITY_TYPE = "entity_type";
   static const String ENTITY_ID = "entity_id";
   static const String ENTITY_NAME = "entity_name";
@@ -18,6 +16,7 @@ class UserProvider {
   static const String ROLE = "role";
   static const String REFRESH_TOKEN = "refresh_token";
   static const String ACCESS_TOKEN = "access_token";
+  static const String ISOAUTH = "is_oauth";
 
   UserProvider._();
 
@@ -46,9 +45,7 @@ class UserProvider {
 
       await database.execute(
         "CREATE TABLE $TABLE ("
-        "$COLUMN_ID INTEGER PRIMARY KEY,"
-        "$ROLE_NAME TEXT,"
-        "$ROLE_DESCRIPTION TEXT,"
+        "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,"
         "$ENTITY_TYPE TEXT,"
         "$ENTITY_ID TEXT,"
         "$ENTITY_NAME TEXT,"
@@ -58,7 +55,8 @@ class UserProvider {
         "$USER_ID TEXT,"
         "$REFRESH_TOKEN TEXT,"
         "$ACCESS_TOKEN TEXT,"
-        "$ROLE INTEGER"
+        "$ROLE INTEGER,"
+        "$ISOAUTH INTEGER"
         ")",
       );
     });
@@ -69,8 +67,6 @@ class UserProvider {
 
     var user = await db.query(TABLE, columns: [
       COLUMN_ID,
-      ROLE_NAME,
-      ROLE_DESCRIPTION,
       ENTITY_TYPE,
       ENTITY_ID,
       ENTITY_NAME,
@@ -80,7 +76,8 @@ class UserProvider {
       USER_ID,
       REFRESH_TOKEN,
       ACCESS_TOKEN,
-      ROLE
+      ROLE,
+      ISOAUTH
     ]);
 
     List<UserDatabase> userList = List<UserDatabase>.empty(growable: true);
