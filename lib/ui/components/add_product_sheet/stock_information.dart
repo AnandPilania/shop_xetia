@@ -36,7 +36,7 @@ class StockInformation extends StatelessWidget {
         SizedBox(height: 15),
         XetiaTextField(
           textInputType: TextInputType.text,
-          controller: _textFieldController.priceController,
+          controller: _textFieldController.minimumOrderController,
           validator: Validator().notEmpty,
           hintText: kTypeMinimumOrder.tr,
         ),
