@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/language/language_key.dart';
 
 class ProfileCard extends StatelessWidget {
@@ -54,9 +54,13 @@ class ProfileCard extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
+                child: IconTheme(
                   child: Icon(
-                Icons.keyboard_arrow_right,
-              )),
+                    Icons.keyboard_arrow_right,
+                  ),
+                  data: context.theme.iconTheme,
+                ),
+              ),
             )
           ],
         ));

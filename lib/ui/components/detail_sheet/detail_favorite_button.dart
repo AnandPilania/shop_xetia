@@ -38,7 +38,8 @@ class DetailFavoriteButton extends StatelessWidget {
                               .listProductFetch[indexSwiper].isFavorite.value ==
                           true
                       ? Colors.redAccent
-                      : context.theme.scaffoldBackgroundColor,
+                      : context.theme.primaryColorLight,
+                  size: widthApp * 0.07,
                 ),
                 onPressed: () => productController.addToFavorite(indexSwiper),
               ),
