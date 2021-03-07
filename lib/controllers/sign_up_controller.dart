@@ -87,4 +87,33 @@ class SignUpController extends GetxController {
       print(onError);
     });
   }
+
+  void resRequestEmailVerify({@required BuildContext context}) async {
+    loading = LoadingOverlay.of(context);
+    loading.show();
+    await authV2
+        .reqVerifyEmail(email: _textFieldController.resendEmail.text)
+        .then((AuthResponse value) {
+      loading.hide();
+      if (value.meta.code == 200) {
+        FocusScope.of(context).unfocus();
+        _textFieldController.resendEmail.clear();
+
+        _landingPageController.loginMethod = LoginMethods.Register3;
+        tokenTimeController.startController();
+      } else if (value.meta.code == 408) {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
+      } else {
+        Get.snackbar('Alert', value.meta.message,
+            colorText: context.theme.primaryColorLight);
+      }
+      print(value.meta.message);
+    }).catchError((onError) {
+      loading.hide();
+      Get.snackbar('Alert', "Email Verify Failed",
+          colorText: context.theme.primaryColorLight);
+      print(onError);
+    });
+  }
 }

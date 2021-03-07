@@ -157,8 +157,7 @@ class AuthV2 {
             body: jsonEncode({"email": email}));
 
         if (res.statusCode == 200) {
-          AuthResponse decode = authResponseFromJson(res.body);
-          print(decode.meta.message);
+          return authResponseFromJson(res.body);
         } else {
           return authResponseFromJson(res.body);
         }
