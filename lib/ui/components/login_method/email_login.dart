@@ -81,10 +81,10 @@ class EmailLogin extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     GestureDetector(
-                        child: Text(kForgotPassword.tr,
-                            style: context.theme.textTheme.headline4),
+                        child: Text(kForgotPassword.tr, style: context.theme.textTheme.headline4),
                         onTap: () {
-                          Get.to(RecoveryUI());
+                          FocusScope.of(context).unfocus();
+                          loginController.loginMethod = LoginMethods.ResetPassword;
                         }),
                   ],
                 ),

@@ -1,20 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/constants/_constants.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/controllers/focus_node_controller.dart';
-import 'package:xetia_shop/controllers/time_token_controller.dart';
-import 'package:xetia_shop/language/_components.dart';
-import 'package:xetia_shop/ui/components/_components.dart';
-import 'package:xetia_shop/utils/_utils.dart';
+
+import '../../../constants/_constants.dart';
+import '../../../controllers/_controllers.dart';
+import '../../../language/_components.dart';
+import '../../../ui/components/_components.dart';
+import '../../../utils/_utils.dart';
 
 class RegisterUI2 extends StatelessWidget {
-  // final LandingPageController loginController = Get.find();
-  // final TokenTimeController tokenTimeController =
-  //     Get.put(TokenTimeController());
-  final SignUpController signUpController = Get.put(SignUpController());
-  final FocusNodeController focusController = Get.find();
+  final SignUpController _signUpController = Get.find<SignUpController>();
+  final LandingPageController loginController = Get.find<LandingPageController>();
+  final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();
   final ToggleController _toggleController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -67,8 +65,7 @@ class RegisterUI2 extends StatelessWidget {
                         textInputType: TextInputType.emailAddress,
                         controller: _textFieldController.validatePass,
                         validator: ((value) {
-                          if (value !=
-                              _textFieldController.passSignUp.value.text) {
+                          if (value != _textFieldController.passSignUp.value.text) {
                             return kErrorValidatePass.tr;
                           } else {
                             return null;
@@ -115,11 +112,10 @@ class RegisterUI2 extends StatelessWidget {
                         color: context.theme.primaryColor,
                         onTap: () {
                           if (_formKey.currentState.validate()) {
-                            // FocusScope.of(context).unfocus();
-                            // loginController.loginMethod =
-                            //     LoginMethods.Register3;
-                            // tokenTimeController.startController();
-                            signUpController.resSignUp(context: context);
+                            FocusScope.of(context).unfocus();
+                            loginController.loginMethod = LoginMethods.Register3;
+                            tokenTimeController.startController();
+                            //_signUpController.resSignUp(context: context);
                           }
                         },
                         text: kRegister.tr,

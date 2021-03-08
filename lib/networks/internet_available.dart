@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 
 Future<bool> internetAvailable() async {
-  ConnectivityResult connectivityResult =
-      await (Connectivity().checkConnectivity());
+  ConnectivityResult connectivityResult = await (Connectivity().checkConnectivity());
   if (connectivityResult == ConnectivityResult.none) {
     print("offline");
     return false;
@@ -30,4 +29,5 @@ Future<bool> retryConnection() async {
     print('not connected : $_');
     return false;
   }
+  return false;
 }

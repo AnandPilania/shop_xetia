@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/constants/_constants.dart';
-import 'package:xetia_shop/controllers/_controllers.dart';
-import 'package:xetia_shop/controllers/focus_node_controller.dart';
-import 'package:xetia_shop/language/_components.dart';
-import 'package:xetia_shop/ui/components/_components.dart';
-import 'package:xetia_shop/utils/_utils.dart';
+
+import '../../../constants/_constants.dart';
+import '../../../controllers/_controllers.dart';
+import '../../../language/language_key.dart';
+import '../../../ui/components/_components.dart';
+import '../../../utils/validation.dart';
 
 class RegisterUI extends StatelessWidget {
   final LandingPageController loginController = Get.find();
@@ -55,12 +55,10 @@ class RegisterUI extends StatelessWidget {
                               ? SizedBox()
                               : GestureDetector(
                                   onTap: () {
-                                    loginController.loginMethod =
-                                        LoginMethods.ResendTokenEmail;
+                                    loginController.loginMethod = LoginMethods.ResendTokenEmail;
                                   },
                                   child: Text(kResendActivationKey.tr,
-                                      style:
-                                          context.textTheme.headline4.copyWith(
+                                      style: context.textTheme.headline4.copyWith(
                                         color: const Color(0xff3a7af2),
                                       ),
                                       textAlign: TextAlign.center)))),
@@ -78,8 +76,7 @@ class RegisterUI extends StatelessWidget {
                         onTap: () {
                           if (_formKey.currentState.validate()) {
                             FocusScope.of(context).unfocus();
-                            loginController.loginMethod =
-                                LoginMethods.Register2;
+                            loginController.loginMethod = LoginMethods.Register2;
                           }
                         },
                         text: kNext.tr,

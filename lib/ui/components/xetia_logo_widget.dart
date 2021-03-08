@@ -21,12 +21,7 @@ class XetiaLogoWidget extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: context.theme.highlightColor,
-            boxShadow: [
-              BoxShadow(
-                  color: context.theme.shadowColor.withOpacity(0.4),
-                  blurRadius: 2,
-                  offset: Offset(0, 2))
-            ],
+            boxShadow: [BoxShadow(color: context.theme.shadowColor.withOpacity(0.4), blurRadius: 2, offset: Offset(0, 2))],
           ),
           child: AnimatedPadding(
               duration: Duration(milliseconds: 700),

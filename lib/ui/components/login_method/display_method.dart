@@ -2,10 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:xetia_shop/constants/dimens.dart';
-import 'package:xetia_shop/constants/enums.dart';
-import 'package:xetia_shop/controllers/landing_page_controller.dart';
-import 'package:xetia_shop/language/_components.dart';
+
+import '../../../constants/_constants.dart';
+import '../../../controllers/landing_page_controller.dart';
+import '../../../language/language_key.dart';
 
 class DisplayMethod extends StatelessWidget {
   final LandingPageController loginController = Get.find();

@@ -142,4 +142,5 @@ const Map<String, String> idId = {
   kTokenTimeDown:
       "Ups! waktu validasi token habis, token yang dikirimkan ke email registrasi anda sudah tidak valid, klik tombol dibawah ini untuk mengirim ulang token ke email registrasi anda",
   kResendToken: "Kirim ulang Token",
+  kSuccessRegisterText: "Selamat! Akun anda telah terverifikasi",
 };
