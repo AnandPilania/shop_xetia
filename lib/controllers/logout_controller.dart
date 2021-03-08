@@ -62,12 +62,12 @@ class LogoutController extends GetxController {
         signInController.changeLoginState(false);
         await UserProvider.db.deleteUser(id);
         Get.snackbar(kAlert.tr, res.meta.message, snackPosition: SnackPosition.BOTTOM);
-        Get.offAll(signInController.hasLoggedIn);
+        Get.offAll(() => signInController.hasLoggedIn);
       } else {
         loading.hide();
         signInController.changeLoginState(false);
         Get.snackbar(kAlert.tr, res.meta.message, snackPosition: SnackPosition.BOTTOM);
-        Get.offAll(signInController.hasLoggedIn);
+        Get.offAll(() => signInController.hasLoggedIn);
       }
     } catch (e) {
       print("error $e");
@@ -87,6 +87,6 @@ class LogoutController extends GetxController {
 
     kGoogleSignIn.disconnect();
     Get.snackbar(kAlert.tr, "Logout Success", snackPosition: SnackPosition.BOTTOM);
-    Get.offAll(signInController.hasLoggedIn);
+    Get.offAll(() => signInController.hasLoggedIn);
   }
 }

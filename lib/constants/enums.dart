@@ -9,4 +9,5 @@ enum LoginMethods {
   Register3,
   ResendTokenEmail,
   ResetPassword,
+  ChangePassword,
 }

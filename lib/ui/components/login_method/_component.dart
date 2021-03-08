@@ -6,7 +6,7 @@ export 'facebook_login.dart';
 export 'gmail_login.dart';
 export 'header_landing_page.dart';
 export 'register_ui.dart';
-export 'success_register.dart';
+export 'success_page.dart';
 export 'register_2.dart';
 export 'email_validation.dart';
 export 'email_resend_token.dart';

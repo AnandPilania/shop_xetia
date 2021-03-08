@@ -10,7 +10,7 @@ class LandingLottieController extends GetxController {
   get pageNumber => this._pageNumber.value;
 
   void changeToSignIn() {
-    Get.off(SignInUI());
+    Get.off(() => SignInUI());
     pageNumber = 0;
   }
 }

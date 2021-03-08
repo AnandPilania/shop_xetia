@@ -7,15 +7,12 @@ const Map<String, String> idId = {
   kOnBoardHeader3: 'Lihat Toko Terdekat dan Persediaannya',
 
   //subheader on boarding
-  kOnBoardSub1:
-      'Kamu bisa menemukan makanan halal dengan sangat mudah dengan Xetia Shop',
-  kOnBoardSub2:
-      'Harga dan penawaran terbaik akan selalu diberikan kepada anda pengguna Xetia Shop',
-  kOnBoardSub3:
-      'Kamu bisa selalu menemukan toko terdekat dan melihat persediaan produk makanan yang kamu cari',
+  kOnBoardSub1: 'Kamu bisa menemukan makanan halal dengan sangat mudah dengan Xetia Shop',
+  kOnBoardSub2: 'Harga dan penawaran terbaik akan selalu diberikan kepada anda pengguna Xetia Shop',
+  kOnBoardSub3: 'Kamu bisa selalu menemukan toko terdekat dan melihat persediaan produk makanan yang kamu cari',
 
   kContinue: 'Lanjutkan',
-  kLogin: "Login",
+  kLogin: "Masuk",
   kRegister: "Registrasi",
   kSignUp: "Sign Up",
   kSignIn: "Masuk",
@@ -29,8 +26,7 @@ const Map<String, String> idId = {
   kGmail: 'Gmail',
   kPassword: 'Kata Sandi',
 
-  kSubscribeText:
-      'Saya ingin menerima informasi terbaru dan promosi terbaru melalui email.',
+  kSubscribeText: 'Saya ingin menerima informasi terbaru dan promosi terbaru melalui email.',
 
   kErrorEmail: "Masukan email yang valid",
   kErrorPassword: "Kata sandi harus melebihi 6 karakter",
@@ -43,8 +39,7 @@ const Map<String, String> idId = {
   kResetPassword: "Reset Kata Sandi",
 
   kRecoveryHeading: "Pemulihan Kata Sandi",
-  kRecoverySub:
-      "Masukan email anda lalu kami akan mengirimkan instruksi untuk mereset password anda melalui email",
+  kRecoverySub: "Masukan email anda lalu kami akan mengirimkan instruksi untuk mereset password anda melalui email",
   kBackSignIn: "Kembali ke Sign In",
 
   kAlert: "Alert",
@@ -134,13 +129,19 @@ const Map<String, String> idId = {
 
   kNext: "Selanjutnya",
   kErrorValidatePass: "Kata sandi tidak sama!",
-  kThanksRegistration:
-      "Terimakasih banyak telah melakukan registrasi. Sliahkan cek email anda untuk melihat token aktivasi akun",
+  kThanksRegistration: "Terimakasih banyak telah melakukan registrasi. Sliahkan cek email anda untuk melihat token aktivasi akun",
   kVerify: "Validasi",
   kActivateToken: "Token aktivasi",
   kResendActivationKey: "Kirim ulang token aktivasi",
   kTokenTimeDown:
       "Ups! waktu validasi token habis, token yang dikirimkan ke email registrasi anda sudah tidak valid, klik tombol dibawah ini untuk mengirim ulang token ke email registrasi anda",
   kResendToken: "Kirim ulang Token",
+
   kSuccessRegisterText: "Selamat! Akun anda telah terverifikasi",
+  kResetMyPassword: "Ubah kata sandi",
+  kTokenTimeDownPassword: "Maaf, waktu telah habis, tekan tombol dibawah ini untuk mengirimkan ulang token anda",
+  kThanksPassChange: "Terimakasih atas permintaan ubah kata sandi anda.\nCek email mu untuk melihat token",
+  kNewPassword: "Kata sandi baru",
+  kChange: "Ubah",
+  kSuccessPassChangeText: "Selamat . . .\Passwordmu berhasil diubah",
 };

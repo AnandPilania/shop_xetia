@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xetia_shop/ui/components/login_method/password_change.dart';
 import 'package:xetia_shop/ui/components/login_method/reset_password_new.dart';
 
 import '../components/login_method/_component.dart';
@@ -20,6 +21,7 @@ class SignInUI extends StatelessWidget {
     RegisterUI3(),
     ResendTokenEmail(),
     ResetPassword(),
+    ChangePassword(),
   ];
 
   Widget getMethodWidget() {
@@ -40,17 +42,12 @@ class SignInUI extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                        height: paddingTop,
-                        width: widthApp,
-                        color: context.theme.primaryColorDark),
+                    Container(height: paddingTop, width: widthApp, color: context.theme.primaryColorDark),
                     HeaderLandingPage(),
                     Obx(() => Expanded(
                           child: Align(
                               alignment: Alignment.topCenter,
-                              child: AnimatedSwitcher(
-                                  duration: Duration(milliseconds: 350),
-                                  child: getMethodWidget())),
+                              child: AnimatedSwitcher(duration: Duration(milliseconds: 350), child: getMethodWidget())),
                         )),
                     SizedBox(height: 100),
                   ],
