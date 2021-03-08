@@ -3,7 +3,7 @@ import '../user_database_provider.dart';
 class UserDatabase {
   int id;
   int role;
-  int is_oauth;
+  int isOauthDB;
   String entityType;
   String entityId;
   String entityName;
@@ -17,7 +17,7 @@ class UserDatabase {
   UserDatabase(
       {this.id,
       this.role,
-      this.is_oauth,
+      this.isOauthDB,
       this.entityType,
       this.entityId,
       this.entityName,
@@ -31,7 +31,7 @@ class UserDatabase {
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       UserProvider.ROLE: role,
-      UserProvider.ISOAUTH: is_oauth,
+      UserProvider.ISOAUTH: isOauthDB,
       UserProvider.ENTITY_NAME: entityName,
       UserProvider.ENTITY_ID: entityId,
       UserProvider.ENTITY_TYPE: entityType,
@@ -53,7 +53,7 @@ class UserDatabase {
   UserDatabase.fromMap(Map<String, dynamic> map) {
     id = map[UserProvider.COLUMN_ID];
     role = map[UserProvider.ROLE];
-    is_oauth = map[UserProvider.ISOAUTH];
+    isOauthDB = map[UserProvider.ISOAUTH];
     entityType = map[UserProvider.ENTITY_TYPE];
     entityId = map[UserProvider.ENTITY_ID];
     entityName = map[UserProvider.ENTITY_NAME];

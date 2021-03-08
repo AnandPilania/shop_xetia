@@ -12,11 +12,11 @@ import '../../../ui/components/_components.dart';
 class RegisterUI3 extends StatelessWidget {
   final FocusNodeController focusController = Get.find();
   final ToggleController _toggleController = Get.find();
-  final TokenTimeController tokenTimeController =
-      Get.put(TokenTimeController());
+  final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final SignUpController signUpController = Get.put(SignUpController());
+  final LandingPageController loginController = Get.put(LandingPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -110,12 +110,10 @@ class RegisterUI3 extends StatelessWidget {
                                         onTap: () {
                                           FocusScope.of(context).unfocus();
                                           loginController.loginMethod = LoginMethods.Email;
-                                          loginController.isLogin = true;
+                                          _toggleController.isLogin = true;
                                           tokenTimeController.endTicking();
                                           Get.to(SuccessRegister());
-                                          // FocusScope.of(context).unfocus();
-                                          //signUpController.resEmailVerify(
-                                          //    context: context);
+                                          //signUpController.resEmailVerify(context: context);
                                         },
                                         text: kVerify.tr,
                                       ),
