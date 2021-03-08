@@ -9,7 +9,7 @@ import '../../../ui/components/_components.dart';
 import '../../../utils/_utils.dart';
 
 class RegisterUI2 extends StatelessWidget {
-  final SignUpController _signUpController = Get.find<SignUpController>();
+  //final SignUpController _signUpController = Get.find<SignUpController>();
   final LandingPageController loginController = Get.find<LandingPageController>();
   final FocusNodeController focusController = Get.find<FocusNodeController>();
   final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
@@ -54,8 +54,7 @@ class RegisterUI2 extends StatelessWidget {
                         isObscure: _toggleController.isObscureSignUp,
                         nextFocus: focusController.passwordSignUpValidate,
                         changeObscure: () {
-                          return _toggleController.isObscureSignUp =
-                              _toggleController.isObscureSignUp.toggle();
+                          return _toggleController.isObscureSignUp = _toggleController.isObscureSignUp.toggle();
                         },
                       ),
                     ),
@@ -75,9 +74,7 @@ class RegisterUI2 extends StatelessWidget {
                         isPassword: true,
                         focusNode: focusController.passwordSignUpValidate,
                         isObscure: _toggleController.isObscureSignUpValidate,
-                        changeObscure: () => _toggleController
-                                .isObscureSignUpValidate =
-                            _toggleController.isObscureSignUpValidate.toggle(),
+                        changeObscure: () => _toggleController.isObscureSignUpValidate = _toggleController.isObscureSignUpValidate.toggle(),
                       ),
                     ),
                   ],

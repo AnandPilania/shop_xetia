@@ -30,11 +30,11 @@ class LogoutController extends GetxController {
   void getToken() async {
     final user = await UserProvider.db.getUser();
 
-    print("Token Access ${user.is_oauth}");
+    print("Token Access ${user.isOauthDB}");
     accessToken = user.accessToken;
     refreshToken = user.refreshToken;
     id = user.id;
-    isOauth = user.is_oauth > 0 ? true : false;
+    isOauth = user.isOauthDB > 0 ? true : false;
   }
 
   void logout({@required context}) async {
@@ -51,12 +51,9 @@ class LogoutController extends GetxController {
     loading.show();
 
     try {
-      AuthResponse res = await authV2
-          .logoutRequestV2(tokenAccess: accessToken, tokenRefresh: refreshToken)
-          .catchError((onError) {
+      AuthResponse res = await authV2.logoutRequestV2(tokenAccess: accessToken, tokenRefresh: refreshToken).catchError((onError) {
         loading.hide();
-        Get.snackbar(kAlert.tr, kLogoutFailed.tr,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, kLogoutFailed.tr, snackPosition: SnackPosition.BOTTOM);
         print(onError);
       });
       if (res.meta.code == 200) {
@@ -64,14 +61,12 @@ class LogoutController extends GetxController {
         loginController.loginMethod = LoginMethods.Unchosen;
         signInController.changeLoginState(false);
         await UserProvider.db.deleteUser(id);
-        Get.snackbar(kAlert.tr, res.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, res.meta.message, snackPosition: SnackPosition.BOTTOM);
         Get.offAll(signInController.hasLoggedIn);
       } else {
         loading.hide();
         signInController.changeLoginState(false);
-        Get.snackbar(kAlert.tr, res.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, res.meta.message, snackPosition: SnackPosition.BOTTOM);
         Get.offAll(signInController.hasLoggedIn);
       }
     } catch (e) {
@@ -91,8 +86,7 @@ class LogoutController extends GetxController {
     await UserProvider.db.deleteUser(id);
 
     kGoogleSignIn.disconnect();
-    Get.snackbar(kAlert.tr, "Logout Success",
-        snackPosition: SnackPosition.BOTTOM);
+    Get.snackbar(kAlert.tr, "Logout Success", snackPosition: SnackPosition.BOTTOM);
     Get.offAll(signInController.hasLoggedIn);
   }
 }

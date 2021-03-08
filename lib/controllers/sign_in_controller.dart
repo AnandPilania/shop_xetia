@@ -60,19 +60,11 @@ class SignInController extends GetxController {
   Future<UserDatabase> insertToDb(SignInResponseV2 value, bool isOauth) async {
     UserDatabase user = UserDatabase(
       id: 1,
-      role: value.user.userEntities.length != 0
-          ? value.user.userEntities[0].role
-          : 1,
-      is_oauth: isOauth ? 1 : 0,
-      entityId: value.user.userEntities.length != 0
-          ? value.user.userEntities[0].entity
-          : "77e1e824-3d10-4487-81d0-f43639d42bb5",
-      entityName: value.user.userEntities.length != 0
-          ? value.user.userEntities[0].entityName
-          : "Toko Indonesia",
-      entityType: value.user.userEntities.length != 0
-          ? value.user.userEntities[0].entityType
-          : "shop",
+      role: value.user.userEntities.length != 0 ? value.user.userEntities[0].role : 1,
+      isOauthDB: isOauth ? 1 : 0,
+      entityId: value.user.userEntities.length != 0 ? value.user.userEntities[0].entity : "77e1e824-3d10-4487-81d0-f43639d42bb5",
+      entityName: value.user.userEntities.length != 0 ? value.user.userEntities[0].entityName : "Toko Indonesia",
+      entityType: value.user.userEntities.length != 0 ? value.user.userEntities[0].entityType : "shop",
       userId: value.user.id,
       first: value.user.firstName,
       last: value.user.lastName,
@@ -93,9 +85,7 @@ class SignInController extends GetxController {
     loading.show();
 
     await authV2
-        .signInRequest(
-            email: _textFieldController.email.text,
-            password: _textFieldController.pass.text)
+        .signInRequest(email: _textFieldController.email.text, password: _textFieldController.pass.text)
         .then((SignInResponseV2 value) {
       loading.hide();
       print(value.meta.message.toString());
@@ -107,32 +97,26 @@ class SignInController extends GetxController {
         insertToDb(value, false);
         changeLoginState(true);
         Get.offAll(HomeUI());
-        Get.snackbar(kAlert.tr, value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       } else if (value.meta.code == 408) {
         // exception untuk apabila tidak ada internet
 
-        Get.snackbar(kAlert.tr, value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       } else {
-        Get.snackbar(kAlert.tr, value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       }
       print(value.meta.message);
     }).catchError((onError) {
       loading.hide();
-      Get.snackbar(kAlert.tr, kSignInFailed.tr,
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(kAlert.tr, kSignInFailed.tr, snackPosition: SnackPosition.BOTTOM);
       print(onError);
     });
   }
 
   void isSignInGmail() async {
     if (await kGoogleSignIn.isSignedIn()) {
-      kGoogleSignIn.onCurrentUserChanged
-          .listen((GoogleSignInAccount account) async {
-        GoogleSignInAuthentication googleSignInAuthentication =
-            await account.authentication;
+      kGoogleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) async {
+        GoogleSignInAuthentication googleSignInAuthentication = await account.authentication;
         SignInResponseV2 value = SignInResponseV2(
             user: User(
                 id: account.id,
@@ -140,17 +124,14 @@ class SignInController extends GetxController {
                 lastName: account.displayName,
                 imageUrl: account.photoUrl,
                 userEntities: []),
-            tokens: TokensV2(
-                access: googleSignInAuthentication.accessToken,
-                refresh: googleSignInAuthentication.idToken));
+            tokens: TokensV2(access: googleSignInAuthentication.accessToken, refresh: googleSignInAuthentication.idToken));
         UserDatabase user = await insertToDb(value, true);
         changeLoginState(true);
         print("ok");
         print(user.id);
 
         Get.offAll(HomeUI());
-        Get.snackbar(kAlert.tr, value.meta.message,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       });
     }
   }
@@ -158,8 +139,7 @@ class SignInController extends GetxController {
   void signInGmail() async {
     try {
       GoogleSignInAccount googleSignIn = await kGoogleSignIn.signIn();
-      GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignIn.authentication;
+      GoogleSignInAuthentication googleSignInAuthentication = await googleSignIn.authentication;
       SignInResponseV2 value = SignInResponseV2(
           user: User(
               id: googleSignIn.id,
@@ -167,18 +147,15 @@ class SignInController extends GetxController {
               lastName: googleSignIn.displayName,
               imageUrl: googleSignIn.photoUrl,
               userEntities: []),
-          tokens: TokensV2(
-              access: googleSignInAuthentication.accessToken,
-              refresh: googleSignInAuthentication.idToken));
+          tokens: TokensV2(access: googleSignInAuthentication.accessToken, refresh: googleSignInAuthentication.idToken));
       UserDatabase user = await insertToDb(value, true);
+      print(user);
       changeLoginState(true);
 
       Get.offAll(HomeUI());
-      Get.snackbar(kAlert.tr, "Sing In Berhasil",
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(kAlert.tr, "Sing In Berhasil", snackPosition: SnackPosition.BOTTOM);
     } catch (error) {
-      Get.snackbar(kAlert.tr, kSignInFailed.tr,
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(kAlert.tr, kSignInFailed.tr, snackPosition: SnackPosition.BOTTOM);
       print("Error: $error");
     }
   }

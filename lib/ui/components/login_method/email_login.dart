@@ -6,7 +6,6 @@ import 'package:xetia_shop/utils/_utils.dart';
 
 import '../../../constants/_constants.dart';
 import '../../../controllers/_controllers.dart';
-import '../../../ui/landing_page/recovery_ui.dart';
 import '../../../utils/validation.dart';
 import '../../components/_components.dart';
 
@@ -55,8 +54,7 @@ class EmailLogin extends StatelessWidget {
                         isObscure: _toggleController.isObscureSignIn,
                         changeObscure: () {
                           print("change");
-                          return _toggleController.isObscureSignIn =
-                              _toggleController.isObscureSignIn.toggle();
+                          return _toggleController.isObscureSignIn = _toggleController.isObscureSignIn.toggle();
                         },
                       ),
                     ),
