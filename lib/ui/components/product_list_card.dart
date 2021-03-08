@@ -10,7 +10,7 @@ import '../../constants/dimens.dart';
 import 'sheet/detail_sheet.dart';
 
 class ProductListCard extends StatelessWidget {
-  final ProductController productController = Get.find<ProductController>();
+  final ProductController productController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -210,10 +210,10 @@ class ProductListCard extends StatelessWidget {
 //                                 padding: EdgeInsets.all(4),
 //                                 constraints: BoxConstraints(),
 //                                 icon: Icon(
-//                                   productController.listProduct[indexItem].isFavorite.value == true
+//                                   productController.listProduct[indexItem].isFavorite.value
 //                                       ? Icons.favorite
 //                                       : Icons.favorite_border,
-//                                   color: productController.listProduct[indexItem].isFavorite.value == true
+//                                   color: productController.listProduct[indexItem].isFavorite.value
 //                                       ? const Color(0xffcd444a)
 //                                       : context.theme.primaryColor,
 //                                 ),

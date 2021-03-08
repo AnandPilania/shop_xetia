@@ -7,7 +7,7 @@ class DetailFavoriteButton extends StatelessWidget {
   DetailFavoriteButton({Key key, this.indexSwiper}) : super(key: key);
 
   final int indexSwiper;
-  final ProductController productController = Get.find<ProductController>();
+  final ProductController productController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,8 @@ class DetailFavoriteButton extends StatelessWidget {
               ),
               child: IconButton(
                 icon: Icon(
-                  productController.listProductFetch[indexSwiper].isFavorite.value ==
+                  productController
+                              .listProductFetch[indexSwiper].isFavorite.value ==
                           true
                       ? Icons.favorite
                       : Icons.favorite_border,
@@ -37,7 +38,8 @@ class DetailFavoriteButton extends StatelessWidget {
                               .listProductFetch[indexSwiper].isFavorite.value ==
                           true
                       ? Colors.redAccent
-                      : context.theme.scaffoldBackgroundColor,
+                      : context.theme.primaryColorLight,
+                  size: widthApp * 0.07,
                 ),
                 onPressed: () => productController.addToFavorite(indexSwiper),
               ),

@@ -5,15 +5,19 @@ import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/focus_node_controller.dart';
 
 class XetiaLogoWidget extends StatelessWidget {
-  final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final FocusNodeController focusController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => AnimatedContainer(
           duration: Duration(milliseconds: 700),
           curve: Curves.easeOut,
-          width: focusController.topContainer.value == true ? widthApp * 0.15 : widthApp * 0.4,
-          height: focusController.topContainer.value == true ? widthApp * 0.15 : widthApp * 0.4,
+          width: focusController.topContainer.value
+              ? widthApp * 0.15
+              : widthApp * 0.4,
+          height: focusController.topContainer.value
+              ? widthApp * 0.15
+              : widthApp * 0.4,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: context.theme.highlightColor,
@@ -21,8 +25,10 @@ class XetiaLogoWidget extends StatelessWidget {
           ),
           child: AnimatedPadding(
               duration: Duration(milliseconds: 700),
-              padding: EdgeInsets.all(focusController.topContainer.value == true ? 10 : 20),
-              child: SvgPicture.asset("assets/svg/xetia.svg", fit: BoxFit.scaleDown, color: kOrangeXetia)),
+              padding:
+                  EdgeInsets.all(focusController.topContainer.value ? 10 : 20),
+              child: SvgPicture.asset("assets/svg/xetia.svg",
+                  fit: BoxFit.scaleDown, color: kOrangeXetia)),
         ));
   }
 }

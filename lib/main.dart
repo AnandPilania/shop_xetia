@@ -12,15 +12,15 @@ void main() async {
 }
 
 void initLazyController() {
-  Get.lazyPut(() => LandingPageController());
+  Get.lazyPut(() => LandingPageController(), fenix: true);
   Get.lazyPut(() => HeaderHomeController(), fenix: true);
   Get.lazyPut(() => FocusNodeController(), fenix: true);
-  Get.lazyPut(() => LocalizationController());
+  Get.lazyPut(() => LocalizationController(), fenix: true);
   Get.lazyPut(() => ProductController(), fenix: true);
   Get.lazyPut(() => OptionButtonController(), fenix: true);
   Get.lazyPut(() => TextFieldController(), fenix: true);
   Get.lazyPut(() => ListController(), fenix: true);
-  Get.lazyPut(() => SignUpController(), fenix: true);
+  Get.lazyPut(() => ToggleController(), fenix: true);
 }
 
 class MyApp extends StatelessWidget {

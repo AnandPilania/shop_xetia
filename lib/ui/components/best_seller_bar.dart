@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:xetia_shop/controllers/_controllers.dart';
 import 'package:xetia_shop/language/language_key.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 
 class BestSellerBar extends StatelessWidget {
-  final BestSellerController controllerGrid = Get.find<BestSellerController>();
-  final ProductController productController = Get.find<ProductController>();
+  final ToggleController _toggleController = Get.find();
+  final ProductController productController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +25,35 @@ class BestSellerBar extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(kBestSeller.tr, style: context.textTheme.headline1.copyWith(fontSize: 20)),
+            Text(kBestSeller.tr,
+                style: context.textTheme.headline1.copyWith(fontSize: 20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Obx(
-                  () => Text("${productController.listProductFetch.length} " + kProduct.tr,
-                      style: context.textTheme.headline1.copyWith(fontSize: 12, color: context.theme.primaryColor)),
+                  () => Text(
+                      "${productController.listProductFetch.length} " +
+                          kProduct.tr,
+                      style: context.textTheme.headline1.copyWith(
+                          fontSize: 12, color: context.theme.primaryColor)),
                 ),
                 Obx(() => Row(
                       children: [
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: controllerGrid.isGridView == true ? context.theme.primaryColor : null),
+                              color: _toggleController.isGridView
+                                  ? context.theme.primaryColor
+                                  : null),
                           child: IconButton(
                             icon: Icon(Icons.grid_on_rounded),
-                            color: controllerGrid.isGridView == true ? context.theme.primaryColorDark : context.theme.primaryColor,
+                            color: _toggleController.isGridView
+                                ? context.theme.primaryColorDark
+                                : context.theme.primaryColor,
                             padding: EdgeInsets.all(4),
                             constraints: BoxConstraints(),
-                            onPressed: () => controllerGrid.isGridView = true,
+                            onPressed: () =>
+                                _toggleController.isGridView = true,
                           ),
                         ),
                         Padding(
@@ -53,13 +61,18 @@ class BestSellerBar extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: controllerGrid.isGridView == false ? context.theme.primaryColor : null),
+                                color: !_toggleController.isGridView
+                                    ? context.theme.primaryColor
+                                    : null),
                             child: IconButton(
                               icon: Icon(Icons.list_rounded),
-                              color: controllerGrid.isGridView == false ? context.theme.primaryColorDark : context.theme.primaryColor,
+                              color: !_toggleController.isGridView
+                                  ? context.theme.primaryColorDark
+                                  : context.theme.primaryColor,
                               padding: EdgeInsets.all(4),
                               constraints: BoxConstraints(),
-                              onPressed: () => controllerGrid.isGridView = false,
+                              onPressed: () =>
+                                  _toggleController.isGridView = false,
                             ),
                           ),
                         )

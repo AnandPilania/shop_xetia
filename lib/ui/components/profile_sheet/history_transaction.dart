@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:xetia_shop/constants/color_xetia.dart';
-import 'package:get/get_utils/src/extensions/context_extensions.dart';
-import 'package:xetia_shop/language/language_key.dart';
 import 'package:get/get.dart';
+import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:xetia_shop/constants/color_xetia.dart';
+import 'package:xetia_shop/language/language_key.dart';
 
 import 'badges.dart';
 import 'list_history.dart';
@@ -19,7 +19,8 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
   bool isLoadDate = true;
   List<String> chipName;
 
-  textInputSelectDate(BuildContext context, Color color, bool isDark, String text) async {
+  textInputSelectDate(
+      BuildContext context, Color color, bool isDark, String text) async {
     final DateTime picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
@@ -40,9 +41,11 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
   }
 
   void getDate() async {
-    firstDate = await textInputSelectDate(context, Colors.green, true, kFirstDate.tr);
+    firstDate =
+        await textInputSelectDate(context, Colors.green, true, kFirstDate.tr);
     Future.delayed(const Duration(milliseconds: 1000), () async {
-      lastDate = await textInputSelectDate(context, Colors.blue, true, kLastDate.tr);
+      lastDate =
+          await textInputSelectDate(context, Colors.blue, true, kLastDate.tr);
     });
   }
 
@@ -88,7 +91,9 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: context.theme.primaryColorLight.withOpacity(0.3)),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: context.theme.primaryColorLight.withOpacity(0.3)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -179,19 +184,22 @@ class DatePickerTheme extends StatelessWidget {
   final Color color;
   final bool isDark;
 
-  const DatePickerTheme({Key key, this.color, this.isDark, this.child}) : super(key: key);
+  const DatePickerTheme({Key key, this.color, this.isDark, this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Theme(
-        data: ThemeData(primaryColorDark: Colors.white, primaryColorLight: Colors.black).copyWith(
-            primaryColor: color,
-            colorScheme: ColorScheme.light(
-              primary: color,
-              onPrimary: Colors.white,
-              surface: color,
-              onSurface: Colors.black,
-            )),
+        data: ThemeData(
+                primaryColorDark: Colors.white, primaryColorLight: Colors.black)
+            .copyWith(
+                primaryColor: color,
+                colorScheme: ColorScheme.light(
+                  primary: color,
+                  onPrimary: Colors.white,
+                  surface: color,
+                  onSurface: Colors.black,
+                )),
         child: child);
   }
 }

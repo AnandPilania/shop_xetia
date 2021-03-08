@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1017655348921",
+    "project_id": "xetia-shop-demo",
+    "storage_bucket": "xetia-shop-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017655348921:android:c795b0e0205b7590965568",
+        "android_client_info": {
+          "package_name": "com.xetia.xetia_shop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017655348921-bi9jg9k6vrgjr4dufd28ca0fvspldeh0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xetia.xetia_shop",
+            "certificate_hash": "d2ba15012ec594ed38687f26c627a466f3b70d27"
+          }
+        },
+        {
+          "client_id": "1017655348921-kljggjfm5ojfeh6a9s3vve3rcmqqj752.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXEN2Pa9kJwqnavpCinbrg6llhdcGU_Nk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017655348921-kljggjfm5ojfeh6a9s3vve3rcmqqj752.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

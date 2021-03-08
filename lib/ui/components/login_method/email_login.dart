@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/focus_node_controller.dart';
 import 'package:xetia_shop/language/_components.dart';
+import 'package:xetia_shop/utils/_utils.dart';
 
 import '../../../constants/_constants.dart';
 import '../../../controllers/_controllers.dart';
@@ -12,8 +13,9 @@ import '../../components/_components.dart';
 class EmailLogin extends StatelessWidget {
   final TextFieldController _textFieldController = Get.find();
   final SignInController _signInController = Get.put(SignInController());
-  final LandingPageController loginController = Get.find<LandingPageController>();
-  final FocusNodeController focusController = Get.find<FocusNodeController>();
+  final LandingPageController loginController = Get.find();
+  final FocusNodeController focusController = Get.find();
+  final ToggleController _toggleController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -50,9 +52,11 @@ class EmailLogin extends StatelessWidget {
                         validator: Validator().password,
                         hintText: kPassword.tr,
                         isPassword: true,
-                        isObscure: _signInController.isObscure,
+                        isObscure: _toggleController.isObscureSignIn,
                         changeObscure: () {
-                          _signInController.isObscure = !_signInController.isObscure;
+                          print("change");
+                          return _toggleController.isObscureSignIn =
+                              _toggleController.isObscureSignIn.toggle();
                         },
                       ),
                     ),

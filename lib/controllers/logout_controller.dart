@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
+import 'package:xetia_shop/constants/sign_in.dart';
 import 'package:xetia_shop/db/_db.dart';
 import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/models/_model.dart';
@@ -16,6 +17,7 @@ class LogoutController extends GetxController {
   HeaderHomeController headerHomeController = Get.find();
   String accessToken, refreshToken;
   int id;
+  bool isOauth;
   AuthV2 authV2 = AuthV2();
 
   @override
@@ -28,18 +30,26 @@ class LogoutController extends GetxController {
   void getToken() async {
     final user = await UserProvider.db.getUser();
 
-    print("Token Access ${user.accessToken}");
+    print("Token Access ${user.is_oauth}");
     accessToken = user.accessToken;
     refreshToken = user.refreshToken;
     id = user.id;
+    isOauth = user.is_oauth > 0 ? true : false;
   }
 
   void logout({@required context}) async {
+    if (isOauth) {
+      signOutGmail(context: context);
+    } else {
+      signOut(context: context);
+    }
+  }
+
+  void signOut({@required context}) async {
     LoadingOverlay loading = LoadingOverlay.of(context);
 
     loading.show();
 
-    // if (id != null) {
     try {
       AuthResponse res = await authV2
           .logoutRequestV2(tokenAccess: accessToken, tokenRefresh: refreshToken)
@@ -59,19 +69,30 @@ class LogoutController extends GetxController {
         Get.offAll(signInController.hasLoggedIn);
       } else {
         loading.hide();
+        signInController.changeLoginState(false);
         Get.snackbar(kAlert.tr, res.meta.message,
             snackPosition: SnackPosition.BOTTOM);
+        Get.offAll(signInController.hasLoggedIn);
       }
     } catch (e) {
       print("error $e");
     }
-    // } else {
-    //   headerHomeController.changeHeader(position: 0, isSwiped: false);
-    //   loginController.loginMethod = LoginMethods.Unchosen;
-    //   signInController.changeLoginState(false);
-    //   Get.snackbar(kAlert.tr, "User Logout",
-    //       snackPosition: SnackPosition.BOTTOM);
-    //   Get.offAll(signInController.hasLoggedIn);
-    // }
+  }
+
+  void signOutGmail({@required context}) async {
+    LoadingOverlay loading = LoadingOverlay.of(context);
+
+    loading.show();
+
+    headerHomeController.changeHeader(position: 0, isSwiped: false);
+    loginController.loginMethod = LoginMethods.Unchosen;
+    signInController.changeLoginState(false);
+
+    await UserProvider.db.deleteUser(id);
+
+    kGoogleSignIn.disconnect();
+    Get.snackbar(kAlert.tr, "Logout Success",
+        snackPosition: SnackPosition.BOTTOM);
+    Get.offAll(signInController.hasLoggedIn);
   }
 }

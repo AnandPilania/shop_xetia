@@ -10,10 +10,10 @@ class LoadingOverlay {
   }
 
   void show() {
-    showDialog(
-        context: _context,
-        barrierDismissible: false,
-        child: _FullScreenLoader());
+    Get.dialog(
+      _FullScreenLoader(),
+      barrierDismissible: false,
+    );
   }
 
   Future<T> during<T>(Future<T> future) {

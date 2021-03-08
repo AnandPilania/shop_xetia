@@ -7,25 +7,28 @@ import '../controllers/_controllers.dart';
 import '../ui/components/_components.dart';
 
 class ShopUI extends StatelessWidget {
-  final HeaderHomeController headerController =
-      Get.find<HeaderHomeController>();
-  final ShopController shopController = Get.put(ShopController());
+  final HeaderHomeController headerController = Get.find();
+  final ToggleController _toggleController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(height: paddingTop, width: widthApp, color: context.theme.primaryColorDark),
+        Container(
+            height: paddingTop,
+            width: widthApp,
+            color: context.theme.primaryColorDark),
         XetiaTabBar(),
         Expanded(
           child: PageView(
             controller: headerController.pageController,
-            onPageChanged: (value) => headerController.changeHeader(position: value),
+            onPageChanged: (value) =>
+                headerController.changeHeader(position: value),
             scrollDirection: Axis.horizontal,
             children: [
               Obx(() => AnimatedSwitcher(
                   duration: Duration(milliseconds: 250),
-                  child: shopController.isShopOwner)),
+                  child: _toggleController.isShopOwner)),
               ProfileScreen(),
               MessageScreen(),
             ],

@@ -39,25 +39,35 @@ class XetiaTextField extends StatelessWidget {
             validator: validator,
             focusNode: focusNode,
             decoration: InputDecoration(
-              prefixIcon: prefixIcon == null ? null : IconTheme(child: Icon(prefixIcon), data: context.theme.iconTheme),
+              prefixIcon: prefixIcon == null
+                  ? null
+                  : IconTheme(
+                      child: Icon(prefixIcon), data: context.theme.iconTheme),
               hintText: hintText,
               suffixIcon: isPassword
                   ? IconButton(
-                      icon: Icon(isObscure ? Icons.visibility_off : Icons.visibility, color: context.theme.primaryColor),
+                      icon: Icon(
+                          isObscure ? Icons.visibility_off : Icons.visibility,
+                          color: context.theme.primaryColor),
                       onPressed: changeObscure,
                     )
                   : suffixIcon == null
                       ? null
                       : IconButton(
-                          icon: IconTheme(child: Icon(suffixIcon), data: context.theme.iconTheme),
+                          icon: IconTheme(
+                              child: Icon(suffixIcon),
+                              data: context.theme.iconTheme),
                           onPressed: changeObscure,
                         ),
             ),
             cursorColor: context.theme.accentColor,
-            style: context.textTheme.headline3.copyWith(color: context.theme.primaryColorLight),
+            style: context.textTheme.headline3
+                .copyWith(color: context.theme.primaryColorLight),
             keyboardType: null,
             obscureText: isPassword ? isObscure : false,
-            onFieldSubmitted: (_) => nextFocus == null ? FocusScope.of(context).unfocus() : FocusScope.of(context).requestFocus(nextFocus),
+            onFieldSubmitted: (_) => nextFocus == null
+                ? FocusScope.of(context).unfocus()
+                : FocusScope.of(context).requestFocus(nextFocus),
           ),
         )
       ],

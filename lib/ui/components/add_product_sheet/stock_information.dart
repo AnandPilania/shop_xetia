@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/language/_components.dart';
 import 'package:xetia_shop/ui/components/_components.dart';
 import 'package:xetia_shop/utils/_utils.dart';
-import 'package:xetia_shop/language/_components.dart';
 
 class StockInformation extends StatelessWidget {
   final TextFieldController _textFieldController = Get.find();
@@ -36,7 +36,7 @@ class StockInformation extends StatelessWidget {
         SizedBox(height: 15),
         XetiaTextField(
           textInputType: TextInputType.text,
-          controller: _textFieldController.priceController,
+          controller: _textFieldController.minimumOrderController,
           validator: Validator().notEmpty,
           hintText: kTypeMinimumOrder.tr,
         ),

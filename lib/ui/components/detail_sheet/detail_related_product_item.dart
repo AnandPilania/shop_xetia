@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xetia_shop/constants/_constants.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
+import 'package:xetia_shop/ui/components/_components.dart';
 
 class DetailRelatedProductItem extends StatelessWidget {
   DetailRelatedProductItem({Key key, this.indexSwiper}) : super(key: key);
 
   final int indexSwiper;
-  final ProductController productController = Get.find<ProductController>();
+  final ProductController productController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +32,15 @@ class DetailRelatedProductItem extends StatelessWidget {
               SizedBox(
                 width: widthApp * 0.45,
                 child: Center(
-                    child: ClipRRect(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                  child: Image.network(
-                      productController.listProductFetch[indexSwiper]
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: XetiaImageNetwork(
+                      sourceImage: productController
+                          .listProductFetch[indexSwiper]
                           .images[productController.indexProductPicture],
-                      fit: BoxFit.fill),
-                )),
+                    ),
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -55,7 +58,11 @@ class DetailRelatedProductItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Icon(Icons.favorite, color: Colors.redAccent),
+                    child: Icon(
+                      Icons.favorite,
+                      color: Colors.redAccent,
+                      size: widthApp * 0.05,
+                    ),
                     width: widthApp * 0.1,
                     height: widthApp * 0.1,
                   ),
@@ -71,7 +78,7 @@ class DetailRelatedProductItem extends StatelessWidget {
                 Text(
                     productController.listProductFetch[indexSwiper].name
                         .toString(),
-                    style: context.textTheme.headline2
+                    style: context.textTheme.headline3
                         .copyWith(fontWeight: FontWeight.bold)),
                 Text(
                     productController.listProductFetch[indexSwiper].price

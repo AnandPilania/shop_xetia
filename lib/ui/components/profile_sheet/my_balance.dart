@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:xetia_shop/constants/color_xetia.dart';
 import 'package:xetia_shop/language/language_key.dart';
@@ -12,7 +11,8 @@ class MyBalance extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
         color: context.theme.primaryColor,
       ),
       child: Column(
@@ -29,7 +29,10 @@ class MyBalance extends StatelessWidget {
                   Text(
                     kMyBalance.tr,
                     textAlign: TextAlign.center,
-                    style: context.textTheme.headline1.copyWith(color: kBlack, fontWeight: FontWeight.bold, fontSize: 20),
+                    style: context.textTheme.headline1.copyWith(
+                        color: kBlack,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
                   ),
                   SizedBox(width: 140),
                   Text(
@@ -77,13 +80,17 @@ class MyBalance extends StatelessWidget {
                       Text(
                         kBalance.tr,
                         textAlign: TextAlign.center,
-                        style: context.textTheme.headline4.copyWith(fontSize: 16, color: kWhite),
+                        style: context.textTheme.headline4
+                            .copyWith(fontSize: 16, color: kWhite),
                       ),
                       SizedBox(height: 3),
                       AutoSizeText(
                         "Rp. 1000000",
                         textAlign: TextAlign.center,
-                        style: context.textTheme.headline4.copyWith(fontSize: 16, color: kBlack, fontWeight: FontWeight.w600),
+                        style: context.textTheme.headline4.copyWith(
+                            fontSize: 16,
+                            color: kBlack,
+                            fontWeight: FontWeight.w600),
                         maxLines: 1,
                       ),
                     ],
@@ -121,13 +128,17 @@ class MyBalance extends StatelessWidget {
                       Text(
                         kPoint.tr,
                         textAlign: TextAlign.center,
-                        style: context.textTheme.headline4.copyWith(fontSize: 16, color: kWhite),
+                        style: context.textTheme.headline4
+                            .copyWith(fontSize: 16, color: kWhite),
                       ),
                       SizedBox(height: 3),
                       AutoSizeText(
                         "2880",
                         textAlign: TextAlign.center,
-                        style: context.textTheme.headline4.copyWith(fontSize: 16, color: kBlack, fontWeight: FontWeight.w600),
+                        style: context.textTheme.headline4.copyWith(
+                            fontSize: 16,
+                            color: kBlack,
+                            fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),

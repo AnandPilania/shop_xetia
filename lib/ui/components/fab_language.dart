@@ -5,7 +5,8 @@ import 'package:xetia_shop/constants/language_key.dart';
 import 'package:xetia_shop/controllers/_controllers.dart';
 
 class FABLanguage extends StatelessWidget {
-  final LocalizationController controller = Get.find<LocalizationController>();
+  final LocalizationController controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Padding(

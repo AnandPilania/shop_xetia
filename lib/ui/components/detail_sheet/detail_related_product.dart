@@ -11,7 +11,9 @@ class DetailRelatedProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: context.theme.primaryColorDark, borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+          color: context.theme.primaryColorDark,
+          borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

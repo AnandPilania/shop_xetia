@@ -14,6 +14,7 @@ class RegisterUI2 extends StatelessWidget {
   final FocusNodeController focusController = Get.find<FocusNodeController>();
   final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
   final TextFieldController _textFieldController = Get.find();
+  final ToggleController _toggleController = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -50,10 +51,11 @@ class RegisterUI2 extends StatelessWidget {
                         hintText: kPassword.tr,
                         isPassword: true,
                         focusNode: focusController.passwordSignUp,
-                        isObscure: _signUpController.isObscure,
+                        isObscure: _toggleController.isObscureSignUp,
                         nextFocus: focusController.passwordSignUpValidate,
                         changeObscure: () {
-                          _signUpController.isObscure = !_signUpController.isObscure;
+                          return _toggleController.isObscureSignUp =
+                              _toggleController.isObscureSignUp.toggle();
                         },
                       ),
                     ),
@@ -72,10 +74,10 @@ class RegisterUI2 extends StatelessWidget {
                         hintText: kPassword.tr,
                         isPassword: true,
                         focusNode: focusController.passwordSignUpValidate,
-                        isObscure: _signUpController.isValidateObscure,
-                        changeObscure: () {
-                          _signUpController.isValidateObscure = !_signUpController.isValidateObscure;
-                        },
+                        isObscure: _toggleController.isObscureSignUpValidate,
+                        changeObscure: () => _toggleController
+                                .isObscureSignUpValidate =
+                            _toggleController.isObscureSignUpValidate.toggle(),
                       ),
                     ),
                   ],
@@ -87,9 +89,9 @@ class RegisterUI2 extends StatelessWidget {
                       children: [
                         Obx(() => Checkbox(
                               onChanged: (value) {
-                                loginController.subscribeEmail = value;
+                                _toggleController.subscribeEmail = value;
                               },
-                              value: loginController.subscribeEmail,
+                              value: _toggleController.subscribeEmail,
                               activeColor: context.theme.primaryColor,
                             )),
                         SizedBox(height: 5),

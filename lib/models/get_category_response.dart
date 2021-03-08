@@ -63,7 +63,8 @@ class ResponseGetCategory {
   String uuid;
   String name;
 
-  factory ResponseGetCategory.fromJson(Map<String, dynamic> json) => ResponseGetCategory(
+  factory ResponseGetCategory.fromJson(Map<String, dynamic> json) =>
+      ResponseGetCategory(
         uuid: json["uuid"],
         name: json["name"],
       );
