@@ -21,3 +21,4 @@ export 'theme_controller.dart';
 export 'time_token_controller.dart';
 export 'toggle_controller.dart';
 export 'user_database_controller.dart';
+export 'websocket_notif_controller.dart';

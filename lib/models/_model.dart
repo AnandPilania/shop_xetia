@@ -9,3 +9,4 @@ export 'product_response.dart';
 export 'sign_in_response.dart';
 export 'sign_in_responseV2.dart';
 export 'token_refresh_response.dart';
+export 'fetch_notifications_response.dart';
