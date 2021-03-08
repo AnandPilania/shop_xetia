@@ -60,11 +60,9 @@ class FocusNodeController extends GetxController {
   bool get passwordSignUpFocus => this._passwordSignUpFocus.value;
   final RxBool _passwordSignUpValidateFocus = false.obs;
 
-  set passwordSignUpValidateFocus(value) =>
-      this._passwordSignUpValidateFocus.value = value;
+  set passwordSignUpValidateFocus(value) => this._passwordSignUpValidateFocus.value = value;
 
-  bool get passwordSignUpValidateFocus =>
-      this._passwordSignUpValidateFocus.value;
+  bool get passwordSignUpValidateFocus => this._passwordSignUpValidateFocus.value;
 
   //Focus Node Validate
   final FocusNode _token = FocusNode();
@@ -76,6 +74,27 @@ class FocusNodeController extends GetxController {
   set tokenFocus(value) => this._tokenFocus.value = value;
 
   bool get tokenFocus => this._tokenFocus.value;
+
+  //Focus Node Validate PassToken
+  final FocusNode _tokenPassChange = FocusNode();
+
+  FocusNode get tokenPassChange => this._tokenPassChange;
+
+  final RxBool _tokenPassChangeFocus = false.obs;
+
+  set tokenPassChangeFocus(value) => this._tokenPassChangeFocus.value = value;
+
+  bool get tokenPassChangeFocus => this._tokenPassChangeFocus.value;
+
+  final FocusNode _newPass = FocusNode();
+
+  FocusNode get newPass => this._newPass;
+
+  final RxBool _newPassFocus = false.obs;
+
+  set newPassFocus(value) => this._newPassFocus.value = value;
+
+  bool get newPassFocus => this._newPassFocus.value;
 
   //Focus Node Resend Email
   final FocusNode _resendTokenEmail = FocusNode();
@@ -97,7 +116,9 @@ class FocusNodeController extends GetxController {
           passwordSignUpFocus ||
           passwordSignUpValidateFocus ||
           tokenFocus ||
-          resendTokenEmailFocus
+          resendTokenEmailFocus ||
+          tokenPassChangeFocus ||
+          newPassFocus
       ? true.obs
       : false.obs;
 
@@ -108,13 +129,12 @@ class FocusNodeController extends GetxController {
     firstName.addListener(() => firstNameFocus = firstName.hasFocus);
     lastName.addListener(() => lastNameFocus = lastName.hasFocus);
     emailSignUp.addListener(() => emailSignUpFocus = emailSignUp.hasFocus);
-    passwordSignUp
-        .addListener(() => passwordSignUpFocus = passwordSignUp.hasFocus);
-    passwordSignUpValidate.addListener(
-        () => passwordSignUpValidateFocus = passwordSignUpValidate.hasFocus);
+    passwordSignUp.addListener(() => passwordSignUpFocus = passwordSignUp.hasFocus);
+    passwordSignUpValidate.addListener(() => passwordSignUpValidateFocus = passwordSignUpValidate.hasFocus);
     token.addListener(() => tokenFocus = token.hasFocus);
-    resendTokenEmail
-        .addListener(() => resendTokenEmailFocus = resendTokenEmail.hasFocus);
+    resendTokenEmail.addListener(() => resendTokenEmailFocus = resendTokenEmail.hasFocus);
+    tokenPassChange.addListener(() => tokenPassChangeFocus = tokenPassChange.hasFocus);
+    newPass.addListener(() => newPassFocus = newPass.hasFocus);
     super.onInit();
   }
 
@@ -129,6 +149,8 @@ class FocusNodeController extends GetxController {
     passwordSignUpValidate.dispose();
     resendTokenEmail.dispose();
     token.dispose();
+    tokenPassChange.dispose();
+    newPass.dispose();
     super.dispose();
   }
 }

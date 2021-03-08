@@ -7,7 +7,10 @@ import '../../../constants/dimens.dart';
 import '../../../language/language_key.dart';
 import '../../../ui/components/button_flat.dart';
 
-class SuccessRegister extends StatelessWidget {
+class SuccessPage extends StatelessWidget {
+  final bool isPasschange;
+  const SuccessPage({Key key, @required this.isPasschange}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,12 +20,12 @@ class SuccessRegister extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset("assets/svg/success_sign_up.svg"),
+            Get.isDarkMode ? SvgPicture.asset("assets/svg/success_sign_up.svg") : SvgPicture.asset("assets/svg/success_light.svg"),
             SizedBox(height: heightApp * 0.075),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: AutoSizeText(
-                kSuccessRegisterText.tr,
+                isPasschange ? kSuccessPassChangeText.tr : kSuccessRegisterText.tr,
                 style: context.textTheme.headline2.copyWith(fontSize: 20),
                 textAlign: TextAlign.center,
                 maxLines: 2,

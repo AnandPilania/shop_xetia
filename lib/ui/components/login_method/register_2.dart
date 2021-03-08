@@ -111,7 +111,7 @@ class RegisterUI2 extends StatelessWidget {
                           if (_formKey.currentState.validate()) {
                             FocusScope.of(context).unfocus();
                             loginController.loginMethod = LoginMethods.Register3;
-                            tokenTimeController.startController();
+                            tokenTimeController.startControllerSignUp();
                             //_signUpController.resSignUp(context: context);
                           }
                         },

@@ -131,3 +131,9 @@ const kTokenTimeDown = "token_timeout_message";
 const kResendToken = "resend_token_button";
 
 const kSuccessRegisterText = "success_register";
+const kSuccessPassChangeText = "success_change_pass";
+const kResetMyPassword = "rst_pass";
+const kTokenTimeDownPassword = "password_time_down";
+const kThanksPassChange = "pass_thanks";
+const kNewPassword = "new_pass";
+const kChange = "change_password";

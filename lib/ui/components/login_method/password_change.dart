@@ -9,7 +9,7 @@ import '../../../controllers/_controllers.dart';
 import '../../../language/_components.dart';
 import '../../../ui/components/_components.dart';
 
-class RegisterUI3 extends StatelessWidget {
+class ChangePassword extends StatelessWidget {
   final FocusNodeController focusController = Get.find();
   final ToggleController _toggleController = Get.find();
   final TokenTimeController tokenTimeController = Get.put(TokenTimeController());
@@ -22,7 +22,7 @@ class RegisterUI3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => AnimatedSwitcher(
         duration: Duration(milliseconds: 200),
-        child: !tokenTimeController.isTickingSignUp
+        child: !tokenTimeController.isTickingPassChange
             ? SizedBox(
                 height: (heightApp + paddingTop) * 0.4,
                 child: Center(
@@ -34,7 +34,7 @@ class RegisterUI3 extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 16.0),
                           child: AutoSizeText(
-                            kTokenTimeDown.tr,
+                            kTokenTimeDownPassword.tr,
                             style: context.textTheme.headline4.copyWith(fontSize: 16),
                             textAlign: TextAlign.center,
                             maxLines: 2,
@@ -46,7 +46,7 @@ class RegisterUI3 extends StatelessWidget {
                           child: MyButton(
                             color: context.theme.primaryColor,
                             onTap: () {
-                              tokenTimeController.startControllerSignUp();
+                              tokenTimeController.startControllerPassChange();
                               FocusScope.of(context).unfocus();
                             },
                             text: kResendActivationKey.tr,
@@ -67,7 +67,7 @@ class RegisterUI3 extends StatelessWidget {
                       child: Column(
                         children: [
                           CountdownTimer(
-                            controller: tokenTimeController.controllerSignUp,
+                            controller: tokenTimeController.controllerPassChange,
                             widgetBuilder: (_, CurrentRemainingTime time) {
                               return Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
@@ -76,7 +76,7 @@ class RegisterUI3 extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 16.0),
                                       child: AutoSizeText(
-                                        kThanksRegistration.tr,
+                                        kThanksPassChange.tr,
                                         style: context.textTheme.headline4.copyWith(fontSize: 14),
                                         textAlign: TextAlign.center,
                                         maxLines: 2,
@@ -98,9 +98,17 @@ class RegisterUI3 extends StatelessWidget {
                                     SizedBox(height: 5),
                                     XetiaTextField(
                                       textInputType: TextInputType.emailAddress,
-                                      controller: _textFieldController.token,
+                                      controller: _textFieldController.tokenPassChange,
                                       hintText: kActivateToken.tr,
-                                      focusNode: focusController.token,
+                                      focusNode: focusController.tokenPassChange,
+                                      nextFocus: focusController.newPass,
+                                    ),
+                                    SizedBox(height: 5),
+                                    XetiaTextField(
+                                      textInputType: TextInputType.emailAddress,
+                                      controller: _textFieldController.newPassword,
+                                      hintText: kNewPassword.tr,
+                                      focusNode: focusController.newPass,
                                     ),
                                     SizedBox(height: 20),
                                     Padding(
@@ -111,11 +119,11 @@ class RegisterUI3 extends StatelessWidget {
                                           FocusScope.of(context).unfocus();
                                           loginController.loginMethod = LoginMethods.Email;
                                           _toggleController.isLogin = true;
-                                          tokenTimeController.endTickingSignUp();
-                                          Get.to(SuccessPage(isPasschange: false));
+                                          tokenTimeController.endTickingPassChange();
+                                          Get.to(SuccessPage(isPasschange: true));
                                           //signUpController.resEmailVerify(context: context);
                                         },
-                                        text: kVerify.tr,
+                                        text: kChange.tr,
                                       ),
                                     ),
                                   ],

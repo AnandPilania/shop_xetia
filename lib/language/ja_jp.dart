@@ -137,6 +137,12 @@ const Map<String, String> jaJP = {
   kResendToken: "トークンの再送",
 
   kSuccessRegisterText: "おめでとうございます \nあなたのアカウントは確認されています",
+  kResetMyPassword: "パスワードをリセットする",
+  kTokenTimeDownPassword: "申し訳ありませんが、時間切れになってしまいましたので、以下のボタンをクリックして、再設定したパスワードのトークンを再送してください。",
+  kThanksPassChange: "この度はご依頼いただきまして、誠にありがとうございました。\nパスワードトークンをリセットするには、メールをチェックしてください。",
+  kNewPassword: "新しいパスワード",
+  kChange: "変更",
+  kSuccessPassChangeText: "おめでとうございます . . .\nパスワードが変更されました",
 
   //日本語 only
   "Nagoya": "名古屋",

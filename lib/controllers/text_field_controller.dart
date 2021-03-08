@@ -24,6 +24,8 @@ class TextFieldController extends GetxController {
   TextEditingController passSignUp;
   TextEditingController validatePass;
   TextEditingController token;
+  TextEditingController tokenPassChange;
+  TextEditingController newPassword;
 
   @override
   void onInit() {
@@ -50,6 +52,8 @@ class TextFieldController extends GetxController {
     passSignUp = TextEditingController();
     validatePass = TextEditingController();
     token = TextEditingController();
+    tokenPassChange = TextEditingController();
+    newPassword = TextEditingController();
   }
 
   @override
@@ -77,5 +81,7 @@ class TextFieldController extends GetxController {
     passSignUp.dispose();
     validatePass.dispose();
     token.dispose();
+    tokenPassChange.dispose();
+    newPassword.dispose();
   }
 }

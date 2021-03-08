@@ -96,7 +96,7 @@ class SignInController extends GetxController {
         _textFieldController.pass.clear();
         insertToDb(value, false);
         changeLoginState(true);
-        Get.offAll(HomeUI());
+        Get.offAll(() => HomeUI());
         Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       } else if (value.meta.code == 408) {
         // exception untuk apabila tidak ada internet
@@ -130,7 +130,7 @@ class SignInController extends GetxController {
         print("ok");
         print(user.id);
 
-        Get.offAll(HomeUI());
+        Get.offAll(() => HomeUI());
         Get.snackbar(kAlert.tr, value.meta.message, snackPosition: SnackPosition.BOTTOM);
       });
     }
@@ -152,7 +152,7 @@ class SignInController extends GetxController {
       print(user);
       changeLoginState(true);
 
-      Get.offAll(HomeUI());
+      Get.offAll(() => HomeUI());
       Get.snackbar(kAlert.tr, "Sing In Berhasil", snackPosition: SnackPosition.BOTTOM);
     } catch (error) {
       Get.snackbar(kAlert.tr, kSignInFailed.tr, snackPosition: SnackPosition.BOTTOM);

@@ -54,12 +54,12 @@ class ResetPassword extends StatelessWidget {
                 color: context.theme.primaryColor,
                 onTap: () {
                   if (_formKey.currentState.validate()) {
-                    //FocusScope.of(context).unfocus();
-                    //loginController.loginMethod = LoginMethods.Register3;
-                    //tokenTimeController.startController();
+                    FocusScope.of(context).unfocus();
+                    loginController.loginMethod = LoginMethods.ChangePassword;
+                    tokenTimeController.startControllerPassChange();
                   }
                 },
-                text: "Reset my password",
+                text: kResetMyPassword.tr,
               ),
             ),
           ],

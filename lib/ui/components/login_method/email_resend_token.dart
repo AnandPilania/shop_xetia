@@ -55,10 +55,10 @@ class ResendTokenEmail extends StatelessWidget {
                 color: context.theme.primaryColor,
                 onTap: () {
                   if (_formKey.currentState.validate()) {
-                    // FocusScope.of(context).unfocus();
-                    // loginController.loginMethod = LoginMethods.Register3;
-                    // tokenTimeController.startController();
-                    signUpController.resRequestEmailVerify(context: context);
+                    FocusScope.of(context).unfocus();
+                    loginController.loginMethod = LoginMethods.Register3;
+                    tokenTimeController.startControllerSignUp();
+                    //signUpController.resRequestEmailVerify(context: context);
                   }
                 },
                 text: kResendToken.tr,
